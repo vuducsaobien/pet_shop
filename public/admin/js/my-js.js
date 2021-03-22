@@ -1,4 +1,16 @@
 $(document).ready(function() {
+
+
+/*
+	document.getElementById("main-form2").onkeypress = function(e) {
+		var key = e.charCode || e.keyCode || 0;
+		if (key == 13) {
+			e.preventDefault();
+		}
+	}
+*/
+
+
 	let $btnSearch        = $("button#btn-search");
 	let $btnClearSearch	  = $("button#btn-clear-search");
 
@@ -8,6 +20,7 @@ $(document).ready(function() {
 	let $selectChangeAttrAjax = $("select.select-ajax");
 	let $inputOrdering    = $("input.ordering");
 	let $btnStatus = $(".btn-status");
+
 
 	$("a.select-field").click(function(e) {
 		e.preventDefault();
@@ -30,7 +43,7 @@ $(document).ready(function() {
 				link += param + "=" + searchParams.get(param) + "&" // filter_status=active
 			}
 		});
-		
+
 		let search_field = $inputSearchField.val();
 		let search_value = $inputSearchValue.val();
 
@@ -78,7 +91,7 @@ $(document).ready(function() {
 
         callAjax($currentElement, $url, 'ordering');
 	});
-	
+
 	// Ajax Change Status
     $btnStatus.click(function (e) {
         e.preventDefault();
@@ -87,7 +100,7 @@ $(document).ready(function() {
 
         callAjax($currentElement, $url, 'status');
 	});
-	
+
 	// Ajax Change SelectBox Value
     $selectChangeAttrAjax.on("change", function () {
         let $currentElement = $(this);
@@ -107,25 +120,25 @@ $(document).ready(function() {
 			"search_field",
 			"search_value",
 		];
-	
+
 		let link = "";
 		$.each(params, function(key, value) {
 			if (searchParams.has(value)) {
 				link += `${value}=${searchParams.get(value)}&`;
 			}
 		});
-	
+
 		let filter_category = $(this).val();
-	
+
 		window.location.href = `${pathname}?${link}filter_category=${filter_category}`;
 	});
-	
+
 	$('#lfm').filemanager('image');
 
-	$('.tags').tagsInput({
-		'defaultText': '',
-		'width': '100%'
-	});
+	// $('.tags').tagsInput({
+	// 	'defaultText': '',
+	// 	'width': '100%'
+	// });
 });
 
 function showNotify(element, message, type = 'success') {

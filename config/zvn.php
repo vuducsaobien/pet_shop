@@ -13,16 +13,26 @@ return [
         'form_input' => [
             'class' => 'form-control col-md-6 col-xs-12'
         ],
+        'form_input_no_padding' => [
+            'class' => 'form-control col-md-10 col-xs-12'
+        ],
+        'form_tag' => [
+            'class' => 'form-control col-md-6 col-xs-12',
+            'data-role' => 'tagsinput'
+        ],
         'form_input_tags' => [
             'class' => 'tags form-control col-md-6 col-xs-12'
         ],
         'form_label' => [
             'class' => 'control-label col-md-3 col-sm-3 col-xs-12'
         ],
+        'form_label_no_padding' => [
+            'class' => 'control-label col-md-2 col-sm-3 col-xs-12'
+        ],
         'form_label_edit' => [
             'class' => 'control-label col-md-4 col-sm-3 col-xs-12'
         ],
-      
+
         'form_ckeditor' => [
             'class' => 'form-control col-md-6 col-xs-12 ckeditor'
         ],
@@ -74,14 +84,14 @@ return [
             'content'       => ['name'=> 'Search by Content'],
             'phone'         => ['name'=> 'Search by Phone'],
             'message'       => ['name'=> 'Search by Message'],
-            
+
         ],
         'button' => [
             'edit'      => ['class'=> 'btn-success' , 'title'=> 'Edit'      , 'icon' => 'fa-pencil' , 'route-name' => '/form'],
             'delete'    => ['class'=> 'btn-danger btn-delete'  , 'title'=> 'Delete'    , 'icon' => 'fa-trash'  , 'route-name' => '/delete'],
             'info'      => ['class'=> 'btn-info'    , 'title'=> 'View'      , 'icon' => 'fa-pencil' , 'route-name' => '/delete'],
         ]
-            
+
     ],
     'path' => [
         'gallery' => 'images/gallery/'
@@ -105,6 +115,8 @@ return [
             'user'      => ['edit'],
             'menu'      => ['edit', 'delete'],
             'rss'       => ['edit', 'delete'],
+            'attribute' => ['edit', 'delete'],
+            'product' => ['edit', 'delete'],
         ]
     ],
     'notify' => [
@@ -112,5 +124,5 @@ return [
             'update' => 'Cập nhật thành công!'
         ]
     ]
-    
+
 ];

@@ -134,4 +134,45 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', 'middleware' => 
             return view('admin.pages.logs.index');
         })->name('logs');
     });
+    /*================================= ATTRIBUTE =============================*/
+
+    $prefix = 'attribute';
+    $controllerName = 'attribute';
+    Route::group(['prefix' => $prefix], function () use ($controllerName) {
+        $controller = ucfirst($controllerName) . 'Controller@';
+        Route::get('/',                                 ['as' => $controllerName,                   'uses' => $controller . 'index']);
+        Route::get('form/{id?}',                        ['as' => $controllerName . '/form',         'uses' => $controller . 'form'])->where('id', '[0-9]+');
+        Route::post('save',                             ['as' => $controllerName . '/save',         'uses' => $controller . 'save']);
+        Route::get('delete/{id}',                       ['as' => $controllerName . '/delete',       'uses' => $controller . 'delete'])->where('id', '[0-9]+');
+        Route::get('change-status-{id}/{status}',       ['as' => $controllerName . '/status',       'uses' => $controller . 'status'])->where('id', '[0-9]+');
+        Route::get('change-ordering-{ordering}/{id}',   ['as' => $controllerName . '/ordering',     'uses' => $controller . 'ordering'])->where('id', '[0-9]+');
+
+    });
+    /*================================= PRODUCT =============================*/
+
+    $prefix = 'product';
+    $controllerName = 'product';
+    Route::group(['prefix' => $prefix], function () use ($controllerName) {
+        $controller = ucfirst($controllerName) . 'Controller@';
+        Route::get('/',                                 ['as' => $controllerName,                   'uses' => $controller . 'index']);
+        Route::get('form/{id?}',                        ['as' => $controllerName . '/form',         'uses' => $controller . 'form'])->where('id', '[0-9]+');
+        Route::post('save',                             ['as' => $controllerName . '/save',         'uses' => $controller . 'save']);
+        Route::get('image/{id}',                             ['as' => $controllerName . '/get-image',         'uses' => $controller . 'getImage']);
+        Route::post('image',                             ['as' => $controllerName . '/image',         'uses' => $controller . 'image']);
+        Route::get('delete/{id}',                       ['as' => $controllerName . '/delete',       'uses' => $controller . 'delete'])->where('id', '[0-9]+');
+        Route::get('change-status-{status}/{id}',       ['as' => $controllerName . '/status',       'uses' => $controller . 'status'])->where('id', '[0-9]+');
+        Route::get('change-ordering-{ordering}/{id}',   ['as' => $controllerName . '/ordering',     'uses' => $controller . 'ordering'])->where('id', '[0-9]+');
+        Route::get('change-category-{category_id}/{id}', [ 'as' => $controllerName . '/change-category', 'uses' => $controller . 'changeCategory']);
+
+
+        //route for edit product
+        Route::post('change-info', [ 'as' => $controllerName . '/change-info', 'uses' => $controller . 'changeInfo']);
+        Route::post('change-category', [ 'as' => $controllerName . '/change-category-edit', 'uses' => $controller . 'changeInfo']);
+        Route::post('change-price', [ 'as' => $controllerName . '/change-price', 'uses' => $controller . 'changeInfo']);
+        Route::post('change-attribute', [ 'as' => $controllerName . '/change-attribute', 'uses' => $controller . 'changeAttribute']);
+        Route::post('change-special', [ 'as' => $controllerName . '/change-special', 'uses' => $controller . 'changeInfo']);
+        Route::post('change-dropzone', [ 'as' => $controllerName . '/change-dropzone', 'uses' => $controller . 'changeInfo']);
+
+
+    });
 });

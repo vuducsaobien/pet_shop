@@ -12,9 +12,14 @@
 <script src="{{ asset('admin/asset/iCheck/icheck.min.js') }}"></script>
 <script src="{{asset('admin/js/ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('admin/js/notify.js/notify.min.js')}}"></script>
-<script src="{{asset('admin/asset/jquery.tagsinput/jquery.tagsinput.min.js')}}"></script>
+{{--<script src="{{asset('admin/asset/jquery.tagsinput/jquery.tagsinput.min.js')}}"></script>--}}
 <script src="{{asset('vendor/laravel-filemanager/js/lfm.js')}}"></script>
 <!-- Custom Theme Scripts -->
+
+<!-- dropzone + bootstrap tags input -->
+<script src="{{asset('js/dropzone.js')}}"></script>
+<script src="{{asset('admin/tag/bootstrap-tagsinput.min.js')}}"></script>
+
 
 <script src="{{ asset('admin/js/custom.min.js') }}"></script>
 <script src="{{ asset('admin/js/my-js.js') }}"></script>

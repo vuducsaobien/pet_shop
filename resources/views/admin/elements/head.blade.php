@@ -19,3 +19,8 @@
 <link href="{{ asset('admin/css/custom.min.css') }}" rel="stylesheet">
 <!-- Custom Theme Style -->
 <link href="{{ asset('admin/css/mycss.css') }}" rel="stylesheet">
+<!-- bootstrap tags input -->
+<link href="{{ asset('admin/tag/bootstrap-tagsinput.css') }}" rel="stylesheet">
+
+<!-- css dropzone -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />

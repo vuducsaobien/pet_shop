@@ -62,13 +62,15 @@ class CategoryModel extends AdminModel
 
         if($options['task'] == "admin-list-items-in-select-box") {
             $query = self::select('id', 'name')->withDepth()->defaultOrder();
-            
+       
+           
+            /*================================= truong hop edit =============================*/
             if (isset($params['id'])) {
                 $node = self::find($params['id']);
                 $query->where('_lft', '<', $node->_lft)->orWhere('_lft', '>', $node->_rgt);
             }
             
-            $nodes = $query->get()->toFlatTree();
+            $nodes = $query->get();
 
             foreach ($nodes as $value) {
                 $result[$value['id']] = str_repeat('|---- ', $value['depth']) . $value['name'];

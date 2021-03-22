@@ -27,10 +27,25 @@ class AdminModel extends Model
     ];
 
 
-    public function uploadThumb($thumbObj) {
+    public function uploadThumb($thumbObj,$dir='') {
         $thumbName        = Str::random(10) . '.' . $thumbObj->clientExtension();
-        $thumbObj->storeAs($this->folderUpload, $thumbName, 'zvn_storage_image' );
+        $thumbObj->storeAs($dir??$this->folderUpload, $thumbName, 'zvn_storage_image' );
         return $thumbName;
+    }
+
+    /*============== chuyen file tu tmp sang product,sắp xếp lại mảng để lưu vào database =============================*/
+    public function dropzone($params)
+    {
+        foreach ($params['nameImage'] as $value) {
+            if(file_exists(public_path('images/tmp/'.$value))){
+                rename(public_path('images/tmp/'.$value),public_path('images/product/'.$value));
+            }
+        }
+        $res = array_map(null, $params['nameImage'], $params['alt']);
+        $keys = array("name", "alt");
+        return array_map(function ($e) use ($keys) {
+            return array_combine($keys, $e);
+        }, $res);
     }
 
     public function deleteThumb($thumbName){
