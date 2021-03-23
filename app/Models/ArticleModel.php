@@ -61,7 +61,7 @@ class ArticleModel extends AdminModel
 
         if($options['task'] == 'news-list-items-featured') {
 	
-            $query = $this->select('a.id', 'a.name', 'a.content', 'a.created', 'a.category_id', 'c.name as category_name', 'a.thumb')
+            $query = $this->select('a.id', 'a.name', 'a.content', 'a.category_id', 'c.name as category_name', 'a.thumb')
                 ->leftJoin('category as c', 'a.category_id', '=', 'c.id')
                 ->where('a.status', '=', 'active')
                 ->where('a.type', 'featured')
@@ -74,7 +74,7 @@ class ArticleModel extends AdminModel
         
         if($options['task'] == 'news-list-items-latest') {
             
-            $query = $this->select('a.id', 'a.name', 'a.created', 'a.category_id', 'c.name as category_name', 'a.thumb')
+            $query = $this->select('a.id', 'a.name', 'a.created_at', 'a.category_id', 'c.name as category_name', 'a.thumb')
                 ->leftJoin('category as c', 'a.category_id', '=', 'c.id')
                 ->where('a.status', '=', 'active')
                 ->orderBy('id', 'desc') 
@@ -84,7 +84,7 @@ class ArticleModel extends AdminModel
         }
 
         if($options['task'] == 'news-list-items-in-category') {
-            $query = $this->select('id', 'name', 'content', 'thumb', 'created')
+            $query = $this->select('id', 'name', 'content', 'thumb', 'created_at')
                 ->where('status', '=', 'active')
                 ->where('category_id', '=', $params['category_id'])
                 ->take(4)
@@ -93,7 +93,7 @@ class ArticleModel extends AdminModel
         }
         
         if($options['task'] == 'news-list-items-related-in-category') {
-            $query = $this->select('id', 'name', 'content', 'thumb', 'created')
+            $query = $this->select('id', 'name', 'content', 'thumb', 'created_at')
                 ->where('status', '=', 'active')
                 ->where('a.id', '!=', $params['article_id'])
                 ->where('category_id', '=', $params['category_id'])
@@ -148,7 +148,7 @@ class ArticleModel extends AdminModel
         }
 
         if($options['task'] == 'news-get-item') {
-            $result = self::select('a.id', 'a.name', 'content', 'a.category_id', 'c.name as category_name', 'a.thumb', 'a.created', 'c.display')
+            $result = self::select('a.id', 'a.name', 'content', 'a.category_id', 'c.name as category_name', 'a.thumb', 'a.created_at', 'c.display')
                          ->leftJoin('category as c', 'a.category_id', '=', 'c.id')
                          ->where('a.id', '=', $params['article_id'])
                          ->where('a.status', '=', 'active')->first();
@@ -171,7 +171,7 @@ class ArticleModel extends AdminModel
 
         if($options['task'] == 'add-item') {
             $params['created_by'] = "hailan";
-            $params['created']    = date('Y-m-d');
+            $params['created_at']    = date('Y-m-d');
             $params['thumb']      = $this->uploadThumb($params['thumb']);
             self::insert($this->prepareParams($params));        
         }
@@ -186,19 +186,19 @@ class ArticleModel extends AdminModel
             }
 
             $params['modified_by']   = "hailan";
-            $params['modified']      = date('Y-m-d');
+            $params['updated_at']      = date('Y-m-d');
 
             self::where(['id' => $params['id'] ] )->update($this->prepareParams($params));
         }
 
         if ($options['task'] == 'change-category') {
             $params['modified_by']  = session('userInfo')['username'];
-            $params['modified']     = date('Y-m-d H:i:s');
+            $params['updated_at']     = date('Y-m-d H:i:s');
             $this->where('id', $params['id'])->update($this->prepareParams($params));
 
             $result = [
                 'id' => $params['id'],
-                'modified' => Template::showItemHistory($params['modified_by'], $params['modified']),
+                'updated_at' => Template::showItemHistory($params['modified_by'], $params['updated_at']),
                 'message' => config('zvn.notify.success.update')
             ];
 

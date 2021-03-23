@@ -24,7 +24,7 @@ class ImageModel extends AdminModel
         $result = null;
 
         if ($options['task'] == "admin-list-items") {
-            $query = $this->select('id', 'name', 'created', 'created_by', 'modified', 'modified_by');
+            $query = $this->select('id', 'name', 'created_at', 'created_by', 'updated_at', 'modified_by');
 
             if ($params['filter']['status'] !== "all") {
                 $query->where('status', '=', $params['filter']['status']);

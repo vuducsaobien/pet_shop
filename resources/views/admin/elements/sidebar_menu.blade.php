@@ -27,13 +27,13 @@
                 <ul class="nav child_menu">
                     <li><a href="{{ route('setting', ['type' => 'general']) }}"></i>Cấu hình chung</a></li>
                     <li><a href="{{ route('setting', ['type' => 'email']) }}"></i>Email</a></li>
-                    <li><a href="{{ route('setting', ['type' => 'social']) }}"></i>Social</a></li>
-                    <li><a href="{{ route('logs') }}"> Logs</a></li>
-                    <li><a href="{{ route('gallery') }}"> Gallery</a></li>
-                    <li><a href="{{ route('contact') }}"> Liên hệ</a></li>
-                    <li><a href="{{ route('rss') }}"> RSS</a></li>
-                    <li><a href="{{ route('slider') }}"> Slider</a></li>
-                    <li><a href="{{ route('attribute') }}"> Attribute</a></li>
+                    <li><a href="{{ route('setting', ['type' => 'social']) }}">Social</a></li>
+                    <li class="none"><a href="{{ route('logs') }}"> Logs</a></li>
+                    <li class="none"><a href="{{ route('gallery') }}"> Gallery</a></li>
+                    <li class="none"><a href="{{ route('contact') }}"> Liên hệ</a></li>
+                    <li class="none"><a href="{{ route('rss') }}"> RSS</a></li>
+                    <li class="none"><a href="{{ route('slider') }}"> Slider</a></li>
+                    <li class="none"><a href="{{ route('attribute') }}"> Attribute</a></li>
 
 
                 </ul>
@@ -41,8 +41,8 @@
             <li>
             <a><i class="fa fa-user"></i> Người dùng <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-                <li><a href="{{ route('user/change-logged-password') }}"> Change Password</a></li>
-                <li><a href="{{ route('user') }}"> User</a></li>
+                <li class="none"><a href="{{ route('user/change-logged-password') }}"> Change Password</a></li>
+                <li class="none"><a href="{{ route('user') }}"> User</a></li>
 
             </ul>
             </li>

@@ -158,12 +158,12 @@ class ProductModel extends AdminModel
         /*================================= change category =============================*/
         if ($options['task'] == 'change-category') {
 //            $params['modified_by']  = session('userInfo')['username'];
-//            $params['modified']     = date('Y-m-d H:i:s');
+//            $params['updated_at']     = date('Y-m-d H:i:s');
             $this->where('id', $params['id'])->update($this->prepareParams($params));
 
             $result = [
                 'id' => $params['id'],
-//                'modified' => Template::showItemHistory($params['modified_by'], $params['modified']),
+//                'updated_at' => Template::showItemHistory($params['modified_by'], $params['updated_at']),
                 'message' => config('zvn.notify.success.update')
             ];
 

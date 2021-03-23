@@ -11,8 +11,8 @@ class AdminModel extends Model
 {
      
     public $timestamps = false;
-    const CREATED_AT = 'created';
-    const UPDATED_AT = 'modified';
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 
     protected $table            = '';
     protected $folderUpload     = '' ;

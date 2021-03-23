@@ -28,11 +28,11 @@
             'label'     => Form::label('name', 'Name', $formLabelAttr),
             'element'   => Form::text('name', $item['name'] ?? '', $formInputAttr)
         ],
-        [
+       [
             'label'   => Form::label('category_id', 'Category', $formLabelAttr),
             'element' => Form::select('category_id', $itemsCategory, @$item['category_id'],  $formInputAttr)
         ],
-         [
+        [
             'label'     => Form::label('logo', 'Ảnh đại diện', $formLabelAttr),
             'element'   => $thumbElement
         ],

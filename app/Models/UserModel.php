@@ -20,7 +20,7 @@ class UserModel extends AdminModel
         $result = null;
 
         if($options['task'] == "admin-list-items") {
-            $query = $this->select('id', 'username', 'email', 'fullname', 'avatar', 'status', 'level','created', 'created_by', 'modified', 'modified_by');
+            $query = $this->select('id', 'username', 'email', 'fullname', 'avatar', 'status', 'level','created_at' ,'updated_at');
                
             if ($params['filter']['status'] !== "all")  {
                 $query->where('status', '=', $params['filter']['status'] );
@@ -115,7 +115,7 @@ class UserModel extends AdminModel
 
         if($options['task'] == 'add-item') {
             $params['created_by'] = "hailan";
-            $params['created']    = date('Y-m-d');
+            $params['created_at']    = date('Y-m-d');
             $params['avatar']      = $this->uploadThumb($params['avatar']);
             $params['password']    = md5($params['password']);
             self::insert($this->prepareParams($params));        
@@ -127,7 +127,7 @@ class UserModel extends AdminModel
                 $params['avatar'] = $this->uploadThumb($params['avatar']);
             }
             $params['modified_by']   = "hailan";
-            $params['modified']      = date('Y-m-d');
+            $params['updated_at']      = date('Y-m-d');
             self::where('id', $params['id'])->update($this->prepareParams($params));
         }
 
@@ -152,7 +152,7 @@ class UserModel extends AdminModel
             $modified   = date('Y-m-d H:i:s');
             $this->where('id', session('userInfo')['id'])->update([
                 'password' => $password,
-                'modified' => $modified,
+                'updated_at' => $modified,
                 'modified_by' => $modifiedBy
             ]);
         }

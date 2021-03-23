@@ -19,7 +19,7 @@ class AdminController extends Controller
     }
 
     public function index(Request $request)
-    {   
+    {
         $this->params['filter']['status'] = $request->input('filter_status', 'all' ) ;
         $this->params['filter']['category'] = $request->input('filter_category', 'all' ) ;
         $this->params['search']['field']  = $request->input('search_field', '' ) ; // all id description
@@ -27,6 +27,7 @@ class AdminController extends Controller
 
         $items              = $this->model->listItems($this->params, ['task'  => 'admin-list-items']);
         $itemsStatusCount   = $this->model->countItems($this->params, ['task' => 'admin-count-items-group-by-status']); // [ ['status', 'count']]
+
 
         return view($this->pathViewController .  'index', [
             'params'        => $this->params,

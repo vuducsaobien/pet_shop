@@ -7,7 +7,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -128,6 +128,35 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="artisan make:migration" />
+      <command value="artisan make:migration createTestimonialTable" />
+      <command value="artisan make:migration createCommentTable" />
+      <command value="artisan make:migration createCustomerTable" />
+      <command value="artisan make:migration createUserTable" />
+      <command value="artisan make:migration createMenuTable" />
+      <command value="artisan make:migration createSliderTable" />
+      <command value="artisan make:migration createSettingTable" />
+      <command value="artisan make:migration createCategoryTable" />
+      <command value="artisan make:migration createProductTable" />
+      <command value="artisan make:migration createOrderTable" />
+      <command value="artisan make:migration createOrderProductTable" />
+      <command value="artisan make:migration createArticleTable" />
+      <command value="artisan make:migration createContactTable" />
+      <command value="artisan make:migration createProductImageTable" />
+      <command value="artisan make:migration createAttributeTable" />
+      <command value="artisan make:migration createProductAttributeTable" />
+      <command value="artisan make:migration createPageTable" />
+      <command value="artisan make:migration createShippingTable" />
+      <command value="artisan make:migration createDiscountTable" />
+      <command value="artisan make:migration createTeamTable" />
+      <command value="artisan make:migration createPaymentTable" />
+      <command value="artisan migrate" />
+      <command value="artisan migrate --seed" />
+      <command value="artisan make:factory user" />
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
