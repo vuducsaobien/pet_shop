@@ -28,18 +28,18 @@ class ContactController extends Controller
 
     public function postContact(Request $request)
     {
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'message' => $request->message,
-        ];
+        // $data = [
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'phone' => $request->phone,
+        //     'message' => $request->message,
+        // ];
 
-        $this->model->saveItem($data, ['task' => 'news-add-item']);
+        // $this->model->saveItem($data, ['task' => 'news-add-item']);
 
-        $mailService = new MailService();
-        $mailService->sendContactConfirm($data);
-        $mailService->sendContactInfo($data);
+        // $mailService = new MailService();
+        // $mailService->sendContactConfirm($data);
+        // $mailService->sendContactInfo($data);
 
         return redirect()->route($this->controllerName . '/index')->with('news_notify', 'Cảm ơn bạn đã gửi thông tin liên. Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất.');
     }

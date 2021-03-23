@@ -11,7 +11,7 @@
                 <div class="col-lg-9">
                     <div class="main_content">
                         <!-- Featured -->
-                        @include('news.block.featured', ['items' => $itemsFeatured ] )
+                        {{-- @include('news.block.featured', ['items' => $itemsFeatured ] ) --}}
                         
                         <!-- CATEGORY -->
                         @include('news.pages.home.child-index.category') 
@@ -22,16 +22,16 @@
                 <div class="col-lg-3">
                     <div class="sidebar">
                         <!-- Latest Posts -->
-                        @include ('news.block.latest_posts', ['items' => $itemsLatest])
+                        {{-- @include ('news.block.latest_posts', ['items' => $itemsLatest]) --}}
 
                         <!-- Advertisement -->
-                        @include ('news.block.advertisement', ['itemsAdvertisement' => []])
+                        {{-- @include ('news.block.advertisement', ['itemsAdvertisement' => []]) --}}
 
                         <!-- MostViewed -->
-                        @include ('news.block.most_viewed', ['itemsMostViewed' => []])
+                        {{-- @include ('news.block.most_viewed', ['itemsMostViewed' => []]) --}}
 
                         <!-- Tags -->
-                        @include ('news.block.tags', ['itemsTags' => []])
+                        {{-- @include ('news.block.tags', ['itemsTags' => []]) --}}
                     </div>
                 </div>
 

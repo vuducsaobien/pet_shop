@@ -21,23 +21,23 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {   
-        $params["category_id"]  = $request->category_id;
-        $articleModel  = new ArticleModel();
-        $categoryModel = new CategoryModel();
+        // $params["category_id"]  = $request->category_id;
+        // $articleModel  = new ArticleModel();
+        // $categoryModel = new CategoryModel();
         
 
-        $itemCategory = $categoryModel->getItem($params, ['task' => 'news-get-item']);
-        if(empty($itemCategory))  return redirect()->route('home');
+        // $itemCategory = $categoryModel->getItem($params, ['task' => 'news-get-item']);
+        // if(empty($itemCategory))  return redirect()->route('home');
         
-        $itemsLatest   = $articleModel->listItems(null, ['task'  => 'news-list-items-latest']);
-        $itemCategory['articles'] = $articleModel->listItems(['category_id' => $itemCategory['id']], ['task' => 'news-list-items-in-category']);
-        $breadcrumbs = $categoryModel->listItems($params, ['task' => 'news-breadcrumbs']);
+        // $itemsLatest   = $articleModel->listItems(null, ['task'  => 'news-list-items-latest']);
+        // $itemCategory['articles'] = $articleModel->listItems(['category_id' => $itemCategory['id']], ['task' => 'news-list-items-in-category']);
+        // $breadcrumbs = $categoryModel->listItems($params, ['task' => 'news-breadcrumbs']);
  
         return view($this->pathViewController .  'index', [
-            'params'        => $this->params,
-            'itemsLatest'   => $itemsLatest,
-            'itemCategory'  => $itemCategory,
-            'breadcrumbs'  => $breadcrumbs,
+            // 'params'        => $this->params,
+            // 'itemsLatest'   => $itemsLatest,
+            // 'itemCategory'  => $itemCategory,
+            // 'breadcrumbs'  => $breadcrumbs,
         ]);
     }
 

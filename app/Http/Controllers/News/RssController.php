@@ -27,7 +27,9 @@ class RssController extends Controller
         $data = $rssModel->listItems(null, ['task' => 'news-list-items']);
         $items = Feed::read($data);
 
-        return view($this->pathViewController . 'index', compact('items'));
+        // return view($this->pathViewController . 'index', compact('items'));
+        return view($this->pathViewController . 'index');
+
     }
 
     public function getGold()

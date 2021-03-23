@@ -20,8 +20,10 @@ class GalleryController extends Controller
     public function index()
     {
         View::share('title', 'Thư viện hình ảnh');
-        $directory = public_path(config('zvn.path.gallery'));
-        $images = File::files($directory);
-        return view($this->pathViewController . 'index', compact('images'));
+        // $directory = public_path(config('zvn.path.gallery'));
+        // $images = File::files($directory);
+        // return view($this->pathViewController . 'index', compact('images'));
+        return view($this->pathViewController . 'index');
+
     }
 }

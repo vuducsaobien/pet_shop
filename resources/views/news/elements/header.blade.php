@@ -1,119 +1,318 @@
-@php 
-    use App\Models\CategoryModel as CategoryModel;
-    use App\Models\MenuModel;
-    use App\Helpers\URL;
-    use App\Helpers\Template;
-
-    $menuModel = new MenuModel();
-    $itemsMenu = $menuModel->listItems(null, ['task' => 'news-list-items']);
-
-    $xhtmlMenu = '';
-    $xhtmlMenuMobile = '';
-
-    if (count($itemsMenu) > 0) {
-        
-        $xhtmlMenu = '<nav class="main_nav"><ul class="main_nav_list d-flex flex-row align-items-center justify-content-start">';
-        $xhtmlMenuMobile = '<nav class="menu_nav"><ul class="menu_mm">';
-
-            foreach ($itemsMenu as $item) {
-            $link = $item['link'];
-            $target = config('zvn.template.type_link.' . $item['type_link'] . '.target');
-
-            switch ($item['type_menu']) {
-                case 'link':
-                    $xhtmlMenu .= sprintf('<li><a href="%s" target="%s">%s</a></li>', $link, $target, $item['name']);
-                    $xhtmlMenuMobile .= sprintf('<li class="menu_mm"><a href="%s" target="%s">%s</a></li>', $link, $target, $item['name']);
-                    break;
-                case 'category_article':
-                    $xhtmlMenu .= sprintf('<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" data-name="category_article">%s <span class="caret"></span></a>', $item['name']);
-                    $xhtmlMenuMobile .= sprintf('<li class="dropdown menu_mm"><a class="dropdown-toggle" data-toggle="dropdown" href="#">%s <span class="caret"></span></a>', $item['name']);
-
-                    $categoryModel = new CategoryModel();
-                    $itemsCategory = $categoryModel->listItems(null, ['task' => 'news-list-items']);
-
-                    if (count($itemsCategory) > 0) {
-                        $xhtmlMenu .= '<ul class="dropdown-menu">';
-                        $xhtmlMenuMobile .= '<ul class="dropdown-menu">';
-
-                        Template::showNestedMenu($itemsCategory, $xhtmlMenu);
-
-                        $xhtmlMenu .= '</ul>';
-                        $xhtmlMenuMobile .= '</ul>';
-                    }
-
-                    $xhtmlMenu .= '</li>';
-                    $xhtmlMenuMobile .= '</li>';
-                    break;
-            }
-        }
-
-        if (session('userInfo')) {
-            $xhtmlMenuUser = sprintf('<li><a href="%s">%s</a></li>', route('auth/logout'), 'Logout');
-        }else {
-            $xhtmlMenuUser = sprintf('<li><a href="%s">%s</a></li>', route('auth/login'), 'Login');
-        }
-
-        $xhtmlMenu .= $xhtmlMenuUser . '</ul></nav>';
-        $xhtmlMenuMobile .= $xhtmlMenuUser . '</ul></nav>';
-    }
-
-@endphp
-
-<header class="header">
-
-    <!-- Header Content -->
-    <div class="header_content_container">
+<header class="header-area">
+    
+    <div class="header-top theme-bg">
         <div class="container">
             <div class="row">
-                <div class="col">
-                    <div class="header_content d-flex flex-row align-items-center justfy-content-start">
-                        <div class="logo_container">
-                            <a href="{!! route('home') !!}">
-                                <div class="logo"><span>ZEND</span>VN</div>
-                            </a>
-                        </div>
-                        <div class="header_extra ml-auto d-flex flex-row align-items-center justify-content-start">
-                            <a href="#">
-                                <div class="background_image" style="background-image:url({{asset('news/images/zendvn-online.png') }});background-size: contain"></div>
-
-                            </a>
-                        </div>
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="welcome-area">
+                        <p>Default welcome msg! </p>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-12">
+                    <div class="account-curr-lang-wrap f-right">
+                        <ul>
+                            <li class="top-hover"><a href="#">$Doller (US) <i class="icon-arrow-down"></i></a>
+                                <ul>
+                                    <li><a href="#">Taka (BDT)</a></li>
+                                    <li><a href="#">Riyal (SAR)</a></li>
+                                    <li><a href="#">Rupee (INR)</a></li>
+                                    <li><a href="#">Dirham (AED)</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><img alt="flag" src="{{ asset('news/images/icon-img/en.jpg') }}"> English  <i class="icon-arrow-down"></i></a>
+                                <ul>
+                                    <li><a href="#"><img alt="flag" src="{{ asset('news/images/icon-img/bl.jpg') }}">Bangla </a></li>
+                                    <li><a href="#"><img alt="flag" src="{{ asset('news/images/icon-img/ar.jpg') }}">Arabic</a></li>
+                                    <li><a href="#"><img alt="flag" src="{{ asset('news/images/icon-img/in.jpg') }}">Hindi </a></li>
+                                    <li><a href="#"><img alt="flag" src="{{ asset('news/images/icon-img/sp.jpg') }}">Spanish</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Header Navigation & Search -->
-    <div class="header_nav_container" id="header">
+    <div class="header-bottom transparent-bar">
         <div class="container">
             <div class="row">
-                <div class="col">
-                    <div class="header_nav_content d-flex flex-row align-items-center justify-content-start">
-                        
-                        <!-- Logo -->
-                        <div class="logo_container">
-                            <a href="#">
-                                <div class="logo"><span>ZEND</span>VN</div>
-                            </a>
-                        </div>
 
-                        <!-- Navigation -->
-                        {!! $xhtmlMenu !!}
-
-                        <!-- Hamburger -->
-                        <div class="hamburger ml-auto menu_mm"><i class="fa fa-bars  trans_200 menu_mm" aria-hidden="true"></i></div>
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-5">
+                    <div class="logo pt-39">
+                        <a href="index.html"><img alt="" src="{{ asset('news/images/logo/logo.png') }}"></a>
                     </div>
                 </div>
+
+                <div class="col-xl-8 col-lg-7 d-none d-lg-block">
+                    <div class="main-menu text-center">
+                        <nav>
+                            <ul>
+                                <li><a href="index.html">HOME</a>
+                                    <ul class="submenu">
+                                        <li>
+                                            <a href="index.html">home version 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="index-2.html">home version 2</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="mega-menu-position"><a href="shop-page.html">Food</a>
+                                    <ul class="mega-menu">
+                                        <li>
+                                            <ul>
+                                                <li class="mega-menu-title">Dogs Food</li>
+                                                <li><a href="shop-page.html">Eggs</a></li>
+                                                <li><a href="shop-page.html">Carrots</a></li>
+                                                <li><a href="shop-page.html">Salmon fishs</a></li>
+                                                <li><a href="shop-page.html">Peanut Butter</a></li>
+                                                <li><a href="shop-page.html">Grapes & Raisins</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li class="mega-menu-title">Cats Food</li>
+                                                <li><a href="shop-page.html">Meat</a></li>
+                                                <li><a href="shop-page.html">Fish</a></li>
+                                                <li><a href="shop-page.html">Eggs</a></li>
+                                                <li><a href="shop-page.html">Veggies</a></li>
+                                                <li><a href="shop-page.html">Cheese</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li class="mega-menu-title">Fishs Food</li>
+                                                <li><a href="shop-page.html">Rice</a></li>
+                                                <li><a href="shop-page.html">Veggies</a></li>
+                                                <li><a href="shop-page.html">Cheese</a></li>
+                                                <li><a href="shop-page.html">wheat bran</a></li>
+                                                <li><a href="shop-page.html">Cultivation</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li><a href="shop-page.html"><img alt="" src="{{ asset('news/images/banner/menu-img-4.jpg') }}"></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">PAGES</a>
+                                    <ul class="submenu">
+                                        <li>
+                                            <a href="about-us.html">about us</a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-page.html">shop page</a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-list.html">shop list</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-details.html">product details</a>
+                                        </li>
+                                        <li>
+                                            <a href="cart.html">cart page</a>
+                                        </li>
+                                        <li>
+                                            <a href="checkout.html">checkout</a>
+                                        </li>
+                                        <li>
+                                            <a href="wishlist.html">wishlist</a>
+                                        </li>
+                                        <li>
+                                            <a href="contact.html">contact us</a>
+                                        </li>
+                                        <li>
+                                            <a href="my-account.html">my account</a>
+                                        </li>
+                                        <li>
+                                            <a href="login-register.html">login / register</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="blog-leftsidebar.html">Blog</a>
+                                    <ul class="submenu">
+                                        <li>
+                                            <a href="blog.html">blog page</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-leftsidebar.html">blog left sidebar</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-details.html">blog details</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="about-us.html">ABOUT</a></li>
+                                <li><a href="contact.html">contact us</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-7">
+                    <div class="search-login-cart-wrapper">
+                        <div class="header-search same-style">
+                            <button class="search-toggle">
+                                <i class="icon-magnifier s-open"></i>
+                                <i class="ti-close s-close"></i>
+                            </button>
+                            <div class="search-content">
+                                <form action="#">
+                                    <input type="text" placeholder="Search">
+                                    <button>
+                                        <i class="icon-magnifier"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="header-login same-style">
+                            <a href="login-register.html"><i class="icon-user icons"></i></a>
+                        </div>
+                        <div class="header-cart same-style">
+                            <button class="icon-cart">
+                                <i class="icon-handbag"></i>
+                                <span class="count-style">02</span>
+                            </button>
+                            <div class="shopping-cart-content">
+                                <ul>
+                                    <li class="single-shopping-cart">
+                                        <div class="shopping-cart-img">
+                                            <a href="#"><img alt="" src="{{ asset('news/images/cart/cart-1.jpg') }}"></a>
+                                        </div>
+                                        <div class="shopping-cart-title">
+                                            <h4><a href="#">Dog Calcium Food </a></h4>
+                                            <h6>Qty: 02</h6>
+                                            <span>$260.00</span>
+                                        </div>
+                                        <div class="shopping-cart-delete">
+                                            <a href="#"><i class="ti-close"></i></a>
+                                        </div>
+                                    </li>
+                                    <li class="single-shopping-cart">
+                                        <div class="shopping-cart-img">
+                                            <a href="#"><img alt="" src="{{ asset('news/images/cart/cart-2.jpg') }}"></a>
+                                        </div>
+                                        <div class="shopping-cart-title">
+                                            <h4><a href="#">Dog Calcium Food</a></h4>
+                                            <h6>Qty: 02</h6>
+                                            <span>$260.00</span>
+                                        </div>
+                                        <div class="shopping-cart-delete">
+                                            <a href="#"><i class="ti-close"></i></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="shopping-cart-total">
+                                    <h4>Shipping : <span>$20.00</span></h4>
+                                    <h4>Total : <span class="shop-total">$260.00</span></h4>
+                                </div>
+                                <div class="shopping-cart-btn">
+                                    <a href="cart.html">view cart</a>
+                                    <a href="checkout.html">checkout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-area electro-menu d-md-block col-md-12 col-lg-12 col-12 d-lg-none d-xl-none">
+                    <div class="mobile-menu">
+                        <nav id="mobile-menu-active">
+                            <ul class="menu-overflow">
+                                <li><a href="#">HOME</a>
+                                    <ul>
+                                        <li><a href="index.html">home version 1</a></li>
+                                        <li><a href="index-2.html">home version 2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">pages</a>
+                                    <ul>
+                                        <li>
+                                            <a href="about-us.html">about us</a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-page.html">shop page</a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-list.html">shop list</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-details.html">product details</a>
+                                        </li>
+                                        <li>
+                                            <a href="cart.html">cart page</a>
+                                        </li>
+                                        <li>
+                                            <a href="checkout.html">checkout</a>
+                                        </li>
+                                        <li>
+                                            <a href="wishlist.html">wishlist</a>
+                                        </li>
+                                        <li>
+                                            <a href="contact.html">contact us</a>
+                                        </li>
+                                        <li>
+                                            <a href="my-account.html">my account</a>
+                                        </li>
+                                        <li>
+                                            <a href="login-register.html">login / register</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Food</a>
+                                    <ul>
+                                        <li><a href="#">Dogs Food</a>
+                                            <ul>
+                                                <li><a href="shop-page.html">Grapes and Raisins</a></li>
+                                                <li><a href="shop-page.html">Carrots</a></li>
+                                                <li><a href="shop-page.html">Peanut Butter</a></li>
+                                                <li><a href="shop-page.html">Salmon fishs</a></li>
+                                                <li><a href="shop-page.html">Eggs</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Cats Food</a>
+                                            <ul>
+                                                <li><a href="shop-page.html">Meat</a></li>
+                                                <li><a href="shop-page.html">Fish</a></li>
+                                                <li><a href="shop-page.html">Eggs</a></li>
+                                                <li><a href="shop-page.html">Veggies</a></li>
+                                                <li><a href="shop-page.html">Cheese</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Fishs Food</a>
+                                            <ul>
+                                                <li><a href="shop-page.html">Rice</a></li>
+                                                <li><a href="shop-page.html">Veggies</a></li>
+                                                <li><a href="shop-page.html">Cheese</a></li>
+                                                <li><a href="shop-page.html">wheat bran</a></li>
+                                                <li><a href="shop-page.html">Cultivation</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">blog</a>
+                                    <ul>
+                                        <li>
+                                            <a href="blog.html">blog page</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-leftsidebar.html">blog left sidebar</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-details.html">blog details</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact.html"> Contact us </a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
             </div>
-        </div>		
+        </div>
     </div>
+
 </header>
-
-<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
-    <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-
-    {!! $xhtmlMenuMobile !!}
-    
-    
-</div>
