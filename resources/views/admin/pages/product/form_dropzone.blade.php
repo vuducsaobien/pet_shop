@@ -75,7 +75,7 @@
             removedfile: function (file) {
                 file.previewElement.remove()
 
-                // $('form').find('input[name="nameImage[]"][value="' + uploadedDocumentMap[file.name] + '"]').remove()
+                $('form').find('input[name="nameImage[]"][value="' + uploadedDocumentMap[file.name] + '"]').remove()
             },
             init: function (file) {
 
