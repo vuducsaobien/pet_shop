@@ -13,14 +13,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(UserTableSeeder::class);
+        $this->call(CategoryTableSeeder::class);
 
-        DB::table('category')->insert([
-            'name' => 'root',
-            'status' => 'active',
-            'parent_id'=>0,
-            '_lft'=>1,
-            '_rgt'=>2
-        ]);
+
+
         DB::table('setting')->insert([
                 ['key_value' => 'setting-general', 'value' => '{}'],
                 ['key_value' => 'setting-social', 'value' => '{}'],

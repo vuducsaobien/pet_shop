@@ -156,6 +156,8 @@ function callAjax(element, url, type) {
 		type: "GET",
 		dataType: "json",
 		success: function (result) {
+			console.log(result);
+			
 			if (result) {
 				switch (type) {
 					case 'ordering':

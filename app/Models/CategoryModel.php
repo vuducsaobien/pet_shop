@@ -134,11 +134,11 @@ class CategoryModel extends AdminModel
             $status = ($params['currentStatus'] == "active") ? "inactive" : "active";
             $modifiedBy = session('userInfo')['username'];
             $modified   = date('Y-m-d H:i:s');
-            self::where('id', $params['id'])->update(['status' => $status, 'updated_at' => $modified, 'modified_by' => $modifiedBy]);
+            self::where('id', $params['id'])->update(['status' => $status, 'modified' => $modified, 'modified_by' => $modifiedBy]);
 
             $result = [
                 'id' => $params['id'],
-                'updated_at' => Template::showItemHistory($modifiedBy, $modified),
+                'modified' => Template::showItemHistory($modifiedBy, $modified),
                 'status' => ['name' => config("zvn.template.status.$status.name"), 'class' => config("zvn.template.status.$status.class")],
                 'link' => route($params['controllerName'] . '/status', ['status' => $status, 'id' => $params['id']]),
                 'message' => config('zvn.notify.success.update')
@@ -156,11 +156,11 @@ class CategoryModel extends AdminModel
             $display = $params['currentDisplay'];
             $modifiedBy = session('userInfo')['username'];
             $modified   = date('Y-m-d H:i:s');
-            self::where('id', $params['id'])->update(['display' => $display, 'updated_at' => $modified, 'modified_by' => $modifiedBy]);
+            self::where('id', $params['id'])->update(['display' => $display, 'modified' => $modified, 'modified_by' => $modifiedBy]);
 
             return [
                 'id' => $params['id'],
-                'updated_at' => Template::showItemHistory($modifiedBy, $modified),
+                'modified' => Template::showItemHistory($modifiedBy, $modified),
                 'message' => config('zvn.notify.success.update')
             ];
         }
@@ -188,11 +188,11 @@ class CategoryModel extends AdminModel
             $modifiedBy = session('userInfo')['username'];
             $modified   = date('Y-m-d H:i:s');
 
-            self::where('id', $params['id'])->update(['ordering' => $ordering, 'updated_at' => $modified, 'modified_by' => $modifiedBy]);
+            self::where('id', $params['id'])->update(['ordering' => $ordering, 'modified' => $modified, 'modified_by' => $modifiedBy]);
 
             $result = [
                 'id' => $params['id'],
-                'updated_at' => Template::showItemHistory($modifiedBy, $modified),
+                'modified' => Template::showItemHistory($modifiedBy, $modified),
                 'message' => config('zvn.notify.success.update')
             ];
 

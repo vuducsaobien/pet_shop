@@ -52,10 +52,12 @@ class AdminController extends Controller
 
     public function status(Request $request)
     {
+
         $params["currentStatus"]  = $request->status;
         $params["id"]             = $request->id;
         $params['controllerName'] = $this->controllerName;
         $result = $this->model->saveItem($params, ['task' => 'change-status']);
+
         echo json_encode($result);
     }
 
