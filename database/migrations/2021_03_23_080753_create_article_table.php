@@ -20,12 +20,14 @@ class CreateArticleTable extends Migration
             $table->string('slug');
             $table->string('content');
             $table->string('thumb');
-            $table->string('created');
             $table->string('type')->nullable();
             $table->bigInteger('author');
             $table->bigInteger('category_id');
 
-            $table->timestamps();
+            $table->string('created')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('modified')->nullable();
+            $table->string('modified_by')->nullable();
         });
     }
 

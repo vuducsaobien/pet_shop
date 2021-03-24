@@ -24,7 +24,10 @@ class CreateCategoryTable extends Migration
 
             NestedSet::columns($table);
 
-            $table->timestamps();
+            $table->string('created')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('modified')->nullable();
+            $table->string('modified_by')->nullable();
         });
     }
 

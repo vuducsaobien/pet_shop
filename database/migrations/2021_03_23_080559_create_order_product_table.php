@@ -20,7 +20,10 @@ class CreateOrderProductTable extends Migration
             $table->integer('quantity');
             $table->integer('price');
 
-            $table->timestamps();
+            $table->string('created')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('modified')->nullable();
+            $table->string('modified_by')->nullable();
         });
     }
 

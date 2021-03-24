@@ -12,7 +12,7 @@
                     <th class="column-title">Email</th>
                     <th class="column-title">Fullname</th>
                     <th class="column-title">Level</th>
-                    <th class="column-title">Avatar</th>
+                    <th class="column-title">thumb</th>
                     <th class="column-title">Trạng thái</th>
                     <th class="column-title">Tạo mới</th>
                     <th class="column-title">Chỉnh sửa</th>
@@ -30,7 +30,7 @@
                             $fullname        = Hightlight::show($val['fullname'], $params['search'], 'fullname');
                             $email           = Hightlight::show($val['email'], $params['search'], 'email');
                             $level           = Template::showItemSelect($controllerName, $id, $val['level'], 'level');
-                            $avatar          = Template::showItemThumb($controllerName, $val['avatar'], $val['name']);
+                            $avatar          = Template::showItemThumb($controllerName, $val['thumb'], $val['name']);
                             $status          = Template::showItemStatus($controllerName, $id, $val['status']); ;
                             $createdHistory  = Template::showItemHistory($val['created_by'], $val['created']);
                             $modifiedHistory = Template::showItemHistory($val['modified_by'], $val['modified']);

@@ -15,7 +15,7 @@ class UserController extends AdminController
         $this->pathViewController = 'admin.pages.user.';
         $this->controllerName = 'user';
         $this->model = new MainModel();
-        $this->params["pagination"]["totalItemsPerPage"] = 5;
+        $this->params["pagination"]["totalItemsPerPage"] = 10;
         parent::__construct();
     }
 
@@ -41,7 +41,7 @@ class UserController extends AdminController
         if ($request->method() == 'POST') {
             $params = $request->all();
             $this->model->saveItem($params, ['task' => 'change-level-post']);
-            return redirect()->route($this->controllerName)->with("zvn_notify", "Thay đổi level thành công!");
+            return redirect()->back()->with("zvn_notify", "Thay đổi level thành công!");
         }
     }
 
@@ -50,7 +50,7 @@ class UserController extends AdminController
         if ($request->method() == 'POST') {
             $params = $request->all();
             $this->model->saveItem($params, ['task' => 'change-password']);
-            return redirect()->route($this->controllerName)->with("zvn_notify", "Thay đổi mật khẩu thành công!");
+            return redirect()->back()->with("zvn_notify", "Thay đổi mật khẩu thành công!");
         }
     }
 

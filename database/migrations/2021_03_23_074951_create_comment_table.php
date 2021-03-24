@@ -22,8 +22,11 @@ class CreateCommentTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('status');
+            $table->string('created')->nullable();
 
-            $table->timestamps();
+            $table->string('created_by')->nullable();
+            $table->string('modified')->nullable();
+            $table->string('modified_by')->nullable();
         });
     }
 

@@ -23,7 +23,10 @@ class CreateOrderTable extends Migration
             $table->string('order_code');
 
 
-            $table->timestamps();
+            $table->string('created')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('modified')->nullable();
+            $table->string('modified_by')->nullable();
         });
     }
 

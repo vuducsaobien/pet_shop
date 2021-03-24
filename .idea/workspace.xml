@@ -127,7 +127,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
@@ -156,6 +156,7 @@
       <command value="artisan migrate" />
       <command value="artisan migrate --seed" />
       <command value="artisan make:factory user" />
+      <command value="artisan make:seeder UserTableSeeder" />
     </option>
   </component>
   <component name="RunManager">

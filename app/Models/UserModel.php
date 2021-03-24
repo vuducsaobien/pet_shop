@@ -20,7 +20,7 @@ class UserModel extends AdminModel
         $result = null;
 
         if($options['task'] == "admin-list-items") {
-            $query = $this->select('id', 'username', 'email', 'fullname', 'avatar', 'status', 'level','created_at' ,'updated_at');
+            $query = $this->select('id', 'username', 'email', 'fullname', 'thumb', 'status', 'level','created' ,'created_by','modified','modified_by');
                
             if ($params['filter']['status'] !== "all")  {
                 $query->where('status', '=', $params['filter']['status'] );
@@ -81,15 +81,15 @@ class UserModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::select('id', 'username', 'email', 'status', 'fullname', 'level', 'avatar')->where('id', $params['id'])->first();
+            $result = self::select('id', 'username', 'email', 'status', 'fullname', 'level', 'thumb')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'get-avatar') {
-            $result = self::select('id', 'avatar')->where('id', $params['id'])->first();
+            $result = self::select('id', 'thumb')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'auth-login') {
-            $result = self::select('id', 'username', 'fullname', 'email', 'level', 'avatar')
+            $result = self::select('id', 'username', 'fullname', 'email', 'level', 'thumb')
                     ->where('status', 'active')
                     ->where('email', $params['email'])
                     ->where('password', md5($params['password']) )->first();
@@ -107,27 +107,37 @@ class UserModel extends AdminModel
         return $result;
     }
 
-    public function saveItem($params = null, $options = null) { 
+    public function saveItem($params = null, $options = null) {
+        /*================================= change ajax status =============================*/
         if($options['task'] == 'change-status') {
             $status = ($params['currentStatus'] == "active") ? "inactive" : "active";
             self::where('id', $params['id'])->update(['status' => $status ]);
+            return  [
+                'id' => $params['id'],
+                'status' => ['name' => config("zvn.template.status.$status.name"), 'class' => config("zvn.template.status.$status.class")],
+                'link' => route($params['controllerName'] . '/status', ['status' => $status, 'id' => $params['id']]),
+                'message' => config('zvn.notify.success.update')
+            ];
         }
 
         if($options['task'] == 'add-item') {
             $params['created_by'] = "hailan";
-            $params['created_at']    = date('Y-m-d');
-            $params['avatar']      = $this->uploadThumb($params['avatar']);
+            $params['created']    = date('Y-m-d');
+//            $params['thumb']      = $this->uploadThumb($params['thumb']);
             $params['password']    = md5($params['password']);
             self::insert($this->prepareParams($params));        
         }
 
         if($options['task'] == 'edit-item') {
-            if(!empty($params['avatar'])){
+
+/*            if(!empty($params['thumb'])){
                 $this->deleteThumb($params['avatar_current']);
-                $params['avatar'] = $this->uploadThumb($params['avatar']);
-            }
+                $params['thumb'] = $this->uploadThumb($params['thumb']);
+            }*/
+
+
             $params['modified_by']   = "hailan";
-            $params['updated_at']      = date('Y-m-d');
+            $params['modified']      = date('Y-m-d');
             self::where('id', $params['id'])->update($this->prepareParams($params));
         }
 
@@ -152,7 +162,7 @@ class UserModel extends AdminModel
             $modified   = date('Y-m-d H:i:s');
             $this->where('id', session('userInfo')['id'])->update([
                 'password' => $password,
-                'updated_at' => $modified,
+                'modified' => $modified,
                 'modified_by' => $modifiedBy
             ]);
         }
@@ -162,7 +172,7 @@ class UserModel extends AdminModel
     { 
         if($options['task'] == 'delete-item') {
             $item   = self::getItem($params, ['task'=>'get-avatar']); // 
-            $this->deleteThumb($item['avatar']);
+            $this->deleteThumb($item['thumb']);
             self::where('id', $params['id'])->delete();
         }
     }

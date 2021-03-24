@@ -12,18 +12,6 @@
 
     $inputHiddenID = Form::hidden('id', $item['id'] ?? '');
 
-    $thumb = $item['thumb'] ?? '';
-    $thumbElement = sprintf('
-    <div class="input-group">
-        <span class="input-group-btn">
-            <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-            <i class="fa fa-picture-o"></i> Choose
-            </a>
-        </span>
-        <input id="thumbnail" class="form-control" type="text" name="thumb" value="%s">
-    </div>
-    <img id="holder" src="%s" style="margin-top:15px;max-height:100px;">
-    ', $thumb, asset($thumb));
 
     $elements = [
         [
@@ -38,7 +26,7 @@
         ],
          [
             'label'     => Form::label('logo', 'Ảnh đại diện', $formLabelAttr),
-            'element'   => $thumbElement,
+            'element'   => Template::showFileManager($item['thumb'] ?? ''),
             'type'=>'full'
 
         ],

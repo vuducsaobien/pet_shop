@@ -24,7 +24,10 @@ class CreateCustomerTable extends Migration
             $table->string('product_love');
             $table->string('product_watched');
 
-            $table->timestamps();
+            $table->string('created')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('modified')->nullable();
+            $table->string('modified_by')->nullable();
         });
     }
 

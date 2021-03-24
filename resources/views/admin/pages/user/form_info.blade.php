@@ -9,7 +9,7 @@
     $statusValue      = ['default' => 'Select status', 'active' => config('zvn.template.status.active.name'), 'inactive' => config('zvn.template.status.inactive.name')];
 
     $inputHiddenID    = Form::hidden('id', $item['id']);
-    $inputHiddenAvatar = Form::hidden('avatar_current', $item['avatar']);
+    $inputHiddenAvatar = Form::hidden('avatar_current', $item['thumb']);
 
     $elements = [
         [
@@ -25,10 +25,9 @@
             'label'   => Form::label('status', 'Status', $formLabelAttr),
             'element' => Form::select('status', $statusValue, $item['status'], $formInputAttr)
         ],[
-            'label'   => Form::label('avatar', 'Avatar', $formLabelAttr),
-            'element' => Form::file('avatar', $formInputAttr ),
-            'avatar'   => (!empty($item['id'])) ? Template::showItemThumb($controllerName, $item['avatar'], $item['name']) : null ,
-            'type'    => "avatar"
+            'label'   => Form::label('thumb', 'thumb', $formLabelAttr),
+            'element'   => Template::showFileManager($item['thumb'] ?? '')
+
         ],[
             'element' => $inputHiddenID . $inputHiddenAvatar .  Form::submit('Save', ['class'=>'btn btn-success', 'name' => 'taskEditInfo']),
             'type'    => "btn-submit"

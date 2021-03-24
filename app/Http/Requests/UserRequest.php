@@ -59,7 +59,8 @@ class UserRequest extends FormRequest
                 $condEmail      = "bail|required|email|unique:$this->table,email,$id";
                 break;
             case 'change-password':
-                $condPass = "bail|required|between:5,100|confirmed";
+                $condPass = "bail|required|between:1,100|confirmed";
+
                 break;
             case 'change-level':
                 $condLevel = 'bail|in:admin,member';

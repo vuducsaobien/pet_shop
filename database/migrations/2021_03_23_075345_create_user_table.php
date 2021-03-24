@@ -19,11 +19,14 @@ class CreateUserTable extends Migration
             $table->string('fullname');
             $table->string('password');
             $table->string('email');
-            $table->string('avatar');
+            $table->string('thumb');
             $table->string('level');
             $table->string('status');
 
-            $table->timestamps();
+            $table->string('created')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('modified')->nullable();
+            $table->string('modified_by')->nullable();
         });
     }
 

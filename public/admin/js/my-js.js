@@ -99,6 +99,8 @@ $(document).ready(function() {
 		let $url = $currentElement.attr("href");
 
         callAjax($currentElement, $url, 'status');
+
+        
 	});
 
 	// Ajax Change SelectBox Value
@@ -161,6 +163,8 @@ function callAjax(element, url, type) {
 						showNotify(element, result.message);
 						break;
 					case 'status':
+						console.log(result);
+						
 						$(".modified-" + result.id).html(result.modified);
 						element.text(result.status.name);
 						element.removeClass(element.data('class'));
@@ -173,7 +177,7 @@ function callAjax(element, url, type) {
 						showNotify(element, result.message);
 				}
 			} else {
-				console.log(result);
+				console.log('fail');
 			}
 		},
 	});
