@@ -25,24 +25,23 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         Route::get('/not-found',                    [ 'as' => $controllerName. '/not-found',                  'uses' => $controller . 'notFound' ]);
     });
 
-    // ============================== CATEGORY ==============================
-    $prefix         = 'chuyen-muc';
-    $controllerName = 'category';
-    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
-        $controller = ucfirst($controllerName)  . 'Controller@';
-        Route::get('/{category_name}-{category_id}.html',  [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
-            ->where('category_name', '[0-9a-zA-Z_-]+')
-            ->where('category_id', '[0-9]+');
-    });
-
     // ====================== ARTICLE ========================
     $prefix         = 'bai-viet';
     $controllerName = 'article';
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName)  . 'Controller@';
-        Route::get('/{article_name}-{article_id}.html',  [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
-                ->where('article_name', '[0-9a-zA-Z_-]+')
-                ->where('article_id', '[0-9]+');
+
+        Route::get('/list-blog.html',  
+        [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
+
+        // Route::get('/{article_name}-{article_id}.html',  
+        // [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
+        // ->where('article_name', '[0-9a-zA-Z_-]+')
+        // ->where('article_id', '[0-9]+');
+
+        Route::get('/blog.html',  
+        [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ]);
+
     });
 
     // ============================== NOTIFY ==============================
@@ -67,33 +66,32 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         Route::get('/logout',       ['as' => $controllerName.'/logout',     'uses' => $controller . 'logout']);
     });
 
-    // ============================== RSS ============================== //
-    $prefix = 'tin-tuc-tong-hop';
-    $controllerName = 'rss';
-    Route::group(['prefix' => $prefix], function () use ($controllerName) {
-        $controller = ucfirst($controllerName) . 'Controller@';
-        Route::get('/', $controller . 'index')->name($controllerName . '/index');
-        Route::get('/get-gold', $controller . 'getGold')->name("$controllerName/get-gold");
-        Route::get('/get-coin', ['as' => $controllerName.'/get-coin',  'uses' => $controller . 'getCoin']);
-    });
+    // // ============================== RSS ============================== //
+    // $prefix = 'tin-tuc-tong-hop';
+    // $controllerName = 'rss';
+    // Route::group(['prefix' => $prefix], function () use ($controllerName) {
+    //     $controller = ucfirst($controllerName) . 'Controller@';
+    //     Route::get('/', $controller . 'index')->name($controllerName . '/index');
+    //     Route::get('/get-gold', $controller . 'getGold')->name("$controllerName/get-gold");
+    //     Route::get('/get-coin', ['as' => $controllerName.'/get-coin',  'uses' => $controller . 'getCoin']);
+    // });
 
-    // ============================== GALLERY ============================== //
-    $prefix = 'thu-vien-hinh-anh';
-    $controllerName = 'gallery';
-    Route::group(['prefix' => $prefix], function () use ($controllerName) {
-        $controller = ucfirst($controllerName) . 'Controller@';
-        Route::get('/',                             [ 'as' => $controllerName,                  'uses' => $controller . 'index' ]);
-    });
+    // // ============================== GALLERY ============================== //
+    // $prefix = 'thu-vien-hinh-anh';
+    // $controllerName = 'gallery';
+    // Route::group(['prefix' => $prefix], function () use ($controllerName) {
+    //     $controller = ucfirst($controllerName) . 'Controller@';
+    //     Route::get('/',                             [ 'as' => $controllerName,                  'uses' => $controller . 'index' ]);
+    // });
 
-    // ============================== CONTACT ============================== //
-    $prefix = 'lien-he';
-    $controllerName = 'contact';
-    Route::group(['prefix' => $prefix], function () use ($controllerName) {
-        $controller = ucfirst($controllerName) . 'Controller@';
-        Route::get('/',                             [ 'as' => $controllerName . '/index',                  'uses' => $controller . 'index' ]);
-        Route::post('/post-contact',                 [ 'as' => $controllerName . '/post_contact',                  'uses' => $controller . 'postContact' ]);
-    });
+    // // ============================== CONTACT ============================== //
+    // $prefix = 'lien-he';
+    // $controllerName = 'contact';
+    // Route::group(['prefix' => $prefix], function () use ($controllerName) {
+    //     $controller = ucfirst($controllerName) . 'Controller@';
+    //     Route::get('/',                             [ 'as' => $controllerName . '/index',                  'uses' => $controller . 'index' ]);
+    //     Route::post('/post-contact',                 [ 'as' => $controllerName . '/post_contact',                  'uses' => $controller . 'postContact' ]);
+    // });
+
 });
-
-// bai-viet/suc-khoe-3.php
 
