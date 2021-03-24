@@ -16,10 +16,10 @@ class CreateMenuTable extends Migration
         Schema::create('menu', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('ordering');
+            $table->string('ordering')->default(1);
             $table->string('type_link');
             $table->string('type_menu');
-            $table->string('link');
+            $table->string('link')->default("");
             $table->string('status');
 
             $table->string('created')->nullable();

@@ -58,6 +58,7 @@ return [
         'type_menu' => [
             'link' => ['name' => 'Link'],
             'category_article' => ['name' => 'Danh mục bài viết'],
+            'category_product'=>['name'=>'Danh mục sản phẩm']
         ],
         'type_link' => [
             'new_tab' => ['name' => 'Tab mới', 'target' => '_blank'],

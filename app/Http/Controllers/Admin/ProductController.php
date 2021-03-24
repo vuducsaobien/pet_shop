@@ -15,7 +15,7 @@ class ProductController extends AdminController
         $this->pathViewController = 'admin.pages.product.';
         $this->controllerName = 'product';
         $this->model = new MainModel();
-        $this->params["pagination"]["totalItemsPerPage"] = 5;
+        $this->params["pagination"]["totalItemsPerPage"] = 10;
         parent::__construct();
     }
 

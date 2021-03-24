@@ -14,16 +14,14 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserTableSeeder::class);
         $this->call(CategoryTableSeeder::class);
+        $this->call(ProductTableSeeder::class);
+        $this->call(SettingTableSeeder::class);
+        $this->call(MenuTableSeeder::class);
+        $this->call(SliderTableSeeder::class);
+        $this->call(ArticleTableSeeder::class);
 
 
 
-        DB::table('setting')->insert([
-                ['key_value' => 'setting-general', 'value' => '{}'],
-                ['key_value' => 'setting-social', 'value' => '{}'],
-                ['key_value' => 'setting-email', 'value' => '{}'],
-                ['key_value' => 'setting-bcc', 'value' => '{}'],
-            ]
 
-        );
     }
 }

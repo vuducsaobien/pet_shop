@@ -9,12 +9,12 @@ use Illuminate\Support\Str;
 use DB; 
 class ProductModel extends AdminModel
 {
-    public function __construct() {
-        $this->table               = 'product';
-        $this->folderUpload        = 'product' ; 
-        $this->fieldSearchAccepted = ['id', 'name', 'description', 'link']; 
-        $this->crudNotAccepted     = ['changeInfo','changeCategory','changePrice','changeAttribute','changeSpecial','changeDropzone','dropzone','_token','thumb_current','id','attribute','nameImage','alt','res'];
-    }
+
+    protected $table               = 'product';
+    protected $folderUpload        = 'product' ;
+    protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
+    protected $crudNotAccepted     = ['changeInfo','changeCategory','changePrice','changeAttribute','changeSpecial','changeDropzone','dropzone','_token','thumb_current','id','attribute','nameImage','alt','res'];
+
 
 
     public function attribute()
@@ -23,7 +23,7 @@ class ProductModel extends AdminModel
     }
     public function image()
     {
-        return $this->hasMany(ImageModel::class,'product_id');
+        return $this->hasMany(ProductImageModel::class,'product_id');
     }
     public function listItems($params = null, $options = null) {
      
@@ -129,7 +129,7 @@ class ProductModel extends AdminModel
             self::where('id', $params['id'])->update($this->prepareParams($params));
 
             /*================================= dropzone =============================*/
-            ImageModel::where('product_id',$params['id'])->delete();
+            ProductImageModel::where('product_id',$params['id'])->delete();
             $product=$this->find($params['id']);
             $product->image()->createMany($params['dropzone']);
             
@@ -158,12 +158,12 @@ class ProductModel extends AdminModel
         /*================================= change category =============================*/
         if ($options['task'] == 'change-category') {
 //            $params['modified_by']  = session('userInfo')['username'];
-//            $params['updated_at']     = date('Y-m-d H:i:s');
+//            $params['modified']     = date('Y-m-d H:i:s');
             $this->where('id', $params['id'])->update($this->prepareParams($params));
 
             $result = [
                 'id' => $params['id'],
-//                'updated_at' => Template::showItemHistory($params['modified_by'], $params['updated_at']),
+//                'modified' => Template::showItemHistory($params['modified_by'], $params['modified']),
                 'message' => config('zvn.notify.success.update')
             ];
 
@@ -184,7 +184,7 @@ class ProductModel extends AdminModel
             foreach ($image as $item) {
                 $this->deleteThumb($item['name']);
             }
-            ImageModel::where('product_id',$params['id'])->delete();
+            ProductImageModel::where('product_id',$params['id'])->delete();
 
 
 //            $item   = self::getItem($params, ['task'=>'get-thumb']); //

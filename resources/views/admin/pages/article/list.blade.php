@@ -19,6 +19,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 @if (count($items) > 0)
                     @foreach ($items as $key => $val)
                         @php

@@ -28,11 +28,11 @@ class ArticleRequest extends FormRequest
         $id = $this->id;
 
         $condName = "bail|required|between:5,100|unique:$this->table,name";
-        $condThumb= 'bail|required|image|max:500';
+        $condThumb= 'required';
 
         if(!empty($id)){
             $condName .= ",$id";
-            $condThumb = 'bail|image|max:500';
+            $condThumb = 'required';
         }
 
         return [

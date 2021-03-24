@@ -18,6 +18,7 @@ class CreateCategoryTable extends Migration
             $table->bigIncrements('id');
             $table->string('status');
             $table->string('name');
+            $table->string('thumb')->nullable();
             $table->string('display')->nullable();
             $table->string('is_home')->nullable();
 

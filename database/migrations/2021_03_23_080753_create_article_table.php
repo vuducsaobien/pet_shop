@@ -17,13 +17,12 @@ class CreateArticleTable extends Migration
             $table->bigIncrements('id');
             $table->string('status');
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->nullable();;
             $table->string('content');
             $table->string('thumb');
             $table->string('type')->nullable();
-            $table->bigInteger('author');
-            $table->bigInteger('category_id');
-
+            $table->bigInteger('author')->nullable();;
+            $table->bigInteger('category_id')->nullable();
             $table->string('created')->nullable();
             $table->string('created_by')->nullable();
             $table->string('modified')->nullable();

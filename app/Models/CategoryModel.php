@@ -117,11 +117,11 @@ class CategoryModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::select('id', 'name', 'parent_id', 'status')->where('id', $params['id'])->first();
+            $result = self::select('id','thumb', 'name', 'parent_id', 'status')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'news-get-item') {
-            $result = self::select('id', 'name', 'display')->where('id', $params['category_id'])->first();
+            $result = self::select('id','thumb', 'name', 'display')->where('id', $params['category_id'])->first();
 
             if($result) $result = $result->toArray();
         }
@@ -168,7 +168,7 @@ class CategoryModel extends AdminModel
         if($options['task'] == 'add-item') {
             if ($options['task'] == 'add-item') {
 //                $params['created_by'] = session('userInfo')['username'];
-//                $params['created_at'] = date('Y-m-d H:i:s');
+//                $params['created'] = date('Y-m-d H:i:s');
                 $parent = self::find($params['parent_id']);
                 self::create($this->prepareParams($params), $parent);
             }

@@ -20,7 +20,7 @@ class CreateSliderTable extends Migration
             $table->string('description');
             $table->string('link');
             $table->string('thumb');
-            $table->string('sort');
+            $table->string('sort')->default(1);
 
             $table->string('created')->nullable();
             $table->string('created_by')->nullable();

@@ -24,6 +24,10 @@
             'element' => Form::select('status', $statusValue, @$item['status'], $formInputAttr)
         ],
         [
+            'label'   => Form::label('thumb', 'thumb', $formLabelAttr),
+            'element'   => Template::showFileManager($item['thumb'] ?? '')
+        ],
+        [
             'element' => $inputHiddenID . Form::submit('Save', ['class'=>'btn btn-success']),
             'type'    => "btn-submit"
         ]
