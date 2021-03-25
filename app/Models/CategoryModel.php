@@ -26,15 +26,14 @@ class CategoryModel extends AdminModel
                 ->get()
                 ->toFlatTree();
         }
-
+        /*================================= lay category o menu frontend =============================*/
         if($options['task'] == 'news-list-items') {
             $result = self::withDepth()
                 ->having('depth', '>', 0)
                 ->defaultOrder()
                 ->where('status', 'active')
                 ->get()
-                ->toTree()
-                ->toArray();
+                ->toTree();
         }
 
         if($options['task'] == 'news-list-items-is-home') {

@@ -31,6 +31,7 @@ class MenuTableSeeder extends Seeder
                     'type_link' => 'current',
                     'type_menu'=>'link',
                     'status'=>'active',
+
                 ],
                 [
                     'name' => 'About',

@@ -43,6 +43,22 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ]);
 
     });
+    // ====================== Category page ========================
+    $prefix         = 'danh-muc-san-pham/';
+    $controllerName = 'category';
+    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+        $controller = ucfirst($controllerName)  . 'Controller@';
+
+        Route::get('{category_name}-{category_id}.html',
+            [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
+
+        // Route::get('/{article_name}-{article_id}.html',
+        // [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
+        // ->where('article_name', '[0-9a-zA-Z_-]+')
+        // ->where('article_id', '[0-9]+');
+
+
+    });
 
     // ============================== NOTIFY ==============================
     $prefix         = '';

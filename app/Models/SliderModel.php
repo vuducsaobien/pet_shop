@@ -48,7 +48,7 @@ class SliderModel extends AdminModel
                         ->where('status', '=', 'active' )
                         ->limit(5);
 
-            $result = $query->get()->toArray();
+            $result = $query->get();
         }
 
 

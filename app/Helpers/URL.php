@@ -5,11 +5,11 @@ use Illuminate\Support\Str;
 
 class URL
 {
-    public static function linkCategory($id, $name) 
+    public static function linkCategory($category)
     {
         return route('category/index', [
-            'category_id'   => $id, 
-            'category_name' => Str::slug($name) 
+            'category_id'   => $category->id,
+            'category_name' => Str::slug($category->name)
         ]);
 
     }

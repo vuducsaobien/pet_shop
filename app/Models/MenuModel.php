@@ -42,7 +42,7 @@ class MenuModel extends AdminModel
         if ($options['task'] == 'news-list-items') {
             $query = $this->select('id', 'name', 'link', 'type_menu', 'type_link')->where('status', 'active')->orderBy('ordering', 'asc');
 
-            $result = $query->get()->toArray();
+            $result = $query->get();
         }
 
         return $result;

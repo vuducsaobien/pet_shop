@@ -27,7 +27,7 @@ class CategoryTableSeeder extends Seeder
 
                 ],
                 [
-                    'name' => 'DOGS FOOD',
+                    'name' => 'dogs food',
                     'status' => 'active',
                     'parent_id'=>1,
                     '_lft'=>2,
@@ -38,7 +38,7 @@ class CategoryTableSeeder extends Seeder
 
                 ],
                 [
-                    'name' => 'CATS FOOD',
+                    'name' => 'cats food',
                     'status' => 'active',
                     'parent_id'=>1,
                     '_lft'=>8,
@@ -71,7 +71,7 @@ class CategoryTableSeeder extends Seeder
 
                 ],
                 [
-                    'name' => 'FISHS FOOD',
+                    'name' => 'fishs food',
                     'status' => 'active',
                     'parent_id'=>1,
                     '_lft'=>14,
