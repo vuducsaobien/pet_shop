@@ -17,10 +17,12 @@ class CreateProductTable extends Migration
             $table->bigIncrements('id');
             $table->string('status')->default('active');
             $table->string('name');
+            $table->text('description');
+
             $table->string('slug')->nullable();
             $table->bigInteger('category_id');
             $table->integer('price');
-            $table->integer('price_sale')->nullable();
+            $table->integer('sale')->nullable();
             $table->integer('sale_percent')->nullable();
             $table->string('thumb');
             $table->string('product_code')->nullable();

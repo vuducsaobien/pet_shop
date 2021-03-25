@@ -9,13 +9,12 @@ use DB;
 
 class ProductAttributeModel extends AdminModel
 {
-    public function __construct()
-    {
-        $this->table = 'product_attribute';
-        $this->folderUpload = 'productAttribute';
-        $this->fieldSearchAccepted = ['id', 'name', 'description', 'link'];
-        $this->crudNotAccepted = ['_token', 'thumb_current', 'id', 'attribute'];
-    }
+
+        protected $table = 'product_attribute';
+        protected $folderUpload = 'productAttribute';
+        protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
+        protected $crudNotAccepted = ['_token', 'thumb_current', 'id', 'attribute'];
+
 
     public function product()
     {

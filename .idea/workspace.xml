@@ -140,6 +140,9 @@
       <command value="artisan make:seeder ArticleTableSeeder" />
       <command value="artisan make:factory ArticleFactory" />
       <command value="artisan make:factory ProductFactory" />
+      <command value="artisan make:seeder AttributeTableSeeder" />
+      <command value="artisan make:factory ProductAttributeFactory" />
+      <command value="artisan make:seeder ProductAttributeTableSeeder" />
     </option>
   </component>
   <component name="RunManager">

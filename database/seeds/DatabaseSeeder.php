@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ProductAttributeModel;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,6 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(MenuTableSeeder::class);
         $this->call(SliderTableSeeder::class);
         $this->call(ArticleTableSeeder::class);
+        $this->call(AttributeTableSeeder::class);
+        $this->call(ProductAttributeTableSeeder::class);
 
 
 
