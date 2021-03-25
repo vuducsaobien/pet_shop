@@ -133,12 +133,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/News" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/news/pages" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/news/pages" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/News" />
     </key>
   </component>
@@ -157,6 +158,8 @@
       <command value="artisan make:factory ProductAttributeFactory" />
       <command value="artisan make:seeder ProductAttributeTableSeeder" />
       <command value="artisan make:provider HelperServiceProvider" />
+      <command value="artisan make:seeder ProductImageTableSeeder" />
+      <command value="artisan make:factory ProductImageFactory" />
     </option>
   </component>
   <component name="RunManager">

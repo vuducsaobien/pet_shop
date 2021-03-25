@@ -4,7 +4,7 @@
 
 use App\Models\ArticleModel;
 use Faker\Generator as Faker;
-$k=1;
+$k=0;
 
 $factory->define(ArticleModel::class, function (Faker $faker) use (&$k){
     $k++;

@@ -46,12 +46,16 @@ class ProductController extends Controller
 
     public function detail(Request $request)
     {
-        dd('trang chi tiet san pham');
-        // $params["product_id"]  = $request->product_id;
-        // $productModel  = new ProductModel();
-        
+         $params["id"]  = $request->product_id;
+         $productModel  = new ProductModel();
 
-        // $itemProduct = $productModel->getItem($params, ['task' => 'news-get-item']);
+         //product o chi tiet san pham
+         $item = $productModel->getItem($params, ['task' => 'news-get-item']);
+         $params['category_id']=$item->category_id;
+
+        //product related
+        $itemsRelatedProduct = $productModel->listItems($params, ['task' => 'news-list-items-related-in-product']);
+
         // if(empty($itemProduct))  return redirect()->route('home');
         
         // $itemsLatest   = $productModel->listItems(null, ['task'  => 'news-list-items-latest']);
@@ -62,12 +66,14 @@ class ProductController extends Controller
         // $productModel = new ProductModel();
         // $breadcrumbs = $productModel->listItems($params, ['task' => 'news-breadcrumbs']);
        
-        return view($this->pathViewController .  'detail', [
-            // 'params'        => $this->params,
-            // 'itemsLatest'   => $itemsLatest,
-            // 'itemProduct'  => $itemProduct,
-            // 'breadcrumbs'  => $breadcrumbs,
-        ]);
+        return view($this->pathViewController .  'detail', compact(
+            'item',
+            'itemsRelatedProduct'
+
+
+
+            )
+        );
     }
 
 

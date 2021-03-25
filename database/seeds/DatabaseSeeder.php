@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ProductAttributeModel;
+use App\Models\ProductImageModel;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ArticleTableSeeder::class);
         $this->call(AttributeTableSeeder::class);
         $this->call(ProductAttributeTableSeeder::class);
+        $this->call(ProductImageTableSeeder::class);
 
 
 

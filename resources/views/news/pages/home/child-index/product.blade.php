@@ -6,7 +6,7 @@ use App\Helpers\URL;
 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
     <div class="product-wrapper mb-10">
         <div class="product-img">
-            <a href="product-details.html">
+            <a href="{{URL::linkProduct($item)}}">
                 <img src= "{{ asset($item->thumb) }}" alt="">
             </a>
             <div class="product-action">
@@ -26,8 +26,8 @@ use App\Helpers\URL;
         <div class="product-content">
             <h4><a href="{{URL::linkProduct($item)}}">{{$item->name}}</a></h4>
             <div class="product-price">
-                <span class="new">${{Template::format_price($item->sale)}} </span>
-                <span class="old">${{Template::format_price($item->price)}}</span>
+                <span class="new">{{Template::format_price($item->sale)}} </span>
+                <span class="old">{{Template::format_price($item->price)}}</span>
             </div>
         </div>
     </div>

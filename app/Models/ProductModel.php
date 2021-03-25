@@ -52,12 +52,23 @@ class ProductModel extends AdminModel
                             ->paginate($params['pagination']['totalItemsPerPage']);
 
         }
-
+        //lay san pham gan nhat o trang chu
         if($options['task'] == 'news-list-items') {
             $query = $this->select('id', 'name', 'price', 'sale', 'thumb')
                         ->where('status', '=', 'active' )
                         ->limit(8);
 
+            $result = $query->get();
+        }
+        //lay san pham lien quan o trang chi tiet san pham
+        if($options['task'] == 'news-list-items-related-in-product') {
+
+            $query = $this->select('id', 'name', 'price', 'thumb', 'sale')
+                ->where('status', '=', 'active')
+                ->where('id', '!=', $params['id'])
+                ->where('category_id', '=', $params['category_id'])
+                ->take(4)
+            ;
             $result = $query->get();
         }
 
@@ -97,13 +108,19 @@ class ProductModel extends AdminModel
 
     public function getItem($params = null, $options = null) { 
         $result = null;
-        
+       //form add-edit product
         if($options['task'] == 'get-item') {
             $result = self::where('id', $params['id'])
                 ->with('attribute')
                 ->first();
         }
 
+        //get info for product detail
+        if($options['task'] == 'news-get-item') {
+            $result = self::where('id', $params['id'])
+                ->with('attribute','image')
+                ->first();
+        }
         if($options['task'] == 'get-thumb') {
             $result = self::select('id', 'thumb')->where('id', $params['id'])->first();
         }

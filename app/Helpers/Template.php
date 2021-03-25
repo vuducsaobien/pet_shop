@@ -9,7 +9,7 @@ class Template
 {
     public static function format_price($num)
     {
-        return number_format($num,0,',','.');
+        return "$".number_format($num,0,',','.');
     }
     public static function showFileManager($thumb)
     {
