@@ -13,6 +13,9 @@ $factory->define(ArticleModel::class, function (Faker $faker) use (&$k){
         'status' => 'active',
         'content' =>$faker->sentence, // password
         'thumb'=>'/images/article/blog-'.$k.'.jpg',
+        'created'=>now(),
+        'created_by'=>'admin'
+
 
 
     ];

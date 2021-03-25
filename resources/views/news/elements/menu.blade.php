@@ -1,5 +1,14 @@
 @php
     use App\Helpers\URL;
+    use App\Models\CategoryModel;
+    use App\Models\MenuModel;
+        /*================================= lay menu =============================*/
+        $menuModel = new MenuModel();
+        $itemsMenu = $menuModel->listItems(null, ['task' => 'news-list-items']);
+
+        /*================================= lay category ==========================*/
+        $categoryModel = new CategoryModel();
+        $itemsCategory = $categoryModel->listItems(null, ['task' => 'news-list-items']);
 @endphp
 @if(count($itemsMenu))
 

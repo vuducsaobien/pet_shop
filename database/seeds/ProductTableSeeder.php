@@ -13,7 +13,7 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(ProductModel::class, 10)->create();
+        factory(ProductModel::class, 8)->create();
 
         /*DB::table('product')->insert(
             [

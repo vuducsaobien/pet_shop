@@ -156,6 +156,7 @@
       <command value="artisan make:seeder AttributeTableSeeder" />
       <command value="artisan make:factory ProductAttributeFactory" />
       <command value="artisan make:seeder ProductAttributeTableSeeder" />
+      <command value="artisan make:provider HelperServiceProvider" />
     </option>
   </component>
   <component name="RunManager">
@@ -170,5 +171,16 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.md" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/news/pages/home/child-index/product.blade.php</url>
+          <line>5</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1,5 +1,4 @@
 <header class="header-area">
-    
     <div class="header-top theme-bg">
         <div class="container">
             <div class="row">
@@ -40,7 +39,7 @@
 
                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-5">
                     <div class="logo pt-39">
-                        <a href="index.html"><img alt="" src="{{ asset('news/images/logo/logo.png') }}"></a>
+                        <a href="{{route('home')}}"><img alt="" src="{{ asset('news/images/logo/logo.png') }}"></a>
                     </div>
                 </div>
 

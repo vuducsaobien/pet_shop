@@ -7,6 +7,10 @@ use Config;
 
 class Template
 {
+    public static function format_price($num)
+    {
+        return number_format($num,0,',','.');
+    }
     public static function showFileManager($thumb)
     {
         $img=sprintf('<img id="holder" src="%s" style="margin-top:15px;max-height:100px;">',!empty($thumb)?asset($thumb):'');

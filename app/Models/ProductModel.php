@@ -54,11 +54,11 @@ class ProductModel extends AdminModel
         }
 
         if($options['task'] == 'news-list-items') {
-            $query = $this->select('id', 'name', 'description', 'link', 'thumb')
+            $query = $this->select('id', 'name', 'price', 'sale', 'thumb')
                         ->where('status', '=', 'active' )
-                        ->limit(5);
+                        ->limit(8);
 
-            $result = $query->get()->toArray();
+            $result = $query->get();
         }
 
 

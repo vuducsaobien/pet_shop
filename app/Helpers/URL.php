@@ -14,12 +14,21 @@ class URL
 
     }
 
-    public static function linkArticle($id, $name) 
+    public static function linkArticle($article)
     {
         return route('article/index', [
-            'article_id'   => $id, 
-            'article_name' => Str::slug($name) 
+            'article_id'   => $article->id,
+            'article_name' => Str::slug($article->name)
         ]);
 
     }
+    public static function linkProduct($product)
+    {
+        return route('product/detail', [
+            'product_id'   => $product->id,
+            'product_name' => Str::slug($product->name)
+        ]);
+
+    }
+    
 }

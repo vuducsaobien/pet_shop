@@ -78,7 +78,7 @@ class CategoryTableSeeder extends Seeder
                     '_rgt'=>19,
                     'created'=>now(),
                     'created_by'=>'admin',
-                    'thumb'=>'/images/category/cate1.jpg',
+                    'thumb'=>'/images/category/cate3.jpg',
 
                 ],
                 [

@@ -7,12 +7,12 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
-$i=1;
+$i=0;
 $factory->define(ProductModel::class, function (Faker $faker) use(&$i) {
-    $array = [1, 2, 3, 4];
+//    $array = [1, 2, 3, 4];
     $i++;
 
-    $random = Arr::random($array);
+//    $random = Arr::random($array);
     $name='Dog Calcium Food '.$i;
 
     return [
@@ -21,7 +21,7 @@ $factory->define(ProductModel::class, function (Faker $faker) use(&$i) {
             'slug'=>Str::slug($name),
             'description'=>$faker->paragraph(),
             'category_id' => 2,
-            'thumb'=>'/images/product/s'.$random.'.jpeg',
+            'thumb'=>'/images/product/product-'.$i.'.jpeg',
             'price'=>100000,
             'sale'=>90000,
             'sale_percent'=>5,

@@ -34,10 +34,10 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         Route::get('/list-blog.html',  
         [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
 
-        // Route::get('/{article_name}-{article_id}.html',  
-        // [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
-        // ->where('article_name', '[0-9a-zA-Z_-]+')
-        // ->where('article_id', '[0-9]+');
+         Route::get('/{article_name}-{article_id}.html',
+         [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
+         ->where('article_name', '[0-9a-zA-Z_-]+')
+         ->where('article_id', '[0-9]+');
 
         Route::get('/blog.html',  
         [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ]);
@@ -52,14 +52,30 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         Route::get('{category_name}-{category_id}.html',
             [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
 
-        // Route::get('/{article_name}-{article_id}.html',
-        // [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
-        // ->where('article_name', '[0-9a-zA-Z_-]+')
-        // ->where('article_id', '[0-9]+');
+/*         Route::get('/{product_name}-{product_id}.html',
+         [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
+         ->where('product_name', '[0-9a-zA-Z_-]+')
+         ->where('product_id', '[0-9]+');*/
 
 
     });
 
+    // ====================== Product page ========================
+    $prefix         = 'san-pham';
+    $controllerName = 'product';
+    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+        $controller = ucfirst($controllerName)  . 'Controller@';
+
+/*        Route::get('{product_name}-{product_id}.html',
+            [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);*/
+
+                 Route::get('/{product_name}-{product_id}.html',
+                 [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ])
+                ->where('product_name', '[0-9a-zA-Z_-]+')
+                 ->where('product_id', '[0-9]+');
+
+
+    });
     // ============================== NOTIFY ==============================
     $prefix         = '';
     $controllerName = 'notify';
