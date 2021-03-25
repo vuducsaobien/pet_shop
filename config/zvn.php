@@ -106,6 +106,7 @@ return [
             'user'      => ['all', 'username', 'email', 'fullname'],
             'menu'      => ['all', 'name', 'link'],
             'rss'       => ['all', 'name', 'link'],
+            'testimonial'       => ['all', 'name', 'link'],
             'contact'   => ['all', 'name', 'phone', 'email', 'message'],
         ],
         'button' => [
@@ -115,6 +116,7 @@ return [
             'article'   => ['edit', 'delete'],
             'user'      => ['edit'],
             'menu'      => ['edit', 'delete'],
+            'testimonial'      => ['edit', 'delete'],
             'rss'       => ['edit', 'delete'],
             'attribute' => ['edit', 'delete'],
             'product' => ['edit', 'delete'],

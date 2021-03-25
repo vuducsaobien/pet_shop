@@ -34,6 +34,7 @@
                     <li class="none"><a href="{{ route('rss') }}"> RSS</a></li>
                     <li class="none"><a href="{{ route('slider') }}"> Slider</a></li>
                     <li class="none"><a href="{{ route('attribute') }}"> Attribute</a></li>
+                    <li class="none"><a href="{{ route('testimonial') }}"> Testimonial</a></li>
 
 
                 </ul>

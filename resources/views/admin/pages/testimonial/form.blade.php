@@ -16,25 +16,20 @@
         [
             'label'   => Form::label('name', 'Name', $formLabelAttr),
             'element' => Form::text('name', @$item['name'], $formInputAttr )
-        ],
-        [
-            'label'   => Form::label('description', 'Description', $formLabelAttr),
-            'element' => Form::text('description', @$item['description'],  $formInputAttr )
-        ],
-        [
+        ],[
+            'label'   => Form::label('content', 'Content', $formLabelAttr),
+            'element' => Form::text('content', @$item['content'],  $formInputAttr )
+        ],[
             'label'   => Form::label('status', 'Status', $formLabelAttr),
             'element' => Form::select('status', $statusValue, @$item['status'], $formInputAttr)
-        ],
-        [
-            'label'   => Form::label('link', 'Link', $formLabelAttr),
-            'element' => Form::text('link', @$item['link'],  $formInputAttr )
-        ],
-        [
+        ],[
+            'label'   => Form::label('job', 'Job', $formLabelAttr),
+            'element' => Form::text('job', @$item['job'],  $formInputAttr )
+        ],[
             'label'   => Form::label('thumb', 'Thumb', $formLabelAttr),
             'element'   => Template::showFileManager($item['thumb'] ?? '')
 
-        ],
-        [
+        ],[
             'element' => $inputHiddenID . $inputHiddenThumb . Form::submit('Save', ['class'=>'btn btn-success']),
             'type'    => "btn-submit"
         ]

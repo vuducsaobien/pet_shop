@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ArticleModel;
 use App\Models\MenuModel;
 use App\Models\ProductModel;
+use App\Models\TestimonialModel;
 use Illuminate\Http\Request;
 use App\Models\SliderModel;
 use App\Models\CategoryModel;
@@ -33,6 +34,10 @@ class HomeController extends Controller
         $sliderModel = new SliderModel();
         $itemsSlider = $sliderModel->listItems(null, ['task' => 'news-list-items']);
 
+        /*================================= lay testimonial ==========================*/
+        $testimonialModel = new TestimonialModel();
+        $itemsTestimonial = $testimonialModel->listItems(null, ['task' => 'news-list-items']);
+
         /*================================= lay recent product ==========================*/
         $productModel = new ProductModel();
         $itemsProduct = $productModel->listItems(null, ['task' => 'news-list-items']);
@@ -48,7 +53,8 @@ class HomeController extends Controller
     'itemsCategory',
                 'itemsSlider',
                 'itemsProduct',
-                'itemsArticle'
+                'itemsArticle',
+                'itemsTestimonial'
             )
         );
     }

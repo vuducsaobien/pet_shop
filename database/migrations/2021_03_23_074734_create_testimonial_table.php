@@ -20,7 +20,6 @@ class CreateTestimonialTable extends Migration
             $table->string('content');
             $table->string('thumb');
             $table->string('job');
-            $table->string('newcolumn');
             $table->string('created')->nullable();
 
             $table->string('created_by')->nullable();
