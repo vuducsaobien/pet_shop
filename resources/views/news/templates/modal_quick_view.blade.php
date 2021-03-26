@@ -12,22 +12,22 @@
                                 <img src="{{ asset('news/images/quick-view/l1.jpg') }}" alt="">
                             </div>
                             <div class="tab-pane fade" id="modal2" role="tabpanel">
-                                <img src="assets/img/quick-view/l2.jpg" alt="">
+                                <img src="{{ asset('news/images/quick-view/l2.jpg') }}" alt="">
                             </div>
                             <div class="tab-pane fade" id="modal3" role="tabpanel">
-                                <img src="assets/img/quick-view/l3.jpg" alt="">
+                                <img src="{{ asset('news/images/quick-view/l3.jpg') }}" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="quick-view-list nav" role="tablist">
-                        <a class="active" href="#modal1" data-toggle="tab" role="tab">
-                            <img src="assets/img/quick-view/s1.jpg" alt="">
+                        <a class="active" href="#modal1" data-toggle="tab">
+                            <img src="{{ asset('news/images/quick-view/s1.jpg') }}" alt="">
                         </a>
                         <a href="#modal2" data-toggle="tab" role="tab">
-                            <img src="assets/img/quick-view/s2.jpg" alt="">
+                            <img src="{{ asset('news/images/quick-view/s2.jpg') }}" alt="">
                         </a>
                         <a href="#modal3" data-toggle="tab" role="tab">
-                            <img src="assets/img/quick-view/s3.jpg" alt="">
+                            <img src="{{ asset('news/images/quick-view/s3.jpg') }}" alt="">
                         </a>
                     </div>
                 </div>
@@ -35,14 +35,15 @@
                     <div class="qwick-view-content">
                         <h3>Dog Calcium Food</h3>
                         <div class="product-price">
-                            <span>$19.00 </span>
+                            <span class="new">$20.00 </span>
+                            <span class="old">$50.00</span>
                         </div>
                         <div class="product-rating">
-                            <i class="ion-star theme-color"></i>
-                            <i class="ion-star theme-color"></i>
-                            <i class="ion-star theme-color"></i>
-                            <i class="ion-star theme-color"></i>
-                            <i class="ion-star theme-color"></i>
+                            <i class="icon-star theme-color"></i>
+                            <i class="icon-star theme-color"></i>
+                            <i class="icon-star theme-color"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do amt tempor incididun ut labore et dolore magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation .</p>
                         <div class="quick-view-select">
@@ -70,7 +71,7 @@
                         </div>
                         <div class="quickview-plus-minus">
                             <div class="cart-plus-minus">
-                                <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                                <input type="text" value="2" name="qtybutton" class="cart-plus-minus-box">
                             </div>
                             <div class="quickview-btn-cart">
                                 <a class="btn-style" href="#">add to cart</a>

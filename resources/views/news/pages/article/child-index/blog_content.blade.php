@@ -1,3 +1,4 @@
+<!-- Blog Content -->
 <div class="single-blog-wrapper">
     <div class="blog-img mb-30">
         <img src="{{ asset('news/images/blog/blog-details.jpg') }}" alt="">
@@ -51,58 +52,4 @@
             </ul>
         </div>
     </div>
-</div>
-
-<div class="blog-comment-wrapper mt-55">
-    <h4 class="blog-dec-title">comments : 02</h4>
-    <div class="single-comment-wrapper mt-35">
-        <div class="blog-comment-img">
-            <img src="{{ asset('news/images/blog/blog-comment1.png') }}" alt="">
-        </div>
-        <div class="blog-comment-content">
-            <h4>Anthony Stephens</h4>
-            <span>October 14, 2018 </span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor magna aliqua. Ut enim ad minim veniam, </p>
-            <div class="blog-details-btn">
-                <a href="blog-details.html">read more</a>
-            </div>
-        </div>
-    </div>
-    <div class="single-comment-wrapper mt-50 ml-125">
-        <div class="blog-comment-img">
-            <img src="{{ asset('news/images/blog/blog-comment2.png') }}" alt="">
-        </div>
-        <div class="blog-comment-content">
-            <h4>Anthony Stephens</h4>
-            <span>October 14, 2018 </span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor magna aliqua. Ut enim ad minim veniam, </p>
-            <div class="blog-details-btn">
-                <a href="blog-details.html">read more</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="blog-reply-wrapper mt-50">
-    <h4 class="blog-dec-title">post a comment</h4>
-    <form action="#">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="leave-form">
-                    <input type="text" placeholder="Full Name">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="leave-form">
-                    <input type="email" placeholder="Email Address ">
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="text-leave">
-                    <textarea placeholder="Massage"></textarea>
-                    <input type="submit" value="SEND MASSAGE">
-                </div>
-            </div>
-        </div>
-    </form>
 </div>

@@ -2,7 +2,7 @@
 @section('content')
 
         <!-- breadcumb -->
-        @include('news.partials.breadcumb.breadcumb', ['name' => 'About Us'])
+        @include('news.templates.breadcumb', ['name' => 'About Us'])
 
         <!-- statistic -->
         @include('news.pages.about.child-index.message')

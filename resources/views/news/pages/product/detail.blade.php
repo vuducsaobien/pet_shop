@@ -2,7 +2,7 @@
 @section('content')
 
     <!-- breadcumb -->
-    @include('news.partials.breadcumb.breadcumb', ['name' => 'Product detail'])
+    @include('news.templates.breadcumb', ['name' => 'Product detail'])
 
     <!-- shop-area -->
     @include('news.pages.product.child-index.product_info')

@@ -2,12 +2,12 @@
 @section('content')
 
     <!-- breadcumb -->
-    @include('news.partials.breadcumb.breadcumb', ['name' => 'Blog Details'])
+    @include('news.templates.breadcumb', ['name' => 'Blog Details'])
 
     <!-- shop-area -->
     @include('news.pages.article.child-index.shop_area')
 
     <!-- modal ?? -->
-    @include('news.partials.modal.article_detail')
+    @include('news.templates.modal_quick_view')
 
 @endsection

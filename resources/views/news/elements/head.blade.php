@@ -14,7 +14,13 @@
 <link rel="stylesheet" href="{{asset('news/css/simple-line-icons.css')}}">
 <link rel="stylesheet" href="{{asset('news/css/themify-icons.css')}}">
 <link rel="stylesheet" href="{{asset('news/css/owl.carousel.min.css')}}">
-<link rel="stylesheet" href="{{asset('news/css/slick.css')}}">
+
+@if ($controllerName == 'category')
+    <link rel="stylesheet" href="{{asset('news/css/jquery-ui.css')}}">
+@else
+    <link rel="stylesheet" href="{{asset('news/css/slick.css')}}">
+@endif
+
 <link rel="stylesheet" href="{{asset('news/css/meanmenu.min.css')}}">
 <link rel="stylesheet" href="{{asset('news/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('news/css/responsive.css')}}">

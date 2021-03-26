@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- breadcumb -->
-    @include('news.partials.breadcumb.breadcumb', ['name' => 'Contact Us'])
+    @include('news.templates.breadcumb', ['name' => 'Contact Us'])
 
     <div class="contact-area pt-100 pb-100">
         <div class="container">

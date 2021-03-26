@@ -46,13 +46,16 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
     });
 
     // ====================== Category page ========================
-    $prefix         = 'danh-muc-san-pham/';
+    // $prefix         = 'danh-muc-san-pham/';
+    $prefix         = 'shop-page.html';
     $controllerName = 'category';
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName)  . 'Controller@';
 
-        Route::get('{category_name}-{category_id}.html',
-            [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
+        Route::get('/', [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
+
+        // Route::get('{category_name}-{category_id}.html',
+        //     [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
 
 /*         Route::get('/{product_name}-{product_id}.html',
          [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
@@ -100,24 +103,6 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         // ====================== LOGOUT ========================
         Route::get('/logout',       ['as' => $controllerName.'/logout',     'uses' => $controller . 'logout']);
     });
-
-    // // ============================== RSS ============================== //
-    // $prefix = 'tin-tuc-tong-hop';
-    // $controllerName = 'rss';
-    // Route::group(['prefix' => $prefix], function () use ($controllerName) {
-    //     $controller = ucfirst($controllerName) . 'Controller@';
-    //     Route::get('/', $controller . 'index')->name($controllerName . '/index');
-    //     Route::get('/get-gold', $controller . 'getGold')->name("$controllerName/get-gold");
-    //     Route::get('/get-coin', ['as' => $controllerName.'/get-coin',  'uses' => $controller . 'getCoin']);
-    // });
-
-    // // ============================== GALLERY ============================== //
-    // $prefix = 'thu-vien-hinh-anh';
-    // $controllerName = 'gallery';
-    // Route::group(['prefix' => $prefix], function () use ($controllerName) {
-    //     $controller = ucfirst($controllerName) . 'Controller@';
-    //     Route::get('/',                             [ 'as' => $controllerName,                  'uses' => $controller . 'index' ]);
-    // });
 
     // // ============================== CONTACT ============================== //
     $prefix = 'lien-he.html'; // http://proj_news.xyz/news69/lien-he.html

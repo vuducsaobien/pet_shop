@@ -58,6 +58,6 @@
     </div>
 
     <!-- modal -->
-    @include('news.partials.modal.home')
+    @include('news.templates.modal_quick_view')
     
 @endsection
