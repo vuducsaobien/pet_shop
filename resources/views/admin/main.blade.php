@@ -3,8 +3,10 @@
 <head>
     @include('admin.elements.head')
 </head>
-<body class="nav-sm"> 
-    {{-- nav-md --}}
+
+{{-- <body class="nav-sm">  --}}
+<body class="nav-md"> 
+
 <div class="container body">
     <div class="main_container">
         <div class="col-md-3 left_col">
@@ -22,6 +24,7 @@
         @include('admin.elements.footer')
     </div>
 </div>
+@include('admin.elements.script_define')
 @include('admin.elements.script')
 @yield('script')
 </body>

@@ -82,6 +82,29 @@ $(document).ready(function() {
 		// window.location.href = url.replace('value_new', selectValue);
 	// });
 
+	// Active Menu Side Bar
+	let child_Li = $(`#sidebar-menu li`);
+	var parentDiv = [];
+	
+	child_Li.each((index, val) => {
+		parentDiv.push(val.id);
+		// console.log(`key = ${index} - param = ${val}`);
+	});
+
+	console.log('controllerName = ' + controllerName);
+
+	$(parentDiv).each((index, val) => {
+		// console.log('val = ' + val);
+
+		if(controllerName == val) {
+			let choose = $(`#${val}`);
+			choose.addClass('current-page');
+			choose.parent().css('display', 'block');
+			choose.parent().parent().addClass('active');
+		}
+	});
+	console.log('parentDiv = ' + parentDiv);
+
 	// Ajax Change Ordering
     $inputOrdering.on("change", function () {
         let $currentElement = $(this);
