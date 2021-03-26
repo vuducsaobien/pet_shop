@@ -6,6 +6,8 @@
     $formCKEditorAttributes = config('zvn.template.form_ckeditor');
     $formLabelAttributes = config('zvn.template.form_label');
 
+    // echo '<pre style="color:red";>$item === '; print_r($item);echo '</pre>';
+    // echo '<h3>Die is Called </h3>';die;
     $logo = $item['logo'] ?? '';
     $logoElement = sprintf('
     <div class="input-group">
@@ -19,40 +21,31 @@
     <img id="holder" src="%s" style="margin-top:15px;max-height:100px;">
     ', $logo, asset($logo));
 
-    $elements = [
-        [
+    $elements = [[
             'label'     => Form::label('logo', 'Logo', $formLabelAttributes),
             'element'   => $logoElement
-        ],
-        [
+        ],[
             'label'     => Form::label('hotline', 'Hotline', $formLabelAttributes),
             'element'   => Form::text('hotline', $item['hotline'] ?? '', $formInputAttributes)
-        ],
-        [
+        ],[
             'label'     => Form::label('working_time', 'Thời gian làm việc', $formLabelAttributes),
             'element'   => Form::text('working_time', $item['working_time'] ?? '', $formInputAttributes)
-        ],
-        [
+        ],[
             'label'     => Form::label('copyright', 'Copyright', $formLabelAttributes),
             'element'   => Form::text('copyright', $item['copyright'] ?? '', $formInputAttributes)
-        ],
-        [
+        ],[
             'label'     => Form::label('address', 'Địa chỉ', $formLabelAttributes),
             'element'   => Form::text('address', $item['address'] ?? '', $formInputAttributes)
-        ],
-        [
+        ],[
             'label'     => Form::label('introduce', 'Giới thiệu', $formLabelAttributes),
             'element'   => Form::textarea('introduce', $item['introduce'] ?? '', $formCKEditorAttributes)
-        ],
-        [
+        ],[
             'label'     => Form::label('maps', 'Google maps', $formLabelAttributes),
             'element'   => Form::textarea('maps', $item['maps'] ?? '', $formInputAttributes)
-        ],
-        [
+        ],[
             'element'   => Form::submit('Lưu', ['class' => 'btn btn-success']),
             'type'      => 'btn-submit'
-        ]
-    ]
+    ]]
 @endphp
 
 <div class="x_panel">

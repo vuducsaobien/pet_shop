@@ -205,7 +205,7 @@ class Template
     public static function showItemOrdering($controllerName, $orderingValue, $id)
     {
         $link = route("$controllerName/ordering", ['ordering' => 'value_new', 'id' => $id]);
-        $xhtml = sprintf('<input type="number" class="form-control ordering" id="ordering-%s" data-url="%s" value="%s" style="width: 60px">', $id, $link, $orderingValue);
+        $xhtml = sprintf('<input type="number" min="1" class="form-control ordering" id="ordering-%s" data-url="%s" value="%s" style="width: 60px">', $id, $link, $orderingValue);
         return $xhtml;
     }
 

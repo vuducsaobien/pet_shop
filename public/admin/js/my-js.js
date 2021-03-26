@@ -1,36 +1,48 @@
 $(document).ready(function() {
 
-
-/*
-	document.getElementById("main-form2").onkeypress = function(e) {
-		var key = e.charCode || e.keyCode || 0;
-		if (key == 13) {
-			e.preventDefault();
-		}
-	}
-*/
-
-
-	let $btnSearch        = $("button#btn-search");
-	let $btnClearSearch	  = $("button#btn-clear-search");
-
-	let $inputSearchField = $("input[name  = search_field]");
-	let $inputSearchValue = $("input[name  = search_value]");
-	let $selectChangeAttr = $("select[name = select_change_attr]");
+	let $btnSearch            = $("button#btn-search");
+	let $btnClearSearch       = $("button#btn-clear-search");
 	let $selectChangeAttrAjax = $("select.select-ajax");
-	let $inputOrdering    = $("input.ordering");
-	let $btnStatus = $(".btn-status");
+	let $inputOrdering        = $("input.ordering");
+	let $btnStatus            = $(".btn-status");
+	let $inputSearchField     = $("input[name  = search_field]");
+	let $inputSearchValue     = $("input[name  = search_value]");
+	let $selectChangeAttr     = $("select[name = select_change_attr]");
 
+	// Ajax Change Ordering
+	$inputOrdering.on("change", function () {
+		let $currentElement = $(this);
+		let value = $(this).val();
+		let $url = $(this).data("url");
+		$url = $url.replace("value_new", value);
 
-	$("a.select-field").click(function(e) {
-		e.preventDefault();
+		if (checkInputOrdering(value, 1)) {
+            callAjax($currentElement, $url, 'ordering');
+        }
 
-		let field 		= $(this).data('field');
-		let fieldName 	= $(this).html();
-		$("button.btn-active-field").html(fieldName + ' <span class="caret"></span>');
-    	$inputSearchField.val(field);
 	});
 
+	// Ajax Change Status
+	$btnStatus.click(function (e) {
+		e.preventDefault();
+		let $currentElement = $(this);
+		let $url = $currentElement.attr("href");
+
+		callAjax($currentElement, $url, 'status');
+
+		
+	});
+
+	// Ajax Change SelectBox Value
+	$selectChangeAttrAjax.on("change", function () {
+		let $currentElement = $(this);
+		let select_value = $(this).val();
+		let $url = $(this).data("url");
+		$url = $url.replace("value_new", select_value);
+
+		callAjax($currentElement, $url, 'select');
+	});
+	
 	$btnSearch.click(function() {
 
 		var pathname	= window.location.pathname;
@@ -70,95 +82,11 @@ $(document).ready(function() {
 		window.location.href = pathname + "?" + link.slice(0,-1);
 	});
 
-	$('.btn-delete').on('click', function() {
-		if(!confirm('Bạn có chắc muốn xóa phần tử?'))
-			return false;
-	});
+	// $('#lfm').filemanager('image', {url_prefix: '/laravel-filemanager'});
+	// $('#lfm').filemanager('image', {prefix: 'admin123/laravel-filemanager'});
+	$('#lfm').filemanager('image', {prefix: '/laravel-filemanager'});
 
-	// $selectChangeAttr.on('change', function() {
-		// let selectValue = $(this).val();
-		// let url = $(this).data('url');
-		// console.log(url.replace('value_new', selectValue));
-		// window.location.href = url.replace('value_new', selectValue);
-	// });
-
-	// Active Menu Side Bar
-	let child_Li = $(`#sidebar-menu li`);
-	var parentDiv = [];
-	
-	child_Li.each((index, val) => {
-		parentDiv.push(val.id);
-		// console.log(`key = ${index} - param = ${val}`);
-	});
-
-	console.log('controllerName = ' + controllerName);
-
-	$(parentDiv).each((index, val) => {
-		// console.log('val = ' + val);
-
-		if(controllerName == val) {
-			let choose = $(`#${val}`);
-			choose.addClass('current-page');
-			choose.parent().css('display', 'block');
-			choose.parent().parent().addClass('active');
-		}
-	});
-	console.log('parentDiv = ' + parentDiv);
-
-	// Ajax Change Ordering
-    $inputOrdering.on("change", function () {
-        let $currentElement = $(this);
-        let value = $(this).val();
-		let $url = $(this).data("url");
-		$url = $url.replace("value_new", value);
-
-        callAjax($currentElement, $url, 'ordering');
-	});
-
-	// Ajax Change Status
-    $btnStatus.click(function (e) {
-        e.preventDefault();
-        let $currentElement = $(this);
-		let $url = $currentElement.attr("href");
-
-        callAjax($currentElement, $url, 'status');
-
-        
-	});
-
-	// Ajax Change SelectBox Value
-    $selectChangeAttrAjax.on("change", function () {
-        let $currentElement = $(this);
-        let select_value = $(this).val();
-		let $url = $(this).data("url");
-		$url = $url.replace("value_new", select_value);
-
-        callAjax($currentElement, $url, 'select');
-	});
-
-	// Filter by category
-	$('select[name="filter_category"]').on("change", function() {
-		var pathname = window.location.pathname;
-		let searchParams = new URLSearchParams(window.location.search);
-		params = [
-			"filter_status",
-			"search_field",
-			"search_value",
-		];
-
-		let link = "";
-		$.each(params, function(key, value) {
-			if (searchParams.has(value)) {
-				link += `${value}=${searchParams.get(value)}&`;
-			}
-		});
-
-		let filter_category = $(this).val();
-
-		window.location.href = `${pathname}?${link}filter_category=${filter_category}`;
-	});
-
-	$('#lfm').filemanager('image');
+	allStorage();
 
 	// $('.tags').tagsInput({
 	// 	'defaultText': '',
@@ -166,44 +94,3 @@ $(document).ready(function() {
 	// });
 });
 
-function showNotify(element, message, type = 'success') {
-    element.notify(message, {
-        position: "top center",
-        className: type,
-    });
-}
-
-function callAjax(element, url, type) {
-	$.ajax({
-		url: url,
-		type: "GET",
-		dataType: "json",
-		success: function (result) {
-			console.log(result);
-			
-			if (result) {
-				switch (type) {
-					case 'ordering':
-						$(".modified-" + result.id).html(result.modified);
-						showNotify(element, result.message);
-						break;
-					case 'status':
-						console.log(result);
-						
-						$(".modified-" + result.id).html(result.modified);
-						element.text(result.status.name);
-						element.removeClass(element.data('class'));
-						element.addClass(result.status.class);
-						element.data('class', result.status.class);
-						element.attr("href", result.link);
-						showNotify(element, result.message);
-					case 'select':
-						$(".modified-" + result.id).html(result.modified);
-						showNotify(element, result.message);
-				}
-			} else {
-				console.log('fail');
-			}
-		},
-	});
-}
