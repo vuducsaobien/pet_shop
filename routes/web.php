@@ -120,13 +120,13 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
     // });
 
     // // ============================== CONTACT ============================== //
-    // $prefix = 'lien-he';
-    // $controllerName = 'contact';
-    // Route::group(['prefix' => $prefix], function () use ($controllerName) {
-    //     $controller = ucfirst($controllerName) . 'Controller@';
-    //     Route::get('/',                             [ 'as' => $controllerName . '/index',                  'uses' => $controller . 'index' ]);
-    //     Route::post('/post-contact',                 [ 'as' => $controllerName . '/post_contact',                  'uses' => $controller . 'postContact' ]);
-    // });
+    $prefix = 'lien-he.html'; // http://proj_news.xyz/news69/lien-he.html
+    $controllerName = 'contact';
+    Route::group(['prefix' => $prefix], function () use ($controllerName) {
+        $controller = ucfirst($controllerName) . 'Controller@';
+        Route::get('/',                             [ 'as' => $controllerName . '/index',                  'uses' => $controller . 'index' ]);
+        Route::post('/post-contact',                 [ 'as' => $controllerName . '/post_contact',                  'uses' => $controller . 'postContact' ]);
+    });
 
     // ====================== ABOUT US ========================
     // $prefix         = 'about-us';
