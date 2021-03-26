@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 $prefixNews  = config('zvn.url.prefix_news');
 
 Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
+
     // ============================== HOMEPAGE ==============================
     $prefix         = '';
     $controllerName = 'home';
@@ -43,6 +44,7 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ]);
 
     });
+
     // ====================== Category page ========================
     $prefix         = 'danh-muc-san-pham/';
     $controllerName = 'category';
@@ -67,6 +69,7 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         $controller = ucfirst($controllerName)  . 'Controller@';
 
 /*        Route::get('{product_name}-{product_id}.html',
+
             [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);*/
 
                  Route::get('/{product_name}-{product_id}.html',
@@ -124,6 +127,20 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
     //     Route::get('/',                             [ 'as' => $controllerName . '/index',                  'uses' => $controller . 'index' ]);
     //     Route::post('/post-contact',                 [ 'as' => $controllerName . '/post_contact',                  'uses' => $controller . 'postContact' ]);
     // });
+
+    // ====================== ABOUT US ========================
+    // $prefix         = 'about-us';
+    $prefix         = '';
+    $controllerName = 'about';
+    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+        $controller = ucfirst($controllerName)  . 'Controller@';
+
+        // Route::get('/',  
+        Route::get('/about-us.html',  // http://proj_news.xyz/news69/about-us.html
+        [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
+
+    });
+
 
 });
 

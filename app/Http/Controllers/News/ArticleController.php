@@ -36,6 +36,7 @@ class ArticleController extends Controller
         // $categoryModel = new CategoryModel();
         // $breadcrumbs = $categoryModel->listItems($params, ['task' => 'news-breadcrumbs']);
        
+        $itemsTestimonial = '';
         return view($this->pathViewController .  'index', [
             // 'params'        => $this->params,
             // 'itemsLatest'   => $itemsLatest,

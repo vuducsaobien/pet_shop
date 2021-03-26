@@ -5,15 +5,15 @@ namespace App\Models;
 use App\Models\AdminModel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use DB;
+use Illuminate\Support\Facades\DB;
+
 class TestimonialModel extends AdminModel
 {
 
-        protected $table               = 'testimonial';
-        protected $folderUpload        = 'testimonial' ;
-        protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
-        protected $crudNotAccepted     = ['_token','thumb_current'];
-
+    protected $table               = 'testimonial';
+    protected $folderUpload        = 'testimonial';
+    protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
+    protected $crudNotAccepted     = ['_token','thumb_current'];
 
     public function listItems($params = null, $options = null) {
 

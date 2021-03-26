@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="{{asset('news/images/favicons.png')}}">
+<link rel="shortcut icon" type="image/x-icon" href="{{asset('news/images/favicon.png')}}">
 
 <!-- all css here -->
 <link rel="stylesheet" href="{{asset('news/css/bootstrap.min.css')}}">

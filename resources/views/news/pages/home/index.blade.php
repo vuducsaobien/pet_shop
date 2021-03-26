@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col-lg-10 ml-auto mr-auto">
                     <div class="testimonial-wrap">
-                        @include('news.pages.home.child-index.testimonial')
+                        @include('news.partials.testimonial.testimonial')
                     </div>
                 </div>
             </div>
