@@ -40,6 +40,7 @@
                     <li id = "shipping" class="none"><a href="{{ route('shipping') }}"> Shipping</a></li>
                     <li id = "discount" class="none"><a href="{{ route('discount') }}"> Discount</a></li>
                     <li id = "contact" class="none"><a href="{{ route('contact') }}"> Contact</a></li>
+                    <li id = "recruitment" class="none"><a href="{{ route('recruitment') }}"> Recruitment</a></li>
                 </ul>
             </li>
             <li>

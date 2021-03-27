@@ -117,6 +117,7 @@ return [
             'user'      => ['edit'],
             'menu'      => ['edit', 'delete'],
             'testimonial'      => ['edit', 'delete'],
+            'recruitment'      => ['edit', 'delete'],
             'comment'      => ['edit', 'delete'],
             'payment'      => ['edit', 'delete'],
             'page'      => ['edit', 'delete'],
