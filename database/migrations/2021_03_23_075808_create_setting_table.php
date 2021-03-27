@@ -16,7 +16,7 @@ class CreateSettingTable extends Migration
         Schema::create('setting', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('key_value');
-            $table->string('value');
+            $table->text('value');
 
             $table->string('created')->nullable();
             $table->string('created_by')->nullable();

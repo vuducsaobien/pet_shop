@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\OrderProductModel;
 use App\Models\ProductAttributeModel;
 use App\Models\ProductImageModel;
 use Illuminate\Database\Seeder;
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CustomerTableSeeder::class);
         $this->call(OrderTableSeeder::class);
         $this->call(DiscountTableSeeder::class);
+        $this->call(OrderProductTableSeeder::class);
 
 
 

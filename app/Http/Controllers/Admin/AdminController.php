@@ -28,7 +28,6 @@ class AdminController extends Controller
         $items              = $this->model->listItems($this->params, ['task'  => 'admin-list-items']);
         $itemsStatusCount   = $this->model->countItems($this->params, ['task' => 'admin-count-items-group-by-status']); // [ ['status', 'count']]
 
-
         return view($this->pathViewController .  'index', [
             'params'        => $this->params,
             'items'         => $items,
@@ -66,5 +65,16 @@ class AdminController extends Controller
         $params["id"]             = $request->id;
         $this->model->deleteItem($params, ['task' => 'delete-item']);
         return redirect()->route($this->controllerName)->with('zvn_notify', 'Xóa phần tử thành công!');
+    }
+
+    public function view(Request $request)
+    {
+        $params["id"] = $request->id;
+        $item = $this->model->getItem( $params, ['task' => 'get-item']);
+
+
+        return view($this->pathViewController .  'view', [
+            'item'        => $item
+        ]);
     }
 }

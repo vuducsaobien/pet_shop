@@ -6,10 +6,10 @@ use App\Models\AdminModel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use DB; 
-class OrderModel extends AdminModel
+class OrderProductModel extends AdminModel
 {
-        protected $table               = 'order';
-        protected $folderUpload        = 'order' ;
+        protected $table               = 'order_product';
+        protected $folderUpload        = 'order_product' ;
         protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
         protected $crudNotAccepted     = ['_token','thumb_current'];
 
@@ -21,11 +21,6 @@ class OrderModel extends AdminModel
     {
         return $this->belongsTo(PaymentModel::class);
     }
-
-    public function products()
-    {
-        return $this->belongsToMany(ProductModel::class,'order_product','order_code','product_id','order_code')->withPivot(['quantity','price']);
-    }
     public function listItems($params = null, $options = null) {
      
         $result = null;
@@ -33,7 +28,7 @@ class OrderModel extends AdminModel
         if($options['task'] == "admin-list-items") {
             $query = $this->select('id', 'status','note','quantity','amount','order_code',
                 'customer_id','payment_id','created', 'created_by', 'modified', 'modified_by')
-              ->with(['customer','payment','products']);
+              ->with(['customer','payment']);
             if ($params['filter']['status'] !== "all")  {
                 $query->where('status', '=', $params['filter']['status'] );
             }
@@ -50,8 +45,8 @@ class OrderModel extends AdminModel
                 } 
             }
 
-            $result =  $query->orderBy('id', 'desc')
-                            ->paginate($params['pagination']['totalItemsPerOrder']);
+            $result =  $query->orderProductBy('id', 'desc')
+                            ->paginate($params['pagination']['totalItemsPerProduct']);
 
         }
 
@@ -101,7 +96,7 @@ class OrderModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::with('products')->select('id','note','quantity','amount','order_code','customer_id','payment_id', 'status')->where('id', $params['id'])->first();
+            $result = self::select('id','note','quantity','amount','order_code','customer_id','payment_id', 'status')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'get-thumb') {

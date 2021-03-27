@@ -8,9 +8,9 @@
             <thead>
                 <tr class="headings">
                     <th class="column-title">#</th>
-                    <th class="column-title">{{$controllerName}} Name</th>
-                    <th class="column-title">quantity</th>
-                    <th class="column-title">amount</th>
+                    <th class="column-title">{{ucfirst($controllerName)}} Code</th>
+                    <th class="column-title">Phương thức thanh toán</th>
+                    <th class="column-title">Tên khách hàng</th>
                     <th class="column-title">Trạng thái</th>
                     <th class="column-title">Tạo mới</th>
                     <th class="column-title">Hành động</th>
@@ -20,13 +20,13 @@
                 @if (count($items) > 0)
                     @foreach ($items as $key => $val)
                         @php
+
                             $index           = $key + 1;
                             $class           = ($index % 2 == 0) ? "even" : "odd";
                             $id              = $val['id'];
-                            $name            = Hightlight::show($val['name'], $params['search'], 'type');
-                            $amount     = Hightlight::show($val['amount'], $params['search'], 'amount');
-                            $quantity            = Hightlight::show($val['quantity'], $params['search'], 'quantity');
-                            $star=$val['star'];
+                            $code            = Hightlight::show($val['order_code'], $params['search'], 'type');
+                            $customer     = Hightlight::show($val['customer']->name, $params['search'], 'customer');
+                            $payment            = Hightlight::show($val['payment']->type, $params['search'], 'payment');
                             $status          = Template::showItemStatus($controllerName, $id, $val['status']); ;
                             $createdHistory  = Template::showItemHistory($val['created_by'], $val['created']);
                             $modifiedHistory = Template::showItemHistory($val['modified_by'], $val['modified']);
@@ -36,12 +36,12 @@
                         <tr class="{{ $class }} pointer">
                             <td >{{ $index }}</td>
                             <td width="20%">
-                                 {!! $name !!}
+                                 {!! $code !!}
                                 
                             </td>
-                            <td>{{$quantity}}</td>
+                            <td>{{$payment}}</td>
 
-                            <td>{{$amount}}</td>
+                            <td>{{$customer}}</td>
 
                             <td>{!! $status !!}</td>
                             <td>{!! $createdHistory !!}</td>
