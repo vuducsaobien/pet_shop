@@ -22,7 +22,7 @@ class ContactModel extends AdminModel
         $result = null;
 
         if ($options['task'] == "admin-list-items") {
-            $query = $this->select('id', 'name', 'phone', 'email', 'status', 'message', 'ip_address', 'time');
+            $query = $this->select('id', 'name', 'phone', 'email', 'status', 'message', 'ip', 'created');
 
             if ($params['filter']['status'] !== "all") {
                 $query->where('status', '=', $params['filter']['status']);
@@ -92,8 +92,8 @@ class ContactModel extends AdminModel
         }
 
         if ($options['task'] == 'news-add-item') {
-            $params['time'] = date('Y-m-d H:i:s');
-            $params['ip_address'] = $_SERVER['REMOTE_ADDR'];
+            $params['created'] = date('Y-m-d H:i:s');
+            $params['ip'] = $_SERVER['REMOTE_ADDR'];
             $this->insert($this->prepareParams($params));
         }
     }

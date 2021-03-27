@@ -15,10 +15,11 @@ class CreateShippingTable extends Migration
     {
         Schema::create('shipping', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('status');
-            $table->string('address');
-            $table->string('code_zip');
+            $table->string('status')->default('active');
+            $table->integer('zip_postal_code');
             $table->string('fee');
+            $table->string('name');
+
 
             $table->string('created')->nullable();
             $table->string('created_by')->nullable();

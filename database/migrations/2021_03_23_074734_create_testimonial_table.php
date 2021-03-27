@@ -17,7 +17,7 @@ class CreateTestimonialTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('status');
-            $table->string('content');
+            $table->text('content');
             $table->string('thumb');
             $table->string('job');
             $table->string('created')->nullable();

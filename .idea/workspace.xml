@@ -133,16 +133,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Requests" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/pages" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Http/Requests" />
       <recent name="$PROJECT_DIR$/resources/views/admin/pages" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Admin" />
       <recent name="$PROJECT_DIR$/app/Models" />
+      <recent name="$PROJECT_DIR$/app/Http/Requests" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Admin" />
       <recent name="$PROJECT_DIR$/resources/views/news/pages" />
     </key>
   </component>
@@ -165,6 +165,14 @@
       <command value="artisan make:factory ProductImageFactory" />
       <command value="artisan make:seeder TestimonialTableSeeder" />
       <command value="artisan make:factory TestimonialFactory" />
+      <command value="artisan make:migration createCommentTable" />
+      <command value="artisan make:seeder CommentTableSeeder" />
+      <command value="artisan make:seeder PaymentTableSeeder" />
+      <command value="artisan make:seeder TeamTableSeeder" />
+      <command value="artisan make:factory TeamFactory" />
+      <command value="artisan make:seeder ShippingTableSeeder" />
+      <command value="artisan make:factory ShippingFactory" />
+      <command value="artisan make:seeder ContactTableSeeder" />
     </option>
   </component>
   <component name="RunManager">

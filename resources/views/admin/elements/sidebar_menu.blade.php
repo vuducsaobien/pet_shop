@@ -24,6 +24,16 @@
             <li id = "category"><a  href="{{ route('category') }}"><i class="fa fa fa-building-o"></i> Category</a></li>
 
             <li>
+                <a><i class="fa fa-cubes"></i> Chưa phân loại <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li id = "comment" class="none"><a href="{{ route('comment') }}"> Comment</a></li>
+                    <li id = "payment" class="none"><a href="{{ route('payment') }}"> Payment</a></li>
+                    <li id = "team" class="none"><a href="{{ route('team') }}"> Team</a></li>
+                    <li id = "shipping" class="none"><a href="{{ route('shipping') }}"> Shipping</a></li>
+                    <li id = "contact" class="none"><a href="{{ route('contact') }}"> Contact</a></li>
+                </ul>
+            </li>
+            <li>
                 <a><i class="fa fa-cog"></i> Cấu hình <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li id = "setting"><a href="{{ route('setting', ['type' => 'general']) }}"></i>Cấu hình chung</a></li>

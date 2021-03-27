@@ -15,10 +15,10 @@ class CreateTeamTable extends Migration
     {
         Schema::create('team', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('status');
+            $table->string('status')->default('active');
             $table->string('name');
             $table->string('job');
-            $table->string('avatar');
+            $table->string('thumb');
 
             $table->string('created')->nullable();
             $table->string('created_by')->nullable();

@@ -16,12 +16,13 @@ class CreateCommentTable extends Migration
         Schema::create('comment', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('product_id');
-            $table->bigInteger('customer_id');
-            $table->integer('star');
+            $table->bigInteger('customer_id')->nullable();
+            $table->integer('star')->default(5);
             $table->string('message');
+            $table->string('ip');
             $table->string('name');
             $table->string('email');
-            $table->string('status');
+            $table->string('status')->default('active');
             $table->string('created')->nullable();
 
             $table->string('created_by')->nullable();
