@@ -113,6 +113,6 @@
 @endif
 <script src="{{asset('news/js/main.js')}}"></script>
 
-<script src="{{ asset('admin/js/my-js.js') }}"></script>
-<script src="{{ asset('admin/js/functions.js') }}"></script>
+<script src="{{ asset('news/js/my-js.js') }}"></script>
+<script src="{{ asset('news/js/functions.js') }}"></script>
 

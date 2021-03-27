@@ -15,12 +15,7 @@
 
           //set or change the preview image src
           var target_preview = $('#' + localStorage.getItem('target_preview'));
-          console.log('url = ' + url);
-
           target_preview.attr('src', url).trigger('change');
-
-          console.log('url = ' + url);
-
       };
       return false;
     });

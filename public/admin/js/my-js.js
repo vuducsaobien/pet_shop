@@ -82,11 +82,7 @@ $(document).ready(function() {
 		window.location.href = pathname + "?" + link.slice(0,-1);
 	});
 
-	// $('#lfm').filemanager('image', {url_prefix: '/laravel-filemanager'});
-	// $('#lfm').filemanager('image', {prefix: 'admin123/laravel-filemanager'});
-	
-	$('#lfm').filemanager('image', {prefix: '/laravel-filemanager'});
-	// $('#lfm').filemanager('image');
+	$('#lfm').filemanager('image');
 
 	allStorage();
 
