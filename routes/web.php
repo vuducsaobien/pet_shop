@@ -105,11 +105,14 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
     });
 
     // // ============================== CONTACT ============================== //
-    $prefix = 'lien-he.html'; // http://proj_news.xyz/news69/lien-he.html
+    // $prefix = 'lien-he.html'; // http://proj_news.xyz/news69/lien-he.html
+    $prefix = 'lien-he'; // http://proj_news.xyz/news69/lien-he
     $controllerName = 'contact';
     Route::group(['prefix' => $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName) . 'Controller@';
-        Route::get('/',                             [ 'as' => $controllerName . '/index',                  'uses' => $controller . 'index' ]);
+        // Route::get('/', [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
+        Route::get('/', [ 'as' => $controllerName, 'uses' => $controller . 'index' ]);
+    
         Route::post('/post-contact',                 [ 'as' => $controllerName . '/post_contact',                  'uses' => $controller . 'postContact' ]);
     });
 
@@ -121,9 +124,10 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         $controller = ucfirst($controllerName)  . 'Controller@';
 
         // Route::get('/',  
-        Route::get('/about-us.html',  // http://proj_news.xyz/news69/about-us.html
-        [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
+        Route::get('/about-us.html',[ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
+        // http://proj_news.xyz/news69/about-us.html
 
+        // Route::get('/about-us.html',[ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
     });
 
 

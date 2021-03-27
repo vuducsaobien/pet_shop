@@ -45,6 +45,13 @@ class MenuModel extends AdminModel
             $result = $query->get();
         }
 
+        if ($options['task'] == 'news-list-items-footer') {
+            $query = $this->select('id', 'name', 'link', 'type_menu', 'type_link')->where('status', 'active')->where('name', 'Contact Us');
+
+            $result = $query->get();
+        }
+
+
         return $result;
     }
 

@@ -85,8 +85,8 @@ $(document).ready(function() {
 	// $('#lfm').filemanager('image', {url_prefix: '/laravel-filemanager'});
 	// $('#lfm').filemanager('image', {prefix: 'admin123/laravel-filemanager'});
 	
-	// $('#lfm').filemanager('image', {prefix: '/laravel-filemanager'});
-	$('#lfm').filemanager('image');
+	$('#lfm').filemanager('image', {prefix: '/laravel-filemanager'});
+	// $('#lfm').filemanager('image');
 
 	allStorage();
 

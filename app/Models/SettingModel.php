@@ -40,28 +40,43 @@ class SettingModel extends AdminModel
             $keyValue = 'setting-social';
             $this->where('key_value', $keyValue)->update(['value' => $value]);
         }
+        
     }
 
     public function getItem($params = null, $options = null)
     {
         $result = null;
 
-        if ($params['type'] == 'general') {
-            $item = $this->select('value')->where('key_value', 'setting-general')->firstOrFail()->toArray();
-            $result = json_decode($item['value'], true);
+        if ($params != null) {
+            if ($params['type'] == 'general') {
+                $item = $this->select('value')->where('key_value', 'setting-general')->firstOrFail()->toArray();
+                $result = json_decode($item['value'], true);
+            }
+    
+            if ($params['type'] == 'email') {
+                $item = $this->select('value')->where('key_value', 'setting-email')->firstOrFail()->toArray();
+                $result = json_decode($item['value'], true);
+                $result['bcc'] = $this->select('value')->where('key_value', 'setting-bcc')->first()->value;
+            }
+    
+            if ($params['type'] == 'social') {
+                $item = $this->select('value')->where('key_value', 'setting-social')->firstOrFail()->toArray();
+                $result = json_decode($item['value'], true);
+            }
         }
 
-        if ($params['type'] == 'email') {
-            $item = $this->select('value')->where('key_value', 'setting-email')->firstOrFail()->toArray();
-            $result = json_decode($item['value'], true);
-            $result['bcc'] = $this->select('value')->where('key_value', 'setting-bcc')->first()->value;
+        if ($options != null) {
+            if ($options['task'] == 'news-list-items-footer') {
+                $item = self::select('value')->where('key_value', 'setting-general')->firstOrFail()->toArray();
+                $result['general'] = json_decode($item['value'], true);
+    
+                $item = self::select('value')->where('key_value', 'setting-social')->firstOrFail()->toArray();
+                $result['social'] = json_decode($item['value'], true);
+            }
         }
 
-        if ($params['type'] == 'social') {
-            $item = $this->select('value')->where('key_value', 'setting-social')->firstOrFail()->toArray();
-            $result = json_decode($item['value'], true);
-        }
 
         return $result;
+
     }
 }
