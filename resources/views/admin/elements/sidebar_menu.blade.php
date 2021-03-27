@@ -20,6 +20,7 @@
             <li id = "dashboard"><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> Dashboard</a></li>
             <li id = "article"><a   href="{{ route('article') }}"><i class="fa fa-newspaper-o"></i> Article</a></li>
             <li id = "product"><a   href="{{ route('product') }}"><i class="fa fa-paw"></i> Product</a></li>
+            <li id = "order"><a   href="{{ route('order') }}"><i class="fa fa-shopping-cart"></i> Order</a></li>
             <li id = "menu"><a      href="{{ route('menu') }}"><i class="fa fa-sitemap"></i> Menu</a></li>
             <li id = "category"><a  href="{{ route('category') }}"><i class="fa fa fa-building-o"></i> Category</a></li>
 
@@ -27,9 +28,11 @@
                 <a><i class="fa fa-cubes"></i> Chưa phân loại <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li id = "comment" class="none"><a href="{{ route('comment') }}"> Comment</a></li>
+                    <li id = "page" class="none"><a href="{{ route('page') }}"> Page</a></li>
                     <li id = "payment" class="none"><a href="{{ route('payment') }}"> Payment</a></li>
                     <li id = "team" class="none"><a href="{{ route('team') }}"> Team</a></li>
                     <li id = "shipping" class="none"><a href="{{ route('shipping') }}"> Shipping</a></li>
+                    <li id = "discount" class="none"><a href="{{ route('discount') }}"> Discount</a></li>
                     <li id = "contact" class="none"><a href="{{ route('contact') }}"> Contact</a></li>
                 </ul>
             </li>
@@ -54,6 +57,7 @@
                 <ul class="nav child_menu">
                     <li id = "user" class="none"><a href="{{ route('user/change-logged-password') }}"> Change Password</a></li>
                     <li id = "user" class="none"><a href="{{ route('user') }}"> User</a></li>
+                    <li id = "customer" class="none"><a href="{{ route('customer') }}"> Customer</a></li>
                 </ul>
             </li>
 

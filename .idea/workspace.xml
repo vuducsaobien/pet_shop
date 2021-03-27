@@ -173,6 +173,12 @@
       <command value="artisan make:seeder ShippingTableSeeder" />
       <command value="artisan make:factory ShippingFactory" />
       <command value="artisan make:seeder ContactTableSeeder" />
+      <command value="artisan make:seeder PageTableSeeder" />
+      <command value="artisan make:factory PageFactory" />
+      <command value="artisan make:seeder CustomerTableSeeder" />
+      <command value="artisan make:seeder OrderTableSeeder" />
+      <command value="artisan make:factory OrderFactory" />
+      <command value="artisan make:seeder DiscountTableSeeder" />
     </option>
   </component>
   <component name="RunManager">

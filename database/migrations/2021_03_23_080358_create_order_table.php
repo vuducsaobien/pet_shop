@@ -19,7 +19,8 @@ class CreateOrderTable extends Migration
             $table->bigInteger('payment_id');
             $table->string('quantity');
             $table->string('amount');
-            $table->string('status');
+            $table->string('note');
+            $table->string('status')->default('active');
             $table->string('order_code');
 
 

@@ -18,7 +18,7 @@ class CreatePageTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('content');
-            $table->string('status');
+            $table->string('status')->default('active');
 
 
             $table->string('created')->nullable();
