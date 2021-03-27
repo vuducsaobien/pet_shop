@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel as MainModel;
-use App\Http\Requests\CategoryRequest as MainRequest ;    
+use App\Http\Requests\CategoryRequest as MainRequest ;
+use Illuminate\Support\Str;
 
 class CategoryController extends AdminController
 {
@@ -33,8 +34,13 @@ class CategoryController extends AdminController
     {
         if ($request->method() == 'POST') {
             $params = $request->all();
+            if(empty($params['slug'])){
+                $params['slug']=Str::slug($params['name']);
+            }
 
-            
+
+
+
             $task   = "add-item";
             $notify = "Thêm phần tử thành công!";
 

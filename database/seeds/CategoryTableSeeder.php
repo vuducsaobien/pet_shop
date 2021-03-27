@@ -16,6 +16,7 @@ class CategoryTableSeeder extends Seeder
             [
                 [
                     'name' => 'root',
+                    'slug'=>'root',
                     'status' => 'active',
                     'parent_id'=>0,
                     '_lft'=>1,
@@ -28,6 +29,7 @@ class CategoryTableSeeder extends Seeder
                 ],
                 [
                     'name' => 'dogs food',
+                    'slug'=>'dogs-food',
                     'status' => 'active',
                     'parent_id'=>1,
                     '_lft'=>2,
@@ -39,6 +41,7 @@ class CategoryTableSeeder extends Seeder
                 ],
                 [
                     'name' => 'cats food',
+                    'slug'=>'cats-food',
                     'status' => 'active',
                     'parent_id'=>1,
                     '_lft'=>8,
@@ -50,6 +53,7 @@ class CategoryTableSeeder extends Seeder
                 ],
                 [
                     'name' => 'Eggs',
+                    'slug'=>'eggs',
                     'status' => 'active',
                     'parent_id'=>2,
                     '_lft'=>3,
@@ -61,6 +65,7 @@ class CategoryTableSeeder extends Seeder
                 ],
                 [
                     'name' => 'Carrots',
+                    'slug'=>'carrots',
                     'status' => 'active',
                     'parent_id'=>2,
                     '_lft'=>5,
@@ -72,6 +77,7 @@ class CategoryTableSeeder extends Seeder
                 ],
                 [
                     'name' => 'fishs food',
+                    'slug'=>'fishs-food',
                     'status' => 'active',
                     'parent_id'=>1,
                     '_lft'=>14,
@@ -83,6 +89,7 @@ class CategoryTableSeeder extends Seeder
                 ],
                 [
                     'name' => 'Meat',
+                    'slug'=>'meat',
                     'status' => 'active',
                     'parent_id'=>3,
                     '_lft'=>9,
@@ -94,6 +101,7 @@ class CategoryTableSeeder extends Seeder
                 ],
                 [
                     'name' => 'Cheese',
+                    'slug'=>'cheese',
                     'status' => 'active',
                     'parent_id'=>3,
                     '_lft'=>11,
@@ -105,6 +113,7 @@ class CategoryTableSeeder extends Seeder
                 ],
                 [
                     'name' => 'Rice',
+                    'slug'=>'rice',
                     'status' => 'active',
                     'parent_id'=>6,
                     '_lft'=>15,
@@ -116,6 +125,7 @@ class CategoryTableSeeder extends Seeder
                 ],
                 [
                     'name' => 'Veggies',
+                    'slug'=>'veggies',
                     'status' => 'active',
                     'parent_id'=>6,
                     '_lft'=>17,

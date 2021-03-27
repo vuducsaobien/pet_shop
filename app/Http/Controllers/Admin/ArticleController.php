@@ -5,7 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ArticleModel as MainModel;
 use App\Models\CategoryModel;
-use App\Http\Requests\ArticleRequest as MainRequest ;    
+use App\Http\Requests\ArticleRequest as MainRequest ;
+use Illuminate\Support\Str;
 
 class ArticleController extends AdminController
 {
@@ -38,6 +39,9 @@ class ArticleController extends AdminController
     {
         if ($request->method() == 'POST') {
             $params = $request->all();
+            if(empty($params['slug'])){
+                $params['slug']=Str::slug($params['name']);
+            }
 
             
             $task   = "add-item";

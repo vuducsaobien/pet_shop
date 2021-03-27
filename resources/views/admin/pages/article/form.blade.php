@@ -17,6 +17,10 @@
             'label'   => Form::label('name', 'Name', $formLabelAttr),
             'element' => Form::text('name', @$item['name'],  $formInputAttr )
         ],
+         [
+            'label'   => Form::label('slug', 'Slug', $formLabelAttr),
+            'element' => Form::text('slug', @$item['slug'],  $formInputAttr )
+        ],
         [
             'label'   => Form::label('content', 'Content', $formLabelAttr),
             'element' => Form::textArea('content', @$item['content'],  $formCkeditor )

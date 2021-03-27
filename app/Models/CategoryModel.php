@@ -116,11 +116,11 @@ class CategoryModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::select('id','thumb', 'name', 'parent_id', 'status')->where('id', $params['id'])->first();
+            $result = self::select('id','thumb','slug', 'name', 'parent_id', 'status')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'news-get-item') {
-            $result = self::select('id','thumb', 'name', 'display')->where('id', $params['category_id'])->first();
+            $result = self::select('id','thumb','slug', 'name', 'display')->where('id', $params['category_id'])->first();
 
             if($result) $result = $result->toArray();
         }

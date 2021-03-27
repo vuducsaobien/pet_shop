@@ -14,7 +14,6 @@
                     <th class="column-title">Hiện thị Home</th>
                     <th class="column-title">Kiểu hiện thị</th>
                     <th class="column-title">Tạo mới</th>
-                    <th class="column-title">Chỉnh sửa</th>
                     <th class="column-title">Hành động</th>
                 </tr>
             </thead>
@@ -43,7 +42,6 @@
                             <td>{!! $isHome  !!}</td>
                             <td>{!! $display !!}</td>
                             <td>{!! $createdHistory !!}</td>
-                            <td class="modified-{{$val['id']}}">{!! $modifiedHistory !!}</td>
                             <td class="last">{!! $listBtnAction !!}</td>
                         </tr>
                     @endforeach

@@ -148,7 +148,7 @@ class ArticleModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::select('id', 'name', 'content', 'status', 'thumb', 'category_id')->where('id', $params['id'])->first();
+            $result = self::select('id', 'slug','name', 'content', 'status', 'thumb', 'category_id')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'get-thumb') {
@@ -156,7 +156,7 @@ class ArticleModel extends AdminModel
         }
 
         if($options['task'] == 'news-get-item') {
-            $result = self::select('a.id', 'a.name', 'content', 'a.category_id', 'c.name as category_name', 'a.thumb', 'a.created', 'c.display')
+            $result = self::select('a.id', 'a.name','a.slug', 'content', 'a.category_id', 'c.name as category_name', 'a.thumb', 'a.created', 'c.display')
                          ->leftJoin('category as c', 'a.category_id', '=', 'c.id')
                          ->where('a.id', '=', $params['article_id'])
                          ->where('a.status', '=', 'active')->first();
@@ -178,6 +178,9 @@ class ArticleModel extends AdminModel
         
 
         if($options['task'] == 'add-item') {
+
+
+
             $params['created_by'] = "hailan";
             $params['created']    = date('Y-m-d');
 //            $params['thumb']      = $this->uploadThumb($params['thumb']);

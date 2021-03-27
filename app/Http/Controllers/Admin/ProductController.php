@@ -7,6 +7,7 @@ use App\Models\CategoryModel;
 use App\Models\ProductModel as MainModel;
 use App\Http\Requests\ProductRequest as MainRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends AdminController
 {
@@ -78,6 +79,9 @@ class ProductController extends AdminController
 
 
             $params = $request->all();
+            if(empty($params['slug'])){
+                $params['slug']=Str::slug($params['name']);
+            }
 
 
             $params['status']='active';

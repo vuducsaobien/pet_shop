@@ -10,7 +10,7 @@
                     <th class="column-title">#</th>
                     <th class="column-title">Article Info</th>
                     <th class="column-title">Thumb</th>
-                    <th class="column-title">Category</th>
+{{--                    <th class="column-title">Category</th>--}}
                     <th class="column-title">Kiểu bài viết</th>
                     <th class="column-title">Trạng thái</th>
                     {{-- <th class="column-title">Tạo mới</th>
@@ -46,7 +46,7 @@
                             <td width="14%">
                                 <p>{!! $thumb !!}</p>
                             </td>
-                            <td >{!! $category !!}</td>
+{{--                            <td >{!! $category !!}</td>--}}
                             <td>{!! $type   !!}</td>
                             <td>{!! $status !!}</td>
                             {{-- <td>{!! $createdHistory !!}</td>
