@@ -28,18 +28,13 @@
             'label'     => Form::label('name', 'Name', $formLabelAttr),
             'element'   => Form::text('name', $item['name'] ?? '', $formInputAttr)
         ],
-        [
-            'label'     => Form::label('slug', 'Slug', $formLabelAttr),
-            'element'   => Form::text('slug', $item['slug'] ?? '', $formInputAttr)
-        ],
-        
        [
             'label'   => Form::label('category_id', 'Category', $formLabelAttr),
             'element' => Form::select('category_id', $itemsCategory, @$item['category_id'],  $formInputAttr)
         ],
         [
-            'label'     => Form::label('logo', 'Ảnh đại diện', $formLabelAttr),
-            'element'   => $thumbElement
+            'label'   => Form::label('thumb', 'thumb', $formLabelAttr),
+            'element'   => Template::showFileManager($item['thumb'] ?? '')
         ],
         [
             'label'     => Form::label('price', 'Price', $formLabelAttr),

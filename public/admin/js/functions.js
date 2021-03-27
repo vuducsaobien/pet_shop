@@ -47,10 +47,9 @@ $(document).ready(function() {
 	$('form').find('input[type=text]').filter(':visible:first').focus().select();
 
 	// Slug
-	if (controllerName == 'product') {
 		$.slugify("Ätschi Bätschi"); // "aetschi-baetschi"
 		$('#slug').slugify('#name'); // Type as you slug
-	}
+
 
 	// Modal
 	$('#myModal').on('shown.bs.modal', function () {

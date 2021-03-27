@@ -17,7 +17,7 @@ class CreateProductTable extends Migration
             $table->bigIncrements('id');
             $table->string('status')->default('active');
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
 
             $table->string('slug')->nullable();
             $table->bigInteger('category_id');
