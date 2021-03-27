@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 $prefixAdmin = config('zvn.url.prefix_admin');
 Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', 'middleware' => ['permission.admin']], function () {
@@ -275,5 +277,14 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', 'middleware' => 
         Route::post('change-dropzone', [ 'as' => $controllerName . '/change-dropzone', 'uses' => $controller . 'changeInfo']);
 
 
+
     });
+    /*================================= multi language =============================*/
+    Route::get('/language/{locale}', function ($locale) {
+        if (! in_array($locale, ['en', 'es', 'vi'])) {
+            abort(400);
+        }
+        session(['language' => $locale]);
+        return redirect()->back();
+    })->name('language');
 });

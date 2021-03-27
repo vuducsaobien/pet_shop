@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\App;
 
 class CheckLogin
 {
@@ -15,6 +16,7 @@ class CheckLogin
      */
     public function handle($request, Closure $next)
     {
+
         if($request->session()->has('userInfo'))  return redirect()->route('home');
 
         return $next($request);

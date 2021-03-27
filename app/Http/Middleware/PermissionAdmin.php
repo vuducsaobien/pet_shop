@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\App;
 
 class PermissionAdmin
 {
@@ -15,6 +16,7 @@ class PermissionAdmin
      */
     public function handle($request, Closure $next)
     {
+        App::setLocale(session()->get('language'));
         if($request->session()->has('userInfo'))  {
             $userInfo = $request->session()->get('userInfo');
        

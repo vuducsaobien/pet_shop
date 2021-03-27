@@ -17,7 +17,7 @@ class UserTableSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => md5('1'), // password
             'fullname' => 'admin',
-            'thumb' => '/images/user/1ctW8mj8vq.png',
+            'thumb' => '/images/user/Hb1QSn1CL8.png',
             'level' => 'admin',
             'status' => 'active',
             'created'=>now(),

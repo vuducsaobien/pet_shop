@@ -1,11 +1,17 @@
 <!-- menu profile quick info -->
 <div class="profile clearfix">
     <div class="profile_pic">
-        <img src="{{ asset('admin/img/img.jpg') }}" alt="..." class="img-circle profile_img">
+        <img src="{{ asset(session('userInfo')['thumb']) }}" alt="..." class="img-circle profile_img">
     </div>
     <div class="profile_info">
-        <span>Welcome,</span>
-        <h2>{{ session('userInfo')['username'] }}</h2>
+
+        <h2><span>{{__('message.welcome')}},</span>
+            {{ session('userInfo')['username'] }} <br>
+
+            <a href="{{route('language','en')}}"><img width="30" src="{{asset('images/logo/en.png')}}" alt=""></a>
+           &nbsp; <a href="{{route('language','vi')}}"><img width="30" src="{{asset('images/logo/vi.png')}}" alt=""></a>
+        </h2>
+
     </div>
 </div>
 <!-- /menu profile quick info -->
@@ -17,15 +23,15 @@
 
         <h3>Menu</h3>
         <ul class="nav side-menu">
-            <li id = "dashboard"><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> Dashboard</a></li>
-            <li id = "article"><a   href="{{ route('article') }}"><i class="fa fa-newspaper-o"></i> Article</a></li>
-            <li id = "product"><a   href="{{ route('product') }}"><i class="fa fa-paw"></i> Product</a></li>
-            <li id = "order"><a   href="{{ route('order') }}"><i class="fa fa-shopping-cart"></i> Order</a></li>
-            <li id = "menu"><a      href="{{ route('menu') }}"><i class="fa fa-sitemap"></i> Menu</a></li>
-            <li id = "category"><a  href="{{ route('category') }}"><i class="fa fa fa-building-o"></i> Category</a></li>
+            <li id = "dashboard"><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> {{__('message.dashboard')}}</a></li>
+            <li id = "article"><a   href="{{ route('article') }}"><i class="fa fa-newspaper-o"></i> {{__('message.article')}}</a></li>
+            <li id = "product"><a   href="{{ route('product') }}"><i class="fa fa-paw"></i> {{__('message.product')}}</a></li>
+            <li id = "order"><a   href="{{ route('order') }}"><i class="fa fa-shopping-cart"></i> {{__('message.order')}}</a></li>
+            <li id = "menu"><a      href="{{ route('menu') }}"><i class="fa fa-sitemap"></i> {{__('message.menu')}}</a></li>
+            <li id = "category"><a  href="{{ route('category') }}"><i class="fa fa fa-building-o"></i> {{__('message.category')}}</a></li>
 
             <li>
-                <a><i class="fa fa-cubes"></i> Chưa phân loại <span class="fa fa-chevron-down"></span></a>
+                <a><i class="fa fa-cubes"></i> {{__('message.noname')}} <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li id = "comment" class="none"><a href="{{ route('comment') }}"> Comment</a></li>
                     <li id = "page" class="none"><a href="{{ route('page') }}"> Page</a></li>
@@ -37,7 +43,7 @@
                 </ul>
             </li>
             <li>
-                <a><i class="fa fa-cog"></i> Cấu hình <span class="fa fa-chevron-down"></span></a>
+                <a><i class="fa fa-cog"></i> {{__('message.config')}} <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li id = "setting"><a href="{{ route('setting', ['type' => 'general']) }}"></i>Cấu hình chung</a></li>
                     <li id = "setting"><a href="{{ route('setting', ['type' => 'email']) }}"></i>Email</a></li>
@@ -53,7 +59,7 @@
             </li>
 
             <li>
-                <a><i class="fa fa-user"></i> Người dùng <span class="fa fa-chevron-down"></span></a>
+                <a><i class="fa fa-user"></i> {{__('message.user')}} <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li id = "user" class="none"><a href="{{ route('user/change-logged-password') }}"> Change Password</a></li>
                     <li id = "user" class="none"><a href="{{ route('user') }}"> User</a></li>
@@ -61,8 +67,8 @@
                 </ul>
             </li>
 
-            <li><a href="{{ route('home') }}"><i class="fa fa-globe"></i> View Website</a></li>
-            <li><a href="{{ route('auth/logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
+            <li><a href="{{ route('home') }}"><i class="fa fa-globe"></i> {{__('message.view-website')}}</a></li>
+            <li><a href="{{ route('auth/logout') }}"><i class="fa fa-sign-out"></i> {{__('message.logout')}}</a></li>
 
         </ul>
     </div>

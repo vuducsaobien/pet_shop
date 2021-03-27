@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;  
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class AdminController extends Controller
 {
@@ -14,6 +15,7 @@ class AdminController extends Controller
 
     public function __construct()
     {
+
         $this->params["pagination"]["totalItemsPerPage"] = 5;
         view()->share('controllerName', $this->controllerName);
     }
