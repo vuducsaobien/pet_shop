@@ -18,6 +18,7 @@ class CreateProductTable extends Migration
             $table->string('status')->default('active');
             $table->string('name');
             $table->text('description')->nullable();
+            $table->integer('ordering')->nullable();
 
             $table->string('slug')->nullable();
             $table->bigInteger('category_id');

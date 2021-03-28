@@ -2633,7 +2633,7 @@ h4.footer-title {
     padding-left: 20px;
     position: relative;
     width: 100%;
-    background: rgba(0, 0, 0, 0) url("../img/icon-img/select.png") no-repeat scroll right 20px center;
+    background: rgba(0, 0, 0, 0) url("../images/icon-img/select.png") no-repeat scroll right 20px center;
     cursor: pointer;
 }
 .qtybutton {
@@ -3188,7 +3188,7 @@ input.cart-plus-minus-box {
 .shorting-style select {
     -moz-appearance: none;
     -webkit-appearance: none;
-    background: #fff url("../img/icon-img/select-2.png") no-repeat scroll right 16px center;
+    background: #fff url("../images/icon-img/select-2.png") no-repeat scroll right 16px center;
     border: 1px solid #ededed;
     box-shadow: none;
     color: #555;
@@ -3819,7 +3819,7 @@ input.cart-plus-minus-box {
     width: 196px;
 }
 .tax-select select {
-    background: #fff url("../img/icon-img/cart-select.png") no-repeat scroll right 10px center;
+    background: #fff url("../images/icon-img/cart-select.png") no-repeat scroll right 10px center;
     cursor: pointer;
 }
 .tax-select>label {
@@ -4120,7 +4120,7 @@ h5.panel-title span {
 .billing-select select {
     -moz-appearance: none;
     -webkit-appearance: none;
-    background: #fff url("../img/icon-img/shop.png") no-repeat scroll right 10px center;
+    background: #fff url("../images/icon-img/shop.png") no-repeat scroll right 10px center;
     cursor: pointer;
 }
 .billing-info {

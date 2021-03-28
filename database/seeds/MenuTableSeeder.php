@@ -24,7 +24,7 @@ class MenuTableSeeder extends Seeder
                 'type_link' => 'current',
                 'type_menu' => 'category_product',
                 'status'    => 'active',
-                'link'      => '#'
+                'link'      => 'http://proj_news.xyz/news69/all-food.html'
             ],[
                 'name'      => 'Blog',
                 'type_link' => 'current',

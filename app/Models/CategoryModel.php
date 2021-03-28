@@ -120,7 +120,10 @@ class CategoryModel extends AdminModel
         }
 
         if($options['task'] == 'news-get-item') {
-            $result = self::select('id','thumb','slug', 'name', 'display')->where('id', $params['category_id'])->first();
+            $result = self::select('id','thumb','slug', 'name', 'display')
+            ->where('id', $params['category_id'])
+            ->where('is_home', 'yes')
+            ->first();
 
             if($result) $result = $result->toArray();
         }

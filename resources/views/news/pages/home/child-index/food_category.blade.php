@@ -1,5 +1,6 @@
 @php
     use App\Helpers\URL;
+    echo '<pre style="color:red";>$itemsCategory === '; print_r($itemsCategory);echo '</pre>';
 @endphp
 @foreach($itemsCategory as $item)
     <div class="col-lg-4 col-md-4">

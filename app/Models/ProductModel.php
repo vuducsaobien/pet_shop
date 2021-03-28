@@ -121,9 +121,22 @@ class ProductModel extends AdminModel
                 ->with('attribute','image')
                 ->first();
         }
+
         if($options['task'] == 'get-thumb') {
             $result = self::select('id', 'thumb')->where('id', $params['id'])->first();
         }
+
+        //get all food for menu All Food
+        if($options['task'] == 'news-get-item-all-food') {
+            $result = self::select('id', 'product_code', 'name', 'thumb', 'price', 'price_sale', 'sale', 'slug', 'short_description')
+                ->where('status','active')
+                ->orderBy('ordering', 'desc')
+                ->paginate($params['pagination']['totalItemsPerPage']);
+                // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
+                // ->get()->toArray();
+
+        }
+        
 
         return $result;
     }

@@ -1,4 +1,5 @@
 <?php
+use App\Models\MenuModel;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,7 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
 
     // ====================== Category page ========================
     // $prefix         = 'danh-muc-san-pham/';
-    $prefix         = 'shop-page.html';
+    $prefix         = 'all-food.html';
     $controllerName = 'category';
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName)  . 'Controller@';

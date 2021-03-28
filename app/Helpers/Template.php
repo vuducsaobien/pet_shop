@@ -7,9 +7,21 @@ use Config;
 
 class Template
 {
-    public static function format_price($num)
+    public static function format_price($num, $type='dollar')
     {
-        return "$".number_format($num,0,',','.');
+        switch ($type) {
+            case 'dollar':
+                $result = "$".number_format($num,0,',','.');
+                break;
+            case 'vietnamese dong':
+                $result = number_format($num,0,',','.') . " <u>đ</u>";
+                break;
+            default:
+            $result = "$".number_format($num,0,',','.');
+            break;
+        }
+
+        return $result;
     }
     public static function showFileManager($thumb)
     {
