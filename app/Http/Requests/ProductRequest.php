@@ -41,7 +41,7 @@ class ProductRequest extends FormRequest
                 $condName   = "bail|required|between:3,100|unique:$this->table,name";
                 $condPrice ="bail|required";
                 $condCategory ="bail|required";
-                $condThumb="bail|required";
+//                $condThumb="bail|required";
                 break;
             case 'change-info':
                 $condName   = "bail|required|between:5,100|unique:$this->table,name,$id";

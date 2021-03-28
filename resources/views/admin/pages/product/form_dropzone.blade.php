@@ -1,5 +1,4 @@
 @php
-
     use App\Helpers\Form as FormTemplate;
     use App\Helpers\Template;
 
@@ -10,9 +9,6 @@
 
     $inputHiddenID = Form::hidden('id', $item['id'] ?? '');
     $arr=[];
-
-
-
 
     $elements = [
 

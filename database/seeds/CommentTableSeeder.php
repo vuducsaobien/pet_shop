@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\CommentModel;
+use App\Models\CustomerModel;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -12,18 +14,6 @@ class CommentTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('comment')->insert(
-            [
-                [
-                    'product_id' => 1,
-                    'message'=>'hay ghê đó!',
-                    'ip'=>'127.0.0.1',
-                    'name'=>'alex',
-                    'email'=>'themonica@gmail.com',
-                    'created'=>now(),
-                    'created_by'=>'admin'
-
-                ],
-            ]);
+        factory(CommentModel::class, 30)->create();
     }
 }

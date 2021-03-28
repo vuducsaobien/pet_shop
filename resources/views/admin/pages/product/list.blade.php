@@ -43,7 +43,7 @@
 
                                     <img width="150" height="70" src="{{$item->thumb}}" alt="">
                             </td>
-                            <td>{!! $price !!}</td>
+                            <td>{!! Template::format_price($price) !!}</td>
                             <td>{!! $category !!}</td>
                             <td>{!! $status !!}</td>
                             <td class="last">{!! $actionButtons !!}</td>

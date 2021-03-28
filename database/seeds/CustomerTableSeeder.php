@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\ArticleModel;
+use App\Models\CustomerModel;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -12,19 +14,7 @@ class CustomerTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('customer')->insert(
-            [
-                [
-                    'name' => 'john',
-                    'status' => 'active',
-                    'email'=>'abc@gmail.com',
-                    'phone'=>'0234234324',
-                    'address'=>'hochiminh city',
-                    'ip'=>'192.168.1.1',
-                    'created'=>now(),
-                    'created_by'=>'admin',
+        factory(CustomerModel::class, 30)->create();
 
-                ],
-            ]);
     }
 }

@@ -8,12 +8,11 @@ use Illuminate\Support\Str;
 use DB; 
 class CommentModel extends AdminModel
 {
-    public function __construct() {
-        $this->table               = 'comment';
-        $this->folderUpload        = 'comment' ; 
-        $this->fieldSearchAccepted = ['id', 'name', 'description', 'link']; 
-        $this->crudNotAccepted     = ['_token','thumb_current'];
-    }
+        protected $table               = 'comment';
+        protected $folderUpload        = 'comment' ;
+        protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
+        protected $crudNotAccepted     = ['_token','thumb_current'];
+
 
     public function listItems($params = null, $options = null) {
      

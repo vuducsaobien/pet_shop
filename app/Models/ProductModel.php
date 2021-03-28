@@ -145,7 +145,12 @@ class ProductModel extends AdminModel
 
         if($options['task'] == 'add-item') {
 
+            $params['thumb']='/images/product/'.array_column($params['dropzone'],'name')[0];
+
             self::insert($this->prepareParams($params));
+            /*================================= dropzone =============================*/
+            $product=$this->find($lastId=DB::getPdo()->lastInsertId());
+            $product->image()->createMany($params['dropzone']);
 
         }
         /*================================= EDIT =============================*/

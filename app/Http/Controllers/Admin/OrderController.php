@@ -11,7 +11,7 @@ class OrderController extends AdminController
         $this->pathViewController = 'admin.pages.order.';
         $this->controllerName = 'order';
         $this->model = new MainModel();
-        $this->params["pagination"]["totalItemsPerOrder"] = 5;
+        $this->params["pagination"]["totalItemsPerOrder"] = 10;
         parent::__construct();
     }
 

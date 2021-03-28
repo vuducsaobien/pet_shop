@@ -18,31 +18,31 @@ class MenuTableSeeder extends Seeder
                 'type_link' => 'current',
                 'type_menu' => 'link',
                 'status'    => 'active',
-                'link'      => 'http://proj_news.xyz/news69'
+                'link'      => '/'
             ],[
                 'name'      => 'Food',
                 'type_link' => 'current',
                 'type_menu' => 'category_product',
                 'status'    => 'active',
-                'link'      => 'http://proj_news.xyz/news69/all-food.html'
+                'link'      => '/all-food.html'
             ],[
                 'name'      => 'Blog',
                 'type_link' => 'current',
                 'type_menu' => 'link',
                 'status'    => 'active',
-                'link'      => 'http://proj_news.xyz/news69/bai-viet/list-blog.html'
+                'link'      => '/bai-viet/list-blog.html'
 
             ],[
                 'name'      => 'About',
                 'type_link' => 'current',
                 'type_menu' => 'link',
                 'status'    => 'active',
-                'link'      => 'http://proj_news.xyz/news69/about-us.html'
+                'link'      => '/about-us.html'
             ],[
                 'name'      => 'Contact Us',
                 'type_link' => 'current',
                 'type_menu' => 'link',
-                'link'      => 'http://proj_news.xyz/news69/lien-he',
+                'link'      => '/lien-he',
                 'status'    => 'active'
         ],]);
     }

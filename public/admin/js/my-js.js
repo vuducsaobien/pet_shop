@@ -4,6 +4,7 @@ $(document).ready(function() {
 	let $btnClearSearch       = $("button#btn-clear-search");
 	let $selectChangeAttrAjax = $("select.select-ajax");
 	let $inputOrdering        = $("input.ordering");
+	let $inputLink        		= $("input.link");
 	let $btnStatus            = $(".btn-status");
 	let $inputSearchField     = $("input[name  = search_field]");
 	let $inputSearchValue     = $("input[name  = search_value]");
@@ -19,6 +20,22 @@ $(document).ready(function() {
 		if (checkInputOrdering(value, 1)) {
             callAjax($currentElement, $url, 'ordering');
         }
+
+	});
+	// Ajax Change Link
+	$inputLink.on("keyup", function () {
+
+	    
+		let $currentElement = $(this);
+		let value = $(this).val();
+		// console.log(value);
+		
+		let $url = $(this).data("url");
+		// $url = $url.replace("value_new", value);
+
+
+		callAjax($currentElement, $url, 'link',value);
+
 
 	});
 

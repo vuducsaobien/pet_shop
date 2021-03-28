@@ -9,9 +9,9 @@ $p=0;
 $factory->define(OrderProductModel::class, function (Faker $faker) use(&$p) {
     $p++;
     return [
-        'order_code'=>'SKU231',
-        'product_id'=>$p,
-        'quantity'=>2,
-        'price'=>10000
+        'order_code'=>'SKU23'.rand(1,9),
+        'product_id'=>rand(1,10),
+        'quantity'=>rand(1,10),
+        'price'=>rand(10000,200000)
     ];
 });

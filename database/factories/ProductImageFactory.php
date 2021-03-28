@@ -8,7 +8,7 @@ $w=0;
 $factory->define(ProductImageModel::class, function (Faker $faker) use (&$w) {
     $w++;
     return [
-        'product_id'=>1,
-        'name'=>"l".$w.'.jpg',
+        'product_id'=>rand(1,10),
+        'name'=>"l".rand(1,9).'.jpg',
     ];
 });

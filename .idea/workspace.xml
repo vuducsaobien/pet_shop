@@ -184,6 +184,8 @@
       <command value="artisan make:migration createRecruitmentTable" />
       <command value="artisan make:seeder RecruitmentTableSeeder" />
       <command value="artisan make:factory RecruitmentFactory" />
+      <command value="artisan make:factory CustomerFactory" />
+      <command value="artisan make:factory CommentFactory" />
     </option>
   </component>
   <component name="RunManager">

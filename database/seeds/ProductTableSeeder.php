@@ -13,19 +13,8 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(ProductModel::class, 8)->create();
+        factory(ProductModel::class, 30)->create();
 
-        /*DB::table('product')->insert(
-            [
-                [
-                    'name' => 'Dog Calcium Food',
-                    'category_id' => 2,
-                    'thumb'=>'/images/product/s1.jpeg',
-                    'price'=>10000,
-                    'created'=>now(),
-                    'created_by'=>'admin'
-                ],
-            ]);*/
 
     }
 }

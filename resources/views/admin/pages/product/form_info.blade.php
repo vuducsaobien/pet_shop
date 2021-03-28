@@ -18,7 +18,8 @@
             'label'   => Form::label('name', 'Name', $formLabelAttr),
             'element' => Form::text('name', $item['name'], $formInputAttr ),
             'type'=>'full'
-        ],[
+        ],
+        [
             'label'   => Form::label('slug', 'Slug', $formLabelAttr),
             'element' => Form::text('slug', $item['slug'],  $formInputAttr ),
             'type'=>'full'

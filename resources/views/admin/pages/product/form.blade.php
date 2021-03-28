@@ -17,5 +17,6 @@
         </div>
     @else
         @include('admin.pages.product.form_add')
+{{--        @include('admin.pages.product.form_dropzone')--}}
     @endif
 @endsection

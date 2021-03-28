@@ -199,6 +199,7 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', 'middleware' => 
         Route::get('change-ordering-{ordering}/{id}',   ['as' => $controllerName . '/ordering',     'uses' => $controller . 'ordering'])->where('id', '[0-9]+');
         Route::get('change-type-menu-{type_menu}/{id}', ['as' => $controllerName . '/type_menu',    'uses' => $controller . 'typeMenu'])->where('id', '[0-9]+');
         Route::get('change-type-link-{type_link}/{id}', ['as' => $controllerName . '/type_link',    'uses' => $controller . 'typeLink'])->where('id', '[0-9]+');
+        Route::get('change-link-{link}/{id}', ['as' => $controllerName . '/link',    'uses' => $controller . 'link'])->where(['id'=> '[0-9]+']);
     });
 
     // ============================== RSS ============================== //

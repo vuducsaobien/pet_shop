@@ -55,4 +55,14 @@ class MenuController extends AdminController
         $result = $this->model->saveItem($this->params, ['task' => 'change-type-link']);
         echo json_encode($result);
     }
+
+    public function link(Request $request)
+    {
+        $this->params['data']=$request->data;
+//        $this->params['selectedLink'] = $request->link;
+        $this->params['id'] = $request->id;
+        $result = $this->model->saveItem($this->params, ['task' => 'change-link']);
+        echo json_encode($result);
+    }
+
 }

@@ -13,7 +13,7 @@ class OrderProductTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(OrderProductModel::class, 2)->create();
+        factory(OrderProductModel::class, 30)->create();
 
     }
 }

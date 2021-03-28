@@ -17,7 +17,7 @@ class CreatePageTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('slug');
-            $table->string('content');
+            $table->text('content');
             $table->string('status')->default('active');
 
 

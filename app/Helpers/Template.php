@@ -221,6 +221,14 @@ class Template
         return $xhtml;
     }
 
+    public static function showItemLink($controllerName, $linkValue, $id)
+    {
+
+        $link = route("$controllerName/link", ['link' => 'value_new', 'id' => $id]);
+        $xhtml = sprintf('<input type="text" min="1" class="form-control link" id="link-%s" data-url="%s" value="%s" style="width: 300px">', $id, $link, $linkValue);
+        return $xhtml;
+    }
+
     public static function showNestedSetName($name, $level)
     {
         $xhtml = str_repeat('|------ ', $level - 1);

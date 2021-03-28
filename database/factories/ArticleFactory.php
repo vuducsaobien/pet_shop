@@ -16,7 +16,7 @@ $factory->define(ArticleModel::class, function (Faker $faker) use (&$k){
         'slug'=>Str::slug($name),
         'status' => 'active',
         'content' =>$faker->sentence, // password
-        'thumb'=>'/images/article/blog-'.$k.'.jpg',
+        'thumb'=>'/images/article/blog-'.rand(1,9).'.jpg',
         'created'=>now(),
         'created_by'=>'admin'
 

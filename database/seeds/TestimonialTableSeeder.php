@@ -13,7 +13,7 @@ class TestimonialTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(TestimonialModel::class, 9)->create();
+        factory(TestimonialModel::class, 10)->create();
 
     }
 }

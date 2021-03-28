@@ -77,8 +77,9 @@ class ProductController extends AdminController
 
         if ($request->method() == 'POST') {
 
-
             $params = $request->all();
+            $params['dropzone'] = $this->model->dropzone($params);
+
             if(empty($params['slug'])){
                 $params['slug']=Str::slug($params['name']);
             }

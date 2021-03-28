@@ -128,6 +128,16 @@ class MenuModel extends AdminModel
                 'message' => config('zvn.notify.success.update')
             ];
         }
+        if ($options['task'] == 'change-link') {
+
+            $typeLink = $params['data'];
+            $this->where('id', $params['id'])->update(['link' => $typeLink]);
+            return [
+                'id' => $params['id'],
+                'message' => config('zvn.notify.success.update'),
+                'link'=>$params['data']
+            ];
+        }
 
         if ($options['task'] == 'add-item') {
             $this->insert($this->prepareParams($params));

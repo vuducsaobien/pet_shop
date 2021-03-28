@@ -113,10 +113,14 @@ function showNotify(element, message, type = 'success') {
     });
 }
 
-function callAjax(element, url, type) {
+function callAjax(element, url, type,data='') {
+
+	data={'data':data}
+
 	$.ajax({
 		url: url,
 		type: "GET",
+        data:data,
 		dataType: "json",
 		success: function (result) {
 			console.log(result);

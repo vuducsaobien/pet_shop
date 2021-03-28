@@ -5,16 +5,16 @@
 use App\Models\OrderModel;
 use Faker\Generator as Faker;
 
-$w=0;
-$factory->define(OrderModel::class, function (Faker $faker) use (&$w) {
-    $w++;
+$ww=0;
+$factory->define(OrderModel::class, function (Faker $faker) use (&$ww) {
+    $ww++;
     return [
-        'customer_id'=>1,
-        'payment_id'=>1,
-        'note'=>1,
-        'quantity'=>1,
-        'amount'=>100000,
-        'order_code'=>'SKU231',
+        'customer_id'=>rand(1,10),
+        'payment_id'=>rand(1,2),
+        'note'=>$faker->paragraph,
+        'quantity'=>rand(1,10),
+        'amount'=>rand(10000,200000),
+        'order_code'=>'SKU23'.$ww,
         'created'=>now(),
         'created_by'=>'admin'
     ];
