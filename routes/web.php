@@ -73,7 +73,7 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         $controller = ucfirst($controllerName)  . 'Controller@';
 
         Route::get('/{product_name}-{product_id}',
-        [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ])
+        [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
         ->where('product_name', '[0-9a-zA-Z_-]+')
         ->where('product_id', '[0-9]+');
 

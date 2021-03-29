@@ -28,6 +28,7 @@ class CategoryController extends FrontendController
             $productModel = new ProductModel();
             $items = $productModel->getItem($this->params, ['task' => 'news-get-item-all-food']);
             $type = 'all-food';
+
         // Food in Category
         } else {
             $this->params["category_id"]  = $request->category_id;
@@ -37,7 +38,7 @@ class CategoryController extends FrontendController
             $type = 'all-food-in-category-id';
         }
 
-        // echo '<pre style="color:red";>$itemsProduct === '; print_r($itemsProduct);echo '</pre>';
+        // echo '<pre style="color:red";>$items === '; print_r($items);echo '</pre>';
         // echo '<h3>Die is Called Category Controller</h3>';die;
 
         // $categoryModel = new CategoryModel();

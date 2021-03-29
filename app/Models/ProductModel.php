@@ -121,6 +121,7 @@ class ProductModel extends AdminModel
 
     public function getItem($params = null, $options = null) { 
         $result = null;
+
        //form add-edit product
         if($options['task'] == 'get-item') {
             $result = self::where('id', $params['id'])
@@ -129,10 +130,12 @@ class ProductModel extends AdminModel
         }
 
         //get info for product detail
-        if($options['task'] == 'news-get-item') {
-            $result = self::where('id', $params['id'])
-                ->with('attribute','image')
-                ->first();
+        if($options['task'] == 'news-get-item-product-detail') {
+            $result = self::select('id', 'category_id', 'product_code', 'name', 'quantity',
+                'thumb', 'price', 'price_sale', 'sale', 'slug', 'short_description', 'description')
+            ->where('status','active')
+            ->where('id', $params["product_id"])
+            ->first()->toArray();
         }
 
         if($options['task'] == 'get-thumb') {
@@ -146,14 +149,17 @@ class ProductModel extends AdminModel
             ->orderBy('ordering', 'desc')
             ->paginate($params['pagination']['totalItemsPerPage']);
             // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
+
             // $result = $params;
+            // echo '<pre style="color:red";>$result === '; print_r($result);echo '</pre>';
+            // echo '<h3>Die is Called </h3>';die;
         }
 
 
         //get all food for menu All Food
         if($options['task'] == 'news-get-item-all-food') {
-            $result = self::select('id', 'product_code', 'name', 'thumb', 'price', 'price_sale', 'sale', 'slug', 'short_description')
-            ->where('status','active')
+            $result = self::select('id', 'product_code', 'name', 'thumb', 'price', 'quantity',
+                'price_sale', 'sale', 'slug', 'short_description')
             ->where('status','active')
             ->orderBy('ordering', 'desc')
             ->paginate($params['pagination']['totalItemsPerPage']);
@@ -173,14 +179,9 @@ class ProductModel extends AdminModel
              
             $attribute = new AttributeModel();
             $result['attribute'] = $attribute->getItem(null, ['task' => 'get-list-thumb-product-id-modal']);
-            // $listAttribute = $attribute->getItem(null, ['task' => 'get-list-thumb-product-id-modal']);
-
-            foreach ($result['attribute'] as $key => $value) {
+            foreach ($result['attribute'] as $value) {
                 $params['attribute_id'][] = $value['id'];
-                // $params['attribute_id'] = $key;
             }
-
-            // $params['attribute_id'] = [$listAttribute];
 
             $productAttribute = new ProductAttributeModel();
             $result['list_attribute'] = $productAttribute->getItem($params, ['task' => 'get-list-thumb-product-id-modal']);
@@ -243,13 +244,13 @@ class ProductModel extends AdminModel
         }
         /*================================= change category =============================*/
         if ($options['task'] == 'change-category') {
-//            $params['modified_by']  = session('userInfo')['username'];
-//            $params['modified']     = date('Y-m-d H:i:s');
+            // $params['modified_by']  = session('userInfo')['username'];
+            // $params['modified']     = date('Y-m-d H:i:s');
             $this->where('id', $params['id'])->update($this->prepareParams($params));
 
             $result = [
                 'id' => $params['id'],
-//                'modified' => Template::showItemHistory($params['modified_by'], $params['modified']),
+                // 'modified' => Template::showItemHistory($params['modified_by'], $params['modified']),
                 'message' => config('zvn.notify.success.update')
             ];
 
@@ -273,8 +274,8 @@ class ProductModel extends AdminModel
             ProductImageModel::where('product_id',$params['id'])->delete();
 
 
-//            $item   = self::getItem($params, ['task'=>'get-thumb']); //
-//            $this->deleteThumb($item['thumb']);
+            // $item   = self::getItem($params, ['task'=>'get-thumb']);
+            // $this->deleteThumb($item['thumb']);
             self::where('id', $params['id'])->delete();
         }
     }

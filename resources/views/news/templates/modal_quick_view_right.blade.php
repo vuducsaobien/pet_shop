@@ -1,5 +1,5 @@
 @php
-    // $HtmlPrice = Template::caculatorPriceFrontend($value['price'], $value['price_sale'], $value['sale']);
+    // $htmlPrice = Template::caculatorPriceFrontend($value['price'], $value['price_sale'], $value['sale']);
 @endphp
 <div class="qwick-view-right">
     <div class="qwick-view-content">

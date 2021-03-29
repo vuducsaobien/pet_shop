@@ -9,7 +9,7 @@
         $linkModal = URL::linkModal($id);
         $thumb     = $value['thumb'];
         $name      = $value['name'];
-        $HtmlPrice = Template::caculatorPriceFrontend($value['price'], $value['price_sale'], $value['sale']);
+        $htmlPrice = Template::caculatorPriceFrontend($value['price'], $value['price_sale'], $value['sale']);
         
     @endphp
 

@@ -3,7 +3,7 @@
     // echo '<pre style="color:red";>$itemsBestDeal === '; print_r($itemsBestDeal);echo '</pre>';
     // echo '<h3>Die is Called </h3>';die;
     $countdown = date('Y/m/d', strtotime(config('zvn.format.count_down')));
-    $HtmlPrice = Template::caculatorPriceFrontend(
+    $htmlPrice = Template::caculatorPriceFrontend(
         $itemsBestDeal['price'], $itemsBestDeal['price_sale'], $itemsBestDeal['sale'], 2
     );
 
@@ -25,7 +25,7 @@
                 <div class="deal-content">
                     <h3><a href="#">{{ $itemsBestDeal['name'] }}</a></h3>
                     <div class="deal-pro-price">
-                        {!! $HtmlPrice !!}
+                        {!! $htmlPrice !!}
                     </div>
                     {!! $itemsBestDeal['short_description'] !!}
                     <div class="timer timer-style">

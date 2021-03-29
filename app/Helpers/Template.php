@@ -319,4 +319,47 @@ class Template
         return $xhtml;
     }
 
+    public static function getHtmlAttribute($attribute, $list_attribute)
+    {
+        $xhtml = '';
+
+        foreach ($attribute as $val) 
+        {
+            $id = $val['id'];
+
+            foreach ($list_attribute as $index => $result) 
+            {
+
+                if ($id == $index) 
+                {
+                    $name = $val['name'];
+
+                    $xhtml .= '
+                        <div class="product-details-style shorting-style mt-30">
+                        <label>'.$name.' : </label>
+                        <select>
+                            <option value="default"> Chọn '.$name.' </option>
+                    ';
+
+                    foreach ($list_attribute as $index => $result) 
+                    {
+                        foreach ($result as $resultChild) 
+                        {
+                            if ( $id == $index ) {
+                                $xhtml .= '<option value="'.$resultChild['value'].'">'.$resultChild['value'].'</option>';
+                            }else{
+                                break;
+                            }
+                        }
+                    }
+
+                    $xhtml .= '</select></div>';
+                }
+            }
+        }
+    
+        return $xhtml;
+    }
+
+
 }

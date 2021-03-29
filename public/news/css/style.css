@@ -3411,6 +3411,14 @@ input.cart-plus-minus-box {
     font-size: 15px;
     letter-spacing: 0.2px;
 }
+.out-stock {
+    margin: 35px 0 8px;
+}
+.out-stock>span {
+    color: #c24152;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+}
 .sku {
     border-bottom: 1px solid #e4e4e4;
     display: block;

@@ -23,11 +23,11 @@ class URL
 
     }
 
-    public static function linkProduct($product)
+    public static function linkProduct($product_id, $product_name)
     {
-        return route('product/detail', [
-            'product_id'   => $product->id,
-            'product_name' => Str::slug($product->name)
+        return route('product/index', [
+            'product_id'   => $product_id,
+            'product_name' => Str::slug($product_name)
         ]);
 
     }

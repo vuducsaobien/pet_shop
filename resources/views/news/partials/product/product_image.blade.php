@@ -1,5 +1,10 @@
+@php
+    // echo '<pre style="color:red";>$linkProduct === Product Image === '; print_r($linkProduct);echo '</pre>';    
+    // echo '<h3>Die is Called ProductImage</h3>';die;
+@endphp
+
 <div class="product-img">
-    <a href="product-details.html">
+    <a href="{{ $linkProduct }}">
         <img src="{{ asset($thumb) }}" alt="">
     </a>
 

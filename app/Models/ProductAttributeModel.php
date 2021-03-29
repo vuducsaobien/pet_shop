@@ -106,7 +106,6 @@ class ProductAttributeModel extends AdminModel
         }
 
         if ($options['task'] == 'get-list-thumb-product-id-modal') {
-
             foreach ($params['attribute_id'] as $key => $value) {
                 $result[$value] = self::select('value')
                 ->where('product_id', $params['product_id'])
@@ -117,11 +116,24 @@ class ProductAttributeModel extends AdminModel
                 if (count($result[$value]) == 0 ) unset($result[$value]);
 
             }
+        }
+
+        if ($options['task'] == 'get-list-thumb-product-id-modal-array') {
+
+            foreach ($params['attribute_id'] as $key => $value) {
+                $result[$value] = self::select('value')
+                ->where('product_id', $params['product_id'])
+                ->where('attribute_id', $value)
+                
+                ->get()->toArray();
+
+                if (count($result[$value]) == 0 ) unset($result[$value]);
+
+            }
 
             
 
         }
-
 
         
 

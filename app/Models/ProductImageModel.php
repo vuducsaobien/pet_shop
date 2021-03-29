@@ -106,6 +106,11 @@ class ProductImageModel extends AdminModel
             $result = self::select('id', 'name')->where('product_id', $params['product_id'])->get();
         }
 
+        if ($options['task'] == 'get-list-thumb-product-detail') {
+            $result = self::select('id', 'name')->where('product_id', $params['product_id'])->get()->toArray();
+        }
+
+
         return $result;
     }
 
@@ -139,8 +144,8 @@ class ProductImageModel extends AdminModel
     public function deleteItem($params = null, $options = null)
     {
         if ($options['task'] == 'delete-item') {
-//            $item = self::getItem($params, ['task' => 'get-thumb']); //
-//            $this->deleteThumb($item['thumb']);
+            // $item = self::getItem($params, ['task' => 'get-thumb']); //
+            // $this->deleteThumb($item['thumb']);
             self::where('id', $params['id'])->delete();
         }
     }
