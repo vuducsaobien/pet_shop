@@ -20,9 +20,9 @@
     <div class="product-width col-lg-6 col-xl-4 col-md-6 col-sm-6">
         <div class="product-wrapper mb-10">
 
-            @include('news.pages.category.child-index.product_image')
-            @include('news.pages.category.child-index.product_content')
-            @include('news.pages.category.child-index.product_list_content')
+            @include('news.partials.product.product_image')
+            @include('news.partials.product.product_content')
+            @include('news.partials.product.product_list_content')
 
         </div>
     </div>
