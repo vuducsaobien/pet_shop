@@ -149,6 +149,12 @@ class AttributeModel extends AdminModel
             $result = $this->select('id', 'name', 'ordering', 'status')->where('id', $params['id'])->first();
         }
 
+        if ($options['task'] == 'get-list-thumb-product-id-modal') {
+            // $result = self::select('id', 'name')->where('status', 'active')->orderBy('ordering')->limit(2)->get();
+            $result = self::select('id', 'name')->where('status', 'active')->orderBy('ordering')->limit(2)->get()->toArray();
+        }
+
+
         return $result;
     }
 }

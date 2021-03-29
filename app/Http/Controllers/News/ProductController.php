@@ -1,22 +1,18 @@
 <?php
 
 namespace App\Http\Controllers\News;
-use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
+use App\Models\ProductModel as MainModel;
 
-use App\Models\ProductModel;
-
-
-class ProductController extends Controller
+class ProductController extends FrontendController
 {
-    private $pathViewController = 'news.pages.product.';  // slider
-    private $controllerName     = 'product';
-    private $params             = [];
-    private $model;
-
     public function __construct()
     {
-        view()->share('controllerName', $this->controllerName);
+        $this->pathViewController = 'news.pages.category.';
+        $this->controllerName = 'category';
+        $this->model = new MainModel();
+        parent::__construct();
     }
 
     public function index(Request $request)
@@ -47,7 +43,7 @@ class ProductController extends Controller
     public function detail(Request $request)
     {
          $params["id"]  = $request->product_id;
-         $productModel  = new ProductModel();
+         $productModel  = new MainModel();
 
          //product o chi tiet san pham
          $item = $productModel->getItem($params, ['task' => 'news-get-item']);
@@ -55,16 +51,6 @@ class ProductController extends Controller
 
         //product related
         $itemsRelatedProduct = $productModel->listItems($params, ['task' => 'news-list-items-related-in-product']);
-
-        // if(empty($itemProduct))  return redirect()->route('home');
-        
-        // $itemsLatest   = $productModel->listItems(null, ['task'  => 'news-list-items-latest']);
-        
-        // $params["product_id"]  = $itemProduct['product_id'];
-        // $itemProduct['related_products'] = $productModel->listItems($params, ['task' => 'news-list-items-related-in-product']);
-
-        // $productModel = new ProductModel();
-        // $breadcrumbs = $productModel->listItems($params, ['task' => 'news-breadcrumbs']);
        
         return view($this->pathViewController .  'detail', compact(
             'item',
@@ -76,6 +62,13 @@ class ProductController extends Controller
         );
     }
 
+    public function get_image_modal(Request $request)
+    {
+        $params["product_id"]  = $request->product_id;
+        $result  = $this->model->getItem($params, ['task' => 'news-get-items-modal']);
 
+        return response()->json($result);
+
+    }
  
 }

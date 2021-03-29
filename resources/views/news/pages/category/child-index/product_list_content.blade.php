@@ -5,6 +5,7 @@
     </div>
 
     {!! $short_description !!}
+    
     <div class="product-list-action">
         <div class="product-list-action-left">
             <a class="addtocart-btn" title="Add to cart" href="#"><i class="ion-bag"></i> Add to cart</a>

@@ -12,6 +12,7 @@
     	@include('news.elements.footer')
 
 		<!-- all js here -->
+        @include('admin.elements.script_define')
         @include('news.elements.script')
 
     </body>

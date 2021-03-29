@@ -105,6 +105,26 @@ class ProductAttributeModel extends AdminModel
             $result = self::select('id', 'thumb')->where('id', $params['id'])->first();
         }
 
+        if ($options['task'] == 'get-list-thumb-product-id-modal') {
+
+            foreach ($params['attribute_id'] as $key => $value) {
+                $result[$value] = self::select('value')
+                ->where('product_id', $params['product_id'])
+                ->where('attribute_id', $value)
+                
+                ->get();
+
+                if (count($result[$value]) == 0 ) unset($result[$value]);
+
+            }
+
+            
+
+        }
+
+
+        
+
         return $result;
     }
 
