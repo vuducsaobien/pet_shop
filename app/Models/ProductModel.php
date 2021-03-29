@@ -1,30 +1,30 @@
 <?php
-
 namespace App\Models;
-
 use App\Helpers\Template;
 use App\Models\AdminModel;
+use App\Models\ProductImageModel;
+use App\Models\AttributeModel;
+use App\Models\ProductAttributeModel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use DB; 
 class ProductModel extends AdminModel
 {
-
     protected $table               = 'product';
     protected $folderUpload        = 'product' ;
     protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
     protected $crudNotAccepted     = ['changeInfo','changeCategory','changePrice','changeAttribute','changeSpecial','changeDropzone','dropzone','_token','thumb_current','id','attribute','nameImage','alt','res'];
 
-
-
     public function attribute()
     {
         return $this->hasMany(ProductAttributeModel::class,'product_id');
     }
+
     public function image()
     {
         return $this->hasMany(ProductImageModel::class,'product_id');
     }
+
     public function listItems($params = null, $options = null) {
      
         $result = null;
@@ -129,16 +129,42 @@ class ProductModel extends AdminModel
         //get all food for menu All Food
         if($options['task'] == 'news-get-item-all-food') {
             $result = self::select('id', 'product_code', 'name', 'thumb', 'price', 'price_sale', 'sale', 'slug', 'short_description')
-                ->where('status','active')
-                ->orderBy('ordering', 'desc')
-                ->paginate($params['pagination']['totalItemsPerPage']);
-                // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
-                // ->get()->toArray();
+            ->where('status','active')
+            ->orderBy('ordering', 'desc')
+            ->paginate($params['pagination']['totalItemsPerPage']);
+            // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
 
         }
-        
+
+        if($options['task'] == 'news-get-items-modal') {
+            $result = self::select('id', 'name', 'price', 'price_sale', 'sale', 'slug', 'short_description')
+                ->where('id', $params['product_id'])
+                ->where('status', 'active')
+                // ->get()->toArray();
+                ->first();
+            
+            $productImage = new ProductImageModel();
+            $result['list_images'] = $productImage->getItem($params, ['task' => 'get-list-thumb-product-id-modal']);
+             
+            $attribute = new AttributeModel();
+            $result['attribute'] = $attribute->getItem(null, ['task' => 'get-list-thumb-product-id-modal']);
+            // $listAttribute = $attribute->getItem(null, ['task' => 'get-list-thumb-product-id-modal']);
+
+            foreach ($result['attribute'] as $key => $value) {
+                $params['attribute_id'][] = $value['id'];
+                // $params['attribute_id'] = $key;
+            }
+
+            // $params['attribute_id'] = [$listAttribute];
+
+            $productAttribute = new ProductAttributeModel();
+            $result['list_attribute'] = $productAttribute->getItem($params, ['task' => 'get-list-thumb-product-id-modal']);
+
+        }
 
         return $result;
+
+
     }
 
     public function saveItem($params = null, $options = null) { 

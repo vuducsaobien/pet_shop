@@ -277,4 +277,18 @@ class Template
             }
         }
     }
+
+    public static function caculatorPriceFrontend($price, $price_sale, $sale=0)
+    {
+        $price_sale = self::format_price($price_sale, 'vietnamese dong');
+        $xhtml = '<span class="new">'.$price_sale.' </span>';
+
+        if ($sale > 0) {
+            $price = self::format_price($price, 'vietnamese dong');
+            $xhtml      .= '<span class="old">'.$price.' </span>';
+        }
+
+        return $xhtml;
+    }
+
 }
