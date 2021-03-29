@@ -22,6 +22,7 @@ class URL
         ]);
 
     }
+
     public static function linkProduct($product)
     {
         return route('product/detail', [
@@ -31,4 +32,12 @@ class URL
 
     }
     
+    public static function linkModal($product_id)
+    {
+        return route('product/modal', [
+            'id'   => $product_id
+        ]);
+
+    }
+
 }

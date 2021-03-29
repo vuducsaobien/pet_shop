@@ -7,14 +7,12 @@
 
 @foreach($items as $key => $value)
     @php
-        $id         = $value['id'];
-        $linkModal  = URL::linkModal($id);
-        $thumb      = $value['thumb'];
-        $name       = $value['name'];
-        $short_description = $value['short_description'];
-
+        $id        = $value['id'];
+        $linkModal = URL::linkModal($id);
+        $thumb     = $value['thumb'];
+        $name      = $value['name'];
         $HtmlPrice = Template::caculatorPriceFrontend($value['price'], $value['price_sale'], $value['sale']);
-        
+        $short_description = $value['short_description'];
     @endphp
 
     <div class="product-width col-lg-6 col-xl-4 col-md-6 col-sm-6">

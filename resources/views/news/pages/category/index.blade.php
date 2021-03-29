@@ -17,7 +17,11 @@
 
                             <!-- List - Product -->
                             <div class="row">
-                                @include('news.pages.category.child-index.list_product')
+                                @if ($type == 'all-food')
+                                    @include('news.pages.category.child-index.list_product')
+                                @else
+                                    @include('news.pages.category.child-index.list_product_detail')
+                                @endif
                             </div>
 
                             <!-- paginate -->

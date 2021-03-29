@@ -21,33 +21,32 @@ class CategoryController extends FrontendController
 
     public function index(Request $request)
     {   
-        $itemsProduct = null;
-        $itemCategory = null;
-
         $category_id = $request->category_id;
 
+        // All Food
         if( $category_id == null) {
             $productModel = new ProductModel();
             $items = $productModel->getItem($this->params, ['task' => 'news-get-item-all-food']);
+            $type = 'all-food';
+        // Food in Category
         } else {
-            $params["category_id"]  = $request->category_id;
-            $items = $this->getItem($params, ['task' => 'news-get-item']);
+            $this->params["category_id"]  = $request->category_id;
+
+            $productModel = new ProductModel();
+            $items = $productModel->getItem($this->params, ['task' => 'news-get-item-category-id']);
+            $type = 'all-food-in-category-id';
         }
 
         // echo '<pre style="color:red";>$itemsProduct === '; print_r($itemsProduct);echo '</pre>';
         // echo '<h3>Die is Called Category Controller</h3>';die;
 
-        // $itemsLatest   = $categoryModel->listItems(null, ['task'  => 'news-list-items-latest']);
-        // $params["category_id"]  = $itemCategory['category_id'];
-        // $itemCategory['related_categorys'] = $categoryModel->listItems($params, ['task' => 'news-list-items-related-in-category']);
         // $categoryModel = new CategoryModel();
         // $breadcrumbs = $categoryModel->listItems($params, ['task' => 'news-breadcrumbs']);
 
         return view($this->pathViewController . 'index', compact(
-            'items'
+            'items', 'type'
         ));
 
     }
-
  
 }

@@ -126,9 +126,21 @@ class ProductModel extends AdminModel
             $result = self::select('id', 'thumb')->where('id', $params['id'])->first();
         }
 
+        if($options['task'] == 'news-get-item-category-id') {
+            $result = self::select('id', 'category_id', 'product_code', 'name', 'thumb', 'price', 'price_sale', 'sale', 'slug', 'short_description')
+            ->where('status','active')
+            ->where('category_id', $params["category_id"])
+            ->orderBy('ordering', 'desc')
+            ->paginate($params['pagination']['totalItemsPerPage']);
+            // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
+            // $result = $params;
+        }
+
+
         //get all food for menu All Food
         if($options['task'] == 'news-get-item-all-food') {
             $result = self::select('id', 'product_code', 'name', 'thumb', 'price', 'price_sale', 'sale', 'slug', 'short_description')
+            ->where('status','active')
             ->where('status','active')
             ->orderBy('ordering', 'desc')
             ->paginate($params['pagination']['totalItemsPerPage']);
