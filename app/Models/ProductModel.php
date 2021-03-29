@@ -54,11 +54,13 @@ class ProductModel extends AdminModel
         }
         //lay san pham gan nhat o trang chu
         if($options['task'] == 'news-list-items') {
-            $query = $this->select('id', 'name', 'price', 'sale', 'thumb')
-                        ->where('status', '=', 'active' )
-                        ->limit(8);
-
-            $result = $query->get();
+            $query = self::select('id', 'product_code', 'name', 'thumb', 'price', 'price_sale', 'sale', 'slug')
+                ->where('status', '=', 'active' )
+                ->orderBy('id', 'desc')
+                ->orderBy('ordering', 'desc')
+                ->limit(8);
+            $result = $query->get()->toArray();
+            // $result = $query->get();
         }
         //lay san pham lien quan o trang chi tiet san pham
         if($options['task'] == 'news-list-items-related-in-product') {

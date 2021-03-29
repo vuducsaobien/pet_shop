@@ -40,23 +40,16 @@ class HomeController extends Controller
 
         /*================================= lay recent product ==========================*/
         $productModel = new ProductModel();
-        $itemsProduct = $productModel->listItems(null, ['task' => 'news-list-items']);
+        $items = $productModel->listItems(null, ['task' => 'news-list-items']);
 
         /*================================= lay recent article ==========================*/
         $articleModel = new ArticleModel();
         $itemsArticle = $articleModel->listItems(null, ['task' => 'news-list-items']);
 
 
-        return view($this->pathViewController . 'index',
-            compact(
-//        'itemsMenu',
-    'itemsCategory',
-                'itemsSlider',
-                'itemsProduct',
-                'itemsArticle',
+        return view($this->pathViewController . 'index', compact('itemsCategory', 'itemsSlider', 'items', 'itemsArticle',
                 'itemsTestimonial'
-            )
-        );
+        ));
     }
 
     public function notFound(Request $request)
