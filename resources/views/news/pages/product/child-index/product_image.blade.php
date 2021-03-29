@@ -5,11 +5,15 @@
     $count = count($thumb);
     $path = "images/product_image/";
 
-    $pathFirst = $path . $thumb[0]['name'];
+    if ($count > 0) {
+        $pathFirst = $path . $thumb[0]['name'];
+
+        $xhtmlImage = '';
+    }
 
     // echo '<pre style="color:red";>$thumb=== '; print_r($thumb);echo '</pre>';
     // echo '<h3>Die is Called </h3>';die;
-    $xhtmlImage = '';
+
 @endphp
 
 

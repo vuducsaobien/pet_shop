@@ -12,6 +12,7 @@
         $linkProduct       = URL::linkProduct($id, $value['name']);
         $thumb             = $value['thumb'];
         $name              = $value['name'];
+        $quantity          = $value['quantity'];
         $htmlPrice         = Template::caculatorPriceFrontend($value['price'], $value['price_sale'], $value['sale']);
         $short_description = $value['short_description'];
     @endphp
@@ -19,9 +20,9 @@
     <div class="product-width col-lg-6 col-xl-4 col-md-6 col-sm-6">
         <div class="product-wrapper mb-10">
 
-            @include('news.partials.product.product_image')
+            @include('news.partials.product.product_image', ['linkProduct' => $linkProduct])
             @include('news.partials.product.product_content')
-            @include('news.partials.product.product_list_content')
+            @include('news.partials.product.product_list_content', ['quantity' => $quantity])
 
         </div>
     </div>

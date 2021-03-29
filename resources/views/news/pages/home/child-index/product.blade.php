@@ -5,11 +5,12 @@
 
 @foreach($items as $key => $value)
     @php
-        $id        = $value['id'];
-        $linkModal = URL::linkModal($id);
-        $thumb     = $value['thumb'];
-        $name      = $value['name'];
-        $htmlPrice = Template::caculatorPriceFrontend($value['price'], $value['price_sale'], $value['sale']);
+        $id          = $value['id'];
+        $linkModal   = URL::linkModal($id);
+        $thumb       = $value['thumb'];
+        $name        = $value['name'];
+        $htmlPrice   = Template::caculatorPriceFrontend($value['price'], $value['price_sale'], $value['sale']);
+        $linkProduct = URL::linkProduct($id, $value['name']);
         
     @endphp
 
@@ -17,7 +18,7 @@
 
         <div class="product-wrapper mb-10">
 
-            @include('news.partials.product.product_image')
+            @include('news.partials.product.product_image', ['linkProduct' => $linkProduct])
             @include('news.partials.product.product_content')
 
         </div>
