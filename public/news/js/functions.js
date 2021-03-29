@@ -1,47 +1,8 @@
-$(document).ready(function() {	
-	
-});
-
 function showNotify(element, message, type = 'success') {
     element.notify(message, {
         position: "top center",
         className: type,
     });
-}
-
-function callAjax(element, url, type) {
-	$.ajax({
-		url: url,
-		type: "GET",
-		dataType: "json",
-		success: function (result) {
-			console.log(result);
-			
-			if (result) {
-				switch (type) {
-					case 'ordering':
-						$(".modified-" + result.id).html(result.modified);
-						showNotify(element, result.message);
-						break;
-					case 'status':
-						console.log(result);
-						
-						$(".modified-" + result.id).html(result.modified);
-						element.text(result.status.name);
-						element.removeClass(element.data('class'));
-						element.addClass(result.status.class);
-						element.data('class', result.status.class);
-						element.attr("href", result.link);
-						showNotify(element, result.message);
-					case 'select':
-						$(".modified-" + result.id).html(result.modified);
-						showNotify(element, result.message);
-				}
-			} else {
-				console.log('fail');
-			}
-		},
-	});
 }
 
 function allStorage() {
@@ -86,4 +47,166 @@ function checkNumberHigher(number, higher){
     let flag;
     if(number >= higher) {flag = true;}else{flag = false;}
     return flag;
+}
+
+function callAjax(element, url, type) {
+
+	$.ajax({
+		url: url,
+		type: "GET",
+		dataType: "json",
+		success: function (result) {
+			console.log(result);
+			
+			if (result) {
+				switch (type) {
+
+					case 'modal':
+						// console.log(result);
+
+						// Add Name
+						$(".qwick-view-content h3").html(result.name);
+
+						// Add Price
+						let xhtml = format_html_price(result.price, result.price_sale, result.sale);
+						$(".qwick-view-content .product-price").html(xhtml);
+
+						// Add Short Description
+						let short = $(".qwick-view-content div.product-short-description");
+						short.html(result.short_description);
+						if ( short.next().is('br') ){
+						}else{
+							$("<br>").insertAfter(short);
+						}
+
+						// Add Attribute Product
+						let attribute = $(".qwick-view-content div.quick-view-select");
+						if (attribute.children().length > 0 ) {
+							attribute.children().remove();
+						}
+
+						let select = selectBox(result.attribute, result.list_attribute);
+						attribute.append(select);
+
+						// console.log(result.attribute);
+						// console.log(result.list_attribute);
+
+						// Add Image
+						console.log(result.list_images);
+						let bigImage = $(".quick-view-tab-content");
+						let smallImage = $(".quick-view-list nav");
+						// let xhtmlImage = '';
+						$.each(result.list_images, function( key, val ) {
+							// console.log(`key = ${indexChild} - param = ${resultChild}`);
+							xhtmlImage += `
+								<a class="active" href="#modal1" data-toggle="tab">
+									<img src="{{ URL::asset('news/images/quick-view/s1.jpg') }}" alt="" style="width: 100%; height: 100%"/>
+								</a>
+							`;
+							// '{{ URL::asset('/images/flags/') }}'
+						});
+						// smallImage.append(xhtmlImage);
+		
+
+						//<div class="tab-pane active show fade" id="modal1" role="tabpanel">
+						//	<img src="{{ asset('/images/quick-view/l1.jpg') }}" alt="">
+						//</div>
+
+						//<div class="tab-pane fade" id="modal2" role="tabpanel">
+						//	<img src="{{ asset('/images/quick-view/l2.jpg') }}" alt="">
+						//</div>
+
+						//<a class="active" href="#modal1" data-toggle="tab">
+						//	<img src="{{ asset('/images/quick-view/s1.jpg') }}" alt="" style="width: 100%; height: 100%"/>
+						//</a>
+
+						//<a href="#modal2" data-toggle="tab" role="tab">
+						//	<img src="{{ asset('/images/quick-view/s2.jpg') }}" alt="" style="width: 100%; height: 100%"/>
+						//</a>
+					break;
+	
+				}
+			} else {
+				console.log('fail');
+			}
+		},
+	});
+}
+
+function format_html_price(price, price_sale, sale=0){
+	price_sale = format_price(price_sale);
+	xhtml = `<span class="new">${price_sale}</span>`;
+
+	if (sale > 0) {
+		price = format_price(price);
+		xhtml += `<span class="old">${price}</span>`;
+
+	}
+
+	return xhtml;
+}
+
+function format_price(price, type = 'vietnam', comma = '.', decimal = 0){
+	let result = price.toFixed(decimal).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, `$1${comma}`);
+
+	switch (type) {
+		case 'vietnam':
+			return result + ' <u>đ</u> ';
+			break;
+		case 'america':
+			return ' $ ' + result;
+			break;
+		default:
+			return result + ' <u>đ</u> ';
+			break;
+	}
+
+}
+
+function selectBox(attribute, list_attribute){
+
+	let xhtml = '';
+	$.each(attribute, function( key, val ) {
+		// console.log('val.id = ' + val.id);
+
+		$.each(list_attribute, function( index, result ) {
+			if (val.id == index) {
+
+				xhtml += `
+				<div class="select-option-part">
+					<label>${val.name}*</label>
+					<select class="select">
+						<option value="default">- Please Select ${val.id} -</option>
+				`;
+
+				$.each(list_attribute, function( index, result ) {
+					// console.log(`index = ${index} - result = ${result}`);
+
+					$.each(result, function( indexChild, resultChild ) {
+					// console.log(`key = ${indexChild} - param = ${resultChild}`);
+
+						if (val.id == index) {
+							xhtml += `<option value="${resultChild.value}">${resultChild.value}</option>`;
+						}else{
+							return false;
+						}
+
+					});
+
+				});
+
+				xhtml += `
+					</select>
+				</div>
+				`;
+
+			}
+			// else{
+			// 	xhtml = '<br><br><br><br><br><br><br><br><br><br><br><br><br>'
+			// }
+		});
+
+	});
+
+	return xhtml;
 }
