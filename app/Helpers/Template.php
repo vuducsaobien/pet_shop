@@ -278,14 +278,42 @@ class Template
         }
     }
 
-    public static function caculatorPriceFrontend($price, $price_sale, $sale=0)
+    public static function caculatorPriceFrontend($price, $price_sale, $sale=0, $type=1)
     {
-        $price_sale = self::format_price($price_sale, 'vietnamese dong');
-        $xhtml = '<span class="new">'.$price_sale.' </span>';
+        switch ($type) {
+            case 1:
+                $price_sale = self::format_price($price_sale, 'vietnamese dong');
+                $xhtml = '<span class="new">'.$price_sale.' </span>';
+        
+                if ($sale > 0) {
+                    $price = self::format_price($price, 'vietnamese dong');
+                    $xhtml      .= '<span class="old">'.$price.' </span>';
+                }
+                break;
+            case 2:
+        
+                if ($sale > 0) {
+                    $price      = self::format_price($price, 'vietnamese dong');
+                    $price_sale = self::format_price($price_sale, 'vietnamese dong');
+                    $xhtml      = '
+                        <span class="deal-old-price">'.$price.' </span>
+                        <span>'.$price_sale.' </span>
+                    ';
 
-        if ($sale > 0) {
-            $price = self::format_price($price, 'vietnamese dong');
-            $xhtml      .= '<span class="old">'.$price.' </span>';
+                }
+                // <span class="deal-old-price">$16.00 </span>
+                // <span> $10.00</span>
+
+                break;
+                default:
+                $price_sale = self::format_price($price_sale, 'vietnamese dong');
+                $xhtml = '<span class="new">'.$price_sale.' </span>';
+        
+                if ($sale > 0) {
+                    $price = self::format_price($price, 'vietnamese dong');
+                    $xhtml      .= '<span class="old">'.$price.' </span>';
+                }
+                break;
         }
 
         return $xhtml;

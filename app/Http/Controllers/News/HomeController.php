@@ -39,8 +39,9 @@ class HomeController extends Controller
         $itemsTestimonial = $testimonialModel->listItems(null, ['task' => 'news-list-items']);
 
         /*================================= lay recent product ==========================*/
-        $productModel = new ProductModel();
-        $items = $productModel->listItems(null, ['task' => 'news-list-items']);
+        $productModel  = new ProductModel();
+        $items         = $productModel->listItems(null, ['task' => 'news-list-items']);
+        $itemsBestDeal = $productModel->listItems(null, ['task' => 'news-list-items-best-deal']);
 
         /*================================= lay recent article ==========================*/
         $articleModel = new ArticleModel();
@@ -48,7 +49,7 @@ class HomeController extends Controller
 
 
         return view($this->pathViewController . 'index', compact('itemsCategory', 'itemsSlider', 'items', 'itemsArticle',
-                'itemsTestimonial'
+                'itemsTestimonial', 'itemsBestDeal'
         ));
     }
 

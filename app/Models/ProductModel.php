@@ -26,7 +26,6 @@ class ProductModel extends AdminModel
     }
 
     public function listItems($params = null, $options = null) {
-     
         $result = null;
 
         if($options['task'] == "admin-list-items") {
@@ -52,7 +51,8 @@ class ProductModel extends AdminModel
                             ->paginate($params['pagination']['totalItemsPerPage']);
 
         }
-        //lay san pham gan nhat o trang chu
+
+        // Home - Recent Products
         if($options['task'] == 'news-list-items') {
             $query = self::select('id', 'product_code', 'name', 'thumb', 'price', 'price_sale', 'sale', 'slug')
                 ->where('status', '=', 'active' )
@@ -62,7 +62,8 @@ class ProductModel extends AdminModel
             $result = $query->get()->toArray();
             // $result = $query->get();
         }
-        //lay san pham lien quan o trang chi tiet san pham
+
+        // Product Detail - Related Product
         if($options['task'] == 'news-list-items-related-in-product') {
 
             $query = $this->select('id', 'name', 'price', 'thumb', 'sale')
@@ -74,7 +75,17 @@ class ProductModel extends AdminModel
             $result = $query->get();
         }
 
+        // Home - Best Deal
+        if($options['task'] == 'news-list-items-best-deal') {
+            $query = self::select('id', 'product_code', 'name', 'price', 'price_sale', 'sale', 'slug', 'short_description')
+                ->where('status', '=', 'active' )
+                ->orderBy('sale', 'desc')
+                ->limit(2)
+            ;
+            // $result = $query->get()->toArray();
+            $result = $query->first()->toArray();
 
+        }
 
         return $result;
     }
