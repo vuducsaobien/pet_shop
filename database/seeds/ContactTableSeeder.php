@@ -18,7 +18,7 @@ class ContactTableSeeder extends Seeder
                     'name' => 'john',
                     'status' => 'active',
                     'email'=>'abc@gmail.com',
-                    'phone'=>'0234234324',
+                    'subject'=>'chua nghi ra',
                     'message'=>'chua nghi ra',
                     'ip'=>'192.168.1.1',
                     'created'=>now(),

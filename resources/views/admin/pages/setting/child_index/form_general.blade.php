@@ -36,10 +36,24 @@
         ],[
             'label'     => Form::label('address', 'Địa chỉ', $formLabelAttributes),
             'element'   => Form::text('address', $item['address'] ?? '', $formInputAttributes)
-        ],[
+        ],
+        [
             'label'     => Form::label('introduce', 'Giới thiệu', $formLabelAttributes),
             'element'   => Form::textarea('introduce', $item['introduce'] ?? '', $formCKEditorAttributes)
-        ],[
+        ],
+        [
+            'label'     => Form::label('contact_column_1', 'Thông tin liên hệ contact cột 1', $formLabelAttributes),
+            'element'   => Form::textarea('contact_column_1', $item['contact_column_1'] ?? '', $formCKEditorAttributes)
+        ],
+       [
+            'label'     => Form::label('contact_column_2', 'Thông tin liên hệ contact cột 2', $formLabelAttributes),
+            'element'   => Form::textarea('contact_column_2', $item['contact_column_2'] ?? '', $formCKEditorAttributes)
+        ],
+        [
+            'label'     => Form::label('contact_column_3', 'Thông tin liên hệ contact cột 3', $formLabelAttributes),
+            'element'   => Form::textarea('contact_column_3', $item['contact_column_3'] ?? '', $formCKEditorAttributes)
+        ],
+        [
             'label'     => Form::label('maps', 'Google maps', $formLabelAttributes),
             'element'   => Form::textarea('maps', $item['maps'] ?? '', $formInputAttributes)
         ],[

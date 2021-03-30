@@ -8,7 +8,9 @@ class URL
     public static function linkCategory($category)
     {
         return route('category/list', [
-            'category_slug' => $category->slug
+            'category_slug' => $category->slug,
+            'category_id' => $category->id,
+
         ]);
 
     }
@@ -25,6 +27,7 @@ class URL
     {
         return route('product/index', [
             'product_slug'   => $product['slug'],
+
         ]);
 
     }

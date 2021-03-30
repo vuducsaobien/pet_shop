@@ -1,6 +1,7 @@
 $(function() {
 
 	// Get the form.
+/*
 	var form = $('#contact-form');
 
 	// Get the messages div.
@@ -44,5 +45,6 @@ $(function() {
 			}
 		});
 	});
+*/
 
 });

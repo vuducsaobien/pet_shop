@@ -17,6 +17,7 @@ class MailService
     public function sendContactConfirm($data)
     {
         $mail = json_decode(SettingModel::where('key_value', 'setting-email')->first()->value, true);
+//        dd($mail);
         if (empty($mail))
             return false;
         else {

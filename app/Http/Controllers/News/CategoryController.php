@@ -52,7 +52,8 @@ class CategoryController extends FrontendController
 
     public function list(Request $request)
     {
-        return 'slug cua category la '.$request->category_slug;
+        return 'id cua category la '.$request->category_id;
+
     }
  
 }

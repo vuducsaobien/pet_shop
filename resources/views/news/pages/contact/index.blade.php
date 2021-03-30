@@ -8,9 +8,9 @@
     <div class="contact-area pt-100 pb-100">
         <div class="container">
             <div class="row">
-                @include('news.pages.contact.child-index.info')
+                @include('news.pages.contact.child-index.info',['setting_general'=>$setting_general])
             </div>
-    
+
             <div class="row">
                 <div class="col-12">
                     <div class="contact-message-wrapper">
@@ -23,10 +23,12 @@
                 </div>
             </div>
             <div class="contact-map">
-                <div id="map"></div>
+                <div id="maps">
+                    {!! $setting_general['maps'] !!}
+                </div>
             </div>
         </div>
     </div>
-    
+
 @endsection
-        
+
