@@ -20,9 +20,11 @@ class ProductController extends FrontendController
     }
 
     public function index(Request $request)
-    {   
-        $params["product_id"]  = $request->product_id;
+    {
+
+        $params["product_slug"]  = $request->product_slug;
         $items = $this->model->getItem($params, ['task' => 'news-get-item-product-detail']);
+        $params['product_id']=$items['id'];
         if(empty($items))  return redirect()->route('home');
 
         //Get List Image

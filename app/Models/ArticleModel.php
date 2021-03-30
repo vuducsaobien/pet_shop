@@ -60,7 +60,7 @@ class ArticleModel extends AdminModel
         }
 
         if($options['task'] == 'news-list-items') {
-            $query = $this->select('id', 'name', 'thumb','created','created_by')
+            $query = $this->select('id','slug', 'name', 'thumb','created','created_by')
                         ->where('status', '=', 'active' )
                         ->limit(3);
 

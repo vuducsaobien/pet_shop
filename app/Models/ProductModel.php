@@ -135,7 +135,7 @@ class ProductModel extends AdminModel
             $result = self::select('id', 'category_id', 'product_code', 'name', 'quantity',
                 'thumb', 'price', 'price_sale', 'sale', 'slug', 'short_description', 'description')
             ->where('status','active')
-            ->where('id', $params["product_id"])
+            ->where('slug', $params["product_slug"])
             ->first()->toArray();
         }
 

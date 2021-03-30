@@ -50,9 +50,9 @@ class CategoryController extends FrontendController
 
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        return 'list product in some category';
+        return 'slug cua category la '.$request->category_slug;
     }
  
 }

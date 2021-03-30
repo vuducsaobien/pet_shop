@@ -7,7 +7,7 @@
 
     <div class="blog-wrapper mb-30 gray-bg">
         <div class="blog-img hover-effect">
-            <a href="blog-details.html"><img alt="" src="{{ asset($item->thumb) }}"></a>
+            <a href="{{URL::linkArticle($item)}}"><img alt="" src="{{ asset($item->thumb) }}"></a>
         </div>
         <div class="blog-content">
             <div class="blog-meta">

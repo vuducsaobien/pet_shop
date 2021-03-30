@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 $prefixNews  = config('zvn.url.prefix_news');
 
+Route::get('', [ 'as' => 'HomeController', 'uses' => 'News\HomeController@' . 'index' ]);
+
 Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
 
     // ============================== HOMEPAGE ==============================
@@ -36,10 +38,9 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         Route::get('/list-blog.html',  
         [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
 
-         Route::get('/{article_name}-{article_id}.html',
+         Route::get('/{article_slug}.html',
          [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
-         ->where('article_name', '[0-9a-zA-Z_-]+')
-         ->where('article_id', '[0-9]+');
+         ->where('article_slug', '[0-9a-zA-Z_-]+');
 
         Route::get('/blog.html',  
         [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ]);
@@ -54,7 +55,7 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         $controller = ucfirst($controllerName)  . 'Controller@';
 
         Route::get('/all-food.html', [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
-        Route::get('{category_slug}-{category_id}.html', [ 'as' => $controllerName . '/list', 'uses' => $controller . 'list' ]);
+        Route::get('{category_slug}.html', [ 'as' => $controllerName . '/list', 'uses' => $controller . 'list' ]);
 
         // Route::get('{category_name}-{category_id}.html',
         //     [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
@@ -72,10 +73,9 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName)  . 'Controller@';
 
-        Route::get('/{product_name}-{product_id}',
+        Route::get('/{product_slug}.html',
         [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
-        ->where('product_name', '[0-9a-zA-Z_-]+')
-        ->where('product_id', '[0-9]+');
+        ->where('product_slug', '[0-9a-zA-Z_-]+');
 
         Route::get('modal-image/{product_id}', 
         ['as' => $controllerName . '/modal', 'uses' => $controller . 'get_image_modal'])->where('id', '[0-9]+');
