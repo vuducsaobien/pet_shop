@@ -15,6 +15,10 @@ class CategoryModel extends AdminModel
     protected $table = 'category';
     protected $guarded = [];
 
+    public function product()
+    {
+        return $this->hasMany(ProductModel::class,'category_id');
+    }
     public function listItems($params = null, $options = null) {
      
         $result = null;
@@ -117,6 +121,9 @@ class CategoryModel extends AdminModel
         
         if($options['task'] == 'get-item') {
             $result = self::select('id','thumb','slug', 'name', 'parent_id', 'status')->where('id', $params['id'])->first();
+        }
+        if($options['task'] == 'get-item-by-slug') {
+            $result = self::select('id','thumb','slug', 'name', 'parent_id', 'status')->where('slug', $params['slug'])->first();
         }
 
         if($options['task'] == 'news-get-item') {

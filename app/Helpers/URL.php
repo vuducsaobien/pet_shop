@@ -9,7 +9,6 @@ class URL
     {
         return route('category/list', [
             'category_slug' => $category->slug,
-            'category_id' => $category->id,
 
         ]);
 

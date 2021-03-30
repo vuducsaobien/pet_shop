@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\News;
 use App\Http\Controllers\Controller;
+use App\Models\CategoryModel;
 use Illuminate\Http\Request;
 
 use App\Models\CategoryModel as MainModel;
@@ -52,7 +53,12 @@ class CategoryController extends FrontendController
 
     public function list(Request $request)
     {
-        return 'id cua category la '.$request->category_id;
+        $params['slug']=$request->category_slug;
+        $category=new CategoryModel();
+        $itemCategory=$category->getItem($params,['task'=>'get-item-by-slug']);
+        $data=$itemCategory->product->toArray(); //cac san pham co slug nhu tren
+        dd($data);
+        return 'slug cua category la '.$request->category_slug;
 
     }
  
