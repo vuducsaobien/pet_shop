@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\News;
 use App\Http\Controllers\Controller;
+use App\Models\TeamModel;
 use Illuminate\Http\Request;
 use App\Models\TestimonialModel;
 
@@ -37,12 +38,16 @@ class AboutController extends Controller
         $testimonialModel = new TestimonialModel();
         $itemsTestimonial = $testimonialModel->listItems(null, ['task' => 'news-list-items']);
 
+
+        $teamModel = new TeamModel();
+        $items = $teamModel->listItems(null, ['task' => 'news-list-items']);
+
         // echo '<pre style="color:red";>$itemsTestimonial === '; print_r($itemsTestimonial);echo '</pre>';
         // echo '<h3>Die is Called </h3>';die;
         // dd($itemsTestimonial);
 
         return view($this->pathViewController . 'index',compact(
-            'itemsTestimonial'
+            'itemsTestimonial','items'
         ));
     }
 

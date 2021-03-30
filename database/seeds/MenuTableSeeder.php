@@ -37,7 +37,7 @@ class MenuTableSeeder extends Seeder
                 'type_link' => 'current',
                 'type_menu' => 'link',
                 'status'    => 'active',
-                'link'      => '/about-us.html'
+                'link'      => '/about-us'
             ],[
                 'name'      => 'Contact Us',
                 'type_link' => 'current',

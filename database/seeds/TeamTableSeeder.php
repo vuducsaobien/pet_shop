@@ -15,7 +15,7 @@ class TeamTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(TeamModel::class, 3)->create();
+        factory(TeamModel::class, 4)->create();
 
 
     }

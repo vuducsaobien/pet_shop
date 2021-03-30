@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 $b=0;
 $factory->define(TeamModel::class, function (Faker $faker) use (&$b){
     $b++;
-    $arr=['kaka','Đức','Hùng','Huy'];
+    $arr=['a','Đức','Hùng','Huy',"Anh Lân","Trung"];
     return [
             'name' => $arr[$b],
             'job'=>'Developer',
