@@ -24,8 +24,8 @@ class URL
     public static function linkProduct($product)
     {
         return route('product/index', [
-            'product_slug'   => $product['slug'],
-
+            'product_slug' => $product['slug'],
+            'product_id'   => $product['id']
         ]);
 
     }

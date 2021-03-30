@@ -122,19 +122,17 @@ class ProductModel extends AdminModel
     public function getItem($params = null, $options = null) { 
         $result = null;
 
-       //form add-edit product
         if($options['task'] == 'get-item') {
             $result = self::where('id', $params['id'])
                 ->with('attribute')
                 ->first();
         }
 
-        //get info for product detail
         if($options['task'] == 'news-get-item-product-detail') {
             $result = self::select('id', 'category_id', 'product_code', 'name', 'quantity',
                 'thumb', 'price', 'price_sale', 'sale', 'slug', 'short_description', 'description')
             ->where('status','active')
-            ->where('slug', $params["product_slug"])
+            ->where('id', $params["product_id"])
             ->first()->toArray();
         }
 
@@ -155,8 +153,6 @@ class ProductModel extends AdminModel
             // echo '<h3>Die is Called </h3>';die;
         }
 
-
-        //get all food for menu All Food
         if($options['task'] == 'news-get-item-all-food') {
             $result = self::select('id', 'product_code', 'name', 'thumb', 'price', 'quantity',
                 'price_sale', 'sale', 'slug', 'short_description')
@@ -186,6 +182,21 @@ class ProductModel extends AdminModel
             $productAttribute = new ProductAttributeModel();
             $result['list_attribute'] = $productAttribute->getItem($params, ['task' => 'get-list-thumb-product-id-modal']);
 
+        }
+
+        if($options['task'] == 'get-list-thumb-product-detail') {
+            $productImage = new ProductImageModel();
+            $result       = $productImage->getItem($params, ['task' => 'get-list-thumb-product-detail']);
+        }
+
+        if($options['task'] == 'get-list-thumb-product-id-modal') {
+            $attribute = new AttributeModel();
+            $result    = $attribute->getItem(null, ['task' => 'get-list-thumb-product-id-modal']);
+        }
+
+        if($options['task'] == 'get-list-thumb-product-id-modal-array') {
+            $productAttribute = new ProductAttributeModel();
+            $result           = $productAttribute->getItem($params, ['task' => 'get-list-thumb-product-id-modal-array']);
         }
 
         return $result;

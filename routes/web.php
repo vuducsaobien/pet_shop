@@ -42,7 +42,7 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
          [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ])
          ->where('article_slug', '[0-9a-zA-Z_-]+');
 
-/*        Route::get('/blog.html',
+        /* Route::get('/blog.html',
         [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ]);*/
 
     });
@@ -55,23 +55,22 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         
         Route::get('{category_slug}.html', [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
     });
-
+    
     // ====================== Product page ========================
-    $prefix         = 'san-pham';
+    $prefix         = 'food';
     $controllerName = 'product';
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName)  . 'Controller@';
 
-        Route::get('/{product_slug}.html',
+        Route::get('{product_slug}-food-{product_id}.html',
         [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
         ->where('product_slug', '[0-9a-zA-Z_-]+');
 
         Route::get('modal-image/{product_id}', 
         ['as' => $controllerName . '/modal', 'uses' => $controller . 'get_image_modal'])->where('id', '[0-9]+');
 
-        // Route::get('change-status-{status}/{id}',   [ 'as' => $controllerName . '/status',      'uses' => $controller . 'status'])->where('id', '[0-9]+');
-
     });
+    
 
     // ============================== NOTIFY ==============================
     $prefix         = '';
