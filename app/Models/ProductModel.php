@@ -5,9 +5,10 @@ use App\Models\AdminModel;
 use App\Models\ProductImageModel;
 use App\Models\AttributeModel;
 use App\Models\ProductAttributeModel;
+use App\Models\CommentModel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use DB; 
+use Illuminate\Support\Facades\DB; 
 class ProductModel extends AdminModel
 {
     protected $table               = 'product';
@@ -279,6 +280,22 @@ class ProductModel extends AdminModel
             self::where('id', $params['id'])->delete();
         }
     }
+
+    public function getComment($params = null, $options = null) 
+    { 
+        if($options['task'] == 'in-product-detail') {
+
+            $commentModel = new CommentModel();
+            // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
+
+            $result = $commentModel->getItem($params, ['task' => 'in-product-detail']);
+            // echo '<pre style="color:red";>$result === '; print_r($result);echo '</pre>';
+            // echo '<h3>Die is Called </h3>';die;
+            return $result;
+
+        }
+    }
+
 
 }
 
