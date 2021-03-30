@@ -16,7 +16,7 @@ class URL
 
     public static function linkArticle($article)
     {
-        return route('article/index', [
+        return route('article/detail', [
             'article_slug' => $article->slug
         ]);
 

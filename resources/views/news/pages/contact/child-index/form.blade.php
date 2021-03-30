@@ -34,7 +34,7 @@
 
 
                 <textarea name="message" placeholder="Message"></textarea>
-                <span class="color-red">{{$errors->first('subject')}}</span>
+                <span class="color-red">{{$errors->first('message')}}</span>
                 <br>
                 <button class="submits btn-style" type="submit">SEND MESSAGE</button>
 

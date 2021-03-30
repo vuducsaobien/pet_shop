@@ -38,12 +38,12 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         Route::get('/list-blog.html',  
         [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
 
-         Route::get('/{article_slug}.html',
-         [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
+         Route::get('{article_slug}.html',
+         [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ])
          ->where('article_slug', '[0-9a-zA-Z_-]+');
 
-        Route::get('/blog.html',  
-        [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ]);
+/*        Route::get('/blog.html',
+        [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ]);*/
 
     });
 

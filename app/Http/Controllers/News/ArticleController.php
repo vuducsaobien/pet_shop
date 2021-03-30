@@ -20,54 +20,30 @@ class ArticleController extends Controller
     }
 
     public function index(Request $request)
-    {   
-        // $params["article_id"]  = $request->article_id;
-        // $articleModel  = new ArticleModel();
-        
+    {
 
-        // $itemArticle = $articleModel->getItem($params, ['task' => 'news-get-item']);
-        // if(empty($itemArticle))  return redirect()->route('home');
-        
-        // $itemsLatest   = $articleModel->listItems(null, ['task'  => 'news-list-items-latest']);
-        
-        // $params["category_id"]  = $itemArticle['category_id'];
-        // $itemArticle['related_articles'] = $articleModel->listItems($params, ['task' => 'news-list-items-related-in-category']);
+         $articleModel  = new ArticleModel();
+         $items = $articleModel->getItem(null, ['task' => 'news-get-item']);
 
-        // $categoryModel = new CategoryModel();
-        // $breadcrumbs = $categoryModel->listItems($params, ['task' => 'news-breadcrumbs']);
-       
-        $itemsTestimonial = '';
-        return view($this->pathViewController .  'index', [
-            // 'params'        => $this->params,
-            // 'itemsLatest'   => $itemsLatest,
-            // 'itemArticle'  => $itemArticle,
-            // 'breadcrumbs'  => $breadcrumbs,
-        ]);
+
+        return view($this->pathViewController .  'index', compact(
+            'items'
+
+        ));
     }
 
     public function detail(Request $request)
-    {   
-        // $params["article_id"]  = $request->article_id;
-        // $articleModel  = new ArticleModel();
-        
+    {
 
-        // $itemArticle = $articleModel->getItem($params, ['task' => 'news-get-item']);
-        // if(empty($itemArticle))  return redirect()->route('home');
-        
-        // $itemsLatest   = $articleModel->listItems(null, ['task'  => 'news-list-items-latest']);
-        
-        // $params["category_id"]  = $itemArticle['category_id'];
-        // $itemArticle['related_articles'] = $articleModel->listItems($params, ['task' => 'news-list-items-related-in-category']);
+        $articleModel  = new ArticleModel();
+        $params['slug']=$request->article_slug;
+        $item = $articleModel->getItem($params, ['task' => 'news-get-item-by-slug']);
 
-        // $categoryModel = new CategoryModel();
-        // $breadcrumbs = $categoryModel->listItems($params, ['task' => 'news-breadcrumbs']);
-       
-        return view($this->pathViewController .  'detail', [
-            // 'params'        => $this->params,
-            // 'itemsLatest'   => $itemsLatest,
-            // 'itemArticle'  => $itemArticle,
-            // 'breadcrumbs'  => $breadcrumbs,
-        ]);
+
+        return view($this->pathViewController .  'detail', compact(
+            'item'
+
+        ));
     }
 
 
