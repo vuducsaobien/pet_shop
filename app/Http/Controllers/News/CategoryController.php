@@ -49,5 +49,10 @@ class CategoryController extends FrontendController
         ));
 
     }
+
+    public function list()
+    {
+        return 'list product in some category';
+    }
  
 }

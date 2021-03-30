@@ -48,12 +48,13 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
 
     // ====================== Category page ========================
     // $prefix         = 'danh-muc-san-pham/';
-    $prefix         = 'all-food.html';
+    $prefix         = '';
     $controllerName = 'category';
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName)  . 'Controller@';
 
-        Route::get('/', [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
+        Route::get('/all-food.html', [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
+        Route::get('{category_slug}-{category_id}.html', [ 'as' => $controllerName . '/list', 'uses' => $controller . 'list' ]);
 
         // Route::get('{category_name}-{category_id}.html',
         //     [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
@@ -62,7 +63,6 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
          [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
          ->where('product_name', '[0-9a-zA-Z_-]+')
          ->where('product_id', '[0-9]+');*/
-
 
     });
 
