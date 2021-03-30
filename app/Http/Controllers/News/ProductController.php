@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\News;
 
 use Illuminate\Http\Request;
+use App\Helpers\Functions;
 use App\Models\ProductModel as MainModel;
 use App\Models\AttributeModel;
 use App\Models\ProductAttributeModel;
@@ -21,10 +22,7 @@ class ProductController extends FrontendController
     public function index(Request $request)
     {   
         $params["product_id"]  = $request->product_id;
-        // $productModel  = new ProductModel();
-        // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
-        // echo '<h3>Die is Called Product Controller</h3>';die;
-        $items= $this->model->getItem($params, ['task' => 'news-get-item-product-detail']);
+        $items = $this->model->getItem($params, ['task' => 'news-get-item-product-detail']);
         if(empty($items))  return redirect()->route('home');
 
         //Get List Image
@@ -39,8 +37,21 @@ class ProductController extends FrontendController
         foreach ($items['attribute'] as $key => $value) {
             $params['attribute_id'][] = $value['id'];
         }
-        $productAttribute = new ProductAttributeModel();
+        $productAttribute        = new ProductAttributeModel();
         $items['list_attribute'] = $productAttribute->getItem($params, ['task' => 'get-list-thumb-product-id-modal-array']);
+
+        // Merge Attribute
+        $merge_attribute = Functions::fixArray_01($items['list_attribute'], 'value');
+        $allAttribute    = Functions::merge_Multidi_Array_02($items['attribute'], $merge_attribute);
+        foreach ($allAttribute as $key => $value) {
+            if (!array_key_exists("detail", $value) ) {
+                unset($allAttribute[$key]);
+            }
+        }
+        $items['all_attribute'] = Functions::implode_01($allAttribute, 'detail', ', ');
+        
+        // Get Comment
+        $items['comment']  = $this->model->getComment($params, ['task' => 'in-product-detail']);
 
         // echo '<pre style="color:red";>$items === '; print_r($items);echo '</pre>';
         // echo '<h3>Die is Called Product Controler</h3>';die;
