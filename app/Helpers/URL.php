@@ -5,13 +5,12 @@ use Illuminate\Support\Str;
 
 class URL
 {
+    
     public static function linkCategory($category)
     {
-        return route('category/list', [
+        return route('category/index', [
             'category_slug' => $category->slug,
-
         ]);
-
     }
 
     public static function linkArticle($article)

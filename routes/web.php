@@ -48,23 +48,12 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
     });
 
     // ====================== Category page ========================
-    // $prefix         = 'danh-muc-san-pham/';
     $prefix         = '';
     $controllerName = 'category';
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName)  . 'Controller@';
-
-        Route::get('/all-food.html', [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
-        Route::get('{category_slug}.html', [ 'as' => $controllerName . '/list', 'uses' => $controller . 'list' ]);
-
-        // Route::get('{category_name}-{category_id}.html',
-        //     [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
-
-        /*         Route::get('/{product_name}-{product_id}.html',
-         [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ])
-         ->where('product_name', '[0-9a-zA-Z_-]+')
-         ->where('product_id', '[0-9]+');*/
-
+        
+        Route::get('{category_slug}.html', [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
     });
 
     // ====================== Product page ========================

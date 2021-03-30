@@ -1,14 +1,13 @@
 <?php
 namespace App\Models;
-use App\Helpers\Template;
+
 use App\Models\AdminModel;
 use App\Models\ProductImageModel;
 use App\Models\AttributeModel;
 use App\Models\ProductAttributeModel;
 use App\Models\CommentModel;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB; 
+
 class ProductModel extends AdminModel
 {
     protected $table               = 'product';
@@ -58,7 +57,7 @@ class ProductModel extends AdminModel
             $query = self::select('id', 'product_code', 'name', 'thumb', 'price', 'price_sale', 'sale', 'slug')
                 ->where('status', '=', 'active' )
                 ->orderBy('id', 'desc')
-                ->orderBy('ordering', 'desc')
+                ->orderBy('ordering', 'asc')
                 ->limit(8);
             $result = $query->get()->toArray();
             // $result = $query->get();
@@ -147,7 +146,7 @@ class ProductModel extends AdminModel
             $result = self::select('id', 'category_id', 'product_code', 'name', 'thumb', 'price', 'price_sale', 'sale', 'slug', 'short_description')
             ->where('status','active')
             ->where('category_id', $params["category_id"])
-            ->orderBy('ordering', 'desc')
+            ->orderBy('ordering', 'asc')
             ->paginate($params['pagination']['totalItemsPerPage']);
             // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
 
@@ -162,7 +161,7 @@ class ProductModel extends AdminModel
             $result = self::select('id', 'product_code', 'name', 'thumb', 'price', 'quantity',
                 'price_sale', 'sale', 'slug', 'short_description')
             ->where('status','active')
-            ->orderBy('ordering', 'desc')
+            ->orderBy('ordering', 'asc')
             ->paginate($params['pagination']['totalItemsPerPage']);
             // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
 

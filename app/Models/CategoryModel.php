@@ -6,7 +6,7 @@ use App\Helpers\Template;
 use App\Models\AdminModel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use DB; 
+use Illuminate\Support\Facades\DB; 
 use Kalnoy\Nestedset\NodeTrait;
 class CategoryModel extends AdminModel
 {
@@ -134,6 +134,33 @@ class CategoryModel extends AdminModel
 
             if($result) $result = $result->toArray();
         }
+
+        if($options['task'] == 'get-category-id-form-slug') {
+            $result = self::where('slug', $params['slug'])->value('id');
+        }
+
+        if($options['task'] == 'news-get-item-all-food') {
+            $productModel = new ProductModel();
+            $result       = $productModel->getItem($params, ['task' => 'news-get-item-all-food']);
+        }
+
+        if($options['task'] == 'news-get-item-category-id') {
+            $productModel = new ProductModel();
+            $result       = $productModel->getItem($params, ['task' => 'news-get-item-category-id']);
+        }
+
+        if($options['task'] == 'news-get-item-all-slug') {
+            $result = self::where('id', '>', 1)
+            ->pluck('slug')
+            ;
+            // if($result) $result = $result->get()->toArray();
+            if($result) {
+                $result = $result->toArray();
+                array_push($result, 'all-food');
+            }
+        }
+
+
         
         return $result;
     }
@@ -176,8 +203,8 @@ class CategoryModel extends AdminModel
 
         if($options['task'] == 'add-item') {
             if ($options['task'] == 'add-item') {
-//                $params['created_by'] = session('userInfo')['username'];
-//                $params['created'] = date('Y-m-d H:i:s');
+            // $params['created_by'] = session('userInfo')['username'];
+            // $params['created'] = date('Y-m-d H:i:s');
                 $parent = self::find($params['parent_id']);
                 self::create($this->prepareParams($params), $parent);
             }

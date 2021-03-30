@@ -1,13 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\News;
-use App\Http\Controllers\Controller;
-use App\Models\CategoryModel;
 use Illuminate\Http\Request;
-
 use App\Models\CategoryModel as MainModel;
-use App\Models\ProductModel;
-
 
 class CategoryController extends FrontendController
 {
@@ -22,44 +17,29 @@ class CategoryController extends FrontendController
 
     public function index(Request $request)
     {   
-        $category_id = $request->category_id;
-
-        // All Food
-        if( $category_id == null) {
-            $productModel = new ProductModel();
-            $items = $productModel->getItem($this->params, ['task' => 'news-get-item-all-food']);
-            $type = 'all-food';
-
-        // Food in Category
-        } else {
-            $this->params["category_id"]  = $request->category_id;
-
-            $productModel = new ProductModel();
-            $items = $productModel->getItem($this->params, ['task' => 'news-get-item-category-id']);
-            $type = 'all-food-in-category-id';
+        $params['slug']   = $request->category_slug;
+                $all_slug = $this->model->getItem(null, ['task' => 'news-get-item-all-slug']);
+        if (!in_array($params['slug'], $all_slug)) {
+            return redirect()->route('home');
         }
 
+        // All Food
+        if( $params['slug'] == 'all-food') {
+            $type  = 'all-food';
+            $items = $this->model->getItem($this->params, ['task' => 'news-get-item-all-food']);
+            // $items = $this->model->getItem($this->params, ['task' => 'news-get-item-all-food'])->toArray();
+        // Food in Category
+        } else {
+            $type          = 'all-food-in-category-id';
+            $this->params['category_id'] = $this->model->getItem($params, ['task' => 'get-category-id-form-slug']);
+            $items = $this->model->getItem($this->params, ['task' => 'news-get-item-category-id']);
+            // $items = $this->model->getItem($this->params, ['task' => 'news-get-item-category-id'])->toArray();
+        }
         // echo '<pre style="color:red";>$items === '; print_r($items);echo '</pre>';
-        // echo '<h3>Die is Called Category Controller</h3>';die;
+        // echo '<h3>Die is Called </h3>';die;
 
-        // $categoryModel = new CategoryModel();
         // $breadcrumbs = $categoryModel->listItems($params, ['task' => 'news-breadcrumbs']);
-
-        return view($this->pathViewController . 'index', compact(
-            'items', 'type'
-        ));
-
-    }
-
-    public function list(Request $request)
-    {
-        $params['slug']=$request->category_slug;
-        $category=new CategoryModel();
-        $itemCategory=$category->getItem($params,['task'=>'get-item-by-slug']);
-        $data=$itemCategory->product->toArray(); //cac san pham co slug nhu tren
-        dd($data);
-        return 'slug cua category la '.$request->category_slug;
-
+        return view($this->pathViewController . 'index', compact('items', 'type'));
     }
  
 }
