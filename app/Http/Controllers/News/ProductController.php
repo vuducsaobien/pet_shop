@@ -5,8 +5,6 @@ namespace App\Http\Controllers\News;
 use Illuminate\Http\Request;
 use App\Helpers\Functions;
 use App\Models\ProductModel as MainModel;
-use App\Models\AttributeModel;
-use App\Models\ProductAttributeModel;
 
 class ProductController extends FrontendController
 {
@@ -41,6 +39,7 @@ class ProductController extends FrontendController
         }
         $items['all_attribute'] = Functions::implode_01($allAttribute, 'detail', ', ');
         $items['comment']       = $this->model->getComment($params, ['task' => 'in-product-detail']);
+        $items['related']       = $this->model->listItems($params, ['task' => 'news-list-items-related-in-product']);
 
         return view($this->pathViewController . 'index', compact('items'));
     }

@@ -6,6 +6,7 @@ use App\Models\ProductImageModel;
 use App\Models\AttributeModel;
 use App\Models\ProductAttributeModel;
 use App\Models\CommentModel;
+use App\Models\CategoryModel;
 use Illuminate\Support\Facades\DB; 
 
 class ProductModel extends AdminModel
@@ -65,14 +66,15 @@ class ProductModel extends AdminModel
 
         // Product Detail - Related Product
         if($options['task'] == 'news-list-items-related-in-product') {
-
-            $query = $this->select('id', 'name', 'price', 'thumb', 'sale')
-                ->where('status', '=', 'active')
-                ->where('id', '!=', $params['id'])
-                ->where('category_id', '=', $params['category_id'])
+            $category_id = self::getItem($params, ['task' => 'news-get-category-id']);
+            $query       = self::select('id', 'name', 'price', 'price_sale', 'sale', 'thumb', 'slug')
+                ->where('category_id', $category_id)
+                ->where('status', 'active')
+                ->where('id', '!=', $params['product_id'])
+                ->orderBy('ordering', 'asc')
                 ->take(4)
             ;
-            $result = $query->get();
+            $result = $query->get()->toArray();
         }
 
         // Home - Best Deal
@@ -197,6 +199,10 @@ class ProductModel extends AdminModel
         if($options['task'] == 'get-list-thumb-product-id-modal-array') {
             $productAttribute = new ProductAttributeModel();
             $result           = $productAttribute->getItem($params, ['task' => 'get-list-thumb-product-id-modal-array']);
+        }
+
+        if($options['task'] == 'news-get-category-id') {
+            $result        = self::where('id', $params['product_id'])->value('category_id');
         }
 
         return $result;
