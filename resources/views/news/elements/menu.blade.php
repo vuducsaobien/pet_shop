@@ -9,6 +9,10 @@
         /*================================= lay category ==========================*/
         $categoryModel = new CategoryModel();
         $itemsCategory = $categoryModel->listItems(null, ['task' => 'news-list-items']);
+        /*================================= lay config zvn =============================*/
+        $prefix=config('zvn.url.prefix_news')?"/".config('zvn.url.prefix_news'):"";
+
+
 @endphp
 @if(count($itemsMenu))
 
@@ -16,12 +20,13 @@
     <ul>
         @foreach($itemsMenu as $item)
         @switch($item->type_menu)
+
                 @case("link")
-                <li><a href="{{$item->link}}">{{$item->name}}</a></li>
+                <li><a href="{{$prefix.$item->link}}">{{$item->name}}</a></li>
                 @break
 
                 @case("category_product")
-                <li class="mega-menu-position"><a href="{{$item->link}}">Food</a>
+                <li class="mega-menu-position"><a href="{{$prefix.$item->link}}">Food</a>
                     <ul class="mega-menu">
                         @foreach($itemsCategory as $item)
                         <li>
