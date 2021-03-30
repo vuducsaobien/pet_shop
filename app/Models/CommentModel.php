@@ -3,15 +3,16 @@
 namespace App\Models;
 
 use App\Models\AdminModel;
+use App\Models\CustomerModel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use DB; 
+use Illuminate\Support\Facades\DB; 
 class CommentModel extends AdminModel
 {
         protected $table               = 'comment';
         protected $folderUpload        = 'comment' ;
         protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
-        protected $crudNotAccepted     = ['_token','thumb_current'];
+        protected $crudNotAccepted     = ['_token','thumb_current', 'username'];
 
 
     public function listItems($params = null, $options = null) {
@@ -95,6 +96,15 @@ class CommentModel extends AdminModel
             $result = self::select('id', 'thumb')->where('id', $params['id'])->first();
         }
 
+        if($options['task'] == 'in-product-detail') {
+            $result = self::select('id', 'product_id', 'customer_id', 'star', 'message', 'name', 'created')
+            ->where('product_id', $params['product_id'])
+            ->where('status', 'active')
+            // ->get();
+            ->get()->toArray();
+        }
+
+
         return $result;
     }
 
@@ -116,9 +126,24 @@ class CommentModel extends AdminModel
             self::insert($this->prepareParams($params));
         }
 
+        if($options['task'] == 'add-item-news') {
+            // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
+            $customerModel = new CustomerModel();
+            $params['customer_id'] = $customerModel->getItem($params, ['task' => 'frontend-get-customer-id']);
+            $params['created']     = date('Y-m-d H:i:s');
+            $params['status']      = 'inactive';
+
+            $preparam = $this->prepareParams($params);
+            echo '<pre style="color:red";>$preparam === '; print_r($preparam);echo '</pre>';
+
+            // echo '<h3>Die is Called Model Comemnrt</h3>';die;
+            self::insert($preparam);
+        }
+
+
         if($options['task'] == 'edit-item') {
 
-/*            if(!empty($params['thumb'])){
+            /* if(!empty($params['thumb'])){
                 $this->deleteThumb($params['thumb_current']);
                 $params['thumb'] = $this->uploadThumb($params['thumb']);
             }*/

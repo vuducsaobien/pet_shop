@@ -132,6 +132,15 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         // Route::get('/about-us.html',[ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
     });
 
+    // ============================== COMMENT ==============================
+    $prefix         = 'comment';
+    $controllerName = 'comment';
+    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+        $controller = ucfirst($controllerName)  . 'Controller@';
+        Route::post('addComment/{product_id}',      [ 'as' => $controllerName . '/addComment',  'uses' => $controller . 'addComment'])->where('product_id', '[0-9]+');
+    });
+    
+
 
 });
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\AdminModel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use DB; 
+use Illuminate\Support\Facades\DB; 
 class CustomerModel extends AdminModel
 {
         protected $table               = 'customer';
@@ -93,6 +93,12 @@ class CustomerModel extends AdminModel
 
         if($options['task'] == 'get-thumb') {
             $result = self::select('id', 'thumb')->where('id', $params['id'])->first();
+        }
+
+        if($options['task'] == 'frontend-get-customer-id') {
+            // $result = self::select('id')->where('email', $params['email'])->first()->toArray();
+            // $result = $this->where('email', $params['email'])->value('id');
+            $result = self::where('email', $params['email'])->value('id');
         }
 
         return $result;

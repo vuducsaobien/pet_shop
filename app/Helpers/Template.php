@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Models\CategoryModel;
 use Config;
+use Hamcrest\Type\IsNumeric;
 
 class Template
 {
@@ -366,5 +367,22 @@ class Template
         return $xhtml;
     }
 
+    public static function showRating($rating)
+    {
+        if (is_numeric($rating)) {
+            $tru = 5 - $rating;
+            $xhtml = '';
+            for ($i=0; $i < $rating; $i++) { 
+                $xhtml .= '<i class="ti-star theme-color"></i>';
+            }
+    
+            for ($i=0; $i < $tru; $i++) { 
+                $xhtml .= '<i class="ti-star"></i>';
+            }
+        }
+
+        return $xhtml;
+        
+    }
 
 }
