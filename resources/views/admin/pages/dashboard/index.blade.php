@@ -1,29 +1,29 @@
-
-@php
-    use App\Helpers\Template as Template;
-    $arrBox = [
-        ['name' => 'Slider', 'total' => $itemSliderCount, 'link' => route('slider')],
-        ['name' => 'User', 'total' => $itemUserCount, 'link' => route('user')],
-        ['name' => 'Category', 'total' => $itemCategoryCount, 'link' => route('category')],
-        ['name' => 'Article', 'total' => $itemArticleCount, 'link' => route('article')],
-    ];
-
-    $xhtmlBoxDashboard = '';
-
-    foreach ($arrBox as $box) {
-        $xhtmlBoxDashboard .= sprintf('<div class="col-md-3 col-sm-3 col-xs-3">%s</div>',  Template::showBoxDashboard($box));
-    }
-    
-@endphp
-
 @extends('admin.main')
+
 @section('content')
-    <div class="page-header zvn-page-header clearfix">
-        <div class="zvn-page-header-title">
-            <h3>Dashboard</h3>
+    {!! Charts::styles() !!}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Thống kê số đơn đặt hàng</div>
+
+                    <div class="panel-body">
+                        {!! $chart->html() !!}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Thống kê số lượng bài viết mỗi table</div>
+
+                    <div class="panel-body">
+                        {!! $chart2->html() !!}
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        {!! $xhtmlBoxDashboard !!}
-    </div>
+
+    {!! Charts::scripts() !!}
+    {!! $chart->script() !!}
+    {!! $chart2->script() !!}
 @endsection

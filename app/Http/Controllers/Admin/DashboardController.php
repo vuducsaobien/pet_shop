@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+
+use App\Models\OrderModel;
+use ConsoleTVs\Charts\Facades\Charts;
 use Illuminate\Http\Request;
 use App\Models\SliderModel;
 use App\Models\UserModel;
 use App\Models\CategoryModel;
 use App\Models\ArticleModel;
+use Illuminate\Support\Facades\DB;
 
 
 class DashboardController extends AdminController
@@ -18,7 +22,7 @@ class DashboardController extends AdminController
         parent::__construct();
     }
 
-    public function index(Request $request)
+    public function indexs(Request $request)
     {
         $itemSliderCount   = SliderModel::countItemsDashboad(); 
         $itemUserCount     = UserModel::countItemsDashboad(); 
@@ -28,6 +32,37 @@ class DashboardController extends AdminController
         return view($this->pathViewController .  'index', compact([
             'itemSliderCount', 'itemUserCount', 'itemCategoryCount', 'itemArticleCount'
         ]));
+    }
+    public function index(Request $request)
+    {
+        $order = OrderModel::where(DB::raw("(DATE_FORMAT(created,'%Y'))"),date('Y'))
+            ->get();
+        /*================================= thong ke dat hang theo thang =============================*/
+        $chart = Charts::database($order, 'bar', 'highcharts')
+            ->title("thống kê số đơn đặt hàng theo tháng")
+            ->elementLabel("Số đơn đặt hàng")
+            ->dimensions(800, 400)
+            ->responsive(false)
+            ->groupByMonth(date('Y'));
+        $timestamp = rand( strtotime("Jan 01 2021"), strtotime("Dec 12 2021") );
+        $random_Date = date("Y-m-d H:i:s", $timestamp );
+
+        /*================================= thong ke khac =============================*/
+        $itemSliderCount   = SliderModel::countItemsDashboad();
+        $itemUserCount     = UserModel::countItemsDashboad();
+        $itemCategoryCount = CategoryModel::countItemsDashboad();
+        $itemArticleCount  = ArticleModel::countItemsDashboad();
+        $chart2=Charts::create('pie', 'highcharts')
+
+            ->title('Tổng số record')
+            ->labels(['Slider', 'User', 'Category','Article'])
+            ->values([$itemSliderCount,$itemUserCount,$itemCategoryCount,$itemArticleCount])
+
+            ->dimensions(800,400)
+            ->colors(['#2196F3', '#F44336', '#FFC107','green'])
+            ->responsive(false);
+
+        return view($this->pathViewController.'index',compact('chart','chart2'));
     }
 
 }

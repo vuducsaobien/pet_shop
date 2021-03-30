@@ -27,6 +27,7 @@ class CreateUserTable extends Migration
             $table->string('created_by')->nullable();
             $table->string('modified')->nullable();
             $table->string('modified_by')->nullable();
+            $table->timestamps();
         });
     }
 

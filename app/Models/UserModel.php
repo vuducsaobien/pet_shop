@@ -8,12 +8,12 @@ use Illuminate\Support\Str;
 use DB; 
 class UserModel extends AdminModel
 {
-    public function __construct() {
-        $this->table               = 'user';
-        $this->folderUpload        = 'user' ; 
-        $this->fieldSearchAccepted = ['id', 'username', 'email', 'fullname']; 
-        $this->crudNotAccepted     = ['_token','avatar_current', 'password_confirmation', 'taskAdd', 'taskChangePassword', 'taskChangeLevel', 'taskEditInfo'];
-    }
+
+        protected $table               = 'user';
+        protected $folderUpload        = 'user' ;
+        protected $fieldSearchAccepted = ['id', 'username', 'email', 'fullname'];
+        protected $crudNotAccepted     = ['_token','avatar_current', 'password_confirmation', 'taskAdd', 'taskChangePassword', 'taskChangeLevel', 'taskEditInfo'];
+        public $timestamps=false;
 
     public function listItems($params = null, $options = null) {
      

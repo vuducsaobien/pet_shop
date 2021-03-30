@@ -17,8 +17,8 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
@@ -39,6 +39,10 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
+        ),
+        'j' => 
+        array (
+            'jlawrence\\eos\\' => 14,
         ),
         'X' => 
         array (
@@ -125,6 +129,7 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         ),
         'J' => 
         array (
+            'Jenssegers\\Date\\' => 16,
             'JakubOnderka\\PhpConsoleHighlighter\\' => 35,
             'JakubOnderka\\PhpConsoleColor\\' => 29,
         ),
@@ -159,6 +164,8 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         'C' => 
         array (
             'Cron\\' => 5,
+            'ConsoleTVs\\Support\\' => 19,
+            'ConsoleTVs\\Charts\\' => 18,
             'Collective\\Html\\' => 16,
             'Carbon\\' => 7,
         ),
@@ -181,6 +188,10 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'jlawrence\\eos\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jlawrence/eos/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -370,6 +381,10 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         array (
             0 => __DIR__ . '/..' . '/kalnoy/nestedset/src',
         ),
+        'Jenssegers\\Date\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jenssegers/date/src',
+        ),
         'JakubOnderka\\PhpConsoleHighlighter\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-parallel-lint/php-console-highlighter/src',
@@ -433,6 +448,14 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
+        ),
+        'ConsoleTVs\\Support\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/consoletvs/support',
+        ),
+        'ConsoleTVs\\Charts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/consoletvs/charts/src',
         ),
         'Collective\\Html\\' => 
         array (
@@ -523,6 +546,7 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         'App\\Http\\Controllers\\News\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/News/AuthController.php',
         'App\\Http\\Controllers\\News\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/News/CategoryController.php',
         'App\\Http\\Controllers\\News\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/News/ContactController.php',
+        'App\\Http\\Controllers\\News\\FrontendController' => __DIR__ . '/../..' . '/app/Http/Controllers/News/FrontendController.php',
         'App\\Http\\Controllers\\News\\GalleryController' => __DIR__ . '/../..' . '/app/Http/Controllers/News/GalleryController.php',
         'App\\Http\\Controllers\\News\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/News/HomeController.php',
         'App\\Http\\Controllers\\News\\NotifyController' => __DIR__ . '/../..' . '/app/Http/Controllers/News/NotifyController.php',
@@ -550,6 +574,7 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         'App\\Http\\Requests\\PageRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PageRequest.php',
         'App\\Http\\Requests\\PaymentRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PaymentRequest.php',
         'App\\Http\\Requests\\ProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProductRequest.php',
+        'App\\Http\\Requests\\RecruitmentRequest' => __DIR__ . '/../..' . '/app/Http/Requests/RecruitmentRequest.php',
         'App\\Http\\Requests\\RssRequest' => __DIR__ . '/../..' . '/app/Http/Requests/RssRequest.php',
         'App\\Http\\Requests\\ShippingRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ShippingRequest.php',
         'App\\Http\\Requests\\SliderRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SliderRequest.php',
@@ -785,6 +810,25 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
         'CommentTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CommentTableSeeder.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'ConsoleTVs\\Charts\\Builder' => __DIR__ . '/..' . '/consoletvs/charts/src/Builder.php',
+        'ConsoleTVs\\Charts\\Builder\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Builder/Chart.php',
+        'ConsoleTVs\\Charts\\Builder\\Database' => __DIR__ . '/..' . '/consoletvs/charts/src/Builder/Database.php',
+        'ConsoleTVs\\Charts\\Builder\\Math' => __DIR__ . '/..' . '/consoletvs/charts/src/Builder/Math.php',
+        'ConsoleTVs\\Charts\\Builder\\Multi' => __DIR__ . '/..' . '/consoletvs/charts/src/Builder/Multi.php',
+        'ConsoleTVs\\Charts\\Builder\\MultiDatabase' => __DIR__ . '/..' . '/consoletvs/charts/src/Builder/MultiDatabase.php',
+        'ConsoleTVs\\Charts\\Builder\\MultiUrl' => __DIR__ . '/..' . '/consoletvs/charts/src/Builder/MultiUrl.php',
+        'ConsoleTVs\\Charts\\Builder\\Realtime' => __DIR__ . '/..' . '/consoletvs/charts/src/Builder/Realtime.php',
+        'ConsoleTVs\\Charts\\Builder\\Url' => __DIR__ . '/..' . '/consoletvs/charts/src/Builder/Url.php',
+        'ConsoleTVs\\Charts\\ChartsServiceProvider' => __DIR__ . '/..' . '/consoletvs/charts/src/ChartsServiceProvider.php',
+        'ConsoleTVs\\Charts\\Facades\\Charts' => __DIR__ . '/..' . '/consoletvs/charts/src/Facades/Charts.php',
+        'ConsoleTVs\\Charts\\Traits\\Setters' => __DIR__ . '/..' . '/consoletvs/charts/src/Traits/Setters.php',
+        'ConsoleTVs\\Support\\Helpers' => __DIR__ . '/..' . '/consoletvs/support/Helpers.php',
+        'ConsoleTVs\\Support\\SupportServiceProvider' => __DIR__ . '/..' . '/consoletvs/support/SupportServiceProvider.php',
+        'ConsoleTVs\\Support\\Traits\\FileFunctions' => __DIR__ . '/..' . '/consoletvs/support/Traits/FileFunctions.php',
+        'ConsoleTVs\\Support\\Traits\\LanguageFunctions' => __DIR__ . '/..' . '/consoletvs/support/Traits/LanguageFunctions.php',
+        'ConsoleTVs\\Support\\Traits\\MaterialFunctions' => __DIR__ . '/..' . '/consoletvs/support/Traits/MaterialFunctions.php',
+        'ConsoleTVs\\Support\\Traits\\Utilities' => __DIR__ . '/..' . '/consoletvs/support/Traits/Utilities.php',
+        'ConsoleTVs\\Support\\Traits\\WorldFunctions' => __DIR__ . '/..' . '/consoletvs/support/Traits/WorldFunctions.php',
         'ContactTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ContactTableSeeder.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
@@ -2517,6 +2561,8 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/php-parallel-lint/php-console-color/src/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/php-parallel-lint/php-console-color/src/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/php-parallel-lint/php-console-highlighter/src/Highlighter.php',
+        'Jenssegers\\Date\\Date' => __DIR__ . '/..' . '/jenssegers/date/src/Date.php',
+        'Jenssegers\\Date\\DateServiceProvider' => __DIR__ . '/..' . '/jenssegers/date/src/DateServiceProvider.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'Kalnoy\\Nestedset\\AncestorsRelation' => __DIR__ . '/..' . '/kalnoy/nestedset/src/AncestorsRelation.php',
         'Kalnoy\\Nestedset\\BaseRelation' => __DIR__ . '/..' . '/kalnoy/nestedset/src/BaseRelation.php',
@@ -4718,6 +4764,13 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'jlawrence\\eos\\AdvancedFunctions' => __DIR__ . '/..' . '/jlawrence/eos/src/AdvancedFunctions.php',
+        'jlawrence\\eos\\Graph' => __DIR__ . '/..' . '/jlawrence/eos/src/Graph.php',
+        'jlawrence\\eos\\Math' => __DIR__ . '/..' . '/jlawrence/eos/src/Math.php',
+        'jlawrence\\eos\\Matrix' => __DIR__ . '/..' . '/jlawrence/eos/src/Matrix.php',
+        'jlawrence\\eos\\Parser' => __DIR__ . '/..' . '/jlawrence/eos/src/Parser.php',
+        'jlawrence\\eos\\Stack' => __DIR__ . '/..' . '/jlawrence/eos/src/Stack.php',
+        'jlawrence\\eos\\Trig' => __DIR__ . '/..' . '/jlawrence/eos/src/Trig.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',

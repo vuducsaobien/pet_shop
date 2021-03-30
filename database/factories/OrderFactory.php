@@ -2,6 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Helpers\Template;
 use App\Models\OrderModel;
 use Faker\Generator as Faker;
 
@@ -15,7 +16,7 @@ $factory->define(OrderModel::class, function (Faker $faker) use (&$ww) {
         'quantity'=>rand(1,10),
         'amount'=>rand(10000,200000),
         'order_code'=>'SKU23'.$ww,
-        'created'=>now(),
+        'created'=>Template::randomDateForSeeding(),
         'created_by'=>'admin'
     ];
 });

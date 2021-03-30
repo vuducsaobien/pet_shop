@@ -7,6 +7,11 @@ use Config;
 
 class Template
 {
+    public static function randomDateForSeeding()
+    {
+        $timestamp = rand( strtotime("Jan 01 2021"), strtotime("Dec 12 2021") );
+        return date("Y-m-d H:i:s", $timestamp );
+    }
     public static function format_price($num, $type='dollar')
     {
         switch ($type) {
