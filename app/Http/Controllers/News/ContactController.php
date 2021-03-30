@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\News;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactRequest;
 use App\Mail\MailService;
 use App\Models\SettingModel;
 use Illuminate\Http\Request;
@@ -24,15 +25,6 @@ class ContactController extends Controller
 
     public function index()
     {
-        $data = [
-            'name' => 'abc',
-            'email' => 'huysdakmil@gmail.com',
-            'subject' => 'tieu de',
-            'message' => 'noi dung tin nhan',
-        ];
-        $mailService = new MailService();
-        $mailService->sendContactConfirm($data);
-
         $setting=new SettingModel();
         $setting_general=$setting->getItem(['type'=>'general'],null);
 
@@ -41,7 +33,7 @@ class ContactController extends Controller
         ));
     }
 
-    public function postContact(Request $request)
+    public function postContact(ContactRequest $request)
     {
          $data = [
              'name' => $request->name,
@@ -56,6 +48,11 @@ class ContactController extends Controller
          $mailService->sendContactConfirm($data);
          $mailService->sendContactInfo($data);
 
-        return redirect()->route($this->controllerName . '/index')->with('news_notify', 'Cảm ơn bạn đã gửi thông tin liên. Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất.');
+        return redirect()->route($this->controllerName.'/thankyou' )->with('news_notify', 'Cảm ơn bạn đã gửi thông tin liên hệ. Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất.');
+    }
+
+    public function thankyou()
+    {
+        return view($this->pathViewController . 'thankyou');
     }
 }

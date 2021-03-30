@@ -53,9 +53,9 @@ class MailService
                 $content = sprintf('
                 <p>Name: %s</p>
                 <p>Email: %s</p>
-                <p>Phone: %s</p>
+                <p>Subject: %s</p>
                 <p>Message: %s</p>
-                ', $data['name'], $data['email'], $data['phone'], $data['message']);
+                ', $data['name'], $data['email'], $data['subject'], $data['message']);
                 $message->setBody($content, 'text/html');
             });
             return true;

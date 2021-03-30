@@ -1,3 +1,10 @@
+@section('css')
+    <style>
+        .color-red{
+            color: red;
+        }
+    </style>
+@stop
 <form id="contact-form" action="{{route('contact/post_contact')}}" method="post">
     @csrf
     @method('POST')
@@ -27,7 +34,10 @@
 
 
                 <textarea name="message" placeholder="Message"></textarea>
+                <span class="color-red">{{$errors->first('subject')}}</span>
+                <br>
                 <button class="submits btn-style" type="submit">SEND MESSAGE</button>
+
 
             </div>
         </div>

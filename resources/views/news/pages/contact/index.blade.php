@@ -8,7 +8,7 @@
     <div class="contact-area pt-100 pb-100">
         <div class="container">
             <div class="row">
-                @include('news.pages.contact.child-index.info',['setting_general'=>$setting_general])
+                @include('news.pages.contact.child-index.info')
             </div>
 
             <div class="row">

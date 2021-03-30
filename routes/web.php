@@ -114,8 +114,9 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         $controller = ucfirst($controllerName) . 'Controller@';
         // Route::get('/', [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
         Route::get('/', [ 'as' => $controllerName, 'uses' => $controller . 'index' ]);
-    
+
         Route::post('/post-contact',                 [ 'as' => $controllerName . '/post_contact',                  'uses' => $controller . 'postContact' ]);
+        Route::get('/thank-you.html',                 [ 'as' => $controllerName . '/thankyou',                  'uses' => $controller . 'thankyou' ]);
     });
 
     // ====================== ABOUT US ========================

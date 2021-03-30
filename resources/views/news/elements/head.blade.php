@@ -25,3 +25,4 @@
 <link rel="stylesheet" href="{{asset('news/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('news/css/responsive.css')}}">
 <script src="{{asset('news/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+@yield('css')
