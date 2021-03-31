@@ -7,8 +7,8 @@
         <table class="table table-striped jambo_table bulk_action">
             <thead>
                 <tr class="headings">
-                    <th class="column-title">#</th>
-                    <th class="column-title">Article Info</th>
+                    <th class="column-title">STT</th>
+                    <th class="column-title">Tên bài viết</th>
                     <th class="column-title">Thumb</th>
 {{--                    <th class="column-title">Category</th>--}}
                     <th class="column-title">Kiểu bài viết</th>
@@ -40,8 +40,7 @@
                         <tr class="{{ $class }} pointer">
                             <td >{{ $index }}</td>
                             <td width="30%">
-                                <p><strong>Name:</strong> {!! $name !!}</p>
-                                <p><strong>Content:</strong> {!! $content !!}</p>
+                                {!! $name !!}
                             </td>
                             <td width="14%">
                                 <p>{!! $thumb !!}</p>

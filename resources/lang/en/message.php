@@ -9,7 +9,7 @@ return [
     'menu'=>'Menu',
     'category'=>'Category',
     'noname'=>'Not yet sort',
-    'config'=>'Config',
+    'config'=>'Setting',
     'user'=>'User',
     'view-website'=>'View Website',
     'logout'=>'Log out',

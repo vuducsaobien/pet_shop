@@ -73,11 +73,25 @@ img.zvn-thumb {
 }
 
 span.highlight{
+    /*
     background: yellow;
+    font-weight: bold;
+    */
+    color: red;
     font-weight: bold;
 }
 
 .radio-inline {
     padding-left: 0;
     padding-right: 20px;
+}
+ul.pagination span,ul.pagination li a{
+    margin-right: 6px;
+}
+.pagination>.active>span{
+    background: #d0ba20;
+    border: #d0ba20;
+}
+.pagination>li>a{
+    color: #000;
 }

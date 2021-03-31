@@ -84,19 +84,6 @@ class AttributeModel extends AdminModel
     public function saveItem($params = null, $options = null)
     {
         $result = null;
-        if ($options['task'] == 'change-status') {
-            $status = $params['currentStatus'] == 'active' ? 'inactive' : 'active';
-            $this->where('id', $params['id'])->update(['status' => $status]);
-
-            $result = [
-                'id' => $params['id'],
-                'status' => ['name' => config("zvn.template.status.$status.name"), 'class' => config("zvn.template.status.$status.class")],
-                'link' => route($params['controllerName'] . '/status', ['status' => $status, 'id' => $params['id']]),
-                'message' => 'Đã cập nhật'
-            ];
-
-            return $result;
-        }
 
         if ($options['task'] == 'change-link') {
             $link = $params['link'];

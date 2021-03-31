@@ -39,9 +39,9 @@ return [
             'class' => 'form-control col-md-6 col-xs-12 ckeditor'
         ],
         'status'       => [
-            'all'      => ['name' => 'Tất cả', 'class' => 'btn-success'],
+            'all'      => ['name' => 'Tất cả', 'class' => 'btn-info'],
             'active'   => ['name' => 'Kích hoạt', 'class'      => 'btn-success'],
-            'inactive' => ['name' => 'Chưa kích hoạt', 'class' => 'btn-info'],
+            'inactive' => ['name' => 'Chưa kích hoạt', 'class' => 'btn-danger'],
             'block' => ['name' => 'Bị khóa', 'class' => 'btn-danger'],
             'default'      => ['name' => 'Chưa xác định', 'class' => 'btn-success'],
         ],
@@ -87,6 +87,9 @@ return [
             'content'       => ['name'=> 'Search by Content'],
             'phone'         => ['name'=> 'Search by Phone'],
             'message'       => ['name'=> 'Search by Message'],
+            'product_code'       => ['name'=> 'Search by Product code'],
+            'order_code'       => ['name'=> 'Search by Order code'],
+            'ip'       => ['name'=> 'Search by Ip'],
 
         ],
         'button' => [
@@ -101,15 +104,18 @@ return [
     ],
     'config' => [
         'search' => [
-            'default'   => ['all', 'id', 'fullname'],
-            'slider'    => ['all', 'id', 'name', 'description', 'link'],
+            'default'   => ['all', 'id'],
+            'slider'    => ['all', 'name', 'link'],
             'category'  => ['all', 'name'],
-            'article'   => ['all', 'name', 'content'],
-            'user'      => ['all', 'username', 'email', 'fullname'],
+            'article'   => ['all', 'name'],
+            'user'      => ['all', 'username', 'email'],
             'menu'      => ['all', 'name', 'link'],
-            'rss'       => ['all', 'name', 'link'],
-            'testimonial'       => ['all', 'name', 'link'],
-            'contact'   => ['all', 'name', 'phone', 'email', 'message'],
+            'order'       => ['all', 'order_code', 'phone','email'],
+            'testimonial'=> ['all', 'name'],
+            'contact'   => ['all', 'email'],
+            'product'   => ['product_code','name'],
+            'attribute'   => ['name'],
+            'comment'   =>['product_code','product_name','email','ip']
         ],
         'button' => [
             'default'   => ['edit', 'delete'],

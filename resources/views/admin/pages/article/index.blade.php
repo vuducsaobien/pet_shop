@@ -21,9 +21,9 @@
                 @include('admin.templates.x_title', ['title' => 'Bộ lọc'])
                 <div class="x_content">
                     <div class="row">
-                        <div class="col-md-4">{!! $xhtmlButtonFilter !!}</div>
+                        <div class="col-md-6">{!! $xhtmlButtonFilter !!}</div>
 {{--                        <div class="col-md-2">{{ Form::select('filter_category', ['all' => 'Tất cả'] + $itemsCategory, request()->get('filter_category', 'all') , $formInputAttributes + ['data-url' => '']) }}</div>--}}
-                        <div class="col-md-2"></div>
+{{--                        <div class="col-md-1"></div>--}}
                         <div class="col-md-6">{!! $xhtmlAreaSeach !!}</div>
                     </div>
                 </div>

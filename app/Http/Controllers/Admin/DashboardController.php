@@ -44,10 +44,9 @@ class DashboardController extends AdminController
             ->dimensions(800, 400)
             ->responsive(false)
             ->groupByMonth(date('Y'));
-        $timestamp = rand( strtotime("Jan 01 2021"), strtotime("Dec 12 2021") );
-        $random_Date = date("Y-m-d H:i:s", $timestamp );
 
-        /*================================= thong ke khac =============================*/
+
+        /*================================= thong ke so luong bai viet moi table =====================*/
         $itemSliderCount   = SliderModel::countItemsDashboad();
         $itemUserCount     = UserModel::countItemsDashboad();
         $itemCategoryCount = CategoryModel::countItemsDashboad();

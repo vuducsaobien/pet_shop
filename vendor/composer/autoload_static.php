@@ -33,6 +33,7 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        '91cd72fb7bd7a6f5a6c660e7cce30924' => __DIR__ . '/..' . '/buihuycuong/vnfaker/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -171,6 +172,7 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         ),
         'B' => 
         array (
+            'Buihuycuong\\Vnfaker\\' => 20,
             'BeyondCode\\DumpServer\\' => 22,
             'Barryvdh\\Debugbar\\' => 18,
         ),
@@ -465,6 +467,10 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
+        'Buihuycuong\\Vnfaker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/buihuycuong/vnfaker/src',
+        ),
         'BeyondCode\\DumpServer\\' => 
         array (
             0 => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src',
@@ -730,6 +736,8 @@ class ComposerStaticInita3c9ea2a1fdcb73040a5a5c82cd6c090
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',
         'BeyondCode\\DumpServer\\RequestContextProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/RequestContextProvider.php',
+        'Buihuycuong\\Vnfaker\\VNFaker' => __DIR__ . '/..' . '/buihuycuong/vnfaker/src/VNFaker.php',
+        'Buihuycuong\\Vnfaker\\VNFakerServiceProvider' => __DIR__ . '/..' . '/buihuycuong/vnfaker/src/VNFakerServiceProvider.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonConverterInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonConverterInterface.php',
         'Carbon\\CarbonImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',

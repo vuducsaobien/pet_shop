@@ -1,6 +1,6 @@
 function showNotify(element, message, type = 'success') {
     element.notify(message, {
-        position: "top center",
+        position: "bottom center",
         className: type,
     });
 }

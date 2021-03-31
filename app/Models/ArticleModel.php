@@ -26,13 +26,13 @@ class ArticleModel extends AdminModel
 
         if($options['task'] == "admin-list-items") {
             $query = $this
-                ->select("*")
+                    ->select("*")
 //                ->leftJoin('category as c', 'article.category_id', '=', 'c.id')
             ;
 
 
             if ($params['filter']['status'] !== "all")  {
-                $query->where('a.status', '=', $params['filter']['status'] );
+                $query->where('status', '=', $params['filter']['status'] );
             }
 
             if ($params['filter']['category'] !== "all")  {
@@ -44,11 +44,11 @@ class ArticleModel extends AdminModel
                 if($params['search']['field'] == "all") {
                     $query->where(function($query) use ($params){
                         foreach($this->fieldSearchAccepted as $column){
-                            $query->orWhere('a.' . $column, 'LIKE',  "%{$params['search']['value']}%" );
+                            $query->orWhere( $column, 'LIKE',  "%{$params['search']['value']}%" );
                         }
                     });
                 } else if(in_array($params['search']['field'], $this->fieldSearchAccepted)) { 
-                    $query->where('a.' . $params['search']['field'], 'LIKE',  "%{$params['search']['value']}%" );
+                    $query->where($params['search']['field'], 'LIKE',  "%{$params['search']['value']}%" );
                 } 
             }
 
@@ -173,13 +173,14 @@ class ArticleModel extends AdminModel
     }
 
     public function saveItem($params = null, $options = null) { 
-        if($options['task'] == 'change-status') {
-            $status = ($params['currentStatus'] == "active") ? "inactive" : "active";
-            self::where('id', $params['id'])->update(['status' => $status ]);
-        }
+
 
         if($options['task'] == 'change-type') {
             self::where('id', $params['id'])->update(['type' => $params['currentType']]);
+            return [
+                'id' => $params['id'],
+                'message' => config('zvn.notify.success.update')
+            ];
         }
         
 

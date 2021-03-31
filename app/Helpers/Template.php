@@ -53,10 +53,10 @@ class Template
         $tmplStatus = Config::get('zvn.template.status');
 
         if (count($itemsStatusCount) > 0) {
-            array_unshift($itemsStatusCount, [
+/*            array_unshift($itemsStatusCount, [
                 'count' => array_sum(array_column($itemsStatusCount, 'count')),
                 'status' => 'all'
-            ]);
+            ]);*/
 
             foreach ($itemsStatusCount as $item) {  // $item = [count,status]
                 $statusValue = $item['status'];  // active inactive block
@@ -68,11 +68,12 @@ class Template
                 if ($paramsSearch['value'] !== '') {
                     $link .= "&search_field=" . $paramsSearch['field'] . "&search_value=" . $paramsSearch['value'];
                 }
+                $class=$currentTemplateStatus['class'];
 
-                $class = ($currentFilterStatus == $statusValue) ? 'btn-danger' : 'btn-info';
+                $active = ($currentFilterStatus == $statusValue) ? ' active' : '';
                 $xhtml .= sprintf('<a href="%s" type="button" class="btn %s">
                                     %s <span class="badge bg-white">%s</span>
-                                </a>', $link, $class, $currentTemplateStatus['name'], $item['count']);
+                                </a>', $link, $class.$active, $currentTemplateStatus['name'], $item['count']);
             }
         }
 

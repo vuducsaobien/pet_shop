@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'f111e36c950cc598c44e84db64f71a5c3e44c223',
+    'reference' => 'e7fae2a69444babcc234eb3f3ef5eb8aabb5e722',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -46,6 +46,16 @@
       array (
       ),
       'reference' => 'fcc88fa66895f8c1ff83f6145a5eff5fa2a0739a',
+    ),
+    'buihuycuong/vnfaker' => 
+    array (
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
+      'aliases' => 
+      array (
+        0 => '9999999-dev',
+      ),
+      'reference' => '9427dc74f00d3734d1894e6069adc2bb43c8c026',
     ),
     'consoletvs/charts' => 
     array (
@@ -456,7 +466,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'f111e36c950cc598c44e84db64f71a5c3e44c223',
+      'reference' => 'e7fae2a69444babcc234eb3f3ef5eb8aabb5e722',
     ),
     'laravel/tinker' => 
     array (

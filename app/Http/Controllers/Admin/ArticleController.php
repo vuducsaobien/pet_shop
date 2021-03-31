@@ -57,16 +57,19 @@ class ArticleController extends AdminController
     }
 
     public function type(Request $request) {
+
         $params["currentType"]    = $request->type;
         $params["id"]             = $request->id;
-        $this->model->saveItem($params, ['task' => 'change-type']);
-        return redirect()->route($this->controllerName)->with("zvn_notify", "Cập nhật kiểu bài viết thành công!");
+        $result=$this->model->saveItem($params, ['task' => 'change-type']);
+        echo json_encode($result);
+
+//        return redirect()->route($this->controllerName)->with("zvn_notify", "Cập nhật kiểu bài viết thành công!");
     }
 
-    public function changeCategory(Request $request) {
+/*    public function changeCategory(Request $request) {
         $params['category_id'] = $request->category_id;
         $params['id'] = $request->id;
         $result = $this->model->saveItem($params, ['task' => 'change-category']);
         return response()->json($result);
-    }
+    }*/
 }

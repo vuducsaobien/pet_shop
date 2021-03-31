@@ -18,7 +18,7 @@ class CreateArticleTable extends Migration
             $table->string('status');
             $table->string('name');
             $table->string('slug')->nullable();;
-            $table->string('content');
+            $table->text('content');
             $table->string('thumb');
             $table->string('type')->nullable();
             $table->bigInteger('author')->nullable();;
