@@ -45,7 +45,10 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        if($request->session()->has('userInfo')) $request->session()->pull('userInfo');
+        if($request->session()->has('userInfo')) {
+            $request->session()->pull('userInfo');
+            $request->session()->pull('cart');
+        }
         return redirect()->route('home');
     }
 

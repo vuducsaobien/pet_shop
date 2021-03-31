@@ -21,12 +21,27 @@ class URL
 
     }
 
-    public static function linkProduct($product)
+    public static function linkProduct($product, $type='index')
     {
-        return route('product/index', [
-            'product_slug' => $product['slug'],
-            'product_id'   => $product['id']
-        ]);
+        switch ($type) {
+            case 'index':
+                $params = [
+                    'product_slug' => $product['slug'],
+                    'product_id'   => $product['id']
+                ];
+                break;
+            case 'addToCart':
+                $params = [
+                    'product_id'      => $product['id'],
+                    'quantity'        => 'quantity',
+                    'price'           => 'price',
+                    'total_price'     => 'total_price',
+                    'attribute_id'    => 'attribute_id',
+                    'attribute_value' => 'attribute_value',
+                ];
+                break;
+        }
+        return route("product/$type", $params);
 
     }
     

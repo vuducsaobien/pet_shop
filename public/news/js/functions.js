@@ -56,7 +56,7 @@ function callAjax(element, url, type) {
 		type: "GET",
 		dataType: "json",
 		success: function (result) {
-			console.log(result);
+			// console.log(result);
 			
 			if (result) {
 				switch (type) {
@@ -95,7 +95,7 @@ function callAjax(element, url, type) {
 						console.log(result.list_images);
 						let bigImage = $(".quick-view-tab-content");
 						let smallImage = $(".quick-view-list nav");
-						// let xhtmlImage = '';
+						let xhtmlImage = '';
 						$.each(result.list_images, function( key, val ) {
 							// console.log(`key = ${indexChild} - param = ${resultChild}`);
 							xhtmlImage += `
@@ -124,6 +124,25 @@ function callAjax(element, url, type) {
 						//	<img src="{{ asset('/images/quick-view/s2.jpg') }}" alt="" style="width: 100%; height: 100%"/>
 						//</a>
 					break;
+
+					case 'cart':
+
+						// SHow success message
+						let cartIcon = $('span.count-style');
+						let count    = parseInt(cartIcon.text());
+						    result   = parseInt(result);
+
+						if ( count > 0 ) {
+							cartIcon.html(result + count);
+						} else {
+							cartIcon.html(result);
+						}
+
+						showNotify(cartIcon, `Đã thêm ${result} SP vào Giỏ hàng`);
+			
+					break;
+	
+
 	
 				}
 			} else {

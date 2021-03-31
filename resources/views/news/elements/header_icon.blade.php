@@ -1,3 +1,16 @@
+@php
+    $total = '';
+    if (!empty(session('cart'))) {
+        $cart = session('cart');
+
+        $total = 0;
+        foreach ($cart as $key => $value) {
+            $total += $value['quantity'];
+        }
+    }
+    
+@endphp
+
 <div class="header-search same-style">
     <button class="search-toggle">
         <i class="icon-magnifier s-open"></i>
@@ -18,7 +31,7 @@
 <div class="header-cart same-style">
     <button class="icon-cart">
         <i class="icon-handbag"></i>
-        <span class="count-style">02</span>
+        <span class="count-style">{{ $total }}</span>
     </button>
     <div class="shopping-cart-content">
         <ul>

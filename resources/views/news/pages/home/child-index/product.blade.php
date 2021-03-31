@@ -10,7 +10,7 @@
         $thumb       = $value['thumb'];
         $name        = $value['name'];
         $htmlPrice   = Template::caculatorPriceFrontend($value['price'], $value['price_sale'], $value['sale']);
-        $linkProduct = URL::linkProduct($value);
+        $linkProduct = URL::linkProduct($value, 'index');
 
     @endphp
 

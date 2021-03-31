@@ -69,6 +69,9 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         Route::get('modal-image/{product_id}', 
         ['as' => $controllerName . '/modal', 'uses' => $controller . 'get_image_modal'])->where('id', '[0-9]+');
 
+        Route::get('addToCart/{product_id}-{quantity}-{price}-{total_price}-{attribute_id}-{attribute_value}', 
+        ['as' => $controllerName . '/addToCart', 'uses' => $controller . 'addToCart'])->where('id', '[0-9]+');
+
     });
     
 
@@ -95,8 +98,7 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
     });
 
     // // ============================== CONTACT ============================== //
-    // $prefix = 'lien-he.html'; // http://proj_news.xyz/news69/lien-he.html
-    $prefix = 'lien-he'; // http://proj_news.xyz/news69/lien-he
+    $prefix = 'lien-he';
     $controllerName = 'contact';
     Route::group(['prefix' => $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName) . 'Controller@';
@@ -108,17 +110,12 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
     });
 
     // ====================== ABOUT US ========================
-    // $prefix         = 'about-us';
     $prefix         = '';
     $controllerName = 'about';
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName)  . 'Controller@';
 
-        // Route::get('/',  
         Route::get('/about-us',[ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
-        // http://proj_news.xyz/news69/about-us.html
-
-        // Route::get('/about-us.html',[ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
     });
 
     // ============================== COMMENT ==============================

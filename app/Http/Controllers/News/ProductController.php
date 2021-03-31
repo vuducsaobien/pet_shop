@@ -41,7 +41,45 @@ class ProductController extends FrontendController
         $items['comment']       = $this->model->getComment($params, ['task' => 'in-product-detail']);
         $items['related']       = $this->model->listItems($params, ['task' => 'news-list-items-related-in-product']);
 
+        $cart = $request->session()->get('cart');
+        echo '<pre style="color:red";>$cart === '; print_r($cart);echo '</pre>';
+
+        // $request->session()->pull('cart');
+
         return view($this->pathViewController . 'index', compact('items'));
+    }
+
+
+    public function addToCart(Request $request)
+    {
+        $cart = $request->session()->get('cart');
+
+        $product_id      = $request->product_id;
+        $quantity        = $request->quantity;
+        $price           = $request->price;
+        $total_price     = $request->total_price;
+        $attribute_id    = explode(',', $request->attribute_id);
+        $attribute_value = explode(',', $request->attribute_value);
+
+        $arr = [
+            'product_id'      => $product_id,
+            'quantity'        => $quantity,
+            'price'           => $price,
+            'total_price'     => $total_price,
+            'attribute_id'    => $attribute_id,
+            'attribute_value' => $attribute_value
+        ];
+
+        if(!$cart){
+            $cart[] = $arr;
+        }else{
+            array_push($cart, $arr);
+		}
+
+        $request->session()->put('cart', $cart);
+
+        return response()->json($quantity);
+
     }
 
     public function get_image_modal(Request $request)
@@ -52,5 +90,5 @@ class ProductController extends FrontendController
         return response()->json($result);
 
     }
- 
+
 }

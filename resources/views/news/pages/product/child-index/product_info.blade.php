@@ -7,8 +7,9 @@
     $name              = $items['name'];
     $sku               = $items['product_code'];
     $short_description = $items['short_description'];
-    $htmlPrice         = Template::caculatorPriceFrontend($items['price'], $items['price_sale'], $items['sale']);
-    $htmlAtribute      = Template::getHtmlAttribute($items['attribute'], $items['list_attribute']);
+    $price_sale        = $items['price_sale'];
+    $htmlPrice         = Template::caculatorPriceFrontend($items['price'], $price_sale, $items['sale']);
+    $htmlAtribute      = Template::getHtmlAttribute($items['id'], $items['attribute'], $items['list_attribute']);
 
 @endphp
 
@@ -20,7 +21,7 @@
         <h2>{{ $name }}</h2>
         @include('news.partials.product.product_rating')
 
-        <div class="product-price">{!! $htmlPrice !!}</div>
+        <div data-price="{{ $price_sale }}" id="product_price" class="product-price">{!! $htmlPrice !!}</div>
 
         @include('news.partials.product.product_stock', ['quantity' => $items['quantity']])
 
@@ -32,7 +33,7 @@
         <div class="quality-wrapper mt-30 product-quantity">
             <label>Qty:</label>
             <div class="cart-plus-minus">
-                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2" min="1">
+                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
             </div>
         </div>
 

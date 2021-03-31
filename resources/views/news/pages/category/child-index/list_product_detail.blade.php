@@ -9,7 +9,7 @@
     @php
         $id                = $value['id'];
         $linkModal         = URL::linkModal($id);
-        $linkProduct       = URL::linkProduct($value);
+        $linkProduct       = URL::linkProduct($value, 'index');
         $thumb             = $value['thumb'];
         $name              = $value['name'];
         $quantity          = $value['quantity'];

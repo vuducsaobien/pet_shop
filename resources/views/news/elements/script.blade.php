@@ -7,6 +7,7 @@
 <script src="{{asset('news/js/ajax-mail.js')}}"></script>
 <script src="{{asset('news/js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('news/js/plugins.js')}}"></script>
+<script src="{{asset('news/js/notify.js/notify.min.js')}}"></script>
 
 @if($controllerName == 'contact')
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGmeot5jcjdaJTvfCmQPfzeoG_pABeWo"></script>
