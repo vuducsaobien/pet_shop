@@ -4,7 +4,6 @@ namespace App\Helpers;
 
 use App\Models\CategoryModel;
 use Config;
-use Hamcrest\Type\IsNumeric;
 
 class Template
 {
@@ -326,7 +325,7 @@ class Template
         return $xhtml;
     }
 
-    public static function getHtmlAttribute($attribute, $list_attribute)
+    public static function getHtmlAttribute($product_id=null, $attribute, $list_attribute)
     {
         $xhtml = '';
 
@@ -340,11 +339,11 @@ class Template
                 if ($id == $index) 
                 {
                     $name = $val['name'];
-
+                    // echo $id;
                     $xhtml .= '
                         <div class="product-details-style shorting-style mt-30">
                         <label>'.$name.' : </label>
-                        <select>
+                        <select data-product-id="'.$product_id.'" data-attribute-id="'.$id.'" name="attribute_'.$id.'">
                             <option value="default"> Chọn '.$name.' </option>
                     ';
 
@@ -353,7 +352,8 @@ class Template
                         foreach ($result as $resultChild) 
                         {
                             if ( $id == $index ) {
-                                $xhtml .= '<option value="'.$resultChild['value'].'">'.$resultChild['value'].'</option>';
+                                $slugValue = Str::slug($resultChild['value'], ' ');
+                                $xhtml .= '<option value="'.$slugValue.'">'.$resultChild['value'].'</option>';
                             }else{
                                 break;
                             }
