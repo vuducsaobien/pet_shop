@@ -80,7 +80,7 @@ return [
             'id'            => ['name'=> 'Search by ID'],
             'name'          => ['name'=> 'Search by Name'],
             'username'      => ['name'=> 'Search by Username'],
-            'fullname'      => ['name'=> 'Search by Fullname'],
+            'fullname'      => ['name'=> 'Search by Fullname 123'],
             'email'         => ['name'=> 'Search by Email'],
             'description'   => ['name'=> 'Search by Description'],
             'link'          => ['name'=> 'Search by Link'],
