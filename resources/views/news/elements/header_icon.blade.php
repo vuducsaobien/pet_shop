@@ -1,6 +1,7 @@
 @php
     $total = '';
-    if (!empty(session('cart'))) {
+
+    if (empty(session('cart'))) {
         $cart = session('cart');
 
         $total = 0;
@@ -8,7 +9,7 @@
             $total += $value['quantity'];
         }
     }
-    
+
 @endphp
 
 <div class="header-search same-style">
