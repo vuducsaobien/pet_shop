@@ -21,11 +21,11 @@
             'label'   => Form::label('status', 'Status', $formLabelAttr),
             'element' => Form::select('status', $statusValue, @$item['status'],  $formInputAttr)
         ],
-        [
+/*        [
             'label'   => Form::label('special', 'Special', $formLabelAttr),
             'element' => Form::checkbox('special', @$item['special'],@$item['special']==1?true:false).'   Là sản phẩm đặc biệt'
         ],
-        [
+*/        [
             'element' => $inputHiddenID .  Form::submit('Save', ['class'=>'btn btn-danger', 'name' => 'changeSpecial']),
             'type'    => "btn-submit"
         ]

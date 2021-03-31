@@ -25,13 +25,13 @@
             'type'=>'full'
 
         ],
-         [
+/*         [
             'label'     => Form::label('logo', 'Ảnh đại diện', $formLabelAttr),
             'element'   => Template::showFileManager($item['thumb'] ?? ''),
             'type'=>'full'
 
         ],
-        [
+*/        [
             'label'   => Form::label('description', 'Description', $formLabelAttr),
             'element' => Form::textArea('description', @$item['description'],  $formCkeditor ),
             'type'=>'full'

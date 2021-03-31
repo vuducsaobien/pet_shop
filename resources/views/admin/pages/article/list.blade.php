@@ -9,7 +9,7 @@
                 <tr class="headings">
                     <th class="column-title">STT</th>
                     <th class="column-title">Tên bài viết</th>
-                    <th class="column-title">Thumb</th>
+                    <th class="column-title">Hình ảnh</th>
 {{--                    <th class="column-title">Category</th>--}}
                     <th class="column-title">Kiểu bài viết</th>
                     <th class="column-title">Trạng thái</th>

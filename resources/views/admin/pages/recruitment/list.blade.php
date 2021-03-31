@@ -9,7 +9,7 @@
                 <tr class="headings">
                     <th class="column-title">#</th>
                     <th class="column-title">Recruitment Info</th>
-                    <th class="column-title">Thumb</th>
+                    <th class="column-title">Hình ảnh</th>
 {{--                    <th class="column-title">Category</th>--}}
                     <th class="column-title">Description</th>
                     <th class="column-title">Trạng thái</th>

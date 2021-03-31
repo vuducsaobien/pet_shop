@@ -13,12 +13,13 @@
 
     $elements = [
         [
-            'label'   => Form::label('price', 'Price', $formLabelAttr),
+            'label'   => Form::label('price', 'Price (VND)', $formLabelAttr),
             'element' => Form::text('price', $item['price'], $formInputAttr ),
             'type'=>'full'
-        ],[
-            'label'   => Form::label('sale', 'Sale', $formLabelAttr),
-            'element' => Form::text('sale', $item['sale'],  $formInputAttr ),
+        ],
+        [
+            'label'   => Form::label('price_sale', 'Giá sale (VND)', $formLabelAttr),
+            'element' => Form::text('price_sale', $item['price_sale'],  $formInputAttr ),
             'type'=>'full'
 
         ],

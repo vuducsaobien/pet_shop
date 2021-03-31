@@ -24,7 +24,7 @@ $factory->define(ProductModel::class, function (Faker $faker) use(&$i) {
             'name' => $name,
             'slug'=>Str::slug($name),
             'quantity'=>rand(1,10),
-            'product_code'=>strtoupper(Str::random(4).rand(1,10)),
+            'product_code'=>"PET".rand(100,999),
             'short_description'=>'short_description product_id_ short_description product_id_ short_description product_id_'.$i,
             'description'=>"<p>This stewpot is part of the Scanpan Classic cookware range, which boasts GreenTek non-stick coating which is 100% PFOA free, meaning it's safer for your family and the environment. The heavy-duty, pressure-cast aluminum body has an extra-thick base for quick, even heating and it is compatible with all cooking surfaces (excluding induction). The extraordinarily hard exterior surface is a combination of ceramic and titanium nonstick cooking surface which is impossible to scrape away, even with metal utensils. Patented spring-lock handle stays cool during normal stove top use and the stewpot is also oven safe from up to 260°C. It's also dishwasher safe for easy cleanup. </p>
                         <p>Scanpan is designed and manufactured in Denmark and offers a lifetime warranty.</p>

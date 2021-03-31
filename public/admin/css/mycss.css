@@ -95,3 +95,13 @@ ul.pagination span,ul.pagination li a{
 .pagination>li>a{
     color: #000;
 }
+.fa-upload{
+    color: rgb(79, 95, 130);
+}
+span.tag{
+    padding: 4px 8px;
+    font-size: 13px;
+}
+.dz-image img{
+    width: 140px;
+}

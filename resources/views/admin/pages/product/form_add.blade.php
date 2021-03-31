@@ -45,7 +45,7 @@
         ],
 
 */        [
-            'label'     => Form::label('price', 'Price', $formLabelAttr),
+            'label'     => Form::label('price', 'Price (VND)', $formLabelAttr),
             'element'   => Form::text('price', $item['price'] ?? '', $formInputAttr)
         ],
         [
@@ -67,7 +67,7 @@
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
-                @include('admin.templates.x_title', ['title' => 'Form'])
+                @include('admin.templates.x_title', ['title' => 'Add New Product'])
                 <div class="x_content">
                     {!! Form::open([
                         'url' => route("$controllerName/save"),
@@ -95,6 +95,9 @@
 
             url: '{{ route('product/image') }}',
             addRemoveLinks: true,
+            dictDefaultMessage: '<i class="fa fa-3x fa-upload" aria-hidden="true"></i>',
+            thumbnailWidth:"250",
+            thumbnailHeight:"250",
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },

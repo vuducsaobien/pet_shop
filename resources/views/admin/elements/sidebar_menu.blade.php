@@ -25,7 +25,7 @@
         <ul class="nav side-menu">
             <li id = "dashboard"><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> {{__('message.dashboard')}}</a></li>
             <li id = "article"><a   href="{{ route('article') }}"><i class="fa fa-newspaper-o"></i> {{__('message.article')}}</a></li>
-            <li id = "product"><a   href="{{ route('product') }}"><i class="fa fa-paw"></i> {{__('message.product')}}</a></li>
+            <li id = "product"><a   href="{{ route('product') }}"><i class="fa fa-product-hunt"></i> {{__('message.product')}}</a></li>
             <li id = "order"><a   href="{{ route('order') }}"><i class="fa fa-shopping-cart"></i> {{__('message.order')}}</a></li>
             <li id = "menu"><a      href="{{ route('menu') }}"><i class="fa fa-sitemap"></i> {{__('message.menu')}}</a></li>
             <li id = "category"><a  href="{{ route('category') }}"><i class="fa fa fa-building-o"></i> {{__('message.category')}}</a></li>

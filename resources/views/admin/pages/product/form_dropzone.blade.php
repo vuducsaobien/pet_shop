@@ -54,6 +54,9 @@
 
             url: '{{ route('product/image') }}',
             addRemoveLinks: true,
+            dictDefaultMessage: '<i class="fa fa-3x fa-upload" aria-hidden="true"></i>',
+            thumbnailWidth:"250",
+            thumbnailHeight:"250",
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },

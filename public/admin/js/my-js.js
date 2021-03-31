@@ -10,6 +10,11 @@ $(document).ready(function() {
 	let $inputSearchValue     = $("input[name  = search_value]");
 	let $selectChangeAttr     = $("select[name = select_change_attr]");
 
+	//format price
+	$("#price,#price_sale").val(function(index, value) {
+		return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+	});
+
 	// Ajax Change Ordering
 	$inputOrdering.on("change", function () {
 		let $currentElement = $(this);
@@ -202,8 +207,20 @@ $(document).ready(function() {
 			choose.parent().parent().addClass('active');
 		}
 	});
+	//format number when typing
+	$('#price,#price_sale').keyup(function(event) {
+		// skip for arrow keys
+		
+		if(event.which >= 37 && event.which <= 40) return;
 
-	
+		// format number
+		$(this).val(function(index, value) {
+			return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+		});
+	});
+
+
+
 	allStorage();
 
 	// $('.tags').tagsInput({

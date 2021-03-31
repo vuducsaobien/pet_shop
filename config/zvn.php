@@ -93,7 +93,7 @@ return [
 
         ],
         'button' => [
-            'edit'      => ['class'=> 'btn-success' , 'title'=> 'Edit'      , 'icon' => 'fa-pencil' , 'route-name' => '/form'],
+            'edit'      => ['class'=> 'btn-primary' , 'title'=> 'Edit'      , 'icon' => 'fa-pencil' , 'route-name' => '/form'],
             'delete'    => ['class'=> 'btn-danger btn-delete'  , 'title'=> 'Delete'    , 'icon' => 'fa-trash'  , 'route-name' => '/delete'],
             'info'      => ['class'=> 'btn-info'    , 'title'=> 'View'      , 'icon' => 'fa-eye' , 'route-name' => '/view'],
         ]
@@ -113,9 +113,9 @@ return [
             'order'       => ['all', 'order_code', 'phone','email'],
             'testimonial'=> ['all', 'name'],
             'contact'   => ['all', 'email'],
-            'product'   => ['product_code','name'],
-            'attribute'   => ['name'],
-            'comment'   =>['product_code','product_name','email','ip']
+            'product'   => ['all','product_code','name'],
+            'attribute'   => ['all','name'],
+            'comment'   =>['all','product_code','product_name','email','ip']
         ],
         'button' => [
             'default'   => ['edit', 'delete'],

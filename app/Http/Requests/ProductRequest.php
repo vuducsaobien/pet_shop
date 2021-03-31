@@ -27,7 +27,7 @@ class ProductRequest extends FormRequest
         $id = $this->id;
         $task = "add";
 
-        $condName = $condThumb=$condCategory=$condPrice=$condStatus='';
+        $condName = $condThumb=$condCategory=$condPrice=$condStatus=$condPriceSale='';
 
         if(isset($this->changeAttribute))  $task = 'change-attribute';
         if(isset($this->changeDropzone))  $task = 'change-dropzone';
@@ -53,7 +53,8 @@ class ProductRequest extends FormRequest
 
                 break;
             case 'change-price':
-                $condPrice="bail|required|integer";
+                $condPrice="bail|required";
+                $condPriceSale="bail|required";
                 break;
             case 'change-category':
 
@@ -69,7 +70,8 @@ class ProductRequest extends FormRequest
             'status'=>$condStatus,
             'thumb'=>$condThumb,
             'price'=>$condPrice,
-            'category_id'=>$condCategory
+            'category_id'=>$condCategory,
+            'price_sale'=>$condPriceSale
 
         ];
     }

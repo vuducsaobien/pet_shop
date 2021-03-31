@@ -24,7 +24,7 @@ class CreateProductTable extends Migration
             $table->string('slug')->nullable();
             $table->bigInteger('category_id');
             $table->integer('price');
-            $table->integer('price_sale')->nullable();
+            $table->integer('price_sale')->default(0);
             $table->integer('sale')->nullable();
             $table->string('thumb');
             $table->string('product_code')->nullable();

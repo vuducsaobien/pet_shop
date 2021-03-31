@@ -7,13 +7,14 @@ use App\Models\AttributeModel;
 use App\Models\ProductAttributeModel;
 use App\Models\CommentModel;
 use App\Models\CategoryModel;
-use Illuminate\Support\Facades\DB; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ProductModel extends AdminModel
 {
     protected $table               = 'product';
     protected $folderUpload        = 'product' ;
-    protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
+    protected $fieldSearchAccepted = ['id', 'name', 'product_code'];
     protected $crudNotAccepted     = ['changeInfo','changeCategory','changePrice','changeAttribute','changeSpecial','changeDropzone','dropzone','_token','thumb_current','id','attribute','nameImage','alt','res'];
 
     public function attribute()
@@ -30,7 +31,7 @@ class ProductModel extends AdminModel
         $result = null;
 
         if($options['task'] == "admin-list-items") {
-            $query = $this->select('id', 'name','price','category_id','thumb','status')->with('image');
+            $query = $this->select('id','price_sale','product_code', 'name','price','category_id','thumb','status')->with('image');
 
             if ($params['filter']['status'] !== "all")  {
                 $query->where('status', '=', $params['filter']['status'] );
@@ -210,11 +211,20 @@ class ProductModel extends AdminModel
 
     }
 
-    public function saveItem($params = null, $options = null) { 
+    public function saveItem($params = null, $options = null) {
+        if(isset($params['price'])){
+            $params['price']=str_replace(".", "", $params['price']);
+        }
+        if(isset($params['price_sale'])){
+            $params['price_sale']=str_replace(".", "", $params['price_sale']);
+        }
+
+
 
         if($options['task'] == 'add-item') {
 
             $params['thumb']='/images/product/'.array_column($params['dropzone'],'name')[0];
+            $params['product_code']="PET".rand(100,999);
 
             self::insert($this->prepareParams($params));
             /*================================= dropzone =============================*/
@@ -224,7 +234,8 @@ class ProductModel extends AdminModel
         }
         /*================================= EDIT =============================*/
         if($options['task']=='change-info-product'){
-            $params['special']=isset($params['special'])?1:0;
+//            $params['special']=isset($params['special'])?1:0;
+
             self::where('id', $params['id'])->update($this->prepareParams($params));
         }
         /*================================= change dropzone =============================*/

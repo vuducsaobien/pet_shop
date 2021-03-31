@@ -79,10 +79,13 @@ class ProductController extends AdminController
 
             $params = $request->all();
             $params['dropzone'] = $this->model->dropzone($params);
+            $params['thumb']='/images/product/'.array_column($params['dropzone'],'name')[0];
 
-            if(empty($params['slug'])){
+
+            if(empty($params['slug']) && isset($params['name'])){
                 $params['slug']=Str::slug($params['name']);
             }
+
 
 
             $params['status']='active';
@@ -98,7 +101,12 @@ class ProductController extends AdminController
             }
 
             $this->model->saveItem($params, ['task' => $task]);
-            return redirect()->back()->with("zvn_notify", $notify);
+            if ($params['id'] !== null) {
+                return redirect()->back()->with("zvn_notify", $notify);
+            }else{
+                return redirect()->route($this->controllerName)->with("zvn_notify", $notify);
+            }
+
         }
     }
     public function changeInfo(MainRequest $request)
