@@ -4,11 +4,6 @@ return [
     'url'              => [
         'prefix_admin' => 'admin123',
         'prefix_news'  => 'news69',
-<<<<<<< HEAD
-        'huyduc' ->
-=======
-        'ducduduududduu123' ->
->>>>>>> 40f61
     ],
     'format'         => [
         'long_time'  => 'H:m:s d/m/Y',
