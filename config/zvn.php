@@ -4,7 +4,7 @@ return [
     'url'              => [
         'prefix_admin' => 'admin123',
         'prefix_news'  => 'news69',
-        'ducduduududduu' ->
+        'ducduduududduu123' ->
     ],
     'format'         => [
         'long_time'  => 'H:m:s d/m/Y',
@@ -81,7 +81,7 @@ return [
             'id'            => ['name'=> 'Search by ID'],
             'name'          => ['name'=> 'Search by Name'],
             'username'      => ['name'=> 'Search by Username'],
-            'fullname'      => ['name'=> 'Search by Fullname 123'],
+            'fullname'      => ['name'=> 'Search by Fullname'],
             'email'         => ['name'=> 'Search by Email'],
             'description'   => ['name'=> 'Search by Description'],
             'link'          => ['name'=> 'Search by Link'],
