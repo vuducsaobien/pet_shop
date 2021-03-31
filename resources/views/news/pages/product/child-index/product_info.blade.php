@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        @include('news.partials.product.product_list_action', ['quantity' => $items['quantity']])
+        @include('news.partials.product.product_list_action', ['quantity' => $items['quantity'], 'quickview' => false])
 
         <div class="social-icon mt-30">
             <ul>
