@@ -90,6 +90,7 @@ return [
             'product_code'       => ['name'=> 'Search by Product code'],
             'order_code'       => ['name'=> 'Search by Order code'],
             'ip'       => ['name'=> 'Search by Ip'],
+            'product_name'       => ['name'=> 'Search by product name'],
 
         ],
         'button' => [

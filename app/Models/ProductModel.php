@@ -15,7 +15,7 @@ class ProductModel extends AdminModel
     protected $table               = 'product';
     protected $folderUpload        = 'product' ;
     protected $fieldSearchAccepted = ['id', 'name', 'product_code'];
-    protected $crudNotAccepted     = ['changeInfo','changeCategory','changePrice','changeAttribute','changeSpecial','changeDropzone','dropzone','_token','thumb_current','id','attribute','nameImage','alt','res'];
+    protected $crudNotAccepted     = ['changeInfo','changeSeo','changeCategory','changePrice','changeAttribute','changeSpecial','changeDropzone','dropzone','_token','thumb_current','id','attribute','nameImage','alt','res'];
 
     public function attribute()
     {

@@ -35,6 +35,7 @@ class ProductRequest extends FormRequest
         if(isset($this->changeInfo))  $task = 'change-info';
         if(isset($this->changePrice))  $task = 'change-price';
         if(isset($this->changeCategory))  $task = 'change-category';
+        if(isset($this->changeSeo))  $task = 'change-seo';
 
         switch ($task) {
             case 'add':
@@ -57,6 +58,9 @@ class ProductRequest extends FormRequest
                 $condPriceSale="bail|required";
                 break;
             case 'change-category':
+
+                break;
+            case 'change-seo':
 
                 break;
 
