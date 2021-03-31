@@ -4,7 +4,7 @@ return [
     'url'              => [
         'prefix_admin' => 'admin123',
         'prefix_news'  => 'news69',
-        'duc' ->
+        'ducduduududduu' ->
     ],
     'format'         => [
         'long_time'  => 'H:m:s d/m/Y',
