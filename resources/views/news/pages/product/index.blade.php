@@ -26,7 +26,7 @@
                 <div class="description-review-topbar nav text-center">
                     <a class="active" data-toggle="tab" href="#des-details1">DESCRIPTION</a>
                     <a data-toggle="tab" href="#des-details2">MORE INFORMATION</a>
-                    <a data-toggle="tab" href="#des-details3">REVIEWS (2)</a>
+                    <a data-toggle="tab" href="#des-details3">REVIEWS ({{ count($items['comment']) }})</a>
                 </div>
 
                 @include('news.pages.product.child-index.product_description')
