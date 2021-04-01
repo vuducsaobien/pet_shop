@@ -51,6 +51,37 @@ $(document).ready(function() {
 		}
 	});
 
+	$('select.shipping_change').on("change", function(e) {
+		e.preventDefault();
+		let fee = parseInt($(this).val());
+
+		if (checkNumber(fee)) {
+			let span                = $('span#grand_total span');
+			let old_grandTotal_text = span.text();
+			let currenciesAsNumbers = parseFloat( old_grandTotal_text.replace(/[^\d\.]/g,'') ) + '000';
+			let grand_total         = parseInt(currenciesAsNumbers);
+			let grand_total_ship    = grand_total + fee;
+			let format              = format_price(grand_total_ship);
+			let string              =  '<h5>Tổng Cộng: ' + format + '</h5>';
+
+			$('div.grand-totall h5').html(string);
+			showNotify($('div.grand-totall h5'), 'Đã Cập nhật Lại Giá Tiền');
+			localStorage.setItem(key,value)
+			// $(this "select").val("val2");
+
+			console.log('fee = ' + fee);
+			console.log('old_grandTotal_text = ' + old_grandTotal_text);
+			console.log('grand_total = ' + grand_total);
+			console.log('grand_total_ship = ' + grand_total_ship);
+			console.log('format = ' + format);
+			// <h5>   $353.00</h5>
+
+		}
+
+	});
+	$('ul#product-attribute').css("list-style-type", "none");
+
+
 	// console.log(`index = ${index} - result = ${result}`);
 	// allStorage();
 });

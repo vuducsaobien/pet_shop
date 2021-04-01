@@ -90,6 +90,47 @@ class ProductModel extends AdminModel
 
         }
 
+        if($options['task'] == 'news-list-items-get-product-info-in-cart') {
+
+            foreach ($params["product_id"] as $value) {
+                $result[] = self::select('id', 'name', 'product_code', 'thumb', 'slug')
+                ->where('status', 'active')
+                ->where('id', $value)
+                ->first()->toArray();
+            }
+
+            // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
+            // echo '<pre style="color:red";>$result === '; print_r($result);echo '</pre>';
+            // echo '<h3>Die is Called Product Model</h3>';die;
+        }
+
+        if($options['task'] == 'news-list-items-get-product-attribute-in-cart') {
+
+            foreach ($params["attribute_id"] as $value) {
+                $newModel = new AttributeModel();
+                $result = $newModel->listItems($params["attribute_id"], 
+                ['task' => 'news-list-items-get-product-attribute-in-cart']);
+            }
+
+            // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
+            // echo '<pre style="color:red";>$result === '; print_r($result);echo '</pre>';
+            // echo '<h3>Die is Called Product Model</h3>';die;
+        }
+
+        // if($options['task'] == 'news-list-items-get-product-attribute-value-in-cart') {
+
+        //     foreach ($params["attribute_value"] as $value) {
+        //         $newModel = new ProductAttributeModel();
+        //         $result[] = $newModel->listItems($params["attribute_value"], 
+        //         ['task' => 'news-list-items-get-product-attribute-value-in-cart']);
+        //     }
+
+        //     echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
+        //     echo '<pre style="color:red";>$result === '; print_r($result);echo '</pre>';
+        //     echo '<h3>Die is Called Product Model</h3>';die;
+        // }
+
+        
         return $result;
     }
 

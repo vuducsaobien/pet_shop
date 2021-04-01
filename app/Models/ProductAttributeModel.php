@@ -59,6 +59,24 @@ class ProductAttributeModel extends AdminModel
             $result = $query->get()->toArray();
         }
 
+        // if($options['task'] == 'news-list-items-get-product-attribute-value-in-cart') {
+
+        //     foreach ($params as $key => $value) {
+
+        //         foreach ($value as $keyChild => $valueChild) {
+        //             $result[$key][$keyChild] = self::where('value', 'LIKE', $valueChild)
+        //             ->pluck('value')->toArray()
+        //             ;
+        //         }
+
+        //     }
+
+        //     // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
+        //     // echo '<pre style="color:red";>$result === '; print_r($result);echo '</pre>';
+        //     // echo '<h3>Die is Called Attribute va Model</h3>';die;
+        // }
+
+
 
         return $result;
     }

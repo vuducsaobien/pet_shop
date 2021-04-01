@@ -42,11 +42,31 @@ class AttributeModel extends AdminModel
             return $this->select('id', 'name', 'ordering','status')->orderBy('ordering','asc')->get()->toArray();
         }
 
-        /*if ($options['task'] == 'news-list-items') {
-            $query = $this->select( 'name', 'link')->where('status', 'active')->orderBy('id', 'asc');
+        if($options['task'] == 'news-list-items-get-product-attribute-in-cart') {
 
-            $result = $query->get()->toArray();
-        }*/
+            // foreach ($params as $key => $value) {
+            //     foreach ($value as $keyChild => $valueChild) {
+            //         $result[$key][$keyChild] = self::select('id', 'name')
+            //         ->where('status', 'active')
+            //         ->where('id', $valueChild)
+            //         ->first()->toArray();
+            //     }
+            // }
+
+            foreach ($params as $key => $value) {
+                foreach ($value as $keyChild => $valueChild) {
+                    $result[$key][$keyChild] = self::where('status', 'active')
+                    ->where('id', $valueChild)
+                    ->value('name')
+                    ;
+                }
+            }
+
+
+            // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
+            // echo '<pre style="color:red";>$result === '; print_r($result);echo '</pre>';
+            // echo '<h3>Die is Called Attribute Model</h3>';die;
+        }
 
         return $result;
     }

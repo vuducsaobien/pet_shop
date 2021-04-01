@@ -43,10 +43,9 @@ class ShippingModel extends AdminModel
         }
 
         if($options['task'] == 'news-list-items') {
-            $query = $this->select('id', 'name', 'description', 'link', 'thumb')
-                        ->where('status', '=', 'active' )
-                        ->limit(5);
-
+            $query = self::select('name', 'zip_postal_code', 'fee')
+                ->where('status', 'active' )
+                ->limit(10);
             $result = $query->get();
         }
 

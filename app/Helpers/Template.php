@@ -4,7 +4,6 @@ namespace App\Helpers;
 
 use App\Models\CategoryModel;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Str;
 
 class Template
 {
@@ -353,8 +352,7 @@ class Template
                         foreach ($result as $resultChild) 
                         {
                             if ( $id == $index ) {
-                                $slugValue = Str::slug($resultChild['value'], ' ');
-                                $xhtml .= '<option value="'.$slugValue.'">'.$resultChild['value'].'</option>';
+                                $xhtml .= '<option value="'.$resultChild['value'].'">'.$resultChild['value'].'</option>';
                             }else{
                                 break;
                             }
