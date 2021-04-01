@@ -47,7 +47,7 @@ class AuthController extends Controller
     {
         if($request->session()->has('userInfo')) {
             $request->session()->pull('userInfo');
-            $request->session()->pull('cart');
+            // $request->session()->pull('cart');
         }
         return redirect()->route('home');
     }

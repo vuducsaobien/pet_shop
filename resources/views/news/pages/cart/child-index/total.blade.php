@@ -1,8 +1,26 @@
+@php
+    use App\Helpers\Template;
+    $cart        = session()->get('cart');
+    $grand_total = "0 <u>đ</u>";
+
+    if (!empty($cart)) {
+        $grand_total = 0;
+        foreach ($cart as $key => $value) {
+        $grand_total += $value['total_price'];
+        }
+    }
+
+    if (!empty($cart)) {
+        $grand_total = Template::format_price( $grand_total, 'vietnamese dong');
+    }
+
+@endphp
+
 <div class="col-lg-4 col-md-12">
     <div class="grand-totall">
-        <span>Subtotal:   $155.00</span>
-        <h5>Grand Total:   $353.00</h5>
-        <a href="#">Proceed To Checkout</a>
-        <p>Checkout with Multiple Addresses</p>
+        <span id="grand_total">Tổng Giá Sản Phẩm:   <span>{!! $grand_total !!}</span></span>
+        <h5>Tổng Cộng: {!! $grand_total !!}</h5>
+        <a href="{{ route('checkout') }}">Đi đến Trang Thanh Toán</a>
+        {{-- <p>Checkout with Multiple Addresses</p> --}}
     </div>
 </div>

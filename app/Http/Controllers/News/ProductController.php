@@ -42,7 +42,7 @@ class ProductController extends FrontendController
         $items['related']       = $this->model->listItems($params, ['task' => 'news-list-items-related-in-product']);
 
         $cart = $request->session()->get('cart');
-        echo '<pre style="color:red";>$cart === '; print_r($cart);echo '</pre>';
+        // echo '<pre style="color:red";>$cart === '; print_r($cart);echo '</pre>';
 
         // $request->session()->pull('cart');
 

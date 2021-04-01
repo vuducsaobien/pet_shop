@@ -1,41 +1,21 @@
-<div class="col-lg-4 col-md-6">
-    <div class="cart-tax">
-        <h4 class="cart-bottom-title">Estimate Shipping And Tax</h4>
-        <div class="tax-wrapper">
-            <p>Enter your destination to get a shipping estimate.</p>
-            <div class="tax-select-wrapper">
-                <div class="tax-select">
-                    <label>
-                        Country
-                    </label>
-                    <select class="email s-email s-wid">
-                        <option>Bangladesh</option>
-                        <option>Albania</option>
-                        <option>Åland Islands</option>
-                        <option>Afghanistan</option>
-                        <option>Belgium</option>
-                    </select>
-                </div>
-                <div class="tax-select">
-                    <label>
-                        State/Province
-                    </label>
-                    <select class="email s-email s-wid">
-                        <option>Bangladesh</option>
-                        <option>Albania</option>
-                        <option>Åland Islands</option>
-                        <option>Afghanistan</option>
-                        <option>Belgium</option>
-                    </select>
-                </div>
-                <div class="tax-select">
-                    <label>
-                        Zip/Postal Code
-                    </label>
-                    <input type="text" placeholder="1234567">
-                </div>
-                <button class="cart-btn-2" type="submit">Get A Quote</button>
-            </div>
-        </div>
-    </div>
+@php
+    use App\Models\ShippingModel;
+
+    $shipModel = new ShippingModel();
+    $items     = $shipModel->listItems(null, ['task' => 'news-list-items']);
+@endphp
+
+<div class="tax-select">
+    <label>
+        Tỉnh/Thành Phố
+    </label>
+    <select class="email s-email s-wid shipping_change">
+        <option value="default">Chọn Tỉnh/Thành Phố</option>
+        @foreach($items as $key => $value)
+            <option value="{{ $value->fee }}">{{ $value->name }}</option>
+        @endforeach
+    </select>
 </div>
+
+{{-- <button class="cart-btn-2" type="submit">Lấy Báo Giá</button> --}}
+

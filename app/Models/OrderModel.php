@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use App\Models\AdminModel;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-use DB; 
+use App\Models\ProductModel;
+use Illuminate\Support\Facades\DB; 
+
 class OrderModel extends AdminModel
 {
         protected $table               = 'order';
@@ -63,8 +63,6 @@ class OrderModel extends AdminModel
             $result = $query->get();
         }
 
-
-
         return $result;
     }
 
@@ -106,6 +104,23 @@ class OrderModel extends AdminModel
 
         if($options['task'] == 'get-thumb') {
             $result = self::select('id', 'thumb')->where('id', $params['id'])->first();
+        }
+
+        if($options['task'] == 'news-list-items-get-product-info-in-cart') {
+            $productModel = new ProductModel();
+            $result       = $productModel->listItems($params, ['task' => 'news-list-items-get-product-info-in-cart']);
+        }
+
+        if($options['task'] == 'news-list-items-get-product-attribute-in-cart') {
+            $productModel = new ProductModel();
+            $result       = $productModel->listItems($params, ['task' => 'news-list-items-get-product-attribute-in-cart']);
+        }
+
+        if($options['task'] == 'news-list-items-get-product-attribute-value-in-cart') {
+            $productModel = new ProductModel();
+            // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
+            // echo '<h3>Die is Called </h3>';die;
+            $result       = $productModel->listItems($params, ['task' => 'news-list-items-get-product-attribute-value-in-cart']);
         }
 
         return $result;
