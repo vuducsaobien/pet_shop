@@ -26,6 +26,7 @@
         </form>
     </div>
 </div>
+
 <div class="header-login same-style">
     <a href="login-register.html"><i class="icon-user icons"></i></a>
 </div>
@@ -35,6 +36,7 @@
         <span class="count-style">{{ $total }}</span>
     </button>
     <div class="shopping-cart-content">
+
         <ul>
             <li class="single-shopping-cart">
                 <div class="shopping-cart-img">
@@ -63,13 +65,16 @@
                 </div>
             </li>
         </ul>
+
         <div class="shopping-cart-total">
             <h4>Shipping : <span>$20.00</span></h4>
             <h4>Total : <span class="shop-total">$260.00</span></h4>
         </div>
         <div class="shopping-cart-btn">
-            <a href="cart.html">view cart</a>
+            <a href="{{ route('cart') }}">view cart</a>
             <a href="checkout.html">checkout</a>
         </div>
+
     </div>
+
 </div>

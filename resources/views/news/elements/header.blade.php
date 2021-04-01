@@ -19,7 +19,7 @@
                 </div>
 
                 <!-- currency -->
-                {{-- @include('news.elements.header_currency') --}}
+                {{-- @include('news.elements.header.headr_currency') --}}
 
             </div>
         </div>
@@ -47,12 +47,12 @@
                 <!-- icon -->
                 <div class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-7">
                     <div class="search-login-cart-wrapper">
-                        @include('news.elements.header_icon')
+                        @include('news.elements.header.header_icon')
                     </div>
                 </div>
                 
                 <!-- mobile -->
-                @include('news.elements.header_mobile')
+                @include('news.elements.header.header_mobile')
 
             </div>
         </div>

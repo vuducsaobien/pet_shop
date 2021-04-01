@@ -24,7 +24,7 @@
                     <div class="footer-widget mb-30">
                         <div class="footer-info-wrapper">
 
-                            @include('news.elements.footer_logo')
+                            @include('news.elements.footer.footer_logo')
 
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="footer-widget mb-30 pl-50">
                         <h4 class="footer-title">USEFUL LINKS</h4>
 
-                        @include('news.elements.footer_useful')
+                        @include('news.elements.footer.footer_useful')
 
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                     <div class="footer-widget mb-30 pl-70">
                         <h4 class="footer-title">Thông tin</h4>
 
-                        @include('news.elements.footer_info')
+                        @include('news.elements.footer.footer_info')
 
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                     <div class="footer-widget">
 
-                        {{-- @include('news.elements.footer_subscribe') --}}
+                        @include('news.elements.footer.footer_subscribe')
 
                     </div>
                 </div>
@@ -64,6 +64,6 @@
     </div>
 
     <!-- Copyright -->
-    @include('news.elements.footer_copyright')
+    @include('news.elements.footer.footer_copyright')
 
 </footer>
