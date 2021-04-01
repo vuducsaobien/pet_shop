@@ -135,6 +135,14 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
         Route::get('/', [ 'as' => $controllerName, 'uses' => $controller . 'index' ]);
     });
 
+    // ============================== CART ==============================
+    $prefix         = 'checkout';
+    $controllerName = 'checkout';
+    Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
+        $controller = ucfirst($controllerName) . 'Controller@';
+
+        Route::get('/', [ 'as' => $controllerName, 'uses' => $controller . 'index' ]);
+    });
 
 });
 
