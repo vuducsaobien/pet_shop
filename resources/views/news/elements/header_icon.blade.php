@@ -1,7 +1,7 @@
 @php
     $total = '';
 
-    if (empty(session('cart'))) {
+    if (!empty(session('cart'))) {
         $cart = session('cart');
 
         $total = 0;

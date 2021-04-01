@@ -3,7 +3,8 @@
 namespace App\Helpers;
 
 use App\Models\CategoryModel;
-use Config;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Str;
 
 class Template
 {
