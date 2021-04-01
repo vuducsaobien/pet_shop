@@ -24,49 +24,44 @@
         <h3>Menu</h3>
         <ul class="nav side-menu">
             <li id = "dashboard"><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> {{__('message.dashboard')}}</a></li>
-            <li id = "article"><a   href="{{ route('article') }}"><i class="fa fa-newspaper-o"></i> {{__('message.article')}}</a></li>
-            <li id = "product"><a   href="{{ route('product') }}"><i class="fa fa-product-hunt"></i> {{__('message.product')}}</a></li>
-            <li id = "order"><a   href="{{ route('order') }}"><i class="fa fa-shopping-cart"></i> {{__('message.order')}}</a></li>
-            <li id = "menu"><a      href="{{ route('menu') }}"><i class="fa fa-sitemap"></i> {{__('message.menu')}}</a></li>
-            <li id = "category"><a  href="{{ route('category') }}"><i class="fa fa fa-building-o"></i> {{__('message.category')}}</a></li>
 
             <li>
-                <a><i class="fa fa-cubes"></i> {{__('message.noname')}} <span class="fa fa-chevron-down"></span></a>
+
+                <a><i class="fa fa-product-hunt"></i> Quản lý sản phẩm <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li id = "comment" class="none"><a href="{{ route('comment') }}"> Comment</a></li>
-                    <li id = "page" class="none"><a href="{{ route('page') }}"> Page</a></li>
-                    <li id = "payment" class="none"><a href="{{ route('payment') }}"> Payment</a></li>
-                    <li id = "team" class="none"><a href="{{ route('team') }}"> Team</a></li>
-                    <li id = "shipping" class="none"><a href="{{ route('shipping') }}"> Shipping</a></li>
-                    <li id = "discount" class="none"><a href="{{ route('discount') }}"> Discount</a></li>
-                    <li id = "contact" class="none"><a href="{{ route('contact') }}"> Contact</a></li>
-                    <li id = "recruitment" class="none"><a href="{{ route('recruitment') }}"> Recruitment</a></li>
+                    <li id = "product"     class="none"><a href="{{ route('product') }}"> Sản phẩm</a></li>
+                    <li id = "category"     class="none"><a href="{{ route('category') }}"> Danh mục</a></li>
+                    <li id = "discount"     class="none"><a href="{{ route('discount') }}"> Coupon</a></li>
+                    <li id = "attribute"     class="none"><a href="{{ route('attribute') }}"> Thuộc tính</a></li>
+                    <li id = "shipping"     class="none"><a href="{{ route('shipping') }}"> Phí ship</a></li>
+                    <li id = "comment"     class="none"><a href="{{ route('comment') }}"> Rating</a></li>
+                    <li id = "order"     class="none"><a href="{{ route('order') }}">Đơn đặt hàng</a></li>
+                </ul>
+            </lii>
+
+            <li>
+                <a><i class="fa fa-archive"></i> Quản lý bài viết <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li id = "category"     class="none"><a href="{{ route('category') }}"> Category</a></li>
+                    <li id = "article"     class="none"><a href="{{ route('article') }}"> Article</a></li>
+                    <li id = "comment"     class="none"><a href="{{ route('comment') }}"> Comment</a></li>
                 </ul>
             </li>
+            <li><a href="{{ route('menu') }}"><i class="fa fa-sitemap"></i> Quản lý Menu</a></li>
             <li>
                 <a><i class="fa fa-cog"></i> {{__('message.config')}} <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li id = "setting"><a href="{{ route('setting', ['type' => 'general']) }}"></i>Cấu hình chung</a></li>
-                    <li id = "setting"><a href="{{ route('setting', ['type' => 'email']) }}"></i>Email</a></li>
+                    <li id = "setting"><a href="{{ route('setting', ['type' => 'general']) }}">Cấu hình chung</a></li>
+                    <li id = "setting"><a href="{{ route('setting', ['type' => 'email']) }}">Email</a></li>
                     <li id = "setting"><a href="{{ route('setting', ['type' => 'social']) }}">Social</a></li>
-                    <li id = "logs"     class="none"><a href="{{ route('logs') }}"> Logs</a></li>
-                    <li id = "gallery"  class="none"><a href="{{ route('gallery') }}"> Gallery</a></li>
-                    <li id = "contact"  class="none"><a href="{{ route('contact') }}"> Liên hệ</a></li>
-                    <li id = "rss"      class="none"><a href="{{ route('rss') }}"> RSS</a></li>
-                    <li id = "slider"   class="none"><a href="{{ route('slider') }}"> Slider</a></li>
-                    <li id = "attribute"    class="none"><a href="{{ route('attribute') }}"> Attribute</a></li>
-                    <li id = "testimonial"  class="none"><a href="{{ route('testimonial') }}"> Testimonial</a></li>
                 </ul>
             </li>
+            <li><a href="{{ route('gallery') }}"><i class="fa fa-image"></i> Gallery</a></li>
 
-            <li>
-                <a><i class="fa fa-user"></i> {{__('message.user')}} <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                    <li id = "user" class="none"><a href="{{ route('user/change-logged-password') }}"> Change Password</a></li>
-                    <li id = "user" class="none"><a href="{{ route('user') }}"> User</a></li>
-                    <li id = "customer" class="none"><a href="{{ route('customer') }}"> Customer</a></li>
-                </ul>
-            </li>
+            <li><a href="{{ route('slider') }}"><i class="fa fa-sliders"></i> Slider</a></li>
+            <li><a href="{{ route('contact') }}"><i class="fa fa-connectdevelop"></i> Contact</a></li>
+
+
 
             <li><a href="{{ route('home') }}"><i class="fa fa-globe"></i> {{__('message.view-website')}}</a></li>
             <li><a href="{{ route('auth/logout') }}"><i class="fa fa-sign-out"></i> {{__('message.logout')}}</a></li>

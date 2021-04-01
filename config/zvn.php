@@ -75,7 +75,7 @@ return [
             'cafebiz' => ['name' => 'CafeBiz'],
             'tuoitre' => ['name' => 'Tuổi Trẻ'],
         ],
-        'search'       => [
+        'search'       =>[
             'all'           => ['name'=> 'Search by All'],
             'id'            => ['name'=> 'Search by ID'],
             'name'          => ['name'=> 'Search by Name'],
