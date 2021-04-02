@@ -1,9 +1,6 @@
 @php
     $total = '';
-
-    if (!empty(session('cart'))) {
-        $cart = session('cart');
-
+    if ($cartCheck) {
         $total = 0;
         foreach ($cart as $key => $value) {
             $total += $value['quantity'];
@@ -28,28 +25,39 @@
 </div>
 
 <div class="header-login same-style">
-    <a href="login-register.html"><i class="icon-user icons"></i></a>
+    @if (!$login)
+        <a href="{{ route('auth/login') }}"><i class="icon-user icons"></i></a>
+    @else
+        <a href="{{ route('dashboard') }}"><i class="icon-user icons"></i></a>
+    @endif
 </div>
+
 <div class="header-cart same-style">
     <button class="icon-cart">
         <i class="icon-handbag"></i>
         <span class="count-style">{{ $total }}</span>
     </button>
-    <div class="shopping-cart-content">
 
-        <ul>
-            @include('news.elements.header.header_ajax')
-        </ul>
+    @if($login)
+        <div class="shopping-cart-content">
 
-        <div class="shopping-cart-total">
-            <h4>Shipping : <span>$20.00</span></h4>
-            <h4>Total : <span class="shop-total">$260.00</span></h4>
+            <ul>
+                @include('news.elements.header.header_ajax')
+            </ul>
+
+            <div class="shopping-cart-total">
+                <h4>Shipping : <span>$20.00</span></h4>
+                <h4>Total : <span class="shop-total">$260.00</span></h4>
+            </div>
+
+            @if ($cartCheck)
+                <div class="shopping-cart-btn">
+                    <a href="{{ route('cart') }}">view cart</a>
+                    <a href="{{ route('checkout') }}">checkout</a>
+                </div>
+            @endif
+
         </div>
-        <div class="shopping-cart-btn">
-            <a href="{{ route('cart') }}">view cart</a>
-            <a href="{{ route('checkout') }}">checkout</a>
-        </div>
-
-    </div>
+    @endif
 
 </div>
