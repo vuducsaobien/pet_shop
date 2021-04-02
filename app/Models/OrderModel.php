@@ -4,6 +4,9 @@ namespace App\Models;
 
 use App\Models\AdminModel;
 use App\Models\ProductModel;
+use App\Models\CustomerModel;
+use App\Models\OrderProductModel;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB; 
 
 class OrderModel extends AdminModel
@@ -146,7 +149,7 @@ class OrderModel extends AdminModel
 
         if($options['task'] == 'edit-item') {
 
-/*            if(!empty($params['thumb'])){
+            /* if(!empty($params['thumb'])){
                 $this->deleteThumb($params['thumb_current']);
                 $params['thumb'] = $this->uploadThumb($params['thumb']);
             }*/
@@ -154,12 +157,32 @@ class OrderModel extends AdminModel
             $params['modified']    = date('Y-m-d');
             self::where('id', $params['id'])->update($this->prepareParams($params));
         }
+
+        if($options['task'] == 'news-add-item-customer-model') {
+
+            $params['order_code'] = Str::random(7);
+            $params['ip']         = $_SERVER['REMOTE_ADDR'];
+            $params['status']     = 'inactive';
+            $params['created']    = date('Y-m-d H:i:s');
+            $params['ip']         = $_SERVER['REMOTE_ADDR'];
+
+            $customerModel = new CustomerModel();
+            $prepare       = $customerModel->prepareParams($params);
+
+            echo '<pre style="color:red";>$prepare === '; print_r($prepare);echo '</pre>';
+            echo '<h3>Die is Called Modle</h3>';die;
+            // $customerModel::insert();
+            // $params['created_by'] = session('userInfo')['username'];
+            // $params['created']    = date('Y-m-d');
+            // self::insert($this->prepareParams($params));
+        }
+
     }
 
     public function deleteItem($params = null, $options = null) 
     { 
         if($options['task'] == 'delete-item') {
-/*            $item   = self::getItem($params, ['task'=>'get-thumb']); //
+            /* $item   = self::getItem($params, ['task'=>'get-thumb']); //
             $this->deleteThumb($item['thumb']);*/
             self::where('id', $params['id'])->delete();
         }

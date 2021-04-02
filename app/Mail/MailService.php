@@ -11,13 +11,12 @@ class MailService
 
     public function __construct()
     {
-        $this->fromTitle = 'ZendVN';
+        $this->fromTitle = 'Pet Shop Marten';
     }
 
     public function sendContactConfirm($data)
     {
         $mail = json_decode(SettingModel::where('key_value', 'setting-email')->first()->value, true);
-//        dd($mail);
         if (empty($mail))
             return false;
         else {
@@ -28,7 +27,7 @@ class MailService
 
                 $content = sprintf('
                 <p>Xin chào, %s</p>
-                <p>ZendVN đã nhận được thông tin liên hệ từ bạn và sẽ phản hồi bạn trong thời gian sớm nhất</p>
+                <p>Pet Shop Marten đã nhận được thông tin liên hệ từ bạn và sẽ phản hồi bạn trong thời gian sớm nhất</p>
                 <p>Cảm ơn!</p>
                 ', $data['name']);
                 $message->setBody($content, 'text/html');
@@ -61,6 +60,37 @@ class MailService
             return true;
         }
     }
+
+    public function sendOrderConfirm($data)
+    {
+        $mail = json_decode(SettingModel::where('key_value', 'setting-email')->first()->value, true);
+        if (empty($mail))
+            return false;
+        else {
+            Mail::send([], [], function ($message) use ($mail, $data) {
+                $message->from($mail['username'], $this->fromTitle);
+                $message->to($data['email']);
+                $message->subject($this->fromTitle . ' Thông báo Đặt Hàng Thành Công !!');
+
+                $content = sprintf('
+                <p>Xin chào, %s</p>
+                <p>Pet Shop Marten Cám ơn bạn đã Đặt Hàng. </p>
+                <h5>Thông tin Đơn Hàng : </h5>
+                <ul>
+                    <li>Mã Đơn Hàng : </li>
+                    <li>Mã Đơn Hàng : </li>
+                    <li>Mã Đơn Hàng : </li>
+                    <li>Mã Đơn Hàng : </li>
+                    <li>Mã Đơn Hàng : </li>
+                <ul>
+                <p>Cảm ơn!</p>
+                ', $data['name']);
+                $message->setBody($content, 'text/html');
+            });
+            return true;
+        }
+    }
+
 
 
 

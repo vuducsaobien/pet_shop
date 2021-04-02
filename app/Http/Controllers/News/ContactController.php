@@ -42,6 +42,9 @@ class ContactController extends Controller
              'message' => $request->message,
          ];
 
+        //  echo '<pre style="color:red";>$data === '; print_r($data);echo '</pre>';
+        //  echo '<h3>Die is Called Contact Model</h3>';die;
+
          $this->model->saveItem($data, ['task' => 'news-add-item']);
 
          $mailService = new MailService();

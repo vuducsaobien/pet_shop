@@ -132,7 +132,10 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName) . 'Controller@';
 
-        Route::get('/', [ 'as' => $controllerName, 'uses' => $controller . 'index' ]);
+        Route:: get('/', [ 'as' => $controllerName, 'uses' => $controller . 'index' ]);
+        Route:: post('/post-order', [ 'as' => $controllerName . '/order', 'uses' => $controller . 'postOrder' ]);
+        Route:: get('/thank-you.html', [ 'as' => $controllerName . '/thankyou', 'uses' => $controller . 'thankyou' ]);
+
     });
 
     // ============================== CART ==============================

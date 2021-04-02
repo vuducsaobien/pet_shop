@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\News;
 use Illuminate\Http\Request;
 use App\Models\OrderModel as MainModel;
+use App\Models\CustomerModel;
+use App\Models\OrderProductModel;
 
 class CartController extends FrontendController
 {
@@ -52,5 +54,31 @@ class CartController extends FrontendController
         // $breadcrumbs = $categoryModel->listItems($params, ['task' => 'news-breadcrumbs']);
         return view($this->pathViewController . 'index', compact('items'));
     }
+
+    public function postOrder(Request $request)
+    {
+        $data = $request->all()['info'];
+        $cart = json_decode($request->cart, true);
+
+        // echo '<pre style="color:red";>$data === '; print_r($data);echo '</pre>';
+        // echo '<pre style="color:red";>$cart === '; print_r($cart);echo '</pre>';
+        // echo '<h3>Die is Called Cart Controll</h3>';die;
+
+        $this->model->saveItem($data, ['task' => 'news-add-item-customer-model']);
+        // $this->model->saveItem($data, ['task' => 'news-add-item-order-model']);
+        // $this->model->saveItem($data, ['task' => 'news-add-item-order-product-model']);
+
+        $mailService = new MailService();
+        $mailService->sendContactConfirm($data);
+        $mailService->sendContactInfo($data);
+
+        // return redirect()->route($this->controllerName.'/thankyou' )->with('news_notify', 'Cảm ơn bạn đã gửi thông tin liên hệ. Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất.');
+    }
+
+    public function thankyou()
+    {
+        return view($this->pathViewController . 'thankyou');
+    }
+
  
 }

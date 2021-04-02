@@ -1,12 +1,6 @@
 @php
     use App\Helpers\Template;
     use App\Helpers\URL;
-
-    // $cart = session()->get('cart');
-
-    // echo '<pre style="color:red";>$cart === '; print_r($items);echo '</pre>';
-    // echo '<pre style="color:red";>$items === '; print_r($items);echo '</pre>';
-    // echo '<h3>Die is Called </h3>';die;
 @endphp
 
 @if( !empty($items) )

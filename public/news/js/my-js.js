@@ -153,16 +153,21 @@ $(document).ready(function() {
 	// Show Creadit Card
 	$("input#creadit_card").click(function(){
 		$('div.toHide').show('slow');
+		$('input#payment').val(2);
 	});
 	$("input#cash").click(function(){
 		$('div.toHide').hide();
+		$('input#payment').val(1);
 	});
 
 	// $.each(userInfo, function( index, result ) {
 	// 	console.log(`index = ${index} - result = ${result}`);
 	// })
-	console.log(userInfo);
-	console.log(userInfo.id);
+
+	if (login) {
+		console.log(userInfo);
+		console.log(userInfo.id);
+	}
 
 
 

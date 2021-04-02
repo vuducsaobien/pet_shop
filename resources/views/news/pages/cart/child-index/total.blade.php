@@ -1,6 +1,6 @@
 @php
     use App\Helpers\Template;
-    $cart        = session()->get('cart');
+    
     $grand_total = "0 <u>đ</u>";
     $fee         = $grand_total;
 
