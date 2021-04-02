@@ -1,5 +1,18 @@
 @extends('news.main')
 @section('content')
+    @php
+        $login = false;
+        if ( !empty(session()->get('userInfo')) ) {
+            $login    = true;
+            $userInfo = session()->get('userInfo');
+        }
+
+        $cartCheck = false;
+        if ( !empty(session()->get('cart')) ) {
+            $cartCheck = true;
+            $cart      = session()->get('cart');
+        }
+    @endphp
 
     <!-- breadcumb -->
     @include('news.templates.breadcumb', ['name' => 'Checkout'])

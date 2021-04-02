@@ -32,32 +32,30 @@
     @endif
 </div>
 
+@if($login)
+
 <div class="header-cart same-style">
     <button class="icon-cart">
         <i class="icon-handbag"></i>
         <span class="count-style">{{ $total }}</span>
     </button>
 
-    @if($login)
+    @if ($cartCheck)
         <div class="shopping-cart-content">
 
-            <ul>
-                @include('news.elements.header.header_ajax')
-            </ul>
+            <ul>@include('news.elements.header.header_ajax')</ul>
 
             <div class="shopping-cart-total">
                 <h4>Shipping : <span>$20.00</span></h4>
                 <h4>Total : <span class="shop-total">$260.00</span></h4>
             </div>
 
-            @if ($cartCheck)
-                <div class="shopping-cart-btn">
-                    <a href="{{ route('cart') }}">view cart</a>
-                    <a href="{{ route('checkout') }}">checkout</a>
-                </div>
-            @endif
-
+            <div class="shopping-cart-btn">
+                <a href="{{ route('cart') }}">view cart</a>
+                <a href="{{ route('checkout') }}">checkout</a>
+            </div>
         </div>
     @endif
 
 </div>
+@endif
