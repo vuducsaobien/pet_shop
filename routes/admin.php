@@ -248,7 +248,8 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', 'middleware' => 
     $prefix = 'logs';
     Route::group(['prefix' => $prefix], function () {
         Route::get('/', function () {
-            return view('admin.pages.logs.index');
+            $controllerName='';
+            return view('admin.pages.logs.index',compact('controllerName'));
         })->name('logs');
     });
     /*================================= ATTRIBUTE =============================*/
