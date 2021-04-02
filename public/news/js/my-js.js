@@ -158,6 +158,12 @@ $(document).ready(function() {
 		$('div.toHide').hide();
 	});
 
+	// $.each(userInfo, function( index, result ) {
+	// 	console.log(`index = ${index} - result = ${result}`);
+	// })
+	console.log(userInfo);
+	console.log(userInfo.id);
+
 
 
 	$('ul#product-attribute').css("list-style-type", "none");

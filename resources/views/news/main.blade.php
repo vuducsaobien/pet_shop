@@ -10,8 +10,6 @@
             if ( !empty(session()->get('userInfo')) ) {
                 $login    = true;
                 $userInfo = session()->get('userInfo');
-                $userInfoJs = json_encode($userInfo);
-
             }
 
             $cartCheck = false;
@@ -40,9 +38,8 @@
             var controllerName = "{{ $controllerName }}";
             var login          = "{{ $login }}";
             var cartCheck      = "{{ $cartCheck }}";
-            var userInfo      = "{{ $userInfoJs }}";
-
-
+            var userInfo       = JSON.parse(`<?= json_encode($userInfo) ?>`);
+            var cart           = JSON.parse(`<?= json_encode($cart) ?>`);
 
         </script>
 
