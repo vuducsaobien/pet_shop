@@ -1,13 +1,12 @@
 <div class="shipping-method">
-    <p>Flat Rate</p>
-    <p>Fixed $40.00</p>
+    <p id="check-out-fee"></p>
 </div>
 <div class="billing-back-btn">
     <div class="billing-back">
-        <a href="#"><i class="ti-arrow-up"></i> back</a>
+        <a id="payment-4" href=""><i class="ti-arrow-up"></i> back</a>
     </div>
     <div class="billing-btn">
-        <button type="submit">Continue</button>
+        <button id="payment-4" type="submit">Continue</button>
     </div>
 </div>
 

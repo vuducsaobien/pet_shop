@@ -63,26 +63,105 @@ $(document).ready(function() {
 			let grand_total_ship    = grand_total + fee;
 			let format              = format_price(grand_total_ship);
 			let string              =  '<h5>Tổng Cộng: ' + format + '</h5>';
+			let selectValue = $(this).val();
+			// console.log('selectValue = ' + selectValue);
 
 			$('div.grand-totall h5').html(string);
-			showNotify($('div.grand-totall h5'), 'Đã Cập nhật Lại Giá Tiền');
-			localStorage.setItem(key,value)
+			showNotify($('span#fee'), 'Đã Cập nhật Lại Giá Tiền');
+
+			let   value = {
+				'fee'             : fee,
+				'grand_total'     : grand_total,
+				'grand_total_ship': grand_total_ship,
+				'selectValue'     : selectValue,
+			};
+
+			localStorage.setItem('cart', JSON.stringify(value));
+
+			// Update Fee Cart
+			let cart = localStorage.getItem('cart');
+			if (cart) {
+				let arrtest = JSON.parse(cart);
+				$.each(arrtest, function( index, result ) {
+					if (index == 'fee') {
+						$('span#fee').html(format_price(result));
+					}
+		
+					// console.log(`index = ${index} - result = ${result}`);
+				})
+			}
+		
 			// $(this "select").val("val2");
-
-			console.log('fee = ' + fee);
-			console.log('old_grandTotal_text = ' + old_grandTotal_text);
-			console.log('grand_total = ' + grand_total);
-			console.log('grand_total_ship = ' + grand_total_ship);
-			console.log('format = ' + format);
-			// <h5>   $353.00</h5>
-
 		}
-
 	});
+
+	// Checkout Ship
+	let cart = localStorage.getItem('cart');
+	if (cart) {
+		let arrtest = JSON.parse(cart);
+		$.each(arrtest, function( index, result ) {
+
+			if (index == 'fee') {
+				$('p#check-out-fee').html('Phí vận chuyển : ' + format_price(result));
+				$('span#fee').html(format_price(result));
+				$('td#check-out-fee').html('+ ' + format_price(result));
+			}
+
+			if (index == 'grand_total_ship') {
+				$('td#grand_total_ship').html('= ' + format_price(result));
+				let string =  '<h5>Tổng Cộng: ' + format_price(result) + '</h5>';
+				$('div.grand-totall h5').html(string);
+			}
+
+			if (index == 'selectValue') {
+				$('select.shipping_change').val(result);
+			}
+
+			console.log(`index = ${index} - result = ${result}`);
+		})
+	}
+
+	// Coutinue Checkout Button
+	let startIdButton = [3, 4, 5, 6];
+	$.each(startIdButton, function( index, result ) {
+		// console.log(`index = ${index} - result = ${result}`);
+
+		$(`button#payment-${result}`).click(function () {
+			if (result == 6) {
+				
+			}
+			let div         = $(`div#payment-${result}`);
+			let nextDiv     = $(`div#payment-${result + 1}`);
+			let showClass   = div.attr('class');
+			let hiddenClass = showClass.replace(' show', '');
+			div.removeClass(showClass).addClass(hiddenClass);
+			nextDiv.addClass(showClass);
+		});
+
+		$(`a#payment-${result}`).click(function (e) {
+			e.preventDefault();
+			let div         = $(`div#payment-${result}`);
+			let prevDiv     = $(`div#payment-${result - 1}`);
+			let showClass   = div.attr('class');
+			let hiddenClass = showClass.replace(' show', '');
+			div.removeClass(showClass).addClass(hiddenClass);
+			prevDiv.addClass(showClass);
+		});
+
+	})
+
+	// Show Creadit Card
+	$("input#creadit_card").click(function(){
+		$('div.toHide').show('slow');
+	});
+	$("input#cash").click(function(){
+		$('div.toHide').hide();
+	});
+
+
+
 	$('ul#product-attribute').css("list-style-type", "none");
 
-
-	// console.log(`index = ${index} - result = ${result}`);
 	// allStorage();
 });
 

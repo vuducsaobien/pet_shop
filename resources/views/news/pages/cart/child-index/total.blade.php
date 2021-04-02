@@ -2,6 +2,7 @@
     use App\Helpers\Template;
     $cart        = session()->get('cart');
     $grand_total = "0 <u>đ</u>";
+    $fee         = $grand_total;
 
     if (!empty($cart)) {
         $grand_total = 0;
@@ -19,8 +20,9 @@
 <div class="col-lg-4 col-md-12">
     <div class="grand-totall">
         <span id="grand_total">Tổng Giá Sản Phẩm:   <span>{!! $grand_total !!}</span></span>
+        <span>Phí Vận Chuyển: + <span id="fee">{!! $fee !!}</span></span>
+        <span>Mã Giảm Giá: -  <span id="coupon">{!! $fee !!}</span></span>
         <h5>Tổng Cộng: {!! $grand_total !!}</h5>
-        <a href="{{ route('checkout') }}">Đi đến Trang Thanh Toán</a>
-        {{-- <p>Checkout with Multiple Addresses</p> --}}
+        <a id="checkout" href="{{ route('checkout') }}">Đi đến Trang Thanh Toán</a>
     </div>
 </div>

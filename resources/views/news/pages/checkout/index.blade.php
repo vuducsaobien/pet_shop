@@ -13,7 +13,7 @@
                         <div id="faq" class="panel-group">
 
                             <!-- Checkout Method -->
-                            <div class="panel panel-default">
+                            {{-- <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-1">Checkout method</a></h5>
                                 </div>
@@ -24,10 +24,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
             
                             <!-- Billing -->
-                            <div class="panel panel-default">
+                            {{-- <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h5 class="panel-title"><span>2</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-2">billing information</a></h5>
                                 </div>
@@ -38,14 +38,16 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
             
                             <!-- Ship Info -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h5 class="panel-title"><span>3</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-3">shipping information</a></h5>
+                                    <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-3">Thông Tin Nhận Hàng</a></h5>
                                 </div>
-                                <div id="payment-3" class="panel-collapse collapse ">
+                                {{-- <div id="payment-3" class="panel-collapse collapse show"> --}}
+                                <div id="payment-3" class="panel-collapse collapse">
+
                                     <div class="panel-body">
                                         <div class="shipping-information-wrapper">
                                             @include('news.pages.checkout.child-index.ship_info')
@@ -57,7 +59,7 @@
                             <!-- Ship Method -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h5 class="panel-title"><span>4</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-4">Shipping method</a></h5>
+                                    <h5 class="panel-title"><span>2</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-4">Phí Vận Chuyển</a></h5>
                                 </div>
                                 <div id="payment-4" class="panel-collapse collapse ">
                                     <div class="panel-body">
@@ -71,7 +73,7 @@
                             <!-- Payment -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h5 class="panel-title"><span>5</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-5">payment information</a></h5>
+                                    <h5 class="panel-title"><span>3</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-5">Phương Thức Thanh Toán</a></h5>
                                 </div>
                                 <div id="payment-5" class="panel-collapse collapse">
                                     <div class="panel-body">
@@ -85,9 +87,10 @@
                             <!-- Order -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h5 class="panel-title"><span>6</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-6">Order Review</a></h5>
+                                    <h5 class="panel-title"><span>4</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-6">Danh Sách Đặt Hàng</a></h5>
                                 </div>
-                                <div id="payment-6" class="panel-collapse collapse">
+                                {{-- <div id="payment-6" class="panel-collapse collapse"> --}}
+                                <div id="payment-6" class="panel-collapse collapse show">
                                     <div class="panel-body">
                                         <div class="order-review-wrapper">
                                             <div class="order-review">
