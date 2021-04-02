@@ -1,3 +1,3 @@
 <script type="text/javascript">
-    var controllerName = "{{ $controllerName }}";
+    var controllerName = "{{ $controllerName??'' }}";
 </script>
