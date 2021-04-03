@@ -5,16 +5,15 @@ namespace App\Models;
 use App\Models\AdminModel;
 use App\Models\ProductModel;
 use App\Models\CustomerModel;
-use App\Models\OrderProductModel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB; 
 
-class OrderModel extends AdminModel
+class CartModel extends AdminModel
 {
-        protected $table               = 'order';
-        protected $folderUpload        = 'order' ;
-        protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
-        protected $crudNotAccepted     = ['_token','thumb_current'];
+    protected $table               = 'cart';
+    protected $folderUpload        = 'cart' ;
+    protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
+    protected $crudNotAccepted     = ['_token','thumb_current'];
 
     public function customer()
     {

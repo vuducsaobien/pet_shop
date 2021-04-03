@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\News;
 use Illuminate\Http\Request;
-use App\Models\OrderModel;
+use App\Models\CartModel;
 
 class CheckoutController extends FrontendController
 {
@@ -27,9 +27,9 @@ class CheckoutController extends FrontendController
                 $params['attribute_id'][]    = $value['attribute_id'];
                 $params['attribute_value'][] = $value['attribute_value'];
             }
-            $orderModel = new OrderModel();
-            $info      = $orderModel->getItem($params, ['task' => 'news-list-items-get-product-info-in-cart']);
-            $attribute = $orderModel->getItem($params, ['task' => 'news-list-items-get-product-attribute-in-cart']);
+            $cartModel = new CartModel();
+            $info      = $cartModel->getItem($params, ['task' => 'news-list-items-get-product-info-in-cart']);
+            $attribute = $cartModel->getItem($params, ['task' => 'news-list-items-get-product-attribute-in-cart']);
             // $items['attribute_value'] = $this->model->getItem($params, ['task' => 'news-list-items-get-product-attribute-value-in-cart']);
         
             foreach ($info as $key => $value) {

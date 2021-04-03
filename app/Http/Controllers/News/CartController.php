@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\News;
 use Illuminate\Http\Request;
-use App\Models\OrderModel as MainModel;
-use App\Models\CustomerModel;
-use App\Models\OrderProductModel;
+use App\Models\CartModel as MainModel;
 
 class CartController extends FrontendController
 {

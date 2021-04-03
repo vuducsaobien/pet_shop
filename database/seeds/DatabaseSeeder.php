@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\OrderProductModel;
 use App\Models\ProductAttributeModel;
 use App\Models\ProductImageModel;
 use Illuminate\Database\Seeder;

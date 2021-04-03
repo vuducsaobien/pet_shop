@@ -2,9 +2,9 @@
     use App\Helpers\Template;
     use App\Helpers\URL;
 
-    // echo '<pre style="color:red";>$items === '; print_r($items);echo '</pre>';
+    echo '<pre style="color:red";>$items === '; print_r($items);echo '</pre>';
     // echo '<pre style="color:red";>$cart === '; print_r($cart);echo '</pre>';
-    // echo '<h3>Die is Called </h3>';die;
+    echo '<h3>Die is Called </h3>';die;
     $total_quantity = 0;
     $total          = 0;
     if( !empty($items) ){

@@ -1,16 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
 
-use App\Models\OrderModel;
-use ConsoleTVs\Charts\Facades\Charts;
 use Illuminate\Http\Request;
 use App\Models\SliderModel;
 use App\Models\UserModel;
 use App\Models\CategoryModel;
 use App\Models\ArticleModel;
-use Illuminate\Support\Facades\DB;
 
 
 class DashboardController extends AdminController
