@@ -11,7 +11,7 @@ $items=$article->getItem(null,['task'=>'news-get-item-recent']);
 <div class="shop-widget mt-50">
     <h4 class="shop-sidebar-title">Recent Post</h4>
     @forelse($items as $item)
-    <div class="recent-post-wrapper mt-35">
+    <div class="recent-post-wrapper mt-30">
 
         <div class="single-recent-post mb-20">
             <div class="recent-post-img">

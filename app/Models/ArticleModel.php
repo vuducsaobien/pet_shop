@@ -170,7 +170,7 @@ class ArticleModel extends AdminModel
             $result=self::select('id','name','slug','content','created_by','created','thumb')->paginate(6);
         }
         if($options['task']=='news-get-item-recent'){
-            $result=self::select('id','name','slug','content','created_by','created','thumb')->take(3)->get();
+            $result=self::select('id','name','slug','content','created_by','created','thumb')->take(3)->orderBy('id','desc')->get();
         }
         if($options['task']=='news-get-item-by-slug'){
             $result=self::with('comments')->where('slug',$params['slug'])->first();

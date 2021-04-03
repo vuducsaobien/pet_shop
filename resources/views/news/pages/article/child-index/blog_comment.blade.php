@@ -3,7 +3,7 @@
 use App\Helpers\Template;
 @endphp
 <div class="blog-comment-wrapper mt-55">
-    <h4 class="blog-dec-title">comments : {{$itemComment->count()}}</h4>
+    <h4 class="blog-dec-title">{{$itemComment->count()>0? $itemComment->count() ." Comments":"" }}</h4>
 
     @forelse($itemComment as $i)
     <div class="single-comment-wrapper mt-35" style="margin-left: {{$i->depth*125}}px">
