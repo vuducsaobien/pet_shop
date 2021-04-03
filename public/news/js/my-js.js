@@ -117,7 +117,7 @@ $(document).ready(function() {
 				$('select.shipping_change').val(result);
 			}
 
-			console.log(`index = ${index} - result = ${result}`);
+			// console.log(`index = ${index} - result = ${result}`);
 		})
 	}
 
@@ -160,13 +160,26 @@ $(document).ready(function() {
 		$('input#payment').val(1);
 	});
 
+	// Filter Search Category - Product
+	$("button#search_product").click(function(){
+		let searchValue = $('input[name=search]').val();
+		if ( searchValue !== null ) {
+			localStorage.setItem('search', searchValue);
+		}
+	});
+
+	let searchValue = localStorage.getItem('search');
+	if ( searchValue !== null ) {
+		$('input[name=search]').val(searchValue);
+	}
+
 	// $.each(userInfo, function( index, result ) {
 	// 	console.log(`index = ${index} - result = ${result}`);
 	// })
 
 	if (login) {
-		console.log(userInfo);
-		console.log(userInfo.id);
+		// console.log(userInfo);
+		// console.log(userInfo.id);
 	}
 
 

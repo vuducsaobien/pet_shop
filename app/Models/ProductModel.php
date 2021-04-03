@@ -117,20 +117,17 @@ class ProductModel extends AdminModel
             // echo '<h3>Die is Called Product Model</h3>';die;
         }
 
-        // if($options['task'] == 'news-list-items-get-product-attribute-value-in-cart') {
+        if($options['task'] == 'news-get-item-search-all-food') {
+            $result = self::select('id', 'product_code', 'name', 'thumb', 'price', 'quantity',
+            'price_sale', 'sale', 'slug', 'short_description')
+            ->where('status','active')
+            ->where('name', 'LIKE', "%{$params['search']}%")
+            ->orderBy('ordering', 'asc')
 
-        //     foreach ($params["attribute_value"] as $value) {
-        //         $newModel = new ProductAttributeModel();
-        //         $result[] = $newModel->listItems($params["attribute_value"], 
-        //         ['task' => 'news-list-items-get-product-attribute-value-in-cart']);
-        //     }
+            ->paginate($params['pagination']['totalItemsPerPage']);
+            // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
+        }
 
-        //     echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
-        //     echo '<pre style="color:red";>$result === '; print_r($result);echo '</pre>';
-        //     echo '<h3>Die is Called Product Model</h3>';die;
-        // }
-
-        
         return $result;
     }
 
@@ -275,7 +272,7 @@ class ProductModel extends AdminModel
         }
         /*================================= EDIT =============================*/
         if($options['task']=='change-info-product'){
-//            $params['special']=isset($params['special'])?1:0;
+            // $params['special']=isset($params['special'])?1:0;
 
             self::where('id', $params['id'])->update($this->prepareParams($params));
         }

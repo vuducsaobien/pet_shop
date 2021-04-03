@@ -14,4 +14,14 @@ class Hightlight
         return $input;
 
     }
+
+    public static function showFrontend($input, $searchValue) // name
+    {
+        if($searchValue == "") return $input;
+        if ( $searchValue !== null) {
+            return preg_replace("/".preg_quote($searchValue, "/")."/i", "<span class='highlight'>$0</span>", $input);
+            return $input;
+        }
+    }
+
 }

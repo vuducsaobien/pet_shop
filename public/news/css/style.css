@@ -36,6 +36,13 @@ body {
     font-size: 14px;
     color: #383838;
 }
+span.highlight{
+    background: yellow;
+    font-weight: bold;
+    color: red;
+    font-weight: bold;
+}
+
 .img {
     max-width: 100%;
     transition: all 0.3s ease-out 0s;

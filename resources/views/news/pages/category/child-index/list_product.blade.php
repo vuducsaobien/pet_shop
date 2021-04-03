@@ -1,5 +1,6 @@
 @php
     use App\Helpers\Template;
+    use App\Helpers\Hightlight;
     use App\Helpers\URL;
     // echo '<pre style="color:red";>$items === '; print_r($items);echo '</pre>';
     // echo '<h3>Die is Called </h3>';die;
@@ -11,7 +12,7 @@
         $linkModal         = URL::linkModal($id);
         $linkProduct       = URL::linkProduct($value, 'index');
         $thumb             = $value['thumb'];
-        $name              = $value['name'];
+        $name              = Hightlight::showFrontend($value['name'], $search);
         $quantity          = $value['quantity'];
         $short_description = $value['short_description'];
         $htmlPrice         = Template::caculatorPriceFrontend($value['price'], $value['price_sale'], $value['sale']);

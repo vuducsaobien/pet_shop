@@ -17,6 +17,7 @@ class CategoryController extends FrontendController
 
     public function index(Request $request)
     {   
+                $search   = null;
         $params['slug']   = $request->category_slug;
                 $all_slug = $this->model->getItem(null, ['task' => 'news-get-item-all-slug']);
         if (!in_array($params['slug'], $all_slug)) {
@@ -39,7 +40,25 @@ class CategoryController extends FrontendController
         // echo '<h3>Die is Called </h3>';die;
 
         // $breadcrumbs = $categoryModel->listItems($params, ['task' => 'news-breadcrumbs']);
-        return view($this->pathViewController . 'index', compact('items', 'type'));
+        return view($this->pathViewController . 'index', compact('items', 'type', 'search'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+
+        if ( !empty($search) ) {
+                          $type      = 'all-food';
+            $this->params['search']  = $search;
+                          $items     = $this->model->getItem($this->params, ['task' => 'news-get-item-search-all-food']);
+
+            // echo '<pre style="color:red";>$items === '; print_r($items);echo '</pre>';
+            // echo '<h3>Die is Called Category Controller search</h3>';die;
+            return view($this->pathViewController . 'index', compact('items', 'type', 'search'));
+        }else{
+            return redirect()->back();
+        }
+
     }
  
 }
