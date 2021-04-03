@@ -1,4 +1,7 @@
 <!-- Blog Comment -->
+@php
+use App\Helpers\Template;
+@endphp
 <div class="blog-comment-wrapper mt-55">
     <h4 class="blog-dec-title">comments : {{$itemComment->count()}}</h4>
 
@@ -9,7 +12,7 @@
         </div>
         <div class="blog-comment-content">
             <h4>{{$i->name}}</h4>
-            <span>October 14, 2018 </span>
+            <span>{{Template::showDatetimeFrontend($i->created,'long_time')}}</span>
             <p>{{$i->message}}</p>
             <div class="blog-details-btn">
                 <a href="#" class="reply" data-field="{{$i->id}}">Reply</a>

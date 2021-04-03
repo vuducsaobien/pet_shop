@@ -196,9 +196,10 @@ class Template
         return $xhtml;
     }
 
-    public static function showDatetimeFrontend($dateTime)
+    public static function showDatetimeFrontend($dateTime,$style="short_time")
     {
-        return date_format(date_create($dateTime), Config::get('zvn.format.short_time'));
+        $time=Config::get('zvn.format.'.$style);
+        return date_format(date_create($dateTime),$time );
     }
 
     public static function showContent($content, $length, $prefix = '...')

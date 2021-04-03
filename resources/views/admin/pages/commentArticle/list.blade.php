@@ -27,7 +27,6 @@
                             $name            = Template::showNestedSetName($val['name'], $val['depth']);
                             $status          = Template::showItemStatus($controllerName, $id, $val['status']);
                             $message=$val['message'];
-                            $move            = Template::showNestedSetUpDown($controllerName, $id);
                             $isHome          = Template::showItemIsHome($controllerName, $id, $val['is_home']);
                             $display         = Template::showItemSelect($controllerName, $id, $val['display'], 'display');
                             $createdHistory  = Template::showItemHistory($val['created_by'], $val['created']);
