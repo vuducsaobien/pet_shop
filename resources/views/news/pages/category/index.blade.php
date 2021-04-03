@@ -13,15 +13,11 @@
                     @include('news.templates.shop_topbar')
 
                     <div class="grid-list-product-wrapper">
-                        <div class="product-view product-grid">
+                        <div class="product-view product-{{ $display }}">
 
                             <!-- List - Product -->
                             <div class="row">
-                                @if ($type == 'all-food')
-                                    @include('news.pages.category.child-index.list_product')
-                                @else
-                                    @include('news.pages.category.child-index.list_product_detail')
-                                @endif
+                                @include('news.pages.category.list_product')
                             </div>
 
                             <!-- paginate -->

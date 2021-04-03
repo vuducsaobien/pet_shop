@@ -174,11 +174,11 @@ class CategoryModel extends AdminModel
         if($options['task'] == 'news-get-item-search-all-food') {
             $productModel = new ProductModel();
             $result = $productModel->listItems($params, ['task' => 'news-get-item-search-all-food']);
-
-            // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
-            // echo '<h3>Die is Called Cate Model</h3>';die;
         }
 
+        if($options['task'] == 'news-get-item-category-display') {
+            $result = self::where('id', $params)->value('display');
+        }
         
         return $result;
     }

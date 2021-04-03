@@ -15,8 +15,6 @@
     // echo '<h3 style="color:red;font-weight:bold">$total = ' . $total .'</h3>';
     
     $paginationFrontEnd = Template::createPaginationPublic($currentPage, $lastPage, $perPage, $total);
-
-
 @endphp
 
 <div class="shop-topbar-wrapper">
@@ -34,8 +32,13 @@
     </div>
     <div class="grid-list-options">
         <ul class="view-mode">
-            <li class="active"><a href="#product-grid" data-view="product-grid"><i class="ti-layout-grid4-alt"></i></a></li>
-            <li><a href="#product-list" data-view="product-list"><i class="ti-align-justify"></i></a></li>
+            @if ($display == 'grid')
+                <li class="active"><a href="#product-grid" data-view="product-grid"><i class="ti-layout-grid4-alt"></i></a></li>
+                <li>                <a href="#product-list" data-view="product-list"><i class="ti-align-justify"></i></a></li>
+            @else
+                <li>                <a href="#product-grid" data-view="product-grid"><i class="ti-layout-grid4-alt"></i></a></li>
+                <li class="active"><a href="#product-list" data-view="product-list"><i class="ti-align-justify"></i></a></li>
+            @endif
         </ul>
     </div>
 </div>

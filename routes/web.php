@@ -57,7 +57,7 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName)  . 'Controller@';
         // Route::get('/search-{product_name}', [ 'as' => $controllerName . '/search', 'uses' => $controller . 'search' ]);
-        Route::get('/search', [ 'as' => $controllerName . '/search', 'uses' => $controller . 'search' ]);
+        Route::get('/search', [ 'as' => $controllerName . '/search', 'uses' => $controller . 'index' ]);
         Route::get('{category_slug}.html', [ 'as' => $controllerName . '/index', 'uses' => $controller . 'index' ]);
     });
     

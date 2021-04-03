@@ -24,6 +24,7 @@
 
             @include('news.partials.product.product_image', ['linkProduct' => $linkProduct])
             @include('news.partials.product.product_content')
+            @include('news.partials.product.product_list_content', ['quantity' => $quantity, 'quickview' => true])
 
         </div>
     </div>
