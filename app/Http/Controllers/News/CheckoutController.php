@@ -48,7 +48,7 @@ class CheckoutController extends FrontendController
         // echo '<pre style="color:red";>$attribute === '; print_r($attribute);echo '</pre>';
         // echo '<pre style="color:red";>$items === '; print_r($items);echo '</pre>';
         
-        // echo '<h3>Die is Called Cart Controller</h3>';die;
+        // echo '<h3>Die is Called Checkout Controller</h3>';die;
         // $breadcrumbs = $categoryModel->listItems($params, ['task' => 'news-breadcrumbs']);
         return view($this->pathViewController . 'index', compact('items'));
     }

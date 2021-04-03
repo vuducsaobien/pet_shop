@@ -6,7 +6,7 @@
     <body>
 
         @php
-            $login = false;
+            $login    = false;
             $userInfo = null;
             if ( !empty(session()->get('userInfo')) ) {
                 $login    = true;
@@ -14,6 +14,7 @@
             }
 
             $cartCheck = false;
+            $cart      = null;
             if ( !empty(session()->get('cart')) ) {
                 $cartCheck = true;
                 $cart      = session()->get('cart');
@@ -25,7 +26,7 @@
             'userInfo'  => $userInfo,
             'cartCheck' => $cartCheck,
             'cart'      => $cart,
-            ])
+        ])
 
 
         @yield('content')

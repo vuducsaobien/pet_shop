@@ -1,7 +1,7 @@
 @php
     use App\Models\UserModel;
 
-    $username  = session('userInfo')['username'];
+    $username  = $userInfo['username'];
     $userModel = new UserModel();
     $items     = $userModel->getItem($username, ['task' => 'news-get-user-info']);
     $phone     = $items['phone'];

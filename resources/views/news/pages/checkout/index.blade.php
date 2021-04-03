@@ -1,13 +1,15 @@
 @extends('news.main')
 @section('content')
     @php
-        $login = false;
+        $login    = false;
+        $userInfo = null;
         if ( !empty(session()->get('userInfo')) ) {
             $login    = true;
             $userInfo = session()->get('userInfo');
         }
 
         $cartCheck = false;
+        $cart      = null;
         if ( !empty(session()->get('cart')) ) {
             $cartCheck = true;
             $cart      = session()->get('cart');
