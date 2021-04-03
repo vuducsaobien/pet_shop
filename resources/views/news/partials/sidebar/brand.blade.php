@@ -1,4 +1,4 @@
-<div class="shop-widget mt-50">
+{{-- <div class="shop-widget mt-50">
     <h4 class="shop-sidebar-title">Top Brands </h4>
      <div class="shop-list-style mt-20">
         <ul>
@@ -9,4 +9,4 @@
             <li><a href="#">Castor & Pollux</a></li>
         </ul>
     </div>
-</div>
+</div> --}}

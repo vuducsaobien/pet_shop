@@ -52,7 +52,7 @@ class Template
         $tmplStatus = Config::get('zvn.template.status');
 
         if (count($itemsStatusCount) > 0) {
-/*            array_unshift($itemsStatusCount, [
+        /* array_unshift($itemsStatusCount, [
                 'count' => array_sum(array_column($itemsStatusCount, 'count')),
                 'status' => 'all'
             ]);*/
@@ -384,5 +384,32 @@ class Template
         return $xhtml;
         
     }
+
+    public static function createPaginationPublic($currentPage, $lastPage, $perPage, $total)
+    {
+        if($lastPage==1){
+            $startItem = 1;
+            $endItem = $total;
+        
+            }elseif($lastPage > 1 && $currentPage == 1 ){
+                $startItem = 1;
+                $endItem	= $currentPage * $perPage;
+        
+            }elseif($lastPage > 1 && $currentPage > 1 && $currentPage < $lastPage){
+                $startItem = ($currentPage-1) * $perPage + 1;
+                $endItem	= $currentPage * $perPage;
+        
+            }elseif($lastPage > 1 && $currentPage == $lastPage){
+                $startItem = ($currentPage-1) * $perPage + 1;
+                $endItem	= $total;
+        }elseif ($lastPage < $perPage) {
+            $startItem = 1;
+            $endItem = $total;
+        }
+
+        $xhtml = "<label>Hiển thị <span>$startItem-$endItem</span> của <span>$total</span> Kết quả</label>";
+        return $xhtml;
+    }
+
 
 }

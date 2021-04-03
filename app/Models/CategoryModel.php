@@ -40,6 +40,17 @@ class CategoryModel extends AdminModel
                 ->toTree();
         }
 
+        if($options['task'] == 'news-list-items-category') {
+            $result = self::withDepth()
+                ->having('depth', '>', 0)
+                ->defaultOrder()
+                ->where('status', 'active')
+                ->get()
+                ->toTree()
+                ->toArray();
+        }
+
+
         if($options['task'] == 'news-list-items-is-home') {
             $query = $this->select('id', 'name', 'display')
                 ->where('status', '=', 'active' )
