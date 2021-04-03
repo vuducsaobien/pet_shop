@@ -106,7 +106,7 @@ class UserModel extends AdminModel
 
         if ($options['task'] == 'news-get-user-info') {
             $result = self::select('address', 'phone')
-            ->where('username', 'admin1')
+            ->where('username', $params)
             ->first()->toArray()
             ;
         }

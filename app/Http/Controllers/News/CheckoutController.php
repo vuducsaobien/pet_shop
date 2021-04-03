@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Http\Controllers\News;
+
 use Illuminate\Http\Request;
 use App\Models\CartModel;
 
@@ -19,7 +19,7 @@ class CheckoutController extends FrontendController
     {   
         $cart  = $request->session()->get('cart');
         $items = null;
-        // echo '<pre style="color:red";>$cart === '; print_r($cart);echo '</pre>';
+
         if ( !empty($cart) ) {
             $items = [];
             foreach ($cart as $value) {

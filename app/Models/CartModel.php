@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\AdminModel;
 use App\Models\ProductModel;
 use App\Models\CustomerModel;
+use App\Models\AttributeModel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB; 
 
@@ -13,7 +14,7 @@ class CartModel extends AdminModel
     protected $table               = 'cart';
     protected $folderUpload        = 'cart' ;
     protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
-    protected $crudNotAccepted     = ['_token','thumb_current'];
+    protected $crudNotAccepted     = ['_token','name', 'thumb', 'id', 'attribute', 'total_price', 'product_code', 'slug'];
 
     public function customer()
     {
@@ -167,14 +168,32 @@ class CartModel extends AdminModel
 
             $customerModel = new CustomerModel();
             $prepare       = $customerModel->prepareParams($params);
+            $customerModel::insert($prepare);
 
-            echo '<pre style="color:red";>$prepare === '; print_r($prepare);echo '</pre>';
-            echo '<h3>Die is Called Modle</h3>';die;
-            // $customerModel::insert();
-            // $params['created_by'] = session('userInfo')['username'];
-            // $params['created']    = date('Y-m-d');
-            // self::insert($this->prepareParams($params));
+            return $order_code = $params['order_code'];
         }
+
+        if($options['task'] == 'news-add-item-cart-model') {
+
+            $cart = $params['cart'];
+            foreach ($cart as $value) {
+                $attributeModel = new AttributeModel();
+                $attribute_id   = $attributeModel->getItem($value['attribute'], ['task' => 'get-attribute-id-from-attribute-name']);
+                $value['product_id']      = $value['id'];
+                $value['order_code']      = $params['order_code'];
+                $value['price']           = $value['total_price'];
+                $value['attribute_id']    = json_encode($attribute_id, JSON_UNESCAPED_UNICODE);
+                $value['attribute_value'] = json_encode($value['attribute_value'], JSON_UNESCAPED_UNICODE);
+
+                $prepare = $this->prepareParams($value);
+
+                // echo '<pre style="color:red";>$prepare === '; print_r($prepare);echo '</pre>';
+                // echo '<h3>Die is Called </h3>';die;
+                self::insert($prepare);
+            }
+
+        }
+
 
     }
 

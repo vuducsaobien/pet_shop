@@ -161,6 +161,10 @@ class AttributeModel extends AdminModel
             $result = self::select('id', 'name')->where('status', 'active')->orderBy('ordering')->limit(2)->get()->toArray();
         }
 
+        if ($options['task'] == 'get-attribute-id-from-attribute-name') {
+            $result = self::whereIn('name', $params)->pluck('id')->toArray();
+        }
+
 
         return $result;
     }

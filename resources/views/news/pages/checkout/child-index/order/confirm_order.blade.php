@@ -32,14 +32,14 @@
         <form action="{{ route('cart/order') }}" method="POST">
             @csrf
 
-            <input type = "hidden" name  = "info['user_id']" value  = "{{$id}}">
-            <input type = "hidden" name  = "info['email']" value    = "{{$email}}">
-            <input type = "hidden" name  = "info['name']" value     = "{{$fullname}}">
-            <input type = "hidden" name  = "info['phone']" value    = "{{$phone}}">
-            <input type = "hidden" name  = "info['address']" value  = "{{$address}}">
-            <input id   = "payment" type = "hidden" name            = "info['payment_id']" value = "1">
-            <input type = "hidden" name  = "info['quantity']" value = "{{$total_quantity}}">
-            <input type = "hidden" name  = "info['amount']" value   = "{{$total}}">
+            <input type = "hidden" name  = "info[user_id]" value  = "{{$id}}">
+            <input type = "hidden" name  = "info[email]" value    = "{{$email}}">
+            <input type = "hidden" name  = "info[name]" value     = "{{$fullname}}">
+            <input type = "hidden" name  = "info[phone]" value    = "{{$phone}}">
+            <input type = "hidden" name  = "info[address]" value  = "{{$address}}">
+            <input id   = "payment" type = "hidden" name            = "info[payment_id]" value = "1">
+            <input type = "hidden" name  = "info[quantity]" value = "{{$total_quantity}}">
+            <input type = "hidden" name  = "info[amount]" value   = "{{$total}}">
             <input type = "hidden" name  = "cart" value             = "{{$cart}}">
 
             <button class="checkout-btn" id="payment-6" type="submit">Xác Nhận Thanh Toán</button>
