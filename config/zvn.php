@@ -123,6 +123,7 @@ return [
             'slider'    => ['edit', 'delete'],
             'category'  => ['edit', 'delete'],
             'article'   => ['edit', 'delete'],
+            'commentArticle'   => ['edit', 'delete'],
             'user'      => ['edit'],
             'menu'      => ['edit', 'delete'],
             'testimonial'      => ['edit', 'delete'],

@@ -42,6 +42,10 @@ Route::group(['prefix' => $prefixNews, 'namespace' => 'News'], function () {
          [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ])
          ->where('article_slug', '[0-9a-zA-Z_-]+');
 
+        Route::post('list-blog.html',
+            [ 'as' => $controllerName . '/postComment', 'uses' => $controller . 'postComment' ])
+            ->where('article_slug', '[0-9a-zA-Z_-]+');
+
         /* Route::get('/blog.html',
         [ 'as' => $controllerName . '/detail', 'uses' => $controller . 'detail' ]);*/
 

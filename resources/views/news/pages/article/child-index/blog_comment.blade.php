@@ -1,30 +1,66 @@
 <!-- Blog Comment -->
 <div class="blog-comment-wrapper mt-55">
-    <h4 class="blog-dec-title">comments : 02</h4>
-    <div class="single-comment-wrapper mt-35">
+    <h4 class="blog-dec-title">comments : {{$itemComment->count()}}</h4>
+
+    @forelse($itemComment as $i)
+    <div class="single-comment-wrapper mt-35" style="margin-left: {{$i->depth*125}}px">
         <div class="blog-comment-img">
-            <img src="{{ asset('news/images/blog/blog-comment1.png') }}" alt="">
+            <img src="{{ asset('images/avatar/comment.jpg') }}" alt="">
         </div>
         <div class="blog-comment-content">
-            <h4>Anthony Stephens</h4>
+            <h4>{{$i->name}}</h4>
             <span>October 14, 2018 </span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor magna aliqua. Ut enim ad minim veniam, </p>
+            <p>{{$i->message}}</p>
             <div class="blog-details-btn">
-                <a href="blog-details.html">read more</a>
+                <a href="#" class="reply" data-field="{{$i->id}}">Reply</a>
             </div>
         </div>
     </div>
-    <div class="single-comment-wrapper mt-50 ml-125">
-        <div class="blog-comment-img">
-            <img src="{{ asset('news/images/blog/blog-comment2.png') }}" alt="">
-        </div>
-        <div class="blog-comment-content">
-            <h4>Anthony Stephens</h4>
-            <span>October 14, 2018 </span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor magna aliqua. Ut enim ad minim veniam, </p>
-            <div class="blog-details-btn">
-                <a href="blog-details.html">read more</a>
+    @empty
+        <p>chua co binh luan nao</p>
+    @endforelse
+    {{--<div class="ml-125">
+    <form action="{{route('article/postComment')}}" method="post">
+        @csrf
+        @method('post')
+            <div class="col-md-9">
+                <div class="leave-form">
+                    <input type="text" placeholder="Name" name="name" value="{{old('name')}}">
+                    <span class="color-red">{{$errors->first('name')}}</span>
+                </div>
             </div>
-        </div>
-    </div>
+            <div class="col-md-9">
+                <div class="text-leave">
+                    <textarea placeholder="Message" name="message" rows="10" cols="20">{{old('message')}}</textarea>
+                    <span class="color-red">{{$errors->first('message')}}</span>
+                    <input type="hidden" name="article_id" value="{{$item->id}}">
+                    <input type="hidden" name="parent_id" value="">
+
+                    <input type="submit" value="SEND MASSAGE">
+                </div>
+            </div>
+    </form>
+    </div>--}}
 </div>
+@section('script')
+<script>
+
+    $(function() {
+         $(".reply").click(function(e){
+                parent_id=$(this).data('field');
+                console.log(parent_id);
+                
+
+               $(this).parent().parent().parent().after('<div class="ml-125">' +
+                   '<form action="{{route('article/postComment')}}" method="post">' +
+                   '@csrf' +
+                   '@method('post')' +
+                   '<div class="col-md-9"> <div class="leave-form"> <input type="text" placeholder="Name" name="name" value="{{old('name')}}"> <span class="color-red">{{$errors->first('name')}}</span> </div> </div>' +
+                   '<div class="col-md-9"><div class="text-leave"><textarea placeholder="Message" name="message" rows="10" cols="20">{{old('message')}}</textarea><span class="color-red">{{$errors->first('message')}}</span><input type="hidden" name="article_id" value="{{$item->id}}"><input type="hidden" name="parent_id" value="'+parent_id+'"><input type="submit" value="SEND MASSAGE"></div></div></form></div></div>' +
+                   '</div>')
+             e.preventDefault();
+
+         });
+    });
+</script>
+@stop

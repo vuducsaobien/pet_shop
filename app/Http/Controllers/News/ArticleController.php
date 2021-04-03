@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\News;
 use App\Http\Controllers\Controller;
+use App\Models\CommentArticleModel;
 use Illuminate\Http\Request;
 
 use App\Models\ArticleModel;
@@ -38,12 +39,29 @@ class ArticleController extends Controller
         $articleModel  = new ArticleModel();
         $params['slug']=$request->article_slug;
         $item = $articleModel->getItem($params, ['task' => 'news-get-item-by-slug']);
+        $comment=new CommentArticleModel();
+        $itemComment=$comment->listItems(['article_id'=>$item->id],['task'=>'news-list-items']);
+
+
+
+
 
 
         return view($this->pathViewController .  'detail', compact(
-            'item'
+            'item','itemComment'
 
         ));
+    }
+
+    public function postComment(Request $request)
+    {
+        $params=$request->all();
+        $commentArticleModel=new CommentArticleModel();
+        $commentArticleModel->saveItem($params, ['task' => 'add-item']);
+
+        return redirect()->back();
+
+
     }
 
 
