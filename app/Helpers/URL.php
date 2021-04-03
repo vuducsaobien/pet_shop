@@ -13,6 +13,14 @@ class URL
         ]);
     }
 
+    public static function linkCategoryArray($category)
+    {
+        return route('category/index', [
+            'category_slug' => $category,
+        ]);
+    }
+
+
     public static function linkArticle($article)
     {
         return route('article/detail', [

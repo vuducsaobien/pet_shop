@@ -1,13 +1,34 @@
+@php
+    use App\Helpers\Template;
+
+    // echo '<pre style="color:red";>$items === '; print_r($items);echo '</pre>';
+    // echo '<h3>Die is Called </h3>';die;   
+
+    $perPage     = $items->perPage();
+    $lastPage    = $items->lastPage();
+    $currentPage = $items->currentPage();
+    $total       = $items->total();
+
+    // echo '<h3 style="color:red;font-weight:bold">$perPage = ' . $perPage .'</h3>';
+    // echo '<h3 style="color:red;font-weight:bold">$lastPage = ' . $lastPage .'</h3>';
+    // echo '<h3 style="color:red;font-weight:bold">$currentPage = ' . $currentPage .'</h3>';
+    // echo '<h3 style="color:red;font-weight:bold">$total = ' . $total .'</h3>';
+    
+    $paginationFrontEnd = Template::createPaginationPublic($currentPage, $lastPage, $perPage, $total);
+
+
+@endphp
+
 <div class="shop-topbar-wrapper">
     <div class="product-sorting-wrapper">
 
         <div class="product-show shorting-style">
-            <label>Showing <span>1-20</span> of <span>100</span> Results</label>
-            <select>
+            {!! $paginationFrontEnd !!}
+            {{-- <select>
                 <option value="">12</option>
                 <option value="">24</option>
                 <option value="">36</option>
-            </select>
+            </select> --}}
         </div>
 
     </div>
