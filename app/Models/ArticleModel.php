@@ -169,6 +169,9 @@ class ArticleModel extends AdminModel
         if($options['task']=='news-get-item'){
             $result=self::select('id','name','slug','content','created_by','created','thumb')->paginate(6);
         }
+        if($options['task']=='news-get-item-recent'){
+            $result=self::select('id','name','slug','content','created_by','created','thumb')->take(3)->get();
+        }
         if($options['task']=='news-get-item-by-slug'){
             $result=self::with('comments')->where('slug',$params['slug'])->first();
         }
