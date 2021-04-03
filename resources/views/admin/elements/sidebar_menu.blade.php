@@ -37,6 +37,8 @@
                     <li id="shipping"><a href="{{ route('shipping') }}"> Phí ship</a></li>
                     <li id="order"><a href="{{ route('order') }}">Đơn đặt hàng</a></li>
                     <li id="customer"><a href="{{ route('customer') }}">Khách hàng</a></li>
+                    <li id="comment"><a href="{{ route('comment') }}"> Comment</a></li>
+
                 </ul>
             </li>
 
@@ -45,8 +47,9 @@
                 <a><i class="fa fa-archive"></i> Quản lý bài viết <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li id="article"><a href="{{ route('article') }}"> Article</a></li>
-                    <li id="comment"><a href="{{ route('comment') }}"> Comment</a></li>
+                    <li id="comment_article"><a href="{{ route('commentArticle') }}"> Comment</a></li>
                     <li id="testimonial"><a href="{{ route('testimonial') }}"> Testimonial</a></li>
+                    <li id="team"><a href="{{ route('team') }}"> Team</a></li>
                 </ul>
             </li>
             <li>

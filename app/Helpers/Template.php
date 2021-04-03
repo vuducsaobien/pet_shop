@@ -196,9 +196,10 @@ class Template
         return $xhtml;
     }
 
-    public static function showDatetimeFrontend($dateTime)
+    public static function showDatetimeFrontend($dateTime,$style="short_time")
     {
-        return date_format(date_create($dateTime), Config::get('zvn.format.short_time'));
+        $time=Config::get('zvn.format.'.$style);
+        return date_format(date_create($dateTime),$time );
     }
 
     public static function showContent($content, $length, $prefix = '...')
@@ -237,8 +238,8 @@ class Template
 
     public static function showNestedSetName($name, $level)
     {
-        $xhtml = str_repeat('|------ ', $level - 1);
-        $xhtml .= sprintf('<span class="badge badge-danger p-1">%s</span> <strong>%s</strong>', $level, $name);
+        $xhtml = str_repeat('|------ ', $level );
+        $xhtml .= sprintf('<span class="badge badge-danger p-1">%s</span> <strong>%s</strong>', $level+1, $name);
         return $xhtml;
     }
 

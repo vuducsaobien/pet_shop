@@ -20,6 +20,10 @@ class ArticleModel extends AdminModel
     protected $fieldSearchAccepted=['name','content'];
     protected $crudNotAccepted=['_token','thumb_current'];
 
+    public function comments()
+    {
+        return $this->hasMany(CommentArticleModel::class,'article_id','id');
+    }
     public function listItems($params = null, $options = null) {
      
         $result = null;
@@ -165,8 +169,11 @@ class ArticleModel extends AdminModel
         if($options['task']=='news-get-item'){
             $result=self::select('id','name','slug','content','created_by','created','thumb')->paginate(6);
         }
+        if($options['task']=='news-get-item-recent'){
+            $result=self::select('id','name','slug','content','created_by','created','thumb')->take(3)->orderBy('id','desc')->get();
+        }
         if($options['task']=='news-get-item-by-slug'){
-            $result=self::where('slug',$params['slug'])->first();
+            $result=self::with('comments')->where('slug',$params['slug'])->first();
         }
 
         return $result;
