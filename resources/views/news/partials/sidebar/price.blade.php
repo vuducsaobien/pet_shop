@@ -11,8 +11,8 @@
                     <label>Giá : </label>
                     <form class="shop-search-form" action="{{ $link }}" method="GET">
                         <input type="text" id="amount" placeholder="Add Your Price" />
-                        <input type="hidden" name="min" value=""/>
-                        <input type="hidden" name="max" value=""/>
+                        <input type="hidden" name="min" value="{{ $setting_price['min'] }}"/>
+                        <input type="hidden" name="max" value="{{ $setting_price['max'] }}"/>
                 </div>
                 <button id="filter_price" type="submit">Lọc</button> 
             </form>

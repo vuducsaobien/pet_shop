@@ -229,3 +229,9 @@ function selectBox(attribute, list_attribute){
 
 	return xhtml;
 }
+
+function getUrlParam(key) {
+    let searchParams = new URLSearchParams(window.location.search);
+    return searchParams.get(key);
+}
+

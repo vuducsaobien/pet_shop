@@ -168,27 +168,25 @@ $(document).ready(function() {
 		}
 	});
 
+	let UrlSearch   = getUrlParam('search');
 	let searchValue = localStorage.getItem('search');
-	if ( searchValue !== null ) {
+	if ( searchValue !== null && UrlSearch !== null) {
 		$('input[name=search]').val(searchValue);
 	}
 
 	// Filter Search Price Min - Max Category - Product
-	$("button#filter_price").click(function(e){
+	$("button#filter_price").click(function(e, num){
 
 		let search_price_min = $('input[name=min]').val();
 		let search_price_max = $('input[name=max]').val();
-
-		let   searchValue = {
+		let searchValue      = {
 			'search_price_min': search_price_min,
 			'search_price_max': search_price_max
 		};
 
-		if ( search_price_min !== null && search_price_max !== null) {
+		if ( search_price_min !== null && search_price_max !== null ){
 			localStorage.setItem('search_price', JSON.stringify(searchValue));
-
 		}
-
 	})
 
 
@@ -199,9 +197,8 @@ $(document).ready(function() {
 	if (login) {
 		// console.log(userInfo);
 		// console.log(userInfo.id);
+	}else{
 	}
-
-
 
 	$('ul#product-attribute').css("list-style-type", "none");
 

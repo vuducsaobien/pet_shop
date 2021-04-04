@@ -81,19 +81,26 @@
     var sliderrange = $('#slider-range');
     var amountprice = $('#amount');
 
-    let setting_price_min = (parseInt(setting_price.min))/1000;
-    let setting_price_max = (parseInt(setting_price.max))/1000;
+    function getUrlParam(key) {
+        let searchParams = new URLSearchParams(window.location.search);
+        return searchParams.get(key);
+    }
+
+    let setting_price_min   = (parseInt(setting_price.min))/1000;
+    let setting_price_max   = (parseInt(setting_price.max))/1000;
     let setting_price_range = (parseInt(setting_price.range))/1000;
 
+    let UrlPriceMin = getUrlParam('min');
+    let UrlPriceMax = getUrlParam('max');
     var sliderrange = $('#slider-range');
     var amountprice = $('#amount');
     $(function() {
 
         let startValues = setting_price_min + 50;
-        let endValues = setting_price_max - 200;
-
+        let endValues   = setting_price_max - 200;
         let searchPrice = localStorage.getItem('search_price');
-        if (searchPrice) {
+
+        if (searchPrice && UrlPriceMin !== null &&  UrlPriceMax !== null ) {
             let teeee = JSON.parse(searchPrice);
             $.each(teeee, function( index, result ) {
                 console.log(`index = ${index} - result = ${result}`);
@@ -109,14 +116,10 @@
             range : true,
             min   : setting_price_min,
             max   : setting_price_max,
-
-        
             values: [startValues, endValues],
             step  : setting_price_range,
             slide : function(event, ui) {
                 amountprice.val(ui.values[0] + " K - " + ui.values[1] + " K");
-            // console.log('ui.values[0] = ' + ui.values[0]);
-            // console.log('ui.values[1] = ' + ui.values[1]);
                 $('input[name=min]').val(ui.values[0]);
                 $('input[name=max]').val(ui.values[1]);
             }
