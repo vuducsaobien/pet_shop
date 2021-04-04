@@ -17,8 +17,11 @@ class CategoryController extends FrontendController
 
     public function index(Request $request)
     {   
-        $display = 'grid';
-        $search  = $request->search;
+        $display      = 'grid';
+        $search       = $request->search;
+        $search_price = null;
+
+        $setting_price = $this->model->getItem(null, ['task' => 'news-get-item-setting-price']);
 
         if ( $search == null ) {
 
@@ -40,13 +43,42 @@ class CategoryController extends FrontendController
             }
 
             // $breadcrumbs = $categoryModel->listItems($params, ['task' => 'news-breadcrumbs']);
-            return view($this->pathViewController . 'index', compact('items', 'search', 'display'));
-            
+            return view($this->pathViewController . 'index', compact('items', 'search', 'display', 'setting_price', 'search_price'));
+
         }else{
             $this->params['search']  = $search;
             $items     = $this->model->getItem($this->params, ['task' => 'news-get-item-search-all-food']);
-            return view($this->pathViewController . 'index', compact('items', 'search', 'display'));
+            return view($this->pathViewController . 'index', compact('items', 'search', 'display', 'setting_price', 'search_price'));
         }
     }
  
+    public function search_price(Request $request)
+    {
+        $price_min     = $request->min;
+        $price_max     = $request->max;
+        $display       = 'grid';
+        $search        = null;
+        $setting_price = $this->model->getItem(null, ['task' => 'news-get-item-setting-price']);
+
+        if ( !empty($price_min) && !empty($price_max) ) {
+            $search_price['min'] = $price_min;
+            $search_price['max'] = $price_max;
+
+            $this->params['min']  = $price_min;
+            $this->params['max']  = $price_max;
+
+            $items     = $this->model->getItem($this->params, ['task' => 'news-get-item-search-price-all-food']);
+
+            // echo '<pre style="color:red";>$search_price === '; print_r($search_price);echo '</pre>';
+            // echo '<h3>Die is Called </h3>';die;
+
+            return view($this->pathViewController . 'index', compact(
+                'items', 'search', 'display', 'setting_price', 'search_price'
+            ));
+        }else{
+            return redirect()->back();
+        }
+
+    }
+
 }

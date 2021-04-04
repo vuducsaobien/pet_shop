@@ -128,6 +128,18 @@ class ProductModel extends AdminModel
             // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
         }
 
+        if($options['task'] == 'news-get-item-search-price-all-food') {
+            $result = self::select('id', 'product_code', 'name', 'thumb', 'price', 'quantity',
+            'price_sale', 'sale', 'slug', 'short_description')
+            ->where('status','active')
+            ->whereBetween('price', [ $params['min'] * 1000, $params['max'] * 1000  ])
+            ->orderBy('ordering', 'asc')
+
+            ->paginate($params['pagination']['totalItemsPerPage']);
+            // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
+        }
+
+
         return $result;
     }
 

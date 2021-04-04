@@ -386,7 +386,9 @@ class Template
         
     }
 
-    public static function createPaginationPublic($currentPage, $lastPage, $perPage, $total)
+    public static function createPaginationPublic(
+        $currentPage, $lastPage, $perPage, $total, $search=null, $search_price=null
+    )
     {
         if($lastPage==1){
             $startItem = 1;
@@ -408,7 +410,16 @@ class Template
             $endItem = $total;
         }
 
-        $xhtml = "<label>Hiển thị <span>$startItem-$endItem</span> của <span>$total</span> Kết quả</label>";
+        if ( $search !== null ) {
+            $xhtml = "<label>Hiển thị <span>$startItem-$endItem</span> của <span>$total</span> 
+            Kết quả - Tìm kiếm Tên SP = '{$search}'</label>";
+        } elseif( $search_price !== null ) {
+            $xhtml = "<label>Hiển thị <span>$startItem-$endItem</span> của <span>$total</span>
+            Kết quả - Tìm kiếm theo Giá từ {$search_price['min']}.000 <u>đ</u> đến {$search_price['max']}.000 <u>đ</u></label>";
+        }else{
+            $xhtml = "<label>Hiển thị <span>$startItem-$endItem</span> của <span>$total</span> Kết quả</label>";
+        }
+        
         return $xhtml;
     }
 

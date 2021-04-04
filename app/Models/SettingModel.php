@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\AdminModel;
-use Illuminate\Support\Facades\DB;
 
 class SettingModel extends AdminModel
 {
@@ -73,6 +72,13 @@ class SettingModel extends AdminModel
                 $item = self::select('value')->where('key_value', 'setting-social')->firstOrFail()->toArray();
                 $result['social'] = json_decode($item['value'], true);
             }
+
+            if ($options['task'] == 'news-get-item-setting-price') {
+                $result['min']   = self::where('key_value', 'filter_price_min')->value('value');
+                $result['max']   = self::where('key_value', 'filter_price_max')->value('value');
+                $result['range'] = self::where('key_value', 'filter_price_range')->value('value');
+            }
+
         }
 
 

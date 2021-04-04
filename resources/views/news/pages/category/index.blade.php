@@ -10,7 +10,10 @@
                 <div class="col-lg-9">
 
                     <!-- Shop - Topbar -->
-                    @include('news.templates.shop_topbar')
+                    @include('news.templates.shop_topbar', [
+                        'search'       => $search,
+                        'search_price' => $search_price,
+                        ])
 
                     <div class="grid-list-product-wrapper">
                         <div class="product-view product-{{ $display }}">

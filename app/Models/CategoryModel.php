@@ -4,8 +4,7 @@ namespace App\Models;
 
 use App\Helpers\Template;
 use App\Models\AdminModel;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+use App\Models\SettingModel;
 use Illuminate\Support\Facades\DB; 
 use Kalnoy\Nestedset\NodeTrait;
 class CategoryModel extends AdminModel
@@ -173,12 +172,24 @@ class CategoryModel extends AdminModel
 
         if($options['task'] == 'news-get-item-search-all-food') {
             $productModel = new ProductModel();
-            $result = $productModel->listItems($params, ['task' => 'news-get-item-search-all-food']);
+            $result       = $productModel->listItems($params, ['task' => 'news-get-item-search-all-food']);
         }
 
         if($options['task'] == 'news-get-item-category-display') {
             $result = self::where('id', $params)->value('display');
         }
+
+        if($options['task'] == 'news-get-item-setting-price') {
+            $model  = new SettingModel();
+            $result = $model->getItem(null, ['task' => 'news-get-item-setting-price']);
+        }
+
+        if($options['task'] == 'news-get-item-search-price-all-food') {
+            $productModel = new ProductModel();
+            $result       = $productModel->listItems($params, ['task' => 'news-get-item-search-price-all-food']);
+        }
+
+
         
         return $result;
     }

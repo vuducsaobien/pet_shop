@@ -173,6 +173,25 @@ $(document).ready(function() {
 		$('input[name=search]').val(searchValue);
 	}
 
+	// Filter Search Price Min - Max Category - Product
+	$("button#filter_price").click(function(e){
+
+		let search_price_min = $('input[name=min]').val();
+		let search_price_max = $('input[name=max]').val();
+
+		let   searchValue = {
+			'search_price_min': search_price_min,
+			'search_price_max': search_price_max
+		};
+
+		if ( search_price_min !== null && search_price_max !== null) {
+			localStorage.setItem('search_price', JSON.stringify(searchValue));
+
+		}
+
+	})
+
+
 	// $.each(userInfo, function( index, result ) {
 	// 	console.log(`index = ${index} - result = ${result}`);
 	// })

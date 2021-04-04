@@ -80,19 +80,52 @@
     --------------------- */
     var sliderrange = $('#slider-range');
     var amountprice = $('#amount');
+
+    let setting_price_min = (parseInt(setting_price.min))/1000;
+    let setting_price_max = (parseInt(setting_price.max))/1000;
+    let setting_price_range = (parseInt(setting_price.range))/1000;
+
+    var sliderrange = $('#slider-range');
+    var amountprice = $('#amount');
     $(function() {
+
+        let startValues = setting_price_min + 50;
+        let endValues = setting_price_max - 200;
+
+        let searchPrice = localStorage.getItem('search_price');
+        if (searchPrice) {
+            let teeee = JSON.parse(searchPrice);
+            $.each(teeee, function( index, result ) {
+                console.log(`index = ${index} - result = ${result}`);
+                if (index == 'search_price_min') {
+                    startValues = result;
+                } else {
+                    endValues = result;
+                }
+            })
+        }
+
         sliderrange.slider({
-            range: true,
-            min: 0,
-            max: 1200,
-            values: [35, 540],
-            slide: function(event, ui) {
-                amountprice.val("$" + ui.values[0] + " - $" + ui.values[1]);
+            range : true,
+            min   : setting_price_min,
+            max   : setting_price_max,
+
+        
+            values: [startValues, endValues],
+            step  : setting_price_range,
+            slide : function(event, ui) {
+                amountprice.val(ui.values[0] + " K - " + ui.values[1] + " K");
+            // console.log('ui.values[0] = ' + ui.values[0]);
+            // console.log('ui.values[1] = ' + ui.values[1]);
+                $('input[name=min]').val(ui.values[0]);
+                $('input[name=max]').val(ui.values[1]);
             }
         });
-        amountprice.val("$" + sliderrange.slider("values", 0) +
-            " - $" + sliderrange.slider("values", 1));
+        amountprice.val(sliderrange.slider("values", 0) + " K - " 
+            + sliderrange.slider("values", 1) + " K");
+            // console.log('amountprice.val() = ' + amountprice.val());
     });
+
     
     /*---------------------
     shop grid list

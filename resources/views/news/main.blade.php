@@ -19,6 +19,9 @@
                 $cartCheck = true;
                 $cart      = session()->get('cart');
             }
+
+            // echo '<pre style="color:red";>$setting_price === '; print_r($setting_price);echo '</pre>';
+            // echo '<h3>Die is Called </h3>';die;
         @endphp
 
     	@include('news.elements.header', [
@@ -47,6 +50,8 @@
             if (cartCheck) {
                 var cart           = JSON.parse(`<?= json_encode($cart) ?>`);
             }
+            var setting_price       = JSON.parse(`<?= json_encode($setting_price) ?>`);
+
 
         </script>
 

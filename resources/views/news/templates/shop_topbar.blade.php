@@ -14,7 +14,7 @@
     // echo '<h3 style="color:red;font-weight:bold">$currentPage = ' . $currentPage .'</h3>';
     // echo '<h3 style="color:red;font-weight:bold">$total = ' . $total .'</h3>';
     
-    $paginationFrontEnd = Template::createPaginationPublic($currentPage, $lastPage, $perPage, $total);
+    $paginationFrontEnd = Template::createPaginationPublic($currentPage, $lastPage, $perPage, $total, $search, $search_price);
 @endphp
 
 <div class="shop-topbar-wrapper">
