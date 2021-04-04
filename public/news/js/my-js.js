@@ -2,25 +2,36 @@ $(document).ready(function() {
 
 	// Ajax Modal get Product Image
 	$('.modal_quick_view').click(function (e) {
-
 		e.preventDefault();
 		let currentElement = $(this);
-		let url = currentElement.attr("href");
+		let url            = currentElement.attr("href");
+		localStorage.setItem('product_id', url.match(/\d+$/));
 
-		console.log('url = ' + url);
 		callAjax(currentElement, url, 'modal');
-
-		
 	});
 
 	// add To Cart
 	$('.addtocart-btn').click(function (e) {
+
+		if ( !login ) {
+			$('#exampleModal').modal('hide');
+			Swal.fire({
+				position         : 'top-end',
+				icon             : 'error',
+				title            : 'Bạn phải Login mới mua được SP !',
+				showConfirmButton: false,
+				timer            : 3000
+			})
+			return false;
+		}
+
 		e.preventDefault();
 		let currentElement = $(this);
 		let url            = currentElement.attr("href");
 		let quantity       = $('input[name=qtybutton]').val();
 		let price          = $('div#product_price').data('price');
 		let total_price    = quantity * price;
+
 		if (checkInputOrdering(quantity, 1)) {
 
 			// Get name select Attribute 
@@ -30,26 +41,35 @@ $(document).ready(function() {
 			});
 
 			let arrAttribID = []; let strAttribID; let arrAttribVal = []; let strAttribVal;
+			let arrProductID = []; let strProductID;
 
 			$.each(selectName, function( index, result ) {
 				let select          = $('select[name="'+result+'"]');
-				// let product_id      = select.data('product-id');
+				let product_id      = select.data('product-id');
 				let attribute_id    = select.data('attribute-id');
 				let attribute_value = select.val();
+				arrProductID.push(product_id);
 				arrAttribID.push(attribute_id); 
 				arrAttribVal.push(attribute_value);
 			})
 
-			strAttribID = arrAttribID.join(','); 
-			strAttribVal = arrAttribVal.join(',');
+				strProductID = arrProductID.join(',');
+				strAttribID  = arrAttribID.join(',');
+				strAttribVal = arrAttribVal.join(',');
 
-			url = url.replace("quantity", quantity).replace("price", price).replace("total_price", total_price)
-			.replace("attribute_id", strAttribID).replace("attribute_value", strAttribVal);
+				product_id = strProductID.substr(strProductID.indexOf(",") + 1);
+				url = url.replace("product_id", product_id).replace("quantity", quantity)
+				.replace("price", price).replace("total_price", total_price)
+				.replace("attribute_id", strAttribID).replace("attribute_value", strAttribVal);
 
 			console.log('url = ' + url);
 			callAjax(currentElement, url, 'cart');
+			$('#exampleModal').modal('hide');
 		}
 	});
+
+	$('.addtocart-btn-modal').click(function (e) {
+	})
 
 	$('select.shipping_change').on("change", function(e) {
 		e.preventDefault();

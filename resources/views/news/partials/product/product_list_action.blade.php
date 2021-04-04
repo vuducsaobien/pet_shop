@@ -3,19 +3,17 @@
 
     // echo '<pre style="color:red";>$items === '; print_r($items);echo '</pre>';
     // echo '<h3>Die is Called </h3>';die;
-    $array = [
-        'id' => $items['id'],
-        'id' => $items['id'],
-        'id' => $items['id']
-    ];
-    $linkCart = URL::linkProduct($array, 'addToCart');
+
+    // echo '<pre style="color:red";>$array === '; print_r($array);echo '</pre>';
+    // echo '<h3>Die is Called </h3>';die;
+    $linkCart = URL::linkProduct(null, 'addToCart');
 @endphp
 
 <div class="product-list-action">
     
     @if ($quantity > 0)
         <div class="product-list-action-left">
-            <a class="addtocart-btn" title="Add to cart" href="{{ $linkCart }}"><i class="ion-bag"></i> Addd to cart</a>
+            <a class="addtocart-btn" title="Add to cart" href="{{ $linkCart }}"><i class="ion-bag"></i> Thêm vào Giỏ Hàng</a>
         </div>
     @endif
         

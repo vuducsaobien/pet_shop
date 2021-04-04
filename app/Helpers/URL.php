@@ -40,7 +40,7 @@ class URL
                 break;
             case 'addToCart':
                 $params = [
-                    'product_id'      => $product['id'],
+                    'product_id'      => 'product_id',
                     'quantity'        => 'quantity',
                     'price'           => 'price',
                     'total_price'     => 'total_price',

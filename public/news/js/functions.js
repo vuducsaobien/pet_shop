@@ -69,7 +69,8 @@ function callAjax(element, url, type) {
 
 						// Add Price
 						let xhtml = format_html_price(result.price, result.price_sale, result.sale);
-						$(".qwick-view-content .product-price").html(xhtml);
+						$("div#product_price").html(xhtml);
+						$("div#product_price").data('price', result.price_sale);
 
 						// Add Short Description
 						let short = $(".qwick-view-content div.product-short-description");
@@ -92,7 +93,7 @@ function callAjax(element, url, type) {
 						// console.log(result.list_attribute);
 
 						// Add Image
-						console.log(result.list_images);
+						// console.log(result.list_images);
 						let bigImage = $(".quick-view-tab-content");
 						let smallImage = $(".quick-view-list nav");
 						let xhtmlImage = '';
@@ -189,12 +190,14 @@ function selectBox(attribute, list_attribute){
 		// console.log('val.id = ' + val.id);
 
 		$.each(list_attribute, function( index, result ) {
+			
 			if (val.id == index) {
+				let product_id = localStorage.getItem('product_id');
 
 				xhtml += `
 				<div class="select-option-part">
 					<label>${val.name}*</label>
-					<select class="select">
+					<select name="attribute_${index}" data-attribute-id=${index} data-product-id=${product_id} class="select">
 						<option value="default">- Please Select ${val.id} -</option>
 				`;
 
@@ -234,4 +237,3 @@ function getUrlParam(key) {
     let searchParams = new URLSearchParams(window.location.search);
     return searchParams.get(key);
 }
-
