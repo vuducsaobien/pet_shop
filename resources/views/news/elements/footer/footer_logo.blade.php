@@ -6,8 +6,10 @@
 {!! $general['introduce'] !!}
 <div class="social-icon">
     <ul>
-        @foreach($social as $key => $value)
-            <li><a href="{{$value}}"><i class="icon-social-{{$key}}"></i></a></li>
-        @endforeach
+
+        {{--   can config lai bi loi
+          @foreach($social as $key => $value)--}}
+        {{--            <li><a href="{{$value}}"><i class="icon-social-{{$key}}"></i></a></li>--}}
+        {{--        @endforeach--}}
     </ul>
 </div>

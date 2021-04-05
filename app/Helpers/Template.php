@@ -7,30 +7,61 @@ use Illuminate\Support\Facades\Config;
 
 class Template
 {
+    public static function share($items, $url,$page,$position)
+    {
+        $html = '';
+        if(in_array($page,$items['page']) && $position==$items['placement']) {
+            foreach ($items['app'] as $name) {
+                switch ($name) {
+                    case "facebook":
+                        $link = "http://www.facebook.com/sharer.php?u=";
+                        break;
+
+                    case "twitter":
+                        $link = "http://www.twitter.com/sharer.php?u=";
+                        break;
+
+
+                    case "pinterest":
+                        $link = "http://www.pinterest.com/sharer.php?u=";
+                        break;
+
+                }
+                $html .= sprintf('<a target="_blank" href="%s">
+                                <img width="30" src="%s" alt="">
+                            </a>', $link . $url, asset('images/logo/' . $name . '.png'));
+            }
+        }
+
+        return $html;
+    }
+
     public static function randomDateForSeeding()
     {
-        $timestamp = rand( strtotime("Jan 01 2021"), strtotime("Dec 12 2021") );
-        return date("Y-m-d H:i:s", $timestamp );
+        $timestamp = rand(strtotime("Jan 01 2021"), strtotime("Dec 12 2021"));
+        return date("Y-m-d H:i:s", $timestamp);
     }
-    public static function format_price($num, $type='dollar')
+
+    public static function format_price($num, $type = 'dollar')
     {
         switch ($type) {
             case 'dollar':
-                $result = "$".number_format($num,0,',','.');
+                $result = "$" . number_format($num, 0, ',', '.');
                 break;
             case 'vietnamese dong':
-                $result = number_format($num,0,',','.') . " <u>đ</u>";
+                $result = number_format($num, 0, ',', '.') . " <u>đ</u>";
                 break;
             default:
-            $result = "$".number_format($num,0,',','.');
-            break;
+                $result = "$" . number_format($num, 0, ',', '.');
+                break;
         }
 
         return $result;
     }
+
     public static function showFileManager($thumb)
     {
-        $img=sprintf('<img id="holder" src="%s" style="margin-top:15px;max-height:100px;">',!empty($thumb)?asset($thumb):'');
+        $img = sprintf('<img id="holder" src="%s" style="margin-top:15px;max-height:100px;">', !empty($thumb) ? asset($thumb) : '');
         $html = sprintf('
             <div class="input-group">
                 <span class="input-group-btn">
@@ -43,7 +74,7 @@ class Template
             %s
             
             ', $thumb, $img);
-            return $html;
+        return $html;
     }
 
     public static function showButtonFilter($controllerName, $itemsStatusCount, $currentFilterStatus, $paramsSearch)
@@ -52,10 +83,10 @@ class Template
         $tmplStatus = Config::get('zvn.template.status');
 
         if (count($itemsStatusCount) > 0) {
-        /* array_unshift($itemsStatusCount, [
-                'count' => array_sum(array_column($itemsStatusCount, 'count')),
-                'status' => 'all'
-            ]);*/
+            /* array_unshift($itemsStatusCount, [
+                    'count' => array_sum(array_column($itemsStatusCount, 'count')),
+                    'status' => 'all'
+                ]);*/
 
             foreach ($itemsStatusCount as $item) {  // $item = [count,status]
                 $statusValue = $item['status'];  // active inactive block
@@ -67,12 +98,12 @@ class Template
                 if ($paramsSearch['value'] !== '') {
                     $link .= "&search_field=" . $paramsSearch['field'] . "&search_value=" . $paramsSearch['value'];
                 }
-                $class=$currentTemplateStatus['class'];
+                $class = $currentTemplateStatus['class'];
 
                 $active = ($currentFilterStatus == $statusValue) ? ' active' : '';
                 $xhtml .= sprintf('<a href="%s" type="button" class="btn %s">
                                     %s <span class="badge bg-white">%s</span>
-                                </a>', $link, $class.$active, $currentTemplateStatus['name'], $item['count']);
+                                </a>', $link, $class . $active, $currentTemplateStatus['name'], $item['count']);
             }
         }
 
@@ -206,10 +237,10 @@ class Template
         return $xhtml;
     }
 
-    public static function showDatetimeFrontend($dateTime,$style="short_time")
+    public static function showDatetimeFrontend($dateTime, $style = "short_time")
     {
-        $time=Config::get('zvn.format.'.$style);
-        return date_format(date_create($dateTime),$time );
+        $time = Config::get('zvn.format.' . $style);
+        return date_format(date_create($dateTime), $time);
     }
 
     public static function showContent($content, $length, $prefix = '...')
@@ -248,8 +279,8 @@ class Template
 
     public static function showNestedSetName($name, $level)
     {
-        $xhtml = str_repeat('|------ ', $level );
-        $xhtml .= sprintf('<span class="badge badge-danger p-1">%s</span> <strong>%s</strong>', $level+1, $name);
+        $xhtml = str_repeat('|------ ', $level);
+        $xhtml .= sprintf('<span class="badge badge-danger p-1">%s</span> <strong>%s</strong>', $level + 1, $name);
         return $xhtml;
     }
 
@@ -295,26 +326,26 @@ class Template
         }
     }
 
-    public static function caculatorPriceFrontend($price, $price_sale, $sale=0, $type=1)
+    public static function caculatorPriceFrontend($price, $price_sale, $sale = 0, $type = 1)
     {
         switch ($type) {
             case 1:
                 $price_sale = self::format_price($price_sale, 'vietnamese dong');
-                $xhtml = '<span class="new">'.$price_sale.' </span>';
-        
+                $xhtml = '<span class="new">' . $price_sale . ' </span>';
+
                 if ($sale > 0) {
                     $price = self::format_price($price, 'vietnamese dong');
-                    $xhtml      .= '<span class="old">'.$price.' </span>';
+                    $xhtml .= '<span class="old">' . $price . ' </span>';
                 }
                 break;
             case 2:
-        
+
                 if ($sale > 0) {
-                    $price      = self::format_price($price, 'vietnamese dong');
+                    $price = self::format_price($price, 'vietnamese dong');
                     $price_sale = self::format_price($price_sale, 'vietnamese dong');
-                    $xhtml      = '
-                        <span class="deal-old-price">'.$price.' </span>
-                        <span>'.$price_sale.' </span>
+                    $xhtml = '
+                        <span class="deal-old-price">' . $price . ' </span>
+                        <span>' . $price_sale . ' </span>
                     ';
 
                 }
@@ -322,13 +353,13 @@ class Template
                 // <span> $10.00</span>
 
                 break;
-                default:
+            default:
                 $price_sale = self::format_price($price_sale, 'vietnamese dong');
-                $xhtml = '<span class="new">'.$price_sale.' </span>';
-        
+                $xhtml = '<span class="new">' . $price_sale . ' </span>';
+
                 if ($sale > 0) {
                     $price = self::format_price($price, 'vietnamese dong');
-                    $xhtml      .= '<span class="old">'.$price.' </span>';
+                    $xhtml .= '<span class="old">' . $price . ' </span>';
                 }
                 break;
         }
@@ -336,35 +367,30 @@ class Template
         return $xhtml;
     }
 
-    public static function getHtmlAttribute($product_id=null, $attribute, $list_attribute)
+    public static function getHtmlAttribute($product_id = null, $attribute, $list_attribute)
     {
         $xhtml = '';
 
-        foreach ($attribute as $val) 
-        {
+        foreach ($attribute as $val) {
             $id = $val['id'];
 
-            foreach ($list_attribute as $index => $result) 
-            {
+            foreach ($list_attribute as $index => $result) {
 
-                if ($id == $index) 
-                {
+                if ($id == $index) {
                     $name = $val['name'];
                     // echo $id;
                     $xhtml .= '
                         <div class="product-details-style shorting-style mt-30">
-                        <label>'.$name.' : </label>
-                        <select data-product-id="'.$product_id.'" data-attribute-id="'.$id.'" name="attribute_'.$id.'">
-                            <option value="default"> Chọn '.$name.' </option>
+                        <label>' . $name . ' : </label>
+                        <select data-product-id="' . $product_id . '" data-attribute-id="' . $id . '" name="attribute_' . $id . '">
+                            <option value="default"> Chọn ' . $name . ' </option>
                     ';
 
-                    foreach ($list_attribute as $index => $result) 
-                    {
-                        foreach ($result as $resultChild) 
-                        {
-                            if ( $id == $index ) {
-                                $xhtml .= '<option value="'.$resultChild['value'].'">'.$resultChild['value'].'</option>';
-                            }else{
+                    foreach ($list_attribute as $index => $result) {
+                        foreach ($result as $resultChild) {
+                            if ($id == $index) {
+                                $xhtml .= '<option value="' . $resultChild['value'] . '">' . $resultChild['value'] . '</option>';
+                            } else {
                                 break;
                             }
                         }
@@ -374,7 +400,7 @@ class Template
                 }
             }
         }
-    
+
         return $xhtml;
     }
 
@@ -383,53 +409,53 @@ class Template
         if (is_numeric($rating)) {
             $tru = 5 - $rating;
             $xhtml = '';
-            for ($i=0; $i < $rating; $i++) { 
+            for ($i = 0; $i < $rating; $i++) {
                 $xhtml .= '<i class="ti-star theme-color"></i>';
             }
-    
-            for ($i=0; $i < $tru; $i++) { 
+
+            for ($i = 0; $i < $tru; $i++) {
                 $xhtml .= '<i class="ti-star"></i>';
             }
         }
 
         return $xhtml;
-        
+
     }
 
     public static function createPaginationPublic(
-        $currentPage, $lastPage, $perPage, $total, $search=null, $search_price=null
+        $currentPage, $lastPage, $perPage, $total, $search = null, $search_price = null
     )
     {
-        if($lastPage==1){
+        if ($lastPage == 1) {
             $startItem = 1;
             $endItem = $total;
-        
-            }elseif($lastPage > 1 && $currentPage == 1 ){
-                $startItem = 1;
-                $endItem	= $currentPage * $perPage;
-        
-            }elseif($lastPage > 1 && $currentPage > 1 && $currentPage < $lastPage){
-                $startItem = ($currentPage-1) * $perPage + 1;
-                $endItem	= $currentPage * $perPage;
-        
-            }elseif($lastPage > 1 && $currentPage == $lastPage){
-                $startItem = ($currentPage-1) * $perPage + 1;
-                $endItem	= $total;
-        }elseif ($lastPage < $perPage) {
+
+        } elseif ($lastPage > 1 && $currentPage == 1) {
+            $startItem = 1;
+            $endItem = $currentPage * $perPage;
+
+        } elseif ($lastPage > 1 && $currentPage > 1 && $currentPage < $lastPage) {
+            $startItem = ($currentPage - 1) * $perPage + 1;
+            $endItem = $currentPage * $perPage;
+
+        } elseif ($lastPage > 1 && $currentPage == $lastPage) {
+            $startItem = ($currentPage - 1) * $perPage + 1;
+            $endItem = $total;
+        } elseif ($lastPage < $perPage) {
             $startItem = 1;
             $endItem = $total;
         }
 
-        if ( $search !== null ) {
+        if ($search !== null) {
             $xhtml = "<label>Hiển thị <span>$startItem-$endItem</span> của <span>$total</span> 
             Kết quả - Tìm kiếm Tên SP = '{$search}'</label>";
-        } elseif( $search_price !== null ) {
+        } elseif ($search_price !== null) {
             $xhtml = "<label>Hiển thị <span>$startItem-$endItem</span> của <span>$total</span>
             Kết quả - Tìm kiếm theo Giá từ {$search_price['min']}.000 <u>đ</u> đến {$search_price['max']}.000 <u>đ</u></label>";
-        }else{
+        } else {
             $xhtml = "<label>Hiển thị <span>$startItem-$endItem</span> của <span>$total</span> Kết quả</label>";
         }
-        
+
         return $xhtml;
     }
 

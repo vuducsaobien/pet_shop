@@ -248,6 +248,7 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', 'middleware' => 
         Route::get('/',                         [ 'as' => $controllerName,                              'uses' => $controller . 'index' ]);
         Route::post('/general-setting',         [ 'as' => $controllerName . '/general_setting',         'uses' => $controller . 'general' ]);
         Route::post('/social-setting',          [ 'as' => $controllerName . '/social_setting',          'uses' => $controller . 'social' ]);
+        Route::post('/share-setting',          [ 'as' => $controllerName . '/share_setting',          'uses' => $controller . 'share' ]);
         Route::post('/email-account-setting',   [ 'as' => $controllerName . '/email_account_setting',   'uses' => $controller . 'emailAccount' ]);
         Route::post('/email-bcc-setting',       [ 'as' => $controllerName . '/email_bcc_setting',       'uses' => $controller . 'emailBcc' ]);
     });

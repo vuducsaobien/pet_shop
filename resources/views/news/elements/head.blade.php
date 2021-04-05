@@ -4,7 +4,7 @@
 {{-- <title>@yield('title') - Laravel News</title> --}}
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+@yield('meta')
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="{{asset('news/images/favicon.png')}}">
 

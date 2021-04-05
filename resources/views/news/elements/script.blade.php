@@ -11,6 +11,8 @@
 <script src="{{asset('news/js/sweetalert2/sweetalert2.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 @yield('script')
+@yield('script2')
+
 <script src="{{asset('news/js/main.js')}}"></script>
 <script src="{{ asset('news/js/my-js.js') }}"></script>
 <script src="{{ asset('news/js/functions.js') }}"></script>

@@ -19,6 +19,11 @@
     <div class="product-details-content">
 
         <h2>{{ $name }}</h2>
+        <p>
+            @isset($share_setting)
+                {!! Template::share($share_setting,URL::current(),'product','before') !!}
+            @endisset
+        </p>
         @include('news.partials.product.product_rating')
 
         <div data-price="{{ $price_sale }}" id="product_price" class="product-price">{!! $htmlPrice !!}</div>
@@ -40,13 +45,9 @@
         @include('news.partials.product.product_list_action', ['quantity' => $items['quantity'], 'quickview' => false])
 
         <div class="social-icon mt-30">
-            <ul>
-                <li><a href="#"><i class="icon-social-twitter"></i></a></li>
-                <li><a href="#"><i class="icon-social-instagram"></i></a></li>
-                <li><a href="#"><i class="icon-social-linkedin"></i></a></li>
-                <li><a href="#"><i class="icon-social-skype"></i></a></li>
-                <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
-            </ul>
+            @isset($share_setting)
+                {!! Template::share($share_setting,URL::current(),'product','after') !!}
+            @endisset
         </div>
 
     </div>

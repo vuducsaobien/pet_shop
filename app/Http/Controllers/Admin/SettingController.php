@@ -56,4 +56,11 @@ class SettingController extends Controller
             return redirect()->route($this->controllerName, ['type' => 'social'])->with('zvn_notify', 'Cập nhật cấu hình social thành công!');
         }
     }
+    public function share(Request $request){
+        if ($request->method() == 'POST') {
+            $params = $request->all();
+            $this->model->saveItem($params, ['task' => 'share']);
+            return redirect()->route($this->controllerName, ['type' => 'share'])->with('zvn_notify', 'Cập nhật cấu hình share thành công!');
+        }
+    }
 }

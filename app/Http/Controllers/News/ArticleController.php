@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\News;
 use App\Http\Controllers\Controller;
 use App\Models\CommentArticleModel;
+use App\Models\SettingModel;
 use Illuminate\Http\Request;
 
 use App\Models\ArticleModel;
@@ -42,13 +43,16 @@ class ArticleController extends Controller
         $comment=new CommentArticleModel();
         $itemComment=$comment->listItems(['article_id'=>$item->id],['task'=>'news-list-items']);
 
+        $setting=new SettingModel();
+        $share_setting=$setting->getItem(['type'=>'share']);
+
 
 
 
 
 
         return view($this->pathViewController .  'detail', compact(
-            'item','itemComment'
+            'item','itemComment','share_setting'
 
         ));
     }
