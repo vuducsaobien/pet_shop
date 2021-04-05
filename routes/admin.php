@@ -119,9 +119,9 @@ Route::group(['prefix' => $prefixAdmin, 'namespace' => 'Admin', 'middleware' => 
         Route::get('delete/{id}',                   [ 'as' => $controllerName . '/delete',      'uses' => $controller . 'delete'])->where('id', '[0-9]+');
         Route::get('change-status-{status}/{id}',   [ 'as' => $controllerName . '/status',      'uses' => $controller . 'status'])->where('id', '[0-9]+');
     });
-    // ============================== ORDER ==============================
-    $prefix         = 'order';
-    $controllerName = 'order';
+    // ============================== CART ==============================
+    $prefix         = 'cart';
+    $controllerName = 'cart';
     Route::group(['prefix' =>  $prefix], function () use ($controllerName) {
         $controller = ucfirst($controllerName)  . 'Controller@';
         Route::get('/',                             [ 'as' => $controllerName,                  'uses' => $controller . 'index' ]);

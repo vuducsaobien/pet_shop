@@ -11,32 +11,33 @@ use Illuminate\Support\Facades\DB;
 
 class CartModel extends AdminModel
 {
-    protected $table               = 'cart';
+    protected $table               = 'cart as c';
     protected $folderUpload        = 'cart' ;
     protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
     protected $crudNotAccepted     = ['_token','name', 'thumb', 'id', 'attribute', 'total_price', 'product_code', 'slug'];
 
-    public function customer()
-    {
-        return $this->belongsTo(CustomerModel::class);
-    }
-    public function payment()
-    {
-        return $this->belongsTo(PaymentModel::class);
-    }
+    // public function customer()
+    // {
+    //     return $this->belongsTo(CustomerModel::class);
+    // }
+    // public function payment()
+    // {
+    //     return $this->belongsTo(PaymentModel::class);
+    // }
 
-    public function products()
-    {
-        return $this->belongsToMany(ProductModel::class,'order_product','order_code','product_id','order_code')->withPivot(['quantity','price']);
-    }
+    // public function products()
+    // {
+    //     return $this->belongsToMany(ProductModel::class,'order_product','order_code','product_id','order_code')->withPivot(['quantity','price']);
+    // }
     public function listItems($params = null, $options = null) {
      
         $result = null;
 
         if($options['task'] == "admin-list-items") {
-            $query = $this->select('id', 'status','note','quantity','amount','order_code',
-                'customer_id','payment_id','created', 'created_by', 'modified', 'modified_by')
-              ->with(['customer','payment','products']);
+            $query = $this->select('c.id', 'c.status', 'c.quantity', 'c.price', 'c.order_code', 
+            'c.created', 'c.modified_by', 'c.modified', 'c.attribute_id', 'c.attribute_value', 'p.name', 'p.id as product_id')
+            ->leftJoin('product as p', 'c.product_id', '=', 'p.id');
+
             if ($params['filter']['status'] !== "all")  {
                 $query->where('status', '=', $params['filter']['status'] );
             }
@@ -53,9 +54,10 @@ class CartModel extends AdminModel
                 } 
             }
 
-            $result =  $query->orderBy('id', 'desc')
-                            ->paginate($params['pagination']['totalItemsPerOrder']);
-
+            $result =  $query
+            ->orderBy('id', 'desc')
+            ->paginate($params['pagination']['totalItemsPerPage']);
+            // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
         }
 
         if($options['task'] == 'news-list-items') {
@@ -65,6 +67,42 @@ class CartModel extends AdminModel
 
             $result = $query->get();
         }
+
+        if($options['task'] == 'admin-list-items-get-attribute-string') {
+            $productModel = new ProductModel();
+            $result = $productModel->listItems($params, ['task'  => 'admin-list-items-get-attribute-string']);
+        }
+
+        if($options['task'] == 'admin-list-items-get-all-attribute') {
+            // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
+            // $params = array_map("unserialize", array_unique(array_map("serialize", $params)));
+            // foreach ($params as $key => $value) {
+            //     $params[$key] = $value['product_id'];
+            // }
+
+            echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
+            echo '<h3>Die is Called </h3>';die;
+    
+            $productModel = new ProductModel();
+            $result = $productModel->listItems($params, ['task'  => 'admin-list-items-get-all-attribute']);
+        }
+
+        if($options['task'] == 'admin-list-items-get-all-attribute-name') {
+            // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
+            // $params = array_map("unserialize", array_unique(array_map("serialize", $params)));
+            // foreach ($params as $key => $value) {
+            //     $params[$key] = $value['attribute_id'];
+            // }
+
+            $attributeModel = new AttributeModel();
+            $result         = $attributeModel->getItem(null, ['task'  => 'admin-list-items-get-all-attribute-name']);
+
+            // echo '<pre style="color:red";>$result === '; print_r($result);echo '</pre>';
+            // echo '<h3>Die is Called </h3>';die;
+        }
+
+
+
 
         return $result;
     }
@@ -102,7 +140,7 @@ class CartModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::with('products')->select('id','note','quantity','amount','order_code','customer_id','payment_id', 'status')->where('id', $params['id'])->first();
+            $result = self::with('products')->select('id','note','quantity','price','order_code','customer_id','payment_id', 'status')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'get-thumb') {
@@ -125,6 +163,8 @@ class CartModel extends AdminModel
             // echo '<h3>Die is Called </h3>';die;
             $result       = $productModel->listItems($params, ['task' => 'news-list-items-get-product-attribute-value-in-cart']);
         }
+
+
 
         return $result;
     }
@@ -205,6 +245,56 @@ class CartModel extends AdminModel
             self::where('id', $params['id'])->delete();
         }
     }
+
+    public function fixArray($params = null, $options = null) 
+    { 
+        if($options['task'] == 'fix-array-01') {
+
+            foreach ($params as $key => $value) {
+                // $params          [$key]['product_id']   = $value['product_id'];
+                $result          [$key]['attribute_id'] = $value['attribute_id'];
+                $result[$key]['attribute_value'] = $value['attribute_value'];
+            }
+    
+            foreach ($result as $keyB => $valueB) {
+                // $result[$keyB]['product_id']      = $valueB['product_id'];
+                $result[$keyB]['attribute_id']    = json_decode($valueB['attribute_id'], true);
+                $result[$keyB]['attribute_value'] = json_decode($valueB['attribute_value'], true);
+            }
+    
+        }
+
+        if($options['task'] == 'fix-array-02') {
+            $result         = $params['main'];
+            $attribute_name = $params['attribute_name'];
+
+            foreach ($result as $key => $value) {
+                $result[$key]['attribute'] = '';
+
+                foreach ($value['attribute_id'] as $keyB => $valueB) {
+                    if (array_key_exists($valueB, $attribute_name)) {
+                        $result[$key]['attribute_name'][] = $attribute_name[$valueB];
+                        $result[$key]['attribute'] .= $attribute_name[$valueB] . ': ' . $result[$key]['attribute_value'][$keyB] . ' - ';
+                    }
+                    unset($result[$key]['attribute_id']);
+                    unset($result[$key]['attribute_name']);
+                }
+
+                $result[$key]['attribute'] = substr($result[$key]['attribute'], 0, -3) . '.';
+                unset($result[$key]['attribute_value']);
+    
+            }
+        }
+
+        if($options['task'] == 'fix-array-03') {
+            foreach ($params as $key => $value) {
+                $result[$key] = $value['attribute'];
+            }
+        }
+
+        return $result;
+    }
+
 
 }
 
