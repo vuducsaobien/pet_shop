@@ -2,6 +2,7 @@
 @php
 use App\Helpers\Template;
 @endphp
+
 <div class="blog-comment-wrapper mt-55">
     <h4 class="blog-dec-title">{{$itemComment->count()>0? $itemComment->count() ." Comments":"" }}</h4>
 
@@ -45,8 +46,10 @@ use App\Helpers\Template;
     </form>
     </div>--}}
 </div>
-@section('script')
+
+@section('script2')
 <script>
+
 
     $(function() {
          $(".reply").click(function(e){
