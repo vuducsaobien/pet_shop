@@ -210,4 +210,41 @@ class Functions
         return $arrSource;
     }
 
+    // $params = array_map("unserialize", array_unique(array_map("serialize", $params)));
+
+    // $params === Array
+    // (
+    //     [0] => Array
+    //         (
+    //             [product_id] => 28
+    //         )
+    
+    //     [1] => Array
+    //         (
+    //             [product_id] => 29
+    //         )
+    
+    //     [2] => Array
+    //         (
+    //             [product_id] => 28
+    //         )
+    
+    //     [3] => Array
+    //         (
+    //             [product_id] => 29
+    //         )
+    // )
+
+    // $params === Array
+    // (
+    //     [0] => Array
+    //         (
+    //             [product_id] => 28
+    //         )
+
+    //     [1] => Array
+    //         (
+    //             [product_id] => 29
+    //         )
+    // )
 }

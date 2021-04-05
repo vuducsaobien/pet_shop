@@ -32,6 +32,7 @@
                             $code            = Hightlight::show($val['order_code'], $params['search'], 'type');
                             $name            = Hightlight::show($val['name'], $params['search'], 'name');
                             $quantity        = $val['quantity'];
+                            $attributeHtml   = $attribute[$key];
                             $price           = Template::format_price($val['price'],'vietnamese dong');
                             $status          = Template::showItemStatus($controllerName, $id, $val['status']);
                             $createdHistory  = Template::showItemHistory(null, $val['created'], 'created');
@@ -46,7 +47,7 @@
                             </td>
                             <td width="30%">
                                 <p><strong>Tên SP:</strong> {!! $name !!}</p>
-                                {{-- <p><strong>Thuộc Tính:</strong> {{ $attribute }}</p> --}}
+                                <p><strong>Thuộc Tính:</strong> {{ $attributeHtml }}</p>
                             </td>
                             <td>{{ $quantity }}</td>
                             <td>{!! $price !!}</td>

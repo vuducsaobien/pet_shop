@@ -9,10 +9,10 @@ class AttributeModel extends AdminModel
 {
     public function __construct()
     {
-        $this->table = 'attribute';
-        $this->folderUpload = 'attribute';
+        $this->table               = 'attribute';
+        $this->folderUpload        = 'attribute';
         $this->fieldSearchAccepted = ['id', 'name', 'link'];
-        $this->crudNotAccepted = ['_token'];
+        $this->crudNotAccepted     = ['_token'];
     }
 
     public function listItems($params = null, $options = null)
@@ -165,6 +165,10 @@ class AttributeModel extends AdminModel
             $result = self::whereIn('name', $params)->pluck('id')->toArray();
         }
 
+        if ($options['task'] == 'admin-list-items-get-all-attribute-name') {
+            $result = self::where('status', 'active')->pluck('name', 'id')->toArray();
+        }
+        
 
         return $result;
     }

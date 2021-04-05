@@ -22,35 +22,27 @@ class CartController extends AdminController
         $this->params['search']['field']    = $request->input('search_field', '' ) ;        // all id description
         $this->params['search']['value']    = $request->input('search_value', '' ) ;
 
-        $items              = $this->model->listItems($this->params, ['task'  => 'admin-list-items']);
+        $items          = $this->model->listItems($this->params, ['task'  => 'admin-list-items']);
+        $attribute_name = $this->model->listItems(null, ['task'  => 'admin-list-items-get-all-attribute-name']);
+        $prepareParams  = $this->model->fixArray($items, ['task' => 'fix-array-01']);
 
-        // foreach ($items as $key => $value) {
-        //     $params[$key]['product_id']      = $value['product_id'];
-        //     $params[$key]['attribute_id']    = $value['attribute_id'];
-        //     $params[$key]['attribute_value'] = $value['attribute_value'];
-        // }
+        $params['main']           = $prepareParams;
+        $params['attribute_name'] = $attribute_name;
 
-        // foreach ($params as $keyB => $valueB) {
-        //     $params[$keyB]['product_id']      = $valueB['product_id'];
-        //     $params[$keyB]['attribute_id']    = json_decode($valueB['attribute_id'], true);
-        //     $params[$keyB]['attribute_value'] = json_decode($valueB['attribute_value'], true);
-        // }
+        $params    = $this->model->fixArray($params, ['task' => 'fix-array-02']);
+        $attribute = $this->model->fixArray($params, ['task' => 'fix-array-03']);
 
-        // foreach ($items as $key => $value) {
-        //     $items[$key]['attribtue'] = $this->model->listItems($params, ['task'  => 'admin-list-items-get-attribute-string']);
-        // }
-        
-
-        // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
-        // echo '<pre style="color:red";>$result === '; print_r($result);echo '</pre>';
         // echo '<pre style="color:red";>$items === '; print_r($items);echo '</pre>';
+        // echo '<pre style="color:red";>$attribute === '; print_r($attribute);echo '</pre>';
         // echo '<h3>Die is Called Controller</h3>';die;
+
         $itemsStatusCount   = $this->model->countItems($this->params, ['task' => 'admin-count-items-group-by-status']); // [ ['status', 'count']]
 
         return view($this->pathViewController .  'index', [
-            'params'        => $this->params,
-            'items'         => $items,
-            'itemsStatusCount' =>  $itemsStatusCount
+            'params'           => $this->params,
+            'items'            => $items,
+            'itemsStatusCount' => $itemsStatusCount,
+            'attribute'        => $attribute
         ]);
     }
 
