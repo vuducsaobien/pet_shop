@@ -11,32 +11,33 @@ use Illuminate\Support\Facades\DB;
 
 class CartModel extends AdminModel
 {
-    protected $table               = 'cart';
+    protected $table               = 'cart as c';
     protected $folderUpload        = 'cart' ;
     protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
     protected $crudNotAccepted     = ['_token','name', 'thumb', 'id', 'attribute', 'total_price', 'product_code', 'slug'];
 
-    public function customer()
-    {
-        return $this->belongsTo(CustomerModel::class);
-    }
-    public function payment()
-    {
-        return $this->belongsTo(PaymentModel::class);
-    }
+    // public function customer()
+    // {
+    //     return $this->belongsTo(CustomerModel::class);
+    // }
+    // public function payment()
+    // {
+    //     return $this->belongsTo(PaymentModel::class);
+    // }
 
-    public function products()
-    {
-        return $this->belongsToMany(ProductModel::class,'order_product','order_code','product_id','order_code')->withPivot(['quantity','price']);
-    }
+    // public function products()
+    // {
+    //     return $this->belongsToMany(ProductModel::class,'order_product','order_code','product_id','order_code')->withPivot(['quantity','price']);
+    // }
     public function listItems($params = null, $options = null) {
      
         $result = null;
 
         if($options['task'] == "admin-list-items") {
-            $query = $this->select('id', 'status','note','quantity','amount','order_code',
-                'customer_id','payment_id','created', 'created_by', 'modified', 'modified_by')
-              ->with(['customer','payment','products']);
+            $query = $this->select('c.id', 'c.status', 'c.quantity', 'c.price', 'c.order_code', 
+            'c.created', 'c.modified_by', 'c.modified', 'c.attribute_id', 'c.attribute_value', 'p.name', 'p.id as product_id')
+            ->leftJoin('product as p', 'c.product_id', '=', 'p.id');
+
             if ($params['filter']['status'] !== "all")  {
                 $query->where('status', '=', $params['filter']['status'] );
             }
@@ -53,9 +54,10 @@ class CartModel extends AdminModel
                 } 
             }
 
-            $result =  $query->orderBy('id', 'desc')
-                            ->paginate($params['pagination']['totalItemsPerOrder']);
-
+            $result =  $query
+            ->orderBy('id', 'desc')
+            ->paginate($params['pagination']['totalItemsPerPage']);
+            // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
         }
 
         if($options['task'] == 'news-list-items') {
@@ -65,6 +67,12 @@ class CartModel extends AdminModel
 
             $result = $query->get();
         }
+
+        if($options['task'] == 'admin-list-items-get-attribute-string') {
+            $productModel = new ProductModel();
+            $result = $productModel->listItems($params, ['task'  => 'admin-list-items-get-attribute-string']);
+        }
+
 
         return $result;
     }
@@ -102,7 +110,7 @@ class CartModel extends AdminModel
         $result = null;
         
         if($options['task'] == 'get-item') {
-            $result = self::with('products')->select('id','note','quantity','amount','order_code','customer_id','payment_id', 'status')->where('id', $params['id'])->first();
+            $result = self::with('products')->select('id','note','quantity','price','order_code','customer_id','payment_id', 'status')->where('id', $params['id'])->first();
         }
 
         if($options['task'] == 'get-thumb') {

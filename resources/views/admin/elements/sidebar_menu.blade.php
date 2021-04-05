@@ -35,8 +35,8 @@
                     <li id="discount"><a href="{{ route('discount') }}"> Coupon</a></li>
                     <li id="attribute"><a href="{{ route('attribute') }}"> Thuộc tính</a></li>
                     <li id="shipping"><a href="{{ route('shipping') }}"> Phí ship</a></li>
-                    <li id="order"><a href="{{ route('order') }}">Đơn đặt hàng</a></li>
-                    <li id="customer"><a href="{{ route('customer') }}">Khách hàng</a></li>
+                    <li id="customer"><a href="{{ route('customer') }}">Danh Sách Đơn Hàng</a></li>
+                    <li id="cart"><a href="{{ route('cart') }}">Chi tiết Đơn Hàng</a></li>
                     <li id="comment"><a href="{{ route('comment') }}"> Comment</a></li>
 
                 </ul>

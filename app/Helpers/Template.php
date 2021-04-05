@@ -114,11 +114,21 @@ class Template
         return $xhtml;
     }
 
-    public static function showItemHistory($by, $time)
+    public static function showItemHistory($by, $time, $type='both')
     {
-        $xhtml = sprintf(
-            '<p><i class="fa fa-user"></i> %s</p>
-            <p><i class="fa fa-clock-o"></i> %s</p>', $by, date(Config::get('zvn.format.short_time'), strtotime($time)));
+        if ($type == 'both') {
+            $xhtml = sprintf('
+                <p><i class="fa fa-user"></i> %s</p>
+                <p><i class="fa fa-clock-o"></i> %s</p>', 
+                $by, date(Config::get('zvn.format.short_time'), strtotime($time))
+            );
+        } else {
+            $xhtml = sprintf('
+                <p><i class="fa fa-clock-o"></i> %s</p>', 
+                date(Config::get('zvn.format.long_time'), strtotime($time))
+            );
+        }
+        
         return $xhtml;
     }
 
