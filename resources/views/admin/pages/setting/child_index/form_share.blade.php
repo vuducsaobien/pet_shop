@@ -10,19 +10,19 @@
     $elements = [
         [
             'label'     => Form::label('facebook', 'Select app', $formLabelAttributes),
-            'element'   => Form::checkbox('app[]','facebook',in_array('facebook',@$item['app']))
+            'element'   => Form::checkbox('app[]','facebook',@in_array('facebook',@$item['app']))
                         .sprintf("  <img width=15 src='%s' /> facebook <br />",asset('images/logo/facebook.png'))
-                        .Form::checkbox('app[]','twitter',in_array('twitter',@$item['app']))
+                        .Form::checkbox('app[]','twitter',@in_array('twitter',@$item['app']))
                         .sprintf("  <img width=25 src='%s' /> twitter <br />",asset('images/logo/twitter.png'))
 
-                        .Form::checkbox('app[]','pinterest',in_array('pinterest',@$item['app']))
+                        .Form::checkbox('app[]','pinterest',@in_array('pinterest',@$item['app']))
                         .sprintf("  <img width=25 src='%s' /> pinterest",asset('images/logo/pinterest.png'))
         ],
         [
             'label'     => Form::label('page', 'Select page', $formLabelAttributes),
-            'element'   => Form::checkbox('page[]','article',in_array('article',@$item['page']))
+            'element'   => Form::checkbox('page[]','article',@in_array('article',@$item['page']))
                         ." Article <br />".
-                        Form::checkbox('page[]','product',in_array('product',@$item['page']))
+                        Form::checkbox('page[]','product',@in_array('product',@$item['page']))
                         ." Product <br />"
 
         ],

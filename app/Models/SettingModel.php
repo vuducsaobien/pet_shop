@@ -6,13 +6,13 @@ use App\Models\AdminModel;
 
 class SettingModel extends AdminModel
 {
-    public function __construct()
-    {
-        $this->table = 'setting';
-        $this->fieldSearchAccepted = ['key_value'];
-        $this->crudNotAccepted = ['_token'];
-        $this->timestamps = false;
-    }
+
+        protected $table = 'setting';
+        protected $fieldSearchAccepted = ['key_value'];
+        protected $crudNotAccepted = ['_token'];
+        protected $guarded=['type'];
+//        protected $timestamps = false;
+
 
     public function saveItem($params = null, $options = null){
         $result = null;
@@ -68,8 +68,17 @@ class SettingModel extends AdminModel
                 $result = json_decode($item['value'], true);
             }
             if ($params['type'] == 'share') {
-                $item = $this->select('value')->where('key_value', 'setting-share')->firstOrFail()->toArray();
-                $result = json_decode($item['value'], true);
+                $item = $this->select('value')->where('key_value', 'setting-share')->get()->toArray();
+
+
+                if(empty($item)){
+                    $params['key_value']='setting-share';
+                    $params['value']="{}";
+                    $this->create($params);
+                }else{
+
+                    $result = json_decode($item[0]['value'], true);
+                }
             }
         }
 
