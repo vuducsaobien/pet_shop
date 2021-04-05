@@ -31,7 +31,7 @@ class ProductController extends FrontendController
 
         // Merge Attribute
         $merge_attribute = Functions::fixArray_01($items['list_attribute'], 'value');
-        $allAttribute    = Functions::merge_Multidi_Array_02($items['attribute'], $merge_attribute);
+        $allAttribute    = Functions::merge_Multidi_Array_02($items['attribute'], $merge_attribute, 'id');
         foreach ($allAttribute as $key => $value) {
             if (!array_key_exists("detail", $value) ) {
                 unset($allAttribute[$key]);
@@ -41,9 +41,9 @@ class ProductController extends FrontendController
         $items['comment']       = $this->model->getComment($params, ['task' => 'in-product-detail']);
         $items['related']       = $this->model->listItems($params, ['task' => 'news-list-items-related-in-product']);
 
-        $cart = $request->session()->get('cart');
+        // $cart = $request->session()->get('cart');
         // echo '<pre style="color:red";>$cart === '; print_r($cart);echo '</pre>';
-
+        // echo '<h3>Die is Called </h3>';die;
         // $request->session()->pull('cart');
 
         return view($this->pathViewController . 'index', compact('items'));
@@ -53,6 +53,9 @@ class ProductController extends FrontendController
     public function addToCart(Request $request)
     {
         $cart = $request->session()->get('cart');
+
+        // echo '<pre style="color:red";>$cart === '; print_r($cart);echo '</pre>';
+        // echo '<h3>Die is Called </h3>';die;
 
         $product_id      = $request->product_id;
         $quantity        = $request->quantity;

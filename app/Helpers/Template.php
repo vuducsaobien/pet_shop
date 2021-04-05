@@ -120,7 +120,7 @@ class Template
             $xhtml = sprintf('
                 <p><i class="fa fa-user"></i> %s</p>
                 <p><i class="fa fa-clock-o"></i> %s</p>', 
-                $by, date(Config::get('zvn.format.short_time'), strtotime($time))
+                $by, date(Config::get('zvn.format.long_time'), strtotime($time))
             );
         } else {
             $xhtml = sprintf('
@@ -433,5 +433,11 @@ class Template
         return $xhtml;
     }
 
+    public static function showItemCart($price, $class, $money='yes')
+    {
+        if ($money == 'yes') $price = self::format_price($price, 'vietnamese dong');
+        $xhtml = '<span class="badge badge-'.$class.'">'.$price.'</span>';        
+        return $xhtml;
+    }
 
 }
