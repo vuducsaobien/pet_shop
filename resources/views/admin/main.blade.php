@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('admin.elements.head')
+    @yield('css')
 </head>
 
 {{-- <body class="nav-sm">  --}}

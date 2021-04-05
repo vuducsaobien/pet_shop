@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\News;
 
+use App\Models\SettingModel;
 use Illuminate\Http\Request;
 use App\Helpers\Functions;
 use App\Models\ProductModel as MainModel;
@@ -45,8 +46,10 @@ class ProductController extends FrontendController
         // echo '<pre style="color:red";>$cart === '; print_r($cart);echo '</pre>';
 
         // $request->session()->pull('cart');
+        $setting=new SettingModel();
+        $share_setting=$setting->getItem(['type'=>'share']);
 
-        return view($this->pathViewController . 'index', compact('items'));
+        return view($this->pathViewController . 'index', compact('items','share_setting'));
     }
 
 

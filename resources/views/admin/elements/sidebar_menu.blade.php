@@ -73,6 +73,7 @@
                     <li id="setting"><a href="{{ route('setting', ['type' => 'general']) }}">Cấu hình chung</a></li>
                     <li id="setting"><a href="{{ route('setting', ['type' => 'email']) }}">Email</a></li>
                     <li id="setting"><a href="{{ route('setting', ['type' => 'social']) }}">Social</a></li>
+                    <li id="setting"><a href="{{ route('setting', ['type' => 'share']) }}">Share button</a></li>
                 </ul>
             </li>
 

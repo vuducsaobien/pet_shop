@@ -15,6 +15,7 @@
                 <li @if ($type == 'general') class="active" @endif><a href="{{ route('setting', ['type' => 'general']) }}" role="tab">Cấu hình chung</a></li>
                 <li @if ($type == 'email') class="active" @endif><a href="{{ route('setting', ['type' => 'email']) }}" role="tab">Email</a></li>
                 <li @if ($type == 'social') class="active" @endif><a href="{{ route('setting', ['type' => 'social']) }}" role="tab">Social</a></li>
+                <li @if ($type == 'share') class="active" @endif><a href="{{ route('setting', ['type' => 'share']) }}" role="tab">share</a></li>
             </ul>
             <div id="settingTabContent" class="tab-content">
                 <div role="tabpanel" class="tab-pane fade active in">
@@ -30,7 +31,7 @@
                             @include('admin.pages.setting.child_index.form_social')
                             @break
                         @default
-                            @include('admin.pages.setting.child_index.form_general')
+                            @include('admin.pages.setting.child_index.form_share')
                             @break
                     @endswitch
                 </div>
