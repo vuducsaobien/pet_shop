@@ -24,9 +24,9 @@
                             $class           = ($index % 2 == 0) ? "even" : "odd";
                             $id              = $val['id'];
                             $name            = Hightlight::show($val['name'], $params['search'], 'type');
-                            $address     = Hightlight::show($val['address'], $params['search'], 'address');
-                            $email            = Hightlight::show($val['email'], $params['search'], 'email');
-                            $star=$val['star'];
+                            $address         = Hightlight::show($val['address'], $params['search'], 'address');
+                            $email           = Hightlight::show($val['email'], $params['search'], 'email');
+                            $star            = $val['star'];
                             $status          = Template::showItemStatus($controllerName, $id, $val['status']); ;
                             $createdHistory  = Template::showItemHistory($val['created_by'], $val['created']);
                             $modifiedHistory = Template::showItemHistory($val['modified_by'], $val['modified']);

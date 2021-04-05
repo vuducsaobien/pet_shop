@@ -42,10 +42,10 @@ class Functions
 
     // }
 
-    public static function merge_Multidi_Array_02($arrSource_1, $arrSource_2) 
+    public static function merge_Multidi_Array_02($arrSource_1, $arrSource_2, $mergeElement='id') 
     {
         foreach ($arrSource_1 as $key => $value) {
-            $idValue = $value['id'];
+            $idValue = $value[$mergeElement];
 
             if (array_key_exists("$idValue", $arrSource_2)) {
                 $arrSource_1[$key]['detail'] = $arrSource_2[$idValue];
@@ -88,6 +88,25 @@ class Functions
 
         return $arrSource;
     }
+
+    // 01. Function 05
+    public static function merge_05($arrSource, $mergeElement='order_code') 
+    {
+        $result = [];
+
+        foreach ($arrSource as $values) {
+           // Define your key
+           $key = $values[$mergeElement];
+           // Assign to the new array using all of the actual values
+           $result[$key][] = $values;
+        }
+       
+        // Get all values inside the array, but without orderId in the keys:
+        $result = array_values($result);
+
+        return $result;
+    }
+
     
     // 02. Function 01
     public static function split_Multidi_Array_01($arrSource, $mergeElement) 

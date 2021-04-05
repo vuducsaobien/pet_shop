@@ -8,7 +8,7 @@
 @section('content')
     
     @include ('admin.templates.zvn_notify')
-{{--    @include ('admin.templates.page_header', ['pageIndex' => true])--}}
+    @include ('admin.templates.page_header', ['pageIndex' => true])
 
 
     <div class="row">

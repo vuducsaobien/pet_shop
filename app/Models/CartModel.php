@@ -13,7 +13,7 @@ class CartModel extends AdminModel
 {
     protected $table               = 'cart as c';
     protected $folderUpload        = 'cart' ;
-    protected $fieldSearchAccepted = ['id', 'name', 'description', 'link'];
+    protected $fieldSearchAccepted = ['order_code', 'name', 'email', 'address', 'quantity', 'amount'];
     protected $crudNotAccepted     = ['_token','name', 'thumb', 'id', 'attribute', 'total_price', 'product_code', 'slug'];
 
     // public function customer()
@@ -33,11 +33,13 @@ class CartModel extends AdminModel
      
         $result = null;
 
-        if($options['task'] == "admin-list-items") {
-            $query = $this->select('c.id', 'c.status', 'c.quantity', 'c.price', 'c.order_code', 
-            'c.created', 'c.modified_by', 'c.modified', 'c.attribute_id', 'c.attribute_value', 'p.name', 'p.id as product_id')
-            ->leftJoin('product as p', 'c.product_id', '=', 'p.id');
+        if($options['task'] == "admin-list-items-customer") {
+            $customerModel = new CustomerModel();
 
+            $query = $customerModel->select(
+                'id', 'status', 'name', 'phone', 'email', 'address', 'ip', 'order_code', 'quantity', 'amount',
+                'created', 'modified', 'modified_by');
+               
             if ($params['filter']['status'] !== "all")  {
                 $query->where('status', '=', $params['filter']['status'] );
             }
@@ -49,14 +51,25 @@ class CartModel extends AdminModel
                             $query->orWhere($column, 'LIKE',  "%{$params['search']['value']}%" );
                         }
                     });
-                } else if(in_array($params['search']['field'], $this->fieldSearchAccepted)) { 
+                } else if(in_array($params['search']['field'], $customerModel->fieldSearchAccepted)) { 
                     $query->where($params['search']['field'], 'LIKE',  "%{$params['search']['value']}%" );
                 } 
             }
 
             $result =  $query
-            ->orderBy('id', 'desc')
-            ->paginate($params['pagination']['totalItemsPerPage']);
+                ->orderBy('id', 'desc')
+                ->paginate($params['pagination']['totalItemsPerPage']);
+                // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
+        }
+
+
+        if($options['task'] == "admin-list-items") {
+            $query = $this->select('c.id', 'c.quantity', 'c.price', 'c.order_code', 
+            'c.attribute_id', 'c.attribute_value', 'p.name', 'p.id as product_id')
+            ->leftJoin('product as p', 'c.product_id', '=', 'p.id');
+
+            $result = $query->orderBy('id', 'desc')->get()->toArray();
+            // ->paginate($params['pagination']['totalItemsPerPage']);
             // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
         }
 
@@ -112,8 +125,9 @@ class CartModel extends AdminModel
         $result = null;
 
         if($options['task'] == 'admin-count-items-group-by-status') {
-         
-            $query = $this::groupBy('status')
+            $customerModel = new CustomerModel();
+
+            $query = $customerModel::groupBy('status')
                         ->select( DB::raw('status , COUNT(id) as count') );
 
             if ($params['search']['value'] !== "")  {
@@ -289,6 +303,17 @@ class CartModel extends AdminModel
         if($options['task'] == 'fix-array-03') {
             foreach ($params as $key => $value) {
                 $result[$key] = $value['attribute'];
+            }
+        }
+
+        if($options['task'] == 'fix-array-04') {
+            $result    = $params['main'];
+            $attribute = $params['attribute'];
+
+            foreach ($result as $key => $value) {
+                $result[$key]['detail'] = $attribute[$key];
+                unset($result[$key]['attribute_id']);
+                unset($result[$key]['attribute_value']);
             }
         }
 

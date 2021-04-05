@@ -540,7 +540,132 @@
             )
         // 01. Function 04
 
-    2.0 Split
+        // 01. Function 05
+            $itemsCart === Array
+            (
+                [0] => Array
+                    (
+                        [id] => 50
+                        [quantity] => 3
+                        [price] => 6000
+                        [order_code] => kzwn2A8
+                        [name] => Thức ăn Veggies cho Fish 28
+                        [product_id] => 28
+                        [detail] => Màu: trắng - Kích cỡ: nhỏ.
+                    )
+
+                [1] => Array
+                    (
+                        [id] => 49
+                        [quantity] => 1
+                        [price] => 77000
+                        [order_code] => kzwn2A8
+                        [name] => Thức ăn canxi cho chó 29
+                        [product_id] => 29
+                        [detail] => Màu: trắng - Kích cỡ: rất lớn.
+                    )
+
+                [2] => Array
+                    (
+                        [id] => 48
+                        [quantity] => 4
+                        [price] => 8000
+                        [order_code] => kzwn2A8
+                        [name] => Thức ăn Veggies cho Fish 28
+                        [product_id] => 28
+                        [detail] => Màu: đỏ - Kích cỡ: rất lớn.
+                    )
+
+                [3] => Array
+                    (
+                        [id] => 14
+                        [quantity] => 3
+                        [price] => 231000
+                        [order_code] => uJ4rAKC
+                        [name] => Thức ăn canxi cho chó 29
+                        [product_id] => 29
+                        [detail] => Màu: vàng - Kích cỡ: rất lớn.
+                    )
+
+                [4] => Array
+                    (
+                        [id] => 13
+                        [quantity] => 2
+                        [price] => 154000
+                        [order_code] => uJ4rAKC
+                        [name] => Thức ăn canxi cho chó 29
+                        [product_id] => 29
+                        [detail] => Màu: trắng - Kích cỡ: lớn.
+                    )
+            )
+
+            $output === Array
+            (
+                [0] => Array
+                    (
+                        [0] => Array
+                            (
+                                [id] => 50
+                                [quantity] => 3
+                                [price] => 6000
+                                [order_code] => kzwn2A8
+                                [name] => Thức ăn Veggies cho Fish 28
+                                [product_id] => 28
+                                [detail] => Màu: trắng - Kích cỡ: nhỏ.
+                            )
+
+                        [1] => Array
+                            (
+                                [id] => 49
+                                [quantity] => 1
+                                [price] => 77000
+                                [order_code] => kzwn2A8
+                                [name] => Thức ăn canxi cho chó 29
+                                [product_id] => 29
+                                [detail] => Màu: trắng - Kích cỡ: rất lớn.
+                            )
+
+                        [2] => Array
+                            (
+                                [id] => 48
+                                [quantity] => 4
+                                [price] => 8000
+                                [order_code] => kzwn2A8
+                                [name] => Thức ăn Veggies cho Fish 28
+                                [product_id] => 28
+                                [detail] => Màu: đỏ - Kích cỡ: rất lớn.
+                            )
+
+                    )
+
+                [1] => Array
+                    (
+                        [0] => Array
+                            (
+                                [id] => 14
+                                [quantity] => 3
+                                [price] => 231000
+                                [order_code] => uJ4rAKC
+                                [name] => Thức ăn canxi cho chó 29
+                                [product_id] => 29
+                                [detail] => Màu: vàng - Kích cỡ: rất lớn.
+                            )
+
+                        [1] => Array
+                            (
+                                [id] => 13
+                                [quantity] => 2
+                                [price] => 154000
+                                [order_code] => uJ4rAKC
+                                [name] => Thức ăn canxi cho chó 29
+                                [product_id] => 29
+                                [detail] => Màu: trắng - Kích cỡ: lớn.
+                            )
+                    )
+            )
+        // 01. Function 05
+
+            2.0 Split
         // 02. Function 01
             ------------------------- $arrSource Array -------------------------
             (
