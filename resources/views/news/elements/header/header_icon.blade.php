@@ -51,7 +51,7 @@
             </div>
 
             <div class="shopping-cart-btn">
-                <a href="{{ route('cart') }}">view cart</a>
+                <a href="{{ route('cartFront') }}">view cart</a>
                 <a href="{{ route('checkout') }}">checkout</a>
             </div>
         </div>

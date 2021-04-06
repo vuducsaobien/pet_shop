@@ -171,14 +171,14 @@ $(document).ready(function() {
 	})
 
 	// Show Creadit Card
-	$("input#creadit_card").click(function(){
-		$('div.toHide').show('slow');
-		$('input#payment').val(2);
-	});
-	$("input#cash").click(function(){
-		$('div.toHide').hide();
-		$('input#payment').val(1);
-	});
+	// $("input#creadit_card").click(function(){
+	// 	$('div.toHide').show('slow');
+	// 	$('input#payment').val(2);
+	// });
+	// $("input#cash").click(function(){
+	// 	$('div.toHide').hide();
+	// 	$('input#payment').val(1);
+	// });
 
 	// Filter Search Category - Product
 	$("button#search_product").click(function(){

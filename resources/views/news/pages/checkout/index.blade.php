@@ -60,8 +60,8 @@
                                 <div class="panel-heading">
                                     <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-3">Thông Tin Nhận Hàng</a></h5>
                                 </div>
-                                {{-- <div id="payment-3" class="panel-collapse collapse show"> --}}
-                                <div id="payment-3" class="panel-collapse collapse">
+                                <div id="payment-3" class="panel-collapse collapse show">
+                                {{-- <div id="payment-3" class="panel-collapse collapse"> --}}
 
                                     <div class="panel-body">
                                         <div class="shipping-information-wrapper">
@@ -105,7 +105,7 @@
                                     <h5 class="panel-title"><span>4</span> <a data-toggle="collapse" data-parent="#faq" href="#payment-6">Danh Sách Đặt Hàng</a></h5>
                                 </div>
                                 {{-- <div id="payment-6" class="panel-collapse collapse"> --}}
-                                <div id="payment-6" class="panel-collapse collapse show">
+                                <div id="payment-6" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <div class="order-review-wrapper">
                                             <div class="order-review">
