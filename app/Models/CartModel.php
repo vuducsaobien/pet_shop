@@ -6,6 +6,7 @@ use App\Models\AdminModel;
 use App\Models\ProductModel;
 use App\Models\CustomerModel;
 use App\Models\AttributeModel;
+use App\Models\PaymentModel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB; 
 
@@ -136,7 +137,7 @@ class CartModel extends AdminModel
             $customerModel = new CustomerModel();
 
             $result = $customerModel::select('id', 'status', 'name', 'phone', 'email', 'address', 'ip', 'order_code', 'quantity', 'amount',
-            'created')->where('id', $params['id'])->first()->toArray();
+            'created', 'payment_id')->where('id', $params['id'])->first()->toArray();
 
             // echo '<pre style="color:red";>$result === '; print_r($result);echo '</pre>';
             // echo '<h3>Die is Called </h3>';die;
@@ -163,6 +164,10 @@ class CartModel extends AdminModel
             $result       = $productModel->listItems($params, ['task' => 'news-list-items-get-product-attribute-value-in-cart']);
         }
 
+        if($options['task'] == 'get-payment-name-from-id') {
+            $paymentModel = new PaymentModel();
+            $result       = $paymentModel->getItem($params, ['task' => 'get-payment-name-from-id']);
+        }
 
 
         return $result;

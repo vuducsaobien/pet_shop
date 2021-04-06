@@ -96,6 +96,10 @@ class PaymentModel extends AdminModel
             $result = self::select('id', 'thumb')->where('id', $params['id'])->first();
         }
 
+        if($options['task'] == 'get-payment-name-from-id') {
+            $result = self::where('status', 'active')->where('id', $params)->value('name');
+        }
+
         return $result;
     }
 

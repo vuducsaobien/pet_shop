@@ -63,6 +63,10 @@ class CartController extends AdminController
         // Items Customer
         $item = $this->model->getItem( $params, ['task' => 'get-item']);
 
+        // Items Payment
+        $item['payment'] = $this->model->getItem( $item['payment_id'], ['task' => 'get-payment-name-from-id']);
+        unset($item['payment_id']);
+
         // Items Cart
         $itemsCart      = $this->model->listItems($item['order_code'], ['task'  => 'admin-list-items-view-cart']);
         $attribute_name = $this->model->listItems(null, ['task'  => 'admin-list-items-get-all-attribute-name']);

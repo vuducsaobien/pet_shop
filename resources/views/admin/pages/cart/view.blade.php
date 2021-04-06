@@ -32,7 +32,7 @@
                                 <li><p>Mã Đơn Hàng : {{ $item['order_code'] }}</p></li>
                                 <li><p>Số Lượng: {{ $item['quantity'] }}</p></li>
                                 <li><p>Tổng Số Tiền : {!! Template::format_price($item['amount'],'vietnamese dong') !!}</p></li>
-                                <li><p>Hình thức Thanh toán : {{ $item['name'] }}</p></li>
+                                <li><p>Hình thức Thanh toán : {{ $item['payment'] }}</p></li>
                                 <li><p>Ngày Mua: {{ date(config('zvn.format.long_time'), strtotime($item['created'])) }}</p></li>
                                 <li><p>Trạng Thái: {{ config("zvn.template.status.{$item['status']}.name") }}</p></li>
                             </ul>
