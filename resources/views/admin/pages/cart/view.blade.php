@@ -21,6 +21,7 @@
                                 <li><p>Địa chỉ: {{ $item['address'] }}</p></li>
                                 <li><p>Số Điện Thoại : 0{{ $item['phone'] }}</p></li>
                                 <li><p>Email : {{ $item['email'] }}</p></li>
+                                <li><p>Phí Vận Chuyển : {!! Template::format_price($item['ship'],'vietnamese dong') !!}</p></li>
                                 <li><p>Địa chỉ IP : {{ $item['ip'] }}</p></li>
                             </ul>
                         </blockquote>

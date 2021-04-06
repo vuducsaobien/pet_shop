@@ -141,6 +141,28 @@ $(document).ready(function() {
 		})
 	}
 
+	$("a#checkout").click(function(e){
+		let currentElement = $(this);
+		let url            = currentElement.data("url");
+		let fee            = $('select.shipping_change').val();
+
+		if (checkInputOrdering(fee, 1)) {
+			// url = url.replace("default", fee)
+			// console.log('ship = ' + ship);
+			localStorage.setItem('ship', fee);
+			// callAjax(null, url, 'ship');
+			// $("input#ship").val(fee);
+			// e.preventDefault();
+		}
+	});
+
+	if ( localStorage.getItem('ship') !== null) {
+		let ship = localStorage.getItem('ship');
+		console.log('ship = ' + ship);
+		$("input#ship").val(ship);
+	}	
+
+
 	// Coutinue Checkout Button
 	let startIdButton = [3, 4, 5, 6];
 	$.each(startIdButton, function( index, result ) {

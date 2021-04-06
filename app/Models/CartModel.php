@@ -137,7 +137,7 @@ class CartModel extends AdminModel
             $customerModel = new CustomerModel();
 
             $result = $customerModel::select('id', 'status', 'name', 'phone', 'email', 'address', 'ip', 'order_code', 'quantity', 'amount',
-            'created', 'payment_id')->where('id', $params['id'])->first()->toArray();
+            'created', 'payment_id', 'ship')->where('id', $params['id'])->first()->toArray();
 
             // echo '<pre style="color:red";>$result === '; print_r($result);echo '</pre>';
             // echo '<h3>Die is Called </h3>';die;

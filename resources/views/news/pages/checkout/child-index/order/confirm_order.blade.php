@@ -20,6 +20,7 @@
     $phone     = $items['phone'];
     $address   = $items['address'];
     $cart      = json_encode($cart);
+
 @endphp
 
 <div class="billing-back-btn">
@@ -37,7 +38,8 @@
             <input type = "hidden" name = "info[name]" value       = "{{$fullname}}">
             <input type = "hidden" name = "info[phone]" value      = "{{$phone}}">
             <input type = "hidden" name = "info[address]" value    = "{{$address}}">
-            <input type = "hidden" name = "info[payment_id]" value = "1" id = "payment"   >
+            <input type = "hidden" name = "info[payment_id]" value = "1" id       = "payment"   >
+            <input type = "hidden" name = "info[ship]" value       = "default" id = "ship"   >
             <input type = "hidden" name = "info[quantity]" value   = "{{$total_quantity}}">
             <input type = "hidden" name = "info[amount]" value     = "{{$total}}">
             <input type = "hidden" name = "cart" value             = "{{$cart}}">
