@@ -202,14 +202,12 @@ class CartModel extends AdminModel
             $params['order_code'] = Str::random(7);
             $params['ip']         = $_SERVER['REMOTE_ADDR'];
             $params['status']     = 'inactive';
-            $params['created']    = date('Y-m-d H:i:s');
-            $params['ip']         = $_SERVER['REMOTE_ADDR'];
 
             $customerModel = new CustomerModel();
             $prepare       = $customerModel->prepareParams($params);
             $customerModel::insert($prepare);
 
-            return $order_code = $params['order_code'];
+            return $params['order_code'];
         }
 
         if($options['task'] == 'news-add-item-cart-model') {
@@ -224,10 +222,8 @@ class CartModel extends AdminModel
                 $value['attribute_id']    = json_encode($attribute_id, JSON_UNESCAPED_UNICODE);
                 $value['attribute_value'] = json_encode($value['attribute_value'], JSON_UNESCAPED_UNICODE);
 
+                $this->table = 'cart';
                 $prepare = $this->prepareParams($value);
-
-                // echo '<pre style="color:red";>$prepare === '; print_r($prepare);echo '</pre>';
-                // echo '<h3>Die is Called </h3>';die;
                 self::insert($prepare);
             }
 
