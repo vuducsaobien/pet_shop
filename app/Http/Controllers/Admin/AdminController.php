@@ -75,9 +75,6 @@ class AdminController extends Controller
 
         $item = $this->model->getItem( $params, ['task' => 'get-item']);
 
-        // echo '<pre style="color:red";>$item === '; print_r($item);echo '</pre>';
-        // echo '<h3>Die is Called </h3>';die;
-
         return view($this->pathViewController .  'view', [
             'item'        => $item
         ]);

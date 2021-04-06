@@ -56,20 +56,30 @@ class CartController extends AdminController
         ]);
     }
 
-    public function save(MainRequest $request)
+    public function view(Request $request)
     {
-        if ($request->method() == 'POST') {
-            $params = $request->all();
-            
-            $task   = "add-item";
-            $notify = "Thêm phần tử thành công!";
+        $params["id"] = $request->id;
 
-            if($params['id'] !== null) {
-                $task   = "edit-item";
-                $notify = "Cập nhật phần tử thành công!";
-            }
-            $this->model->saveItem($params, ['task' => $task]);
-            return redirect()->route($this->controllerName)->with("zvn_notify", $notify);
-        }
+        // Items Customer
+        $item = $this->model->getItem( $params, ['task' => 'get-item']);
+
+        // Items Cart
+        $itemsCart      = $this->model->listItems($item['order_code'], ['task'  => 'admin-list-items-view-cart']);
+        $attribute_name = $this->model->listItems(null, ['task'  => 'admin-list-items-get-all-attribute-name']);
+        $prepareParams  = $this->model->fixArray($itemsCart, ['task' => 'fix-array-01']);
+
+        $params['main']           = $prepareParams;
+        $params['attribute_name'] = $attribute_name;
+        $params    = $this->model->fixArray($params, ['task' => 'fix-array-02']);
+        $attribute = $this->model->fixArray($params, ['task' => 'fix-array-03']);
+
+        $params['main']      = $itemsCart;
+        $params['attribute'] = $attribute;
+                $itemsCart   = $this->model->fixArray($params, ['task'  => 'fix-array-04']);
+        $item   ['detail']   = $itemsCart;
+        
+        return view($this->pathViewController .  'view', [
+            'item'        => $item
+        ]);
     }
 }

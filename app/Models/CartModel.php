@@ -64,13 +64,18 @@ class CartModel extends AdminModel
 
 
         if($options['task'] == "admin-list-items") {
-            $query = $this->select('c.id', 'c.quantity', 'c.price', 'c.order_code', 
+            $query = self::select('c.id', 'c.quantity', 'c.price', 'c.order_code', 
             'c.attribute_id', 'c.attribute_value', 'p.name', 'p.id as product_id')
             ->leftJoin('product as p', 'c.product_id', '=', 'p.id');
-
             $result = $query->orderBy('id', 'desc')->get()->toArray();
-            // ->paginate($params['pagination']['totalItemsPerPage']);
-            // ->paginate($params['pagination']['totalItemsPerPage'])->toArray();
+        }
+
+        if($options['task'] == "admin-list-items-view-cart") {
+            $query = self::select('c.product_id', 'c.quantity', 'c.price', 'c.attribute_id', 'c.attribute_value', 
+            'p.name', 'p.product_code', 'p.thumb')
+            ->leftJoin('product as p', 'c.product_id', '=', 'p.id')
+            ->where('order_code', '=', $params );
+            $result = $query->orderBy('c.id', 'desc')->get()->toArray();
         }
 
         if($options['task'] == 'news-list-items') {
@@ -86,36 +91,10 @@ class CartModel extends AdminModel
             $result = $productModel->listItems($params, ['task'  => 'admin-list-items-get-attribute-string']);
         }
 
-        if($options['task'] == 'admin-list-items-get-all-attribute') {
-            // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
-            // $params = array_map("unserialize", array_unique(array_map("serialize", $params)));
-            // foreach ($params as $key => $value) {
-            //     $params[$key] = $value['product_id'];
-            // }
-
-            echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
-            echo '<h3>Die is Called </h3>';die;
-    
-            $productModel = new ProductModel();
-            $result = $productModel->listItems($params, ['task'  => 'admin-list-items-get-all-attribute']);
-        }
-
         if($options['task'] == 'admin-list-items-get-all-attribute-name') {
-            // echo '<pre style="color:red";>$params === '; print_r($params);echo '</pre>';
-            // $params = array_map("unserialize", array_unique(array_map("serialize", $params)));
-            // foreach ($params as $key => $value) {
-            //     $params[$key] = $value['attribute_id'];
-            // }
-
             $attributeModel = new AttributeModel();
             $result         = $attributeModel->getItem(null, ['task'  => 'admin-list-items-get-all-attribute-name']);
-
-            // echo '<pre style="color:red";>$result === '; print_r($result);echo '</pre>';
-            // echo '<h3>Die is Called </h3>';die;
         }
-
-
-
 
         return $result;
     }
